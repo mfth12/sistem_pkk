@@ -62,4 +62,5 @@ $nav_profil  = $this->site_model->nav_profil();
       background-color: white;
     }
   </style>
+
 </head>
