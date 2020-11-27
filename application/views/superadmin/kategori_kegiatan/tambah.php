@@ -1,4 +1,3 @@
-
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -10,25 +9,25 @@
 
                 <?php
                 // Validasi
-                echo validation_errors('<div class="alert alert-danger">','<button class="close" data-dismiss="alert">&times;</button></div>');
+                echo validation_errors('<div class="alert alert-danger">', '<button class="close" data-dismiss="alert">&times;</button></div>');
 
                 // Form
                 echo form_open('superadmin/kategori_kegiatan');
                 ?>
 
                 <div class="form-group">
-                <label>Nama kategori</label>
-                <input type="text" name="nama_kategori_berita" placeholder="Nama kategori kegiatan" value="<?php echo set_value('nama_kategori_berita') ?>" required class="form-control">
+                    <label>Nama kategori</label>
+                    <input type="text" name="nama_kategori_berita" placeholder="Nama kategori kegiatan" value="<?php echo set_value('nama_kategori_berita') ?>" required class="form-control">
                 </div>
 
                 <div class="form-group">
-                <label>Keterangan</label>
-                <textarea name="keterangan" class="form-control" placeholder="Keterangan"><?php echo set_value('keterangan') ?></textarea>
+                    <label>Keterangan</label>
+                    <textarea name="keterangan" class="form-control" placeholder="Keterangan"><?php echo set_value('keterangan') ?></textarea>
                 </div>
 
                 <div class="form-group">
-                <label>Urutan tampil</label>
-                <input type="number" name="urutan" placeholder="Urutan tampil" value="<?php echo set_value('urutan') ?>" required class="form-control">
+                    <label>Urutan tampil</label>
+                    <input type="number" name="urutan" placeholder="Urutan tampil" value="<?php echo set_value('urutan') ?>" required class="form-control">
                 </div>
 
             </div>

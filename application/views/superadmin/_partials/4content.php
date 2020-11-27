@@ -1,5 +1,5 @@
 <?php
 // Panggil "ISI"yang di controller
-if($isi) {
+if ($isi) {
 	$this->load->view($isi);
 }

@@ -5,7 +5,6 @@ application/cache/*
 
 application/logs/*
 !application/logs/index.html
-
 !application/*/.htaccess
 
 composer.lock
@@ -16,16 +15,33 @@ user_guide_src/cilexer/dist/*
 user_guide_src/cilexer/pycilexer.egg-info/*
 /vendor/
 
-# IDE Files
-#-------------------------
-/nbproject/
-.idea/*
 
-## Sublime Text cache files
-*.tmlanguage.cache
-*.tmPreferences.cache
-*.stTheme.cache
-*.sublime-workspace
-*.sublime-project
-/tests/tests/
-/tests/results/
+### VisualStudioCode ###
+.vscode/*
+!.vscode/tasks.json
+!.vscode/launch.json
+*.code-workspace
+
+# Created by https://www.toptal.com/developers/gitignore/api/codeigniter
+# Edit at https://www.toptal.com/developers/gitignore?templates=codeigniter
+
+### CodeIgniter ###
+*/config/development
+*/logs/log-*.php
+!*/logs/index.html
+*/cache/*
+!*/cache/index.html
+!*/cache/.htaccess
+
+user_guide_src/build/*
+user_guide_src/cilexer/build/*
+user_guide_src/cilexer/dist/*
+user_guide_src/cilexer/pycilexer.egg-info/*
+
+#codeigniter 3
+application/logs/*
+!application/logs/index.html
+!application/logs/.htaccess
+/vendor/
+
+# End of https://www.toptal.com/developers/gitignore/api/codeigniter

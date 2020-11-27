@@ -28,13 +28,13 @@ class Home extends CI_Controller
 		$struktur	= $this->struktur_model->getAllTampil();
 
 		$data	= array(
-			'title'	=> $site['namaweb'] . ' ' . $site['tagline'],
-			'keywords' => $site['namaweb'] . ', ' . $site['keywords'],
-			'site'	=> $site,
+			'title'		=> $site['namaweb'] . ' ' . $site['tagline'],
+			'keywords' 	=> $site['namaweb'] . ', ' . $site['keywords'],
+			'site'		=> $site,
 			'produk'	=> $produk,
 			'berita'	=> $berita,
-			'video'	=> $video,
-			'slide'	=> $slide,
+			'video'		=> $video,
+			'slide'		=> $slide,
 			'struktur'	=> $struktur,
 			'isi'		=> 'home/main_list'
 		);

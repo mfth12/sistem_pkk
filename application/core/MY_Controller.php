@@ -1,9 +1,11 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 
-class MY_Controller extends CI_Controller{
-    public function __construct(){
-    parent::__construct();
+class MY_Controller extends CI_Controller
+{
+    public function __construct()
+    {
+        parent::__construct();
         // $this->authenticated(); // Panggil fungsi authenticated
     }
 
@@ -16,7 +18,7 @@ class MY_Controller extends CI_Controller{
     //     $data['contentnya'] = $this->load->view($content, $data, TRUE);
     //     $this->load->view('template/login/index', $data);
     // }
-    
+
 
     //end of Extends
 }

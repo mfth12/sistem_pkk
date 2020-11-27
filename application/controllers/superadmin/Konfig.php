@@ -27,10 +27,10 @@ class Konfig extends CI_Controller
 		if ($this->form_validation->run() === FALSE) {
 
 			$data = array(
-				'title'	=> 'Konfigurasi',
-				'namasite' => $site['namaweb'],
-				'site'	=> $site,
-				'isi'	=> 'superadmin/konfig/umum'
+				'title'		=> 'Konfigurasi',
+				'namasite' 	=> $site['namaweb'],
+				'site'		=> $site,
+				'isi'		=> 'superadmin/konfig/umum'
 			);
 			$this->load->view('superadmin/_partials/wrapper', $data);
 		} else {
@@ -124,11 +124,11 @@ class Konfig extends CI_Controller
 			$this->load->library('upload', $config);
 			if (!$this->upload->do_upload('logo')) {
 				$data = array(
-					'title'	=> 'New logo',
-					'namasite' => $site['namaweb'],
-					'site'	=> $site,
-					'error'	=> $this->upload->display_errors(),
-					'isi'	=> 'superadmin/konfig/umum'
+					'title'		=> 'New logo',
+					'namasite' 	=> $site['namaweb'],
+					'site'		=> $site,
+					'error'		=> $this->upload->display_errors(),
+					'isi'		=> 'superadmin/konfig/umum'
 				);
 				$this->load->view('superadmin/_partials/wrapper', $data);
 			} else {
@@ -186,11 +186,11 @@ class Konfig extends CI_Controller
 			if (!$this->upload->do_upload('icon')) {
 
 				$data = array(
-					'title'	=> 'New Icon',
-					'namasite' => $site['namaweb'],
-					'site'	=> $site,
-					'error'	=> $this->upload->display_errors(),
-					'isi'	=> 'superadmin/konfig/umum'
+					'title'		=> 'New Icon',
+					'namasite' 	=> $site['namaweb'],
+					'site'		=> $site,
+					'error'		=> $this->upload->display_errors(),
+					'isi'		=> 'superadmin/konfig/umum'
 				);
 				$this->load->view('superadmin/_partials/wrapper', $data);
 			} else {
