@@ -11,7 +11,7 @@
 - Support TeX (LaTeX expressions, Based on KaTeX), Flowchart and Sequence Diagram of Markdown extended syntax;
 - Support AMD/CMD (Require.js & Sea.js) Module Loader, and Custom/define editor plugins;
 
-###Release
+### Release
 | Version  | Detail  | Stats |
 | :------------ |:-------------| :-----:|
 | v1.0      | All basic features generated | Published |
