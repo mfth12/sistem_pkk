@@ -15,4 +15,5 @@
 | Version  | Detail  | Stats |
 | :------------ |:-------------| :-----:|
 | v1.0      | All basic features generated | Published |
+| v1.1      | Under Development | None |
 
