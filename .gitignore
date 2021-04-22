@@ -15,15 +15,16 @@ user_guide_src/cilexer/dist/*
 user_guide_src/cilexer/pycilexer.egg-info/*
 /vendor/
 
-
 ### VisualStudioCode ###
 .vscode/*
 !.vscode/tasks.json
 !.vscode/launch.json
 *.code-workspace
 
-# Created by https://www.toptal.com/developers/gitignore/api/codeigniter
-# Edit at https://www.toptal.com/developers/gitignore?templates=codeigniter
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+.history
+.ionide
 
 ### CodeIgniter ###
 */config/development
@@ -43,5 +44,7 @@ application/logs/*
 !application/logs/index.html
 !application/logs/.htaccess
 /vendor/
+### CodeIgniter Patch ###
 
-# End of https://www.toptal.com/developers/gitignore/api/codeigniter
+### Composer ###
+composer.phar
