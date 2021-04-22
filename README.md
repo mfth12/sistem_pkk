@@ -1,4 +1,4 @@
-# Aplikasi PKK Desa Uma Beringin
+# Sistem Informasi PKK Desa Uma Beringin
 ![](https://img.shields.io/github/tag/pandao/editor.md.svg) ![](https://img.shields.io/github/release/pandao/editor.md.svg)
 ### Detail System
 
