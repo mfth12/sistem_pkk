@@ -7,7 +7,7 @@ class Konfigurasi_model extends CI_Model {
 		$this->load->database();
 	}
 	
-	// Listing
+	// Listing, mengambil data
 	public function listing() {
 		$this->db->select('*');
 		$this->db->from('konfigurasi');

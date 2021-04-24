@@ -2,7 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Simple_login {
-	
 	// SET SUPER GLOBAL
 	var $CI = NULL;
 	public function __construct() {
@@ -12,7 +11,7 @@ class Simple_login {
 	public function terotentikasi(){ 
         if($this->CI->uri->segment(1) != 'auth' && $this->CI->uri->segment(1) != ''){
             if( ! $this->CI->session->userdata('terotentikasi')){
-				$this->CI->session->set_flashdata('maaf', 'sesi anda telah berakhir. Silakan masuk kembali');
+				$this->CI->session->set_flashdata('maaf', 'sesi anda telah berakhir.');
                 redirect('auth');
 			}
         }
@@ -59,28 +58,6 @@ class Simple_login {
 		return false;
 	}
 
-	
-	// Cek login
-	public function cek_login_nouse() {
-		if($this->CI->session->userdata('username') == '' && $this->CI->session->userdata('akses_level')=='') {
-			$this->CI->session->set_flashdata('maaf','Sesi anda habis. Silakan login kembali');
-			redirect('auth');
-		}	
-	}
-	
-	// Logout
-	public function logout() {
-		$this->CI->session->unset_userdata('username');
-		$this->CI->session->unset_userdata('akses_level');
-		$this->CI->session->unset_userdata('nama');
-		$this->CI->session->unset_userdata('id_login');
-		$this->CI->session->unset_userdata('id');
-		unset($_SESSION['admin']);
-		session_destroy();
-		$this->CI->session->set_flashdata('sukses','Terimakasih, Anda berhasil logout');
-		redirect(base_url().'login');
-	}
-	
 	private function getnamauser($username)
   	{
 		$this->CI->db->where('username', $username);

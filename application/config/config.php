@@ -21,7 +21,7 @@ $config['base_url'] .= str_replace(basename($_SERVER['SCRIPT_NAME']), "", $_SERV
 |--------------------------------------------------------------------------
 |
 */
-define('APP_VERS', 'v1.02.beta'); //deklarasi versi dari web ini
+define('APP_VERS', 'v2'); //deklarasi versi dari web ini
 
 
 /*
