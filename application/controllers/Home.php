@@ -3,7 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Home extends CI_Controller
 {
-	// Load database
 	public function __construct()
 	{
 		parent::__construct();
@@ -16,7 +15,6 @@ class Home extends CI_Controller
 		$this->load->model('struktur_model');
 	}
 
-	// Index 
 	public function index()
 	{
 		$site	= $this->konfigurasi_model->listing();
@@ -27,17 +25,18 @@ class Home extends CI_Controller
 		$struktur	= $this->struktur_model->getAllTampil();
 
 		$data	= array(
-			'title'		=> $site['namaweb'] . ' ' . $site['tagline'],
-			'keywords' 	=> $site['namaweb'] . ', ' . $site['keywords'],
-			'site'		=> $site,
-			'produk'	=> $produk,
-			'berita'	=> $berita,
-			'video'		=> $video,
-			'slide'		=> $slide,
-			'struktur'	=> $struktur,
-			'isi'		=> 'home/main_list'
+			'title'			=> $site['namaweb'] . ' ' . $site['tagline'],
+			'keywords' 		=> $site['namaweb'] . ', ' . $site['keywords'],
+			'site'			=> $site,
+			'produk'		=> $produk,
+			'berita'		=> $berita,
+			'video'			=> $video,
+			'slide'			=> $slide,
+			'struktur'		=> $struktur,
+			'pakai_slide'	=> true,
+			'pakai_banner'	=> false,
+			'isi'			=> 'front/isi/home'
 		);
-		// $this->load->view('layout/wrapper',$data); 
-		$this->load->view('layout/landing_home', $data);
+		$this->load->view('front/landing', $data);
 	}
 }
