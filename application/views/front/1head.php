@@ -26,25 +26,58 @@ $nav_profil = $this->site_model->nav_profil();
     <link href="<?php echo base_url('front_assets/css/nice-select.css') ?>" type="text/css" rel="stylesheet">
     <link href="<?php echo base_url('front_assets/css/style.css') ?>" type="text/css" rel="stylesheet">
     <link href="<?php echo base_url('front_assets/css/dropdown.css') ?>" type="text/css" rel="stylesheet">
-    <!-- Tutup CSS -->
+    <!-- Style tambahan -->
+    <style>
+        .smart-scroll {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 1030;
+        }
+
+        .scrolled-down {
+            transform: translateY(-100%);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .scrolled-up {
+            transform: translateY(0);
+            transition: all 0.3s ease-in-out;
+        }
+
+        body {
+            opacity: 1;
+            transition: 1s opacity;
+        }
+
+        body.fade-out {
+            opacity: 0;
+            transition: none;
+        }
+
+        html {
+            background-color: white;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Starts animated loading -->
+    <!-- Header Fade-out -->
+    <script>
+        document.body.className += 'fade-out';
+    </script>
+    <!-- loading Animation -->
     <div class="preloader">
         <div class="spinner"></div>
     </div>
-    <!-- Ends animated loading -->
-    <!-- <script>
-        document.body.className += 'fade-out';
-    </script> -->
     <!-- Navigation -->
-    <header class="header-area main-header">
+    <header class="header-area main-header smart-scroll shadow p-3 mb-5 rounded blur-ios">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
                     <div class="logo-area">
-                        <a href="index.html"><img src="front_assets/images/logo.png" alt="logo"></a>
+                        <a href="<?php echo base_url() ?>"><img height="50" src="<?php echo base_url('front_assets/images/' . $site['logo']) ?>" alt="logo"></a>
                     </div>
                 </div>
                 <div class="col-lg-9">
@@ -55,15 +88,15 @@ $nav_profil = $this->site_model->nav_profil();
                     </div>
                     <div class="main-menu">
                         <ul>
-                            <li class="active"><a href="index.html">home</a></li>
-                            <li><a href="about.html">about us</a></li>
-                            <li><a href="job-category.html">category</a></li>
+                            <!-- <li class="active"><a href="index.html">home</a></li> -->
+                            <li><a href="job-category.html">Berita</a></li>
                             <li><a href="#">blog</a>
                                 <ul class="sub-menu">
                                     <li><a href="blog-home.html">Blog Home</a></li>
                                     <li><a href="blog-details.html">Blog Details</a></li>
                                 </ul>
                             </li>
+                            <li><a href="about.html">Tentang PKK</a></li>
                             <li><a href="contact-us.html">contact</a></li>
                             <li><a href="#">pages</a>
                                 <ul class="sub-menu">
