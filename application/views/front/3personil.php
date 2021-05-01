@@ -14,7 +14,7 @@
                 foreach ($struktur as $data4) { ?>
                    <div class="col-lg-3 col-sm-6">
                        <div class="single-team mb-5 mb-lg-0">
-                           <div class="team-img" style="<?php echo "background-image: url('" . base_url('assets/upload/pengurus/' . $data4->image) . "');" ?>">
+                           <div class="team-img" style="<?php echo "background-image: url('" . base_url('back_assets/upload/pengurus/' . $data4->image) . "');" ?>">
                                <div class="hover-state">
                                </div>
                            </div>

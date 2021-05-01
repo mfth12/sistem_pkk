@@ -22,11 +22,11 @@
 } ?>
 <!-- perkenalan -->
 <?php if ($perkenalan) {
-    require_once('_perkenalan.php');
+    require_once('1perkenalan.php');
 } ?>
 <!-- kata sambutan -->
 <?php if ($sambutan) {
-    require_once('_sambutan.php');
+    require_once('2sambutan.php');
 } ?>
 <!-- isi -->
 <?php if ($isi) {
@@ -34,7 +34,7 @@
 } ?>
 <!-- pengurus PKK -->
 <?php if ($personil) {
-    require_once('_personil.php');
+    require_once('3personil.php');
 } ?>
 <!-- Feature Area Starts -->
 <section class="feature-area section-padding3">
@@ -375,7 +375,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12">
-                    <img class="mb-3" src="<?php echo base_url('front_assets/upload/' . $site['icon']) ?>" alt="" width="32" height="32">
+                    <img class="mb-3" src="<?php echo base_url('back_assets/img/' . $site['icon']) ?>" alt="" width="32" height="32">
                     <h3 class="mb-3"><?php echo $site['namaweb'] . " " . $site['tagline'] ?></h3>
                 </div>
             </div>

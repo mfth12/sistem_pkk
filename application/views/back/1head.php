@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="n1codes" />
+    <title> <?php echo $title . ucfirst($this->uri->segment(1)) ?> </title>
+    <link rel="shortcut icon" href="<?php echo base_url('back_assets/img/' . $site['icon']) ?>" type="image/x-icon">
+    <!-- css -->
+    <link href="<?php echo base_url('back_assets/css/dataTables.bootstrap4.min.css') ?>" rel="stylesheet" crossorigin="anonymous" />
+    <link href="<?php echo base_url('back_assets/css/styles_sbadmin.css') ?>" rel="stylesheet">
+    <link href="<?php echo base_url('back_assets/css/dropdown_nav.css') ?>" type="text/css" rel="stylesheet">
+    <!-- javascript -->
+    <script src="<?php echo base_url('back_assets/js/all.min.js') ?>" crossorigin="anonymous"></script>
+    <script src="<?php echo base_url('back_assets/js/jquery-3.5.1.min.js') ?>"></script>
+    <script src="<?php echo base_url('back_assets/js/bootstrap.bundle.min.js') ?>"></script>
+    <script src="<?php echo base_url('back_assets/js/jquery.dataTables.min.js') ?>"></script>
+    <script src="<?php echo base_url('back_assets/js/dataTables.bootstrap4.min.js') ?>"></script>
+    <script src="<?php echo base_url('back_assets/js/panel.sidebar.js') ?>"></script>
+    <script src="<?php echo base_url('back_assets/js/datatables-used.js') ?>"></script>
+</head>

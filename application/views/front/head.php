@@ -9,19 +9,17 @@ $nav_profil = $this->site_model->nav_profil();
 <html lang="en">
 
 <head>
-    <!-- Required Meta Tags -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Page Title -->
     <title>PKK Desa Uma Beringin</title>
     <!-- Favicon -->
-    <link rel="shortcut icon" href="<?php echo base_url('front_assets/upload/' . $site['icon']) ?>" type="image/x-icon">
+    <link rel="shortcut icon" href="<?php echo base_url('back_assets/img/' . $site['icon']) ?>" type="image/x-icon">
     <!-- CSS All -->
     <link href="<?php echo base_url('front_assets/css/animate-3.7.0.css') ?>" type="text/css" rel="stylesheet" media="all">
     <link href="<?php echo base_url('front_assets/css/font-awesome-4.7.0.min.css') ?>" type="text/css" rel="stylesheet">
     <link href="<?php echo base_url('front_assets/fonts/flat-icon/flaticon.css') ?>" type="text/css" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
     <link href="<?php echo base_url('front_assets/css/bootstrap-4.1.3.min.css') ?>" type="text/css" rel="stylesheet">
     <link href="<?php echo base_url('front_assets/css/owl-carousel.min.css') ?>" type="text/css" rel="stylesheet">
     <link href="<?php echo base_url('front_assets/css/nice-select.css') ?>" type="text/css" rel="stylesheet">
@@ -77,7 +75,6 @@ $nav_profil = $this->site_model->nav_profil();
         <div class="spinner"></div>
     </div>
     <!-- Back to top button -->
-    <!-- <a id="button-up"></a> -->
     <a id="button-up"></a>
     <!-- Navigation -->
     <header class="header-area main-header smart-scroll shadow p-2 blur-ios">
@@ -134,7 +131,6 @@ $nav_profil = $this->site_model->nav_profil();
         </div>
     </header>
 
-
     <?php
     if ($pakai_slide) {
     ?>
@@ -155,7 +151,7 @@ $nav_profil = $this->site_model->nav_profil();
                         // masuk logika if, untuk menentukan item yang aktif 
                         if ($no == 0) {
                     ?>
-                            <div class="carousel-item active" style="<?php echo "background-image: url('" . base_url('assets/upload/slider/' . $data2->image) . "');" ?>">
+                            <div class="carousel-item active" style="<?php echo "background-image: url('" . base_url('back_assets/upload/slider/' . $data2->image) . "');" ?>">
                                 <div class="carousel-caption d-none d-md-block">
                                     <h2 class="h2caption" style="color: white;"><?php echo $data2->name ?></h2>
                                     <p class="lead"><?php echo $data2->description ?></p>
@@ -164,7 +160,7 @@ $nav_profil = $this->site_model->nav_profil();
                         <?php
                         } else {
                         ?>
-                            <div class="carousel-item" style="<?php echo "background-image: url('" . base_url('assets/upload/slider/' . $data2->image) . "');" ?>">
+                            <div class="carousel-item" style="<?php echo "background-image: url('" . base_url('back_assets/upload/slider/' . $data2->image) . "');" ?>">
                                 <div class="carousel-caption d-none d-md-block">
                                     <h2 class="h2caption" style="color: white;"><?php echo $data2->name ?></h2>
                                     <p class="lead"><?php echo $data2->description ?></p>

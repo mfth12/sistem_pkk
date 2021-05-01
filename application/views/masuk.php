@@ -1,16 +1,22 @@
-<?php // $site = $this->konfigurasi_model->listing(); ?>
+<?php // $site = $this->konfigurasi_model->listing(); 
+?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="shortcut icon" href="<?php echo base_url('front_assets/upload/' . $site['icon']) ?>" type="image/x-icon">
+    <link rel="shortcut icon" href="<?php echo base_url('back_assets/img/' . $site['icon']) ?>" type="image/x-icon">
     <title>Akses ke Sistem</title>
     <!-- CCS utama -->
-    <link href="<?php echo base_url('assets/css/styles_sbadmin.css') ?>" rel="stylesheet">
+    <link href="<?php echo base_url('back_assets/css/styles_sbadmin.css') ?>" rel="stylesheet">
+    <!-- Script -->
+    <script src="<?php echo base_url('back_assets/js/jquery-3.5.1.min.js') ?>"></script>
+    <script src="<?php echo base_url('back_assets/js/bootstrap.bundle.min.js') ?>"></script>
+    <script src="<?php echo base_url('back_assets/js/jquery.dataTables.min.js') ?>"></script>
+    <script src="<?php echo base_url('back_assets/js/dataTables.bootstrap4.min.js') ?>"></script>
     <!-- styled -->
     <style type="text/css">
         * {
@@ -62,28 +68,21 @@
     </style>
 </head>
 
-<body style="background-color: #f5f5f5; 
-    user-select:none;
-    -moz-user-select:none;
-    -ms-user-select:none;
-    -khtml-user-select:none;
-    -webkit-user-select:none;">
-
+<body style="background-color: #f5f5f5; user-select:none; -moz-user-select:none; -ms-user-select:none; -khtml-user-select:none; -webkit-user-select:none;">
     <div class="container">
         <div class="mt-5">
             <div class="row">
                 <div class="col-12 col-md-6 text-center mt-3 mx-auto p-3">
-                    <img src="<?php echo base_url('front_assets/upload/' . $site['icon']) ?>" width="35%" class="mb-4" />
+                    <img src="<?php echo base_url('back_assets/img/' . $site['icon']) ?>" width="35%" class="mb-4" />
                     <br>
                     <h1 class="h2" style="font-size: 28px;">Sistem PKK Desa Uma Beringin</h1>
                     <p class="lead">Masuk untuk mendapat akses ke sistem.</p>
-                    <!-- <p class="lead">Version Dev. 1.2</p> -->
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-12 col-md-5 mx-auto mt-6">
-                    <?php $this->load->view("superadmin/_partials/8flash") ?>
+                    <?php $this->load->view("back/8flash") ?>
                 </div>
             </div>
 
@@ -116,21 +115,13 @@
                         <p style="vertical-align: middle;" class="text-muted text-center">Copyright &copy;
                             <script>
                                 document.write(new Date().getFullYear());
-                            </script> - <?= $site['namaweb'].$site['tagline']; ?>
+                            </script> - <?= $site['namaweb'] . $site['tagline']; ?>. All rights reserved.
                         </p>
                     </span>
                 </div>
             </div>
         </div>
     </div>
-
-    <script src="<?php echo base_url('assets/jquery-3.5.1.min.js') ?>"></script>
-    <script src="<?php echo base_url('assets/bootstrap.bundle.min.js') ?>"></script>
-    <script src="<?php echo base_url('assets/jquery.dataTables.min.js') ?>"></script>
-    <script src="<?php echo base_url('assets/dataTables.bootstrap4.min.js') ?>"></script>
-
-
-
 </body>
 
 </html>

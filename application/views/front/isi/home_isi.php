@@ -19,7 +19,7 @@
                     <?php foreach ($berita_slide as $beritaku) { ?>
                         <div class="d-sm-flex">
                             <div class="single-news" style="width: 520px;">
-                                <div class="news-img" style="<?php echo "background-image: url('" . base_url('assets/upload/image/' . $beritaku->gambar) . "');" ?>"></div>
+                                <div class="news-img" style="<?php echo "background-image: url('" . base_url('back_assets/upload/image/' . $beritaku->gambar) . "');" ?>"></div>
                                 <div class="news-tag">
                                     <ul class="my-3">
                                         <li>
