@@ -6,7 +6,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 <head>
 	<meta charset="utf-8">
-	<title>Error</title>
+	<title>Halaman Eror</title>
 	<style type="text/css">
 		::selection {
 			background-color: #E13300;
@@ -17,7 +17,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 			background-color: #E13300;
 			color: white;
 		}
-
 
 		* {
 			transition: all 0.4s;
@@ -53,8 +52,16 @@ defined('BASEPATH') or exit('No direct script access allowed');
 		.fof h1 {
 			font-size: 50px;
 			display: inline-block;
-			padding-right: 12px;
+			padding-left: 12px;
+			padding-right: 18px;
 			animation: type .4s alternate infinite;
+		}
+
+		.fof p {
+			font-size: 24px;
+			display: inline-block;
+			padding-right: 12px;
+			padding-left: 12px;
 		}
 
 		@keyframes type {
@@ -72,9 +79,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 <body>
 	<div id="main">
 		<div class="fof">
-			<h1>404 Halaman tidak ditemukan</h1>
-			<!-- <?php echo $message; ?> -->
-			<p>Maaf, halaman yang anda minta tidak tersedia</p>
+			<h1>Eror 404</h1>
+			<p>Halaman yang anda akses tidak tersedia.</p>
 		</div>
 	</div>
 </body>

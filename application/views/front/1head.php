@@ -21,6 +21,7 @@ $nav_profil = $this->site_model->nav_profil();
     <link href="<?php echo base_url('front_assets/css/animate-3.7.0.css') ?>" type="text/css" rel="stylesheet" media="all">
     <link href="<?php echo base_url('front_assets/css/font-awesome-4.7.0.min.css') ?>" type="text/css" rel="stylesheet">
     <link href="<?php echo base_url('front_assets/fonts/flat-icon/flaticon.css') ?>" type="text/css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
     <link href="<?php echo base_url('front_assets/css/bootstrap-4.1.3.min.css') ?>" type="text/css" rel="stylesheet">
     <link href="<?php echo base_url('front_assets/css/owl-carousel.min.css') ?>" type="text/css" rel="stylesheet">
     <link href="<?php echo base_url('front_assets/css/nice-select.css') ?>" type="text/css" rel="stylesheet">
@@ -28,6 +29,9 @@ $nav_profil = $this->site_model->nav_profil();
     <link href="<?php echo base_url('front_assets/css/dropdown.css') ?>" type="text/css" rel="stylesheet">
     <!-- Style tambahan -->
     <style>
+        * {
+            transition: all 0.6s;
+        }
         .smart-scroll {
             position: fixed;
             top: 0;
@@ -50,13 +54,14 @@ $nav_profil = $this->site_model->nav_profil();
             opacity: 1;
             transition: 1s opacity;
         }
-
+        
         body.fade-out {
             opacity: 0;
             transition: none;
         }
-
+        
         html {
+            min-width: 384px;
             background-color: white;
         }
     </style>
@@ -71,8 +76,11 @@ $nav_profil = $this->site_model->nav_profil();
     <div class="preloader">
         <div class="spinner"></div>
     </div>
+    <!-- Back to top button -->
+    <!-- <a id="button-up"></a> -->
+    <a id="button-up"></a>
     <!-- Navigation -->
-    <header class="header-area main-header smart-scroll shadow p-3 mb-5 rounded blur-ios">
+    <header class="header-area main-header smart-scroll shadow p-2 blur-ios">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -88,28 +96,37 @@ $nav_profil = $this->site_model->nav_profil();
                     </div>
                     <div class="main-menu">
                         <ul>
-                            <!-- <li class="active"><a href="index.html">home</a></li> -->
-                            <li><a href="job-category.html">Berita</a></li>
-                            <li><a href="#">blog</a>
+                            <li><a href="<?php echo base_url() ?>">Beranda</a></li>
+                            <li><a href="#berita">Berita</a>
                                 <ul class="sub-menu">
-                                    <li><a href="blog-home.html">Blog Home</a></li>
-                                    <li><a href="blog-details.html">Blog Details</a></li>
+                                    <?php foreach ($nav_berita as $nav_berita) { ?>
+                                        <li>
+                                            <a href="<?php echo site_url('kegiatan/kategori/' . $nav_berita->slug_kategori_berita) ?>">
+                                                <?php echo $nav_berita->nama_kategori_berita ?>
+                                            </a><?php } ?>
+                                        </li>
+                                        <li><a href="blog-home.html">+ tambahan</a></li>
                                 </ul>
                             </li>
-                            <li><a href="about.html">Tentang PKK</a></li>
-                            <li><a href="contact-us.html">contact</a></li>
-                            <li><a href="#">pages</a>
+                            <li><a href="#">Galeri</a>
                                 <ul class="sub-menu">
-                                    <li><a href="job-search.html">Job Search</a></li>
-                                    <li><a href="job-single.html">Job Single</a></li>
-                                    <li><a href="pricing-plan.html">Pricing Plan</a></li>
-                                    <li><a href="elements.html">Elements</a></li>
+                                    <li><a href="#">Pokja I</a></li>
+                                    <li><a href="#">Pokja II</a></li>
+                                    <li><a href="#">Pokja III</a></li>
+                                    <li><a href="#">Pokja IV</a></li>
                                 </ul>
                             </li>
-                            <li class="menu-btn">
-                                <!-- <a href="#" class="login">log in</a> -->
-                                <a href="#" class="template-btn">Masuk</a>
+                            <li><a href="#">Tentang</a>
+                                <ul class="sub-menu">
+                                    <?php foreach ($nav_profil as $nav_profil) { ?>
+                                        <li>
+                                            <a href="<?php echo site_url('kegiatan/read/' . $nav_profil->slug_berita) ?>">
+                                                <?php echo $nav_profil->nama_berita ?>
+                                            </a><?php } ?>
+                                        </li>
+                                </ul>
                             </li>
+                            <li><a href="#">Kontak</a></li>
                         </ul>
                     </div>
                 </div>
@@ -174,52 +191,3 @@ $nav_profil = $this->site_model->nav_profil();
         </header>
     <?php
     } ?>
-
-
-
-    <!-- Starts header -->
-    <!-- <header class="header-area main-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-2">
-                    <div class="logo-area">
-                        <a href="index.html"><img src="front_assets/images/logo.png" alt="logo"></a>
-                    </div>
-                </div>
-                <div class="col-lg-10">
-                    <div class="custom-navbar">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                    <div class="main-menu">
-                        <ul>
-                            <li class="active"><a href="index.html">home</a></li>
-                            <li><a href="about.html">about us</a></li>
-                            <li><a href="job-category.html">category</a></li>
-                            <li><a href="#">blog</a>
-                                <ul class="sub-menu">
-                                    <li><a href="blog-home.html">Blog Home</a></li>
-                                    <li><a href="blog-details.html">Blog Details</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="contact-us.html">contact</a></li>
-                            <li><a href="#">pages</a>
-                                <ul class="sub-menu">
-                                    <li><a href="job-search.html">Job Search</a></li>
-                                    <li><a href="job-single.html">Job Single</a></li>
-                                    <li><a href="pricing-plan.html">Pricing Plan</a></li>
-                                    <li><a href="elements.html">Elements</a></li>
-                                </ul>
-                            </li>
-                            <li class="menu-btn">
-                                <a href="#" class="login">log in</a>
-                                <a href="#" class="template-btn">sign up</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header> -->
-    <!-- Ends header -->

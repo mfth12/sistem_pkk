@@ -43,7 +43,7 @@ class Struktur_model extends CI_Model //ini perintah untuk ngambil data dari dat
 
     public function getAllTampil()
     {
-		$this->db->limit(3);
+		$this->db->limit(4);
         $this->db->order_by("nomor", "asc");
         return $this->db->get($this->_table)->result();
     }

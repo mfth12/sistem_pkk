@@ -60,7 +60,7 @@ class Berita_model extends CI_Model {
 		// End join
 		$this->db->where('berita.status_berita','Publish');
 		$this->db->order_by('id_berita','DESC');
-		$this->db->limit(11);
+		$this->db->limit(5);
 		$query = $this->db->get();
 		return $query->result();
 	}

@@ -20,6 +20,7 @@ class Home extends CI_Controller
 		$site	= $this->konfigurasi_model->listing();
 		$produk	= $this->produk_model->home();
 		$berita	= $this->berita_model->home();
+		$berita_slide= $this->berita_model->home();
 		$video	= $this->video_model->home();
 		$slide	= $this->sliders_model->getAll();
 		$struktur	= $this->struktur_model->getAllTampil();
@@ -30,12 +31,16 @@ class Home extends CI_Controller
 			'site'			=> $site,
 			'produk'		=> $produk,
 			'berita'		=> $berita,
+			'berita_slide'	=> $berita_slide,
 			'video'			=> $video,
 			'slide'			=> $slide,
 			'struktur'		=> $struktur,
+			'perkenalan'	=> true,
+			'personil'		=> true,
+			'sambutan'		=> true,
 			'pakai_slide'	=> true,
 			'pakai_banner'	=> false,
-			'isi'			=> 'front/isi/home'
+			'isi'			=> 'front/isi/home_isi'
 		);
 		$this->load->view('front/landing', $data);
 	}
