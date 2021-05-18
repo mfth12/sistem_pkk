@@ -1,5 +1,5 @@
    <!-- Team Area Starts -->
-   <section class="team-area section-padding3">
+   <section class="download-area section-padding">
        <div class="container">
            <div class="row">
                <div class="col-lg-12">

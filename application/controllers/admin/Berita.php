@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Kegiatan extends CI_Controller
+class Berita extends CI_Controller
 {
 
 	// Load database
@@ -26,9 +26,9 @@ class Kegiatan extends CI_Controller
 			'title'		=> 'Kegiatan PKK',
 			'namasite'	=> $site['namaweb'],
 			'berita'	=> $berita,
-			'isi'		=> 'superadmin/kegiatan/list'
+			'isi'		=> 'back/2berita/index'
 		);
-		$this->load->view('superadmin/_partials/wrapper', $data);
+		$this->load->view('back/wrapper', $data);
 	}
 
 	// Tambah

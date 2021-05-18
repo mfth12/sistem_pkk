@@ -1,12 +1,8 @@
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid">
-            <!-- ini nama judul halaman -->
             <h1 class="mt-4">Dashboard <?php if ($this->session->userdata('akses_level') == 'superadmin') echo "Admin PKK";
                                         if ($this->session->userdata('akses_level') == 'admin_desa') echo "Perangkat Desa"; ?></h1>
-            <!-- ini nama bread crumb -->
-            <!-- Breadcrumbs-->
-            <!-- Breadcrumbs-->
             <!-- Breadcrumbs-->
             <ol class="breadcrumb">
                 <?php foreach ($this->uri->segments as $segment) : ?>
@@ -25,12 +21,9 @@
                 <?php endforeach; ?>
             </ol>
             <!-- Breadcrumbs-->
-            <!-- Breadcrumbs-->
-            <!-- Breadcrumbs-->
-
-            <!-- SUPERADMIN -->
+            
             <?php if ($this->session->userdata('akses_level') == 'superadmin') { ?>
-                <!-- sekarang masuk ke kolom isi konten -->
+                <!-- kolom isi konten -->
                 <div class="row">
                     <div class="col-xl-3 col-md-6">
                         <div class="card bg-primary text-white mb-4">
@@ -111,7 +104,7 @@
 
             <!-- SUPERADMIN -->
             <?php if ($this->session->userdata('akses_level') == 'admin_desa') { ?>
-                <!-- sekarang masuk ke kolom isi konten -->
+                <!-- kolom isi konten -->
                 <div class="row">
                     <div class="col-xl-3 col-md-6">
                         <div class="card bg-primary text-white mb-4">

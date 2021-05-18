@@ -13,12 +13,15 @@
     <link href="<?php echo base_url('back_assets/css/dataTables.bootstrap4.min.css') ?>" rel="stylesheet" crossorigin="anonymous" />
     <link href="<?php echo base_url('back_assets/css/styles_sbadmin.css') ?>" rel="stylesheet">
     <link href="<?php echo base_url('back_assets/css/dropdown_nav.css') ?>" type="text/css" rel="stylesheet">
-    <!-- javascript -->
-    <script src="<?php echo base_url('back_assets/js/all.min.js') ?>" crossorigin="anonymous"></script>
-    <script src="<?php echo base_url('back_assets/js/jquery-3.5.1.min.js') ?>"></script>
-    <script src="<?php echo base_url('back_assets/js/bootstrap.bundle.min.js') ?>"></script>
-    <script src="<?php echo base_url('back_assets/js/jquery.dataTables.min.js') ?>"></script>
-    <script src="<?php echo base_url('back_assets/js/dataTables.bootstrap4.min.js') ?>"></script>
-    <script src="<?php echo base_url('back_assets/js/panel.sidebar.js') ?>"></script>
-    <script src="<?php echo base_url('back_assets/js/datatables-used.js') ?>"></script>
+    <style>
+        * {
+            transition: all 0.5s;
+        }
+
+        .blur-ios-black {
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            backdrop-filter: saturate(180%) blur(15px);
+            background: rgba(0, 0, 0, 0.8);
+        }
+    </style>
 </head>

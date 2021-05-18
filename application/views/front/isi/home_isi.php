@@ -1,15 +1,14 @@
 <?php
-// $this->load->view('layout/3slider');
-// require_once('../layout/3slider');
+$this->load->view('front/1perkenalan.php');
 ?>
 <!-- Berita slide Starts -->
-<section id="berita" class="employee-area section-padding3">
+<section id="berita" class="employee-area section-padding">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-top text-center">
-                    <h2>Berita</h2>
-                    <p>Berita Terkini PKK Desa Uma Beringin</p>
+                    <h2>Berita PKK</h2>
+                    <p>Berita Terkini Terkait Kegiatan PKK Desa Uma Beringin</p>
                 </div>
             </div>
         </div>
@@ -32,16 +31,21 @@
                                     </ul>
                                 </div>
                                 <div class="news-title">
-                                    <h4><a href="<?php echo site_url('kegiatan/read/' . $beritaku->slug_berita) ?>"><?php echo substr($beritaku->nama_berita, 0, 25)?><span class="flaticon-next"></span></a></h4>
+                                    <h4><a href="<?php echo site_url('kegiatan/read/' . $beritaku->slug_berita) ?>"><?php echo substr($beritaku->nama_berita, 0, 25) ?><span class="flaticon-next"></span></a></h4>
                                 </div>
                             </div>
-                            <!-- end -->
                         </div>
                     <?php } ?>
                 </div>
             </div>
         </div>
     </div>
+    <div class="more-job-btn mt-3 text-center">
+        <a href="#" class="template-btn">Baca Selengkapnya<span class="flaticon-next"></span></a>
+    </div>
 </section>
 <!-- Berita slide ends -->
-
+<?php
+$this->load->view('front/3personil.php');
+$this->load->view('front/2sambutan.php');
+?>

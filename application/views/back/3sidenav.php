@@ -9,7 +9,7 @@
                     <!-- Menu side navigation -->
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Overview</div>
-                        <a class="nav-link" href="<?php echo site_url('superadmin') ?>">
+                        <a class="nav-link" href="<?php echo site_url('admin') ?>">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dashboard
                         </a>
@@ -23,7 +23,7 @@
                         </a>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="<?php echo site_url('superadmin/kegiatan') ?> ">Semua Kegiatan</a>
+                                <a class="nav-link" href="<?php echo site_url('admin/berita') ?> ">Semua Kegiatan</a>
                                 <a class="nav-link" href="<?php echo site_url('superadmin/kegiatan/tambah') ?> ">Tambah Kegiatan</a>
                                 <a class="nav-link" href="<?php echo site_url('superadmin/kategori_kegiatan') ?> ">Kategori Kegiatan</a>
                             </nav>

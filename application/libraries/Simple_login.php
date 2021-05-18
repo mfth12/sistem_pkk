@@ -45,9 +45,9 @@ class Simple_login {
 				if($this->CI->session->userdata('terotentikasi')) 
     				{
     				if($this->CI->session->userdata('akses_level') == 'superadmin') 
-    				  redirect('superadmin');
+    				  redirect('admin');
     				if($this->CI->session->userdata('akses_level') == 'admin_desa') 
-    				  redirect('superadmin');
+    				  redirect('admin');
     				}
 				redirect('halaman_kosong');
 			}else{

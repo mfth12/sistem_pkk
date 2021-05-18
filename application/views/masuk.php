@@ -1,6 +1,3 @@
-<?php // $site = $this->konfigurasi_model->listing(); 
-?>
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 
@@ -73,7 +70,7 @@
         <div class="mt-5">
             <div class="row">
                 <div class="col-12 col-md-6 text-center mt-3 mx-auto p-3">
-                    <img src="<?php echo base_url('back_assets/img/' . $site['icon']) ?>" width="35%" class="mb-4" />
+                    <img src="<?php echo base_url('back_assets/img/' . $site['icon']) ?>" width="35%" class="mb-4"/>
                     <br>
                     <h1 class="h2" style="font-size: 28px;">Sistem PKK Desa Uma Beringin</h1>
                     <p class="lead">Masuk untuk mendapat akses ke sistem.</p>

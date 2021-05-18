@@ -1,5 +1,5 @@
 <!-- News Area Starts -->
-<section id="berita" class="news-area section-padding3">
+<section id="berita" class="news-area section-padding">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -13,7 +13,7 @@
             <?php foreach ($berita as $berita) { ?>
                 <div class="col-lg-4 col-md-6 mb-5">
                     <div class="single-news mb-5 mb-lg-0">
-                        <div class="news-img" style="<?php echo "background-image: url('" . base_url('assets/upload/image/' . $berita->gambar) . "');" ?>"></div>
+                        <div class="news-img" style="<?php echo "background-image: url('" . base_url('back_assets/upload/image/' . $berita->gambar) . "');" ?>"></div>
                         <div class="news-tag">
                             <ul class="my-3">
                                 <li>
@@ -26,7 +26,7 @@
                             </ul>
                         </div>
                         <div class="news-title">
-                            <h4><a href="<?php echo site_url('kegiatan/read/' . $berita->slug_berita) ?>"><?php echo $berita->nama_berita ?></a></h4>
+                            <h4><a href="<?php echo site_url('berita/read/' . $berita->slug_berita) ?>"><?php echo $berita->nama_berita ?></a></h4>
                         </div>
                     </div>
                 </div>

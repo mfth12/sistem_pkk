@@ -34,7 +34,7 @@ define('APP_VERS', 'v2'); //deklarasi versi dari web ini
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------

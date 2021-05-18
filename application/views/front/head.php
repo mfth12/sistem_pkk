@@ -12,8 +12,9 @@ $nav_profil = $this->site_model->nav_profil();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="<?php echo $keywords ?>">
     <!-- Page Title -->
-    <title>PKK Desa Uma Beringin</title>
+    <title><?php echo $title ?></title>
     <!-- Favicon -->
     <link rel="shortcut icon" href="<?php echo base_url('back_assets/img/' . $site['icon']) ?>" type="image/x-icon">
     <!-- CSS All -->
@@ -30,6 +31,7 @@ $nav_profil = $this->site_model->nav_profil();
         * {
             transition: all 0.6s;
         }
+
         .smart-scroll {
             position: fixed;
             top: 0;
@@ -52,12 +54,12 @@ $nav_profil = $this->site_model->nav_profil();
             opacity: 1;
             transition: 1s opacity;
         }
-        
+
         body.fade-out {
             opacity: 0;
             transition: none;
         }
-        
+
         html {
             min-width: 384px;
             background-color: white;
@@ -73,11 +75,9 @@ $nav_profil = $this->site_model->nav_profil();
     <!-- loading Animation -->
     <div class="preloader">
         <div class="spinner"></div>
-    </div>
-    <!-- Back to top button -->
-    <a id="button-up"></a>
+    </div><a id="button-up"></a>
     <!-- Navigation -->
-    <header class="header-area main-header smart-scroll shadow p-2 blur-ios">
+    <header class="header-area main-header smart-scroll p-2 blur-ios border-bawah">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -98,11 +98,11 @@ $nav_profil = $this->site_model->nav_profil();
                                 <ul class="sub-menu">
                                     <?php foreach ($nav_berita as $nav_berita) { ?>
                                         <li>
-                                            <a href="<?php echo site_url('kegiatan/kategori/' . $nav_berita->slug_kategori_berita) ?>">
+                                            <a href="<?php echo site_url('berita/kategori/' . $nav_berita->slug_kategori_berita) ?>">
                                                 <?php echo $nav_berita->nama_kategori_berita ?>
                                             </a><?php } ?>
                                         </li>
-                                        <li><a href="blog-home.html">+ tambahan</a></li>
+                                        <li><a href="kosong-link.html">+ tambahan</a></li>
                                 </ul>
                             </li>
                             <li><a href="#">Galeri</a>
@@ -117,7 +117,7 @@ $nav_profil = $this->site_model->nav_profil();
                                 <ul class="sub-menu">
                                     <?php foreach ($nav_profil as $nav_profil) { ?>
                                         <li>
-                                            <a href="<?php echo site_url('kegiatan/read/' . $nav_profil->slug_berita) ?>">
+                                            <a href="<?php echo site_url('berita/read/' . $nav_profil->slug_berita) ?>">
                                                 <?php echo $nav_profil->nama_berita ?>
                                             </a><?php } ?>
                                         </li>

@@ -27,9 +27,9 @@ class overview extends CI_Controller
 		$produk				= $this->produk_model->listing();
 		$kategori_produk	= $this->kategori_produk_model->listing();
 		$kategori_berita	= $this->kategori_berita_model->listing();
-		$total 			= $this->kas_model->total_all();
-		$slider 		= $this->sliders_model->total_all();
-		$struktur 		= $this->struktur_model->total_all();
+		$total 				= $this->kas_model->total_all();
+		$slider 			= $this->sliders_model->total_all();
+		$struktur 			= $this->struktur_model->total_all();
 		$data = array(
 			'title'				=> 'Dashboard ',
 			'namasite'			=> $site['namaweb'],
@@ -42,15 +42,9 @@ class overview extends CI_Controller
 			'total_trans'		=> $total,
 			'slider'			=> $slider,
 			'struktur'			=> $struktur,
-			'isi'				=> 'back/dasbor/index.php'
+			'isi'				=> 'back/1dasbor/index.php'
 		);
 
 		$this->load->view('back/wrapper', $data);
-		// if($this->session->userdata('akses_level') == 'superadmin')
-		// 	{$this->load->view('superadmin/_partials/wrapper',$data);}
-		// else {
-		// 	show_404();
-		// }
-		//end of ppublic index
 	}
-}//end off all
+}

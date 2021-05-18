@@ -13,9 +13,9 @@ class Auth extends CI_Controller
 		$site = $this->konfigurasi_model->listing();
 		if ($this->session->userdata('terotentikasi')) {
 			if ($this->session->userdata('akses_level') == 'superadmin')
-				redirect('superadmin');
+				redirect('admin');
 			if ($this->session->userdata('akses_level') == 'admin_desa')
-				redirect('superadmin');
+				redirect('admin');
 		}
 		$data  = array('site'  => $site);
 		// var_dump($data);
@@ -39,7 +39,6 @@ class Auth extends CI_Controller
 			'required',
 			array('required'  => 'Password harus diisi')
 		);
-		//getting from $POST
 		$username  = $this->input->post('username');
 		$password  = $this->input->post('password');
 
