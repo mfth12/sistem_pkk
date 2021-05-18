@@ -94,7 +94,7 @@ $nav_profil = $this->site_model->nav_profil();
                     <div class="main-menu">
                         <ul>
                             <li><a href="<?php echo base_url() ?>">Beranda</a></li>
-                            <li><a href="#berita">Berita</a>
+                            <li><a href="<?php echo site_url('berita')?>">Berita</a>
                                 <ul class="sub-menu">
                                     <?php foreach ($nav_berita as $nav_berita) { ?>
                                         <li>

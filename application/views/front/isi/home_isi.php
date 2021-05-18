@@ -41,7 +41,7 @@ $this->load->view('front/1perkenalan.php');
         </div>
     </div>
     <div class="more-job-btn mt-3 text-center">
-        <a href="#" class="template-btn">Baca Selengkapnya<span class="flaticon-next"></span></a>
+        <a href="<?php echo site_url('berita')?>" class="template-btn">Baca Selengkapnya<span class="flaticon-next"></span></a>
     </div>
 </section>
 <!-- Berita slide ends -->

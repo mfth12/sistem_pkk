@@ -58,14 +58,14 @@
                     <div class="single-widge-home">
                         <h3 class="mb-4">Kontak</h3>
                         <div class="feed">
-                            <img src="front_assets/images/feed1.jpg" alt="feed">
-                            <img src="front_assets/images/feed2.jpg" alt="feed">
-                            <img src="front_assets/images/feed3.jpg" alt="feed">
-                            <img src="front_assets/images/feed4.jpg" alt="feed">
-                            <img src="front_assets/images/feed5.jpg" alt="feed">
-                            <img src="front_assets/images/feed6.jpg" alt="feed">
-                            <img src="front_assets/images/feed7.jpg" alt="feed">
-                            <img src="front_assets/images/feed8.jpg" alt="feed">
+                            <img src="<?php echo base_url('front_assets/images/feed1.jpg') ?>" alt="feed">
+                            <img src="<?php echo base_url('front_assets/images/feed2.jpg') ?>" alt="feed">
+                            <img src="<?php echo base_url('front_assets/images/feed3.jpg') ?>" alt="feed">
+                            <img src="<?php echo base_url('front_assets/images/feed4.jpg') ?>" alt="feed">
+                            <img src="<?php echo base_url('front_assets/images/feed5.jpg') ?>" alt="feed">
+                            <img src="<?php echo base_url('front_assets/images/feed6.jpg') ?>" alt="feed">
+                            <img src="<?php echo base_url('front_assets/images/feed7.jpg') ?>" alt="feed">
+                            <img src="<?php echo base_url('front_assets/images/feed8.jpg') ?>" alt="feed">
                         </div>
                     </div>
                 </div>

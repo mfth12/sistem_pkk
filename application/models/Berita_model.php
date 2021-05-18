@@ -9,10 +9,16 @@ class Berita_model extends CI_Model {
 		$this->load->database();
 	}
 	
-	//Listing
-	public function listing() {
+	public function listing_berita($limit, $start){
+		$this->db->order_by('id_berita','DESC');
+		$query = $this->db->get('berita',$limit, $start);	
+		return $query->result();
+	}
+
+	//Listing tidak dipakai yaa
+	public function listing($number,$offset) {
 		$this->db->select('berita.*, kategori_berita.nama_kategori_berita, users.nama');
-		$this->db->from('berita');
+		$this->db->from('berita',$number,$offset);
 		// Join
 		$this->db->join('kategori_berita','kategori_berita.id_kategori_berita = berita.id_kategori_berita', 'LEFT');
 		$this->db->join('users','users.id_user = berita.id_user','LEFT');
