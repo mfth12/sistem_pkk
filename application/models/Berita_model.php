@@ -11,14 +11,14 @@ class Berita_model extends CI_Model {
 	
 	public function listing_berita($limit, $start){
 		$this->db->order_by('id_berita','DESC');
-		$query = $this->db->get('berita',$limit, $start);	
+		$query = $this->db->get('berita',$limit, $start);
 		return $query->result();
 	}
 
 	//Listing tidak dipakai yaa
-	public function listing($number,$offset) {
+	public function listing() {
 		$this->db->select('berita.*, kategori_berita.nama_kategori_berita, users.nama');
-		$this->db->from('berita',$number,$offset);
+		$this->db->from('berita');
 		// Join
 		$this->db->join('kategori_berita','kategori_berita.id_kategori_berita = berita.id_kategori_berita', 'LEFT');
 		$this->db->join('users','users.id_user = berita.id_user','LEFT');
@@ -43,17 +43,17 @@ class Berita_model extends CI_Model {
 	}
 	
 	//Kategori
-	public function kategori($id_kategori_berita) {
-		$this->db->select('berita.*, kategori_berita.nama_kategori_berita, users.nama');
-		$this->db->from('berita');
-		// Join
-		$this->db->join('kategori_berita','kategori_berita.id_kategori_berita = berita.id_kategori_berita', 'LEFT');
-		$this->db->join('users','users.id_user = berita.id_user','LEFT');
-		// End join
+	public function kategori($id_kategori_berita, $limit, $start) {
 		$this->db->where('berita.id_kategori_berita',$id_kategori_berita);
 		$this->db->order_by('id_berita','DESC');
-		$query = $this->db->get();
+		$query = $this->db->get('berita',$limit, $start);
 		return $query->result();
+	}
+
+	// jumlah kategori
+	function jumlah_kateg($su){
+		$this->db->where('id_kategori_berita',$su);
+		return $this->db->get('berita')->num_rows();
 	}
 	
 	//Home

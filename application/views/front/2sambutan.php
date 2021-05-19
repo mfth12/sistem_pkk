@@ -13,7 +13,7 @@
             <div class="col-lg-12">
                 <div class="employee-slider owl-carousel">
                     <div class="single-slide d-sm-flex">
-                        <div class="slide-img">
+                        <div class="slide-img employee3">
                             <div class="hover-state">
                                 <div class="hover-text text-center">
                                     <h3>Miftah</h3>

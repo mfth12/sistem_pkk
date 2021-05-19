@@ -1,6 +1,5 @@
 <?php
 $site       = $this->konfigurasi_model->listing();
-$nav_produk = $this->site_model->nav_produk();
 $nav_berita = $this->site_model->nav_berita();
 $nav_profil = $this->site_model->nav_profil();
 ?>

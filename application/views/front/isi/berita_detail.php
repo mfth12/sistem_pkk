@@ -7,19 +7,19 @@
                     <div class="single-post">
                         <div class="img-fluid" style="width: 100%; height: 45vh; 
                         background: no-repeat center center scroll; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; 
-                        <?php echo "background-image: url('" . base_url('back_assets/upload/image/' . $berita->gambar) . "');" ?>" src="" alt=""></div>
+                        <?php echo "background-image: url('" . base_url('back_assets/upload/image/' . $read->gambar) . "');" ?>" src="" alt=""></div>
                         <ul class="tags">
                             <li><a href="#">Art, </a></li>
                             <li><a href="#">Technology, </a></li>
                             <li><a href="#">Fashion</a></li>
                         </ul>
-                        <a href="<?php echo site_url('berita/read/'.$berita->slug_berita) ?>">
+                        <a>
                             <h2>
-                                <?php echo $berita->nama_berita ?>
+                                <?php echo $read->nama_berita ?>
                             </h2>
                         </a>
                         <p>
-                            <?php echo substr($berita->keterangan, 0, 225) ?>
+                            <?php echo $read->keterangan ?>
                         </p>
                         <div class="bottom-meta">
                             <div class="user-details row align-items-center">
