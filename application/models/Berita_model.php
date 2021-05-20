@@ -10,12 +10,12 @@ class Berita_model extends CI_Model {
 	}
 	
 	public function listing_berita($limit, $start){
+		$this->db->where('status_berita','Publish');
 		$this->db->order_by('id_berita','DESC');
 		$query = $this->db->get('berita',$limit, $start);
 		return $query->result();
 	}
 
-	//Listing tidak dipakai yaa
 	public function listing() {
 		$this->db->select('berita.*, kategori_berita.nama_kategori_berita, users.nama');
 		$this->db->from('berita');
@@ -44,14 +44,34 @@ class Berita_model extends CI_Model {
 	
 	//Kategori
 	public function kategori($id_kategori_berita, $limit, $start) {
+		$this->db->where('status_berita','Publish');
 		$this->db->where('berita.id_kategori_berita',$id_kategori_berita);
 		$this->db->order_by('id_berita','DESC');
 		$query = $this->db->get('berita',$limit, $start);
 		return $query->result();
 	}
 
+	//Listing
+	public function ngambil_slug_all()
+	{
+		$this->db->select('berita.slug_berita');
+		$this->db->from('berita');
+		$query = $this->db->get();
+		return $query->result();
+	}
+
+	//matching judul
+	public function match_slug($slug)
+	{
+		// $query = $this->db->get_where('berita', array('slug_berita' => $slug));
+		$this->db->where('slug_berita', $slug);
+		$result = $this->db->get('berita');
+		return $result->result();
+	}
+
 	// jumlah kategori
 	function jumlah_kateg($su){
+		$this->db->where('status_berita','Publish');
 		$this->db->where('id_kategori_berita',$su);
 		return $this->db->get('berita')->num_rows();
 	}
@@ -76,7 +96,7 @@ class Berita_model extends CI_Model {
 		$query = $this->db->get_where('berita',array('id_berita'  => $id_berita));
 		return $query->row();
 	}
-	
+
 	// Tambah
 	public function tambah ($data) {
 		$this->db->insert('berita',$data);
@@ -88,9 +108,37 @@ class Berita_model extends CI_Model {
 		$this->db->update('berita',$data);
 	}
 	
+	public function getById($id_berita)
+    {
+        return $this->db->get_where('berita', ["id_berita" => $id_berita])->row();
+    }
+	// Delete update
+	public function delete_update ($data){
+        $this->_deleteImage($data['id_berita']);
+        $this->_deleteImage_thumbs($data['id_berita']);
+	}
 	// Delete
 	public function delete ($data){
-		$this->db->where('id_berita',$data['id_berita']);
-		$this->db->delete('berita',$data);
+        $this->_deleteImage($data['id_berita']);
+        $this->_deleteImage_thumbs($data['id_berita']);
+		return $this->db->delete('berita', array("id_berita" => $data['id_berita']));
 	}
+	//ngehapus file dari direktori
+    private function _deleteImage($id)
+    {
+        $berita_hps = $this->getById($id);
+        if ($berita_hps->gambar != "default.jpg") {
+    	    $filename = explode(".", $berita_hps->gambar)[0];
+    		return array_map('unlink', glob(FCPATH."back_assets/upload/image/$filename.*"));
+        }
+    }
+	//ngehapus file dari direktori
+    private function _deleteImage_thumbs($id)
+    {
+        $berita_hps = $this->getById($id);
+        if ($berita_hps->gambar != "default.jpg") {
+    	    $filename = explode(".", $berita_hps->gambar)[0];
+    		return array_map('unlink', glob(FCPATH."back_assets/upload/image/thumbs/$filename.*"));
+        }
+    }
 }

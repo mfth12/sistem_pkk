@@ -3,8 +3,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-top text-center">
-                    <h2><?= $title; ?></h2>
-                    <p><?= $title; ?> terbaru <?= $site['namaweb'] . $site['tagline']; ?></p>
+                    <h2>Berita <?= $title; ?></h2>
+                    <p>Berita <?= $title .' terbaru '. $site['namaweb'] .' '.$site['tagline']; ?></p>
                 </div>
             </div>
         </div>
@@ -19,7 +19,7 @@
                 <?php foreach ($berita as $berita) { ?>
                     <div class="single-post">
                         <a href="<?php echo site_url('berita/read/' . $berita->slug_berita) ?>">
-                            <div class="img-fluid" style="width: 100%; height: 45vh; 
+                            <div class="img-fluid" style="border: 1px solid #eee; width: 100%; height: 45vh; 
                             background: no-repeat center center scroll; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; 
                             <?php echo "background-image: url('" . base_url('back_assets/upload/image/' . $berita->gambar) . "');" ?>" src="" alt="">
                             </div>
@@ -61,9 +61,8 @@
                         </ul>
                     </nav>
                 </div>
-
-
             </div>
+            
             <div class="col-lg-4 sidebar">
                 <div class="single-widget search-widget">
                     <form class="example" action="#" style="margin:auto;max-width:300px">
@@ -73,114 +72,20 @@
                 </div>
 
                 <div class="single-widget category-widget">
-                    <h4 class="title">Post Categories</h4>
-                    <ul>
-                        <li>
-                            <a href="#" class="justify-content-between align-items-center d-flex">
-                                <h6>Techlology</h6> <span>37</span>
-                            </a>
-                        </li>
-                    </ul>
+                    <h4 class="title">Kategori Berita</h4>
+                    <?php $footer_berita  = $this->site_model->nav_berita(); ?>
+                    <?php foreach ($footer_berita as $nav_berita) { ?>
+                        <!-- Kategori -->
+                        <ul>
+                            <li>
+                                <a href="<?php echo site_url('berita/kategori/' . $nav_berita->slug_kategori_berita) ?>" class="justify-content-between align-items-center d-flex">
+                                    <h6><?php echo $nav_berita->nama_kategori_berita ?></h6> <span>94</span>
+                                </a>
+                            </li>
+                        <?php } ?>
+                        </ul>
                 </div>
-
-                <div class="single-widget recent-posts-widget">
-                    <h4 class="title">Recent Posts</h4>
-                    <div class="blog-list ">
-                        <div class="single-recent-post d-flex flex-row">
-                            <div class="recent-thumb">
-                                <img class="img-fluid" src="front_assets/images/r1.jpg" alt="">
-                            </div>
-                            <div class="recent-details">
-                                <a href="blog-single.html">
-                                    <h4>
-                                        Home Audio Recording
-                                        For Everyone
-                                    </h4>
-                                </a>
-                                <p>
-                                    02 hours ago
-                                </p>
-                            </div>
-                        </div>
-                        <div class="single-recent-post d-flex flex-row">
-                            <div class="recent-thumb">
-                                <img class="img-fluid" src="front_assets/images/r2.jpg" alt="">
-                            </div>
-                            <div class="recent-details">
-                                <a href="blog-single.html">
-                                    <h4>
-                                        Home Audio Recording
-                                        For Everyone
-                                    </h4>
-                                </a>
-                                <p>
-                                    02 hours ago
-                                </p>
-                            </div>
-                        </div>
-                        <div class="single-recent-post d-flex flex-row">
-                            <div class="recent-thumb">
-                                <img class="img-fluid" src="front_assets/images/r3.jpg" alt="">
-                            </div>
-                            <div class="recent-details">
-                                <a href="blog-single.html">
-                                    <h4>
-                                        Home Audio Recording
-                                        For Everyone
-                                    </h4>
-                                </a>
-                                <p>
-                                    02 hours ago
-                                </p>
-                            </div>
-                        </div>
-                        <div class="single-recent-post d-flex flex-row">
-                            <div class="recent-thumb">
-                                <img class="img-fluid" src="front_assets/images/r4.jpg" alt="">
-                            </div>
-                            <div class="recent-details">
-                                <a href="blog-single.html">
-                                    <h4>
-                                        Home Audio Recording
-                                        For Everyone
-                                    </h4>
-                                </a>
-                                <p>
-                                    02 hours ago
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="single-widget category-widget">
-                    <h4 class="title">Post Archive</h4>
-                    <ul>
-                        <li><a href="#" class="justify-content-between align-items-center d-flex">
-                                <h6>Dec '17</h6> <span>37</span>
-                            </a></li>
-                        <li><a href="#" class="justify-content-between align-items-center d-flex">
-                                <h6>Nov '17</h6> <span>24</span>
-                            </a></li>
-                        <li><a href="#" class="justify-content-between align-items-center d-flex">
-                                <h6>Oct '17</h6> <span>59</span>
-                            </a></li>
-                        <li><a href="#" class="justify-content-between align-items-center d-flex">
-                                <h6>Sep '17</h6> <span>29</span>
-                            </a></li>
-                        <li><a href="#" class="justify-content-between align-items-center d-flex">
-                                <h6>Aug '17</h6> <span>15</span>
-                            </a></li>
-                        <li><a href="#" class="justify-content-between align-items-center d-flex">
-                                <h6>Jul '17</h6> <span>09</span>
-                            </a></li>
-                        <li><a href="#" class="justify-content-between align-items-center d-flex">
-                                <h6>Jun '17</h6> <span>44</span>
-                            </a></li>
-                    </ul>
-                </div>
-
-                <!-- akhir widget -->
+                <!-- Kategori end -->
             </div>
         </div>
     </div>

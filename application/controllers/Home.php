@@ -28,7 +28,7 @@ class Home extends CI_Controller
 			'slide'			=> $slide,
 			'struktur'		=> $struktur,
 			'pakai_slide'	=> true,
-			'isi'			=> 'front/isi/home_isi'
+			'isi'			=> 'front/isi/home'
 		);
 		$this->load->view('front/landing', $data);
 	}

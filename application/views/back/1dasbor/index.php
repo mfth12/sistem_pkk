@@ -6,11 +6,8 @@
             <!-- Breadcrumbs-->
             <ol class="breadcrumb">
                 <?php foreach ($this->uri->segments as $segment) : ?>
-                    <?php
-                    $url = substr($this->uri->uri_string, 0, strpos($this->uri->uri_string, $segment)) . $segment;
-                    $is_active =  $url == $this->uri->uri_string;
-                    ?>
-
+                    <?php $url = substr($this->uri->uri_string, 0, strpos($this->uri->uri_string, $segment)) . $segment;
+                    $is_active =  $url == $this->uri->uri_string; ?>
                     <li class="breadcrumb-item <?php echo $is_active ? 'active' : '' ?>">
                         <?php if ($is_active) : ?>
                             <?php echo ucfirst($segment) ?>
@@ -21,17 +18,17 @@
                 <?php endforeach; ?>
             </ol>
             <!-- Breadcrumbs-->
-            
+
             <?php if ($this->session->userdata('akses_level') == 'superadmin') { ?>
                 <!-- kolom isi konten -->
                 <div class="row">
                     <div class="col-xl-3 col-md-6">
                         <div class="card bg-primary text-white mb-4">
                             <div class="card-body">
-                                <h4><?php echo count($berita) ?> Kegiatan</h4>
+                                <h4><?php echo count($berita) ?> Berita</h4>
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="<?php echo site_url('superadmin/kegiatan') ?>">Lihat Detail Kegiatan</a>
+                                <a class="small text-white stretched-link" href="<?php echo site_url('admin/berita') ?>">Lihat Detail Kegiatan</a>
                                 <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                             </div>
                         </div>

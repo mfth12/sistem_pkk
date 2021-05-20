@@ -39,14 +39,14 @@ class Berita extends CI_Controller
 		$this->load->library('pagination');
 		$config['base_url'] = base_url().'berita/';
 		$config['total_rows'] = $jumlah_data;
-		$config['per_page'] = 4;
+		$config['per_page'] = 5;
 		$this->pagination->initialize($config);
 		$from = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
 		/////\\\\\////\\\\\
 		$site = $this->konfigurasi_model->listing();
 		$berita_list = $this->berita_model->listing_berita($config['per_page'], $from);
 		$data = array(
-			'title'			=> 'Berita '.$site['namaweb'],
+			'title'			=> $site['namaweb'],
 			'keywords' 		=> "Berita, PKK, Desa Uma Beringin",
 			'berita'		=> $berita_list,
 			'site'			=> $site,
@@ -91,7 +91,7 @@ class Berita extends CI_Controller
 		$berita				= $this->berita_model->kategori($id_kategori_berita, $config['per_page'], $from);
 
 		$data	= array(
-			'title'		=> 'Berita '.$kategori->nama_kategori_berita,
+			'title'		=> $kategori->nama_kategori_berita,
 			'keywords' 	=> 'Berita '.$kategori->nama_kategori_berita,
 			'site'		=> $site,
 			'berita'	=> $berita,

@@ -13,7 +13,7 @@
         </button>
       </div>
       <div class="modal-body text-left">
-        Data yang telah dihapus tidak akan bisa dikembalikan.
+        Data yang telah dihapus tidak bisa dikembalikan.
       </div>
       <div class="modal-footer">
         <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>

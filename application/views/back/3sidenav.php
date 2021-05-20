@@ -18,14 +18,14 @@
                         <!-- bagian penilaian -->
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                             <div class="sb-nav-link-icon"><i class="fas fa-star"></i></div>
-                            Kegiatan
+                            Berita
                             <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="<?php echo site_url('admin/berita') ?> ">Semua Kegiatan</a>
-                                <a class="nav-link" href="<?php echo site_url('superadmin/kegiatan/tambah') ?> ">Tambah Kegiatan</a>
-                                <a class="nav-link" href="<?php echo site_url('superadmin/kategori_kegiatan') ?> ">Kategori Kegiatan</a>
+                                <a class="nav-link" href="<?php echo site_url('admin/berita') ?> ">Semua Berita</a>
+                                <a class="nav-link" href="<?php echo site_url('admin/berita/tambah') ?> ">Tambah Berita</a>
+                                <a class="nav-link" href="<?php echo site_url('admin/kategori_berita') ?> ">Kategori Berita</a>
                             </nav>
                         </div>
                         <!-- bagian jabatan -->
@@ -36,9 +36,9 @@
                         </a>
                         <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link" href="<?php echo site_url('superadmin/keuangan') ?> ">Sirkulasi</a>
-                                <a class="nav-link" href="<?php echo site_url('superadmin/keuangan/masukan') ?> ">Pemasukan</a>
-                                <a class="nav-link" href="<?php echo site_url('superadmin/keuangan/keluaran') ?> ">Pengeluaran</a>
+                                <a class="nav-link" href="<?php echo site_url('admin/keuangan') ?> ">Sirkulasi</a>
+                                <a class="nav-link" href="<?php echo site_url('admin/keuangan/masukan') ?> ">Pemasukan</a>
+                                <a class="nav-link" href="<?php echo site_url('admin/keuangan/keluaran') ?> ">Pengeluaran</a>
                             </nav>
                         </div>
                         <!-- bagian users -->

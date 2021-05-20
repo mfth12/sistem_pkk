@@ -2,7 +2,7 @@
     <main>
         <div class="container-fluid">
             <!-- ini nama judul halaman -->
-            <h1 class="mt-4">Kegiatan</h1>
+            <h1 class="mt-4"><?php echo $title?></h1>
             <!-- ini nama bread crumb -->
             <ol class="breadcrumb">
                 <?php foreach ($this->uri->segments as $segment) : ?>
@@ -32,14 +32,14 @@
                 echo $this->session->flashdata('dihapus');
                 echo '</div>';
             }
+            
             // Error
-            echo validation_errors('<div class="alert alert-danger">', '<button class="close" data-dismiss="alert">&times;</button></div>');
-            ?>
+            echo validation_errors('<div class="alert alert-danger">', '<button class="close" data-dismiss="alert">&times;</button></div>'); ?>
 
             <!-- sekarang masuk ke kolom isi konten -->
             <div class="card mb-4">
                 <div class="card-body">
-                    <p><a href="<?php echo base_url('index.php/superadmin/kegiatan/tambah') ?>" class="btn btn-primary">
+                    <p><a href="<?php echo base_url('admin/berita/tambah') ?>" class="btn btn-primary">
                             <i class="fa fa-plus"></i> Tambah Kegiatan</a></p>
                     <div class="table-responsive">
 
@@ -61,13 +61,13 @@
                                     <tr>
                                         <td class="text-center"><?php echo $i ?></td>
                                         <td>
-                                            <img src="<?php echo base_url('assets/upload/image/thumbs/' . $berita->gambar) ?>" class="img img-responsive" width="60">
+                                            <img src="<?php echo base_url('back_assets/upload/image/thumbs/' . $berita->gambar) ?>" class="img img-responsive" width="60">
                                         </td>
                                         <td><?php echo $berita->nama_berita ?></td>
                                         <td><?php echo $berita->nama_kategori_berita ?></td>
                                         <td><?php echo $berita->status_berita ?> - <?php echo $berita->jenis_berita ?></td>
                                         <td class="text-center">
-                                            <a href="<?php echo base_url('index.php/superadmin/kegiatan/edit/' . $berita->id_berita) ?>" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Ubah</a>
+                                            <a href="<?php echo base_url('admin/berita/edit/' . $berita->id_berita) ?>" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Ubah</a>
                                             <?php include('delete.php') ?>
                                         </td>
                                     </tr>

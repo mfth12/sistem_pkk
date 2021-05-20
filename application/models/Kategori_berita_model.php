@@ -17,7 +17,7 @@ class Kategori_berita_model extends CI_Model {
 		$query = $this->db->get();
 		return $query->result();
 	}
-	
+
 	//Read
 	public function read($slug_kategori_berita) {
 		$this->db->select('*');

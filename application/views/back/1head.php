@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="n1codes" />
-    <title> <?php echo $title . ucfirst($this->uri->segment(1)) ?> </title>
+    <title><?php echo $title?></title>
     <link rel="shortcut icon" href="<?php echo base_url('back_assets/img/' . $site['icon']) ?>" type="image/x-icon">
     <!-- css -->
     <link href="<?php echo base_url('back_assets/css/dataTables.bootstrap4.min.css') ?>" rel="stylesheet" crossorigin="anonymous" />
