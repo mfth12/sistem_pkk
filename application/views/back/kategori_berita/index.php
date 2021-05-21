@@ -2,7 +2,7 @@
     <main>
         <div class="container-fluid">
             <!-- ini nama judul halaman -->
-            <h1 class="mt-4">Kategori Kegiatan</h1>
+            <h1 class="mt-4"><?php echo $title?></h1>
             <!-- ini nama bread crumb -->
             <ol class="breadcrumb">
                 <?php foreach ($this->uri->segments as $segment) : ?>
@@ -66,7 +66,7 @@
                                         <td><?php echo $kategori_berita->urutan ?></td>
                                         <td><?php echo $kategori_berita->slug_kategori_berita ?></td>
                                         <td class="text-center">
-                                            <a href="<?php echo base_url('index.php/superadmin/kategori_kegiatan/edit/' . $kategori_berita->id_kategori_berita) ?>" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Ubah</a>
+                                            <a href="<?php echo base_url('admin/kategori_berita/edit/' . $kategori_berita->id_kategori_berita) ?>" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Ubah</a>
 
                                             <?php include('delete.php') ?>
 

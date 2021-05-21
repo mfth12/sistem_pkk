@@ -21,7 +21,7 @@ class Berita extends CI_Controller
 		$berita = $this->berita_model->listing();
 		$site 	= $this->konfigurasi_model->listing();
 		$data = array(
-			'site'		=> $site,
+			'site'		=> $site, //percontohan untuk yang lain, menggunakan $site-['details']
 			'title'		=> 'Berita PKK',
 			'namasite'	=> $site['namaweb'],
 			'berita'	=> $berita,

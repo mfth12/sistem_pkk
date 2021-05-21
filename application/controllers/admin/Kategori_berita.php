@@ -30,7 +30,7 @@ class Kategori_berita extends CI_Controller
 			// End validasi
 
 			$data = array(
-				'title'				=> 'Kategori Kegiatan kuh',
+				'title'				=> 'Kategori Berita kuh',
 				'namasite'	        => $site['namaweb'],
 				'kategori_berita'	=> $kategori_berita,
 				'isi'				=> 'back/kategori_berita/index'
@@ -47,8 +47,8 @@ class Kategori_berita extends CI_Controller
 				'urutan'				=> $i->post('urutan')
 			);
 			$this->kategori_berita_model->tambah($data);
-			$this->session->set_flashdata('sukses', 'Kategori kegiatan berhasil ditambah');
-			redirect(site_url('superadmin/kategori_kegiatan'));
+			$this->session->set_flashdata('sukses', 'Kategori berita berhasil ditambah');
+			redirect(site_url('admin/kategori_berita'));
 		}
 		// End masuk database
 	}
@@ -74,9 +74,9 @@ class Kategori_berita extends CI_Controller
 				'title'				=> 'Edit Kategori Berita',
 				'namasite'      	=> $site['namaweb'],
 				'kategori_berita'	=> $kategori_berita,
-				'isi'				=> 'superadmin/kategori_kegiatan/edit'
+				'isi'				=> 'back/kategori_berita/edit'
 			);
-			$this->load->view('superadmin/_partials/wrapper', $data);
+			$this->load->view('back/wrapper', $data);
 			// Masuk database
 		} else {
 			$i 				= $this->input;
@@ -89,8 +89,8 @@ class Kategori_berita extends CI_Controller
 				'urutan'				=> $i->post('urutan')
 			);
 			$this->kategori_berita_model->edit($data);
-			$this->session->set_flashdata('sukses', 'Kategori kegiatan berhasil diubah');
-			redirect(site_url('superadmin/kategori_kegiatan'));
+			$this->session->set_flashdata('sukses', 'Kategori berita berhasil diubah');
+			redirect(site_url('admin/kategori_berita'));
 		}
 		// End masuk database
 	}
@@ -101,7 +101,7 @@ class Kategori_berita extends CI_Controller
 		$this->simple_login->terotentikasi();
 		$data = array('id_kategori_berita'	=> $id_kategori_berita);
 		$this->kategori_berita_model->delete($data);
-		$this->session->set_flashdata('dihapus', 'Kategori kegiatan berhasil dihapus');
-		redirect(site_url('superadmin/kategori_kegiatan'));
+		$this->session->set_flashdata('dihapus', 'Kategori berita berhasil dihapus');
+		redirect(site_url('admin/kategori_berita'));
 	}
 }

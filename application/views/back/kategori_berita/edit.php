@@ -23,13 +23,13 @@
             echo validation_errors('<div class="alert alert-success">', '<button class="close" data-dismiss="alert">&times;</button> </div>');
 
             // Form
-            echo form_open(base_url('superadmin/kategori_kegiatan/edit/' . $kategori_berita->id_kategori_berita));
+            echo form_open(base_url('admin/kategori_berita/edit/' . $kategori_berita->id_kategori_berita));
             ?>
 
             <!-- sekarang masuk ke kolom isi konten -->
             <div class="card mb-4">
                 <div class="card-header">
-                    <a href="<?php echo site_url('superadmin/kategori_kegiatan') ?>"><i class="fas fa-arrow-left"></i> Kembali</a>
+                    <a href="<?php echo site_url('admin/kategori_berita') ?>"><i class="fas fa-arrow-left"></i> Kembali</a>
                 </div>
                 <div class="card-body">
 

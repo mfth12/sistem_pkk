@@ -2,7 +2,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">Tambah Kategori Kegiatan</h4>
+                <h4 class="modal-title" id="myModalLabel">Tambah Kategori Berita</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             </div>
             <div class="modal-body text-left">
@@ -12,7 +12,7 @@
                 echo validation_errors('<div class="alert alert-danger">', '<button class="close" data-dismiss="alert">&times;</button></div>');
 
                 // Form
-                echo form_open('superadmin/kategori_kegiatan');
+                echo form_open('admin/kategori_berita');
                 ?>
 
                 <div class="form-group">

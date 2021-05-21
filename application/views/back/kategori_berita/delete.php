@@ -17,7 +17,7 @@
       </div>
       <div class="modal-footer">
         <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-        <a href="<?php echo base_url('superadmin/kategori_kegiatan/delete/' . $kategori_berita->id_kategori_berita) ?>" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</a>
+        <a href="<?php echo base_url('admin/kategori_berita/delete/' . $kategori_berita->id_kategori_berita) ?>" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</a>
       </div>
     </div>
   </div>
