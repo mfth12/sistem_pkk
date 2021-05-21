@@ -33,7 +33,7 @@ class Kategori_berita extends CI_Controller
 				'title'				=> 'Kategori Kegiatan kuh',
 				'namasite'	        => $site['namaweb'],
 				'kategori_berita'	=> $kategori_berita,
-				'isi'				=> 'back/kategori_berita/list'
+				'isi'				=> 'back/kategori_berita/index'
 			);
 			$this->load->view('back/wrapper', $data);
 			// Masuk database
