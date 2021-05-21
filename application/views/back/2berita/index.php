@@ -40,7 +40,7 @@
             <div class="card mb-4">
                 <div class="card-body">
                     <p><a href="<?php echo base_url('admin/berita/tambah') ?>" class="btn btn-primary">
-                            <i class="fa fa-plus"></i> Tambah Kegiatan</a></p>
+                            <i class="fa fa-plus"></i> Tambah Berita</a></p>
                     <div class="table-responsive">
 
                         <!-- masuk ke tabel -->

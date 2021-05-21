@@ -30,12 +30,12 @@ class Kategori_berita extends CI_Controller
 			// End validasi
 
 			$data = array(
-				'title'				=> 'Kategori Kegiatan',
+				'title'				=> 'Kategori Kegiatan kuh',
 				'namasite'	        => $site['namaweb'],
 				'kategori_berita'	=> $kategori_berita,
-				'isi'				=> 'superadmin/kategori_kegiatan/list'
+				'isi'				=> 'back/kategori_berita/list'
 			);
-			$this->load->view('superadmin/_partials/wrapper', $data);
+			$this->load->view('back/wrapper', $data);
 			// Masuk database
 		} else {
 			$i 				= $this->input;

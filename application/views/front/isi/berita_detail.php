@@ -8,10 +8,14 @@
                         <div class="img-fluid" style="border: 1px solid #eee; width: 100%; height: 45vh; 
                         background: no-repeat center center scroll; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; 
                         <?php echo "background-image: url('" . base_url('back_assets/upload/image/' . $read->gambar) . "');" ?>" src="" alt=""></div>
-                        <ul class="tags">
-                            <li><a href="#">Art, </a></li>
-                            <li><a href="#">Technology, </a></li>
-                            <li><a href="#">Fashion</a></li>
+                        <ul class="tags" style="margin-top: 20px;">
+                            <li>
+                                <h5><i class="fa fa-calendar-o"></i> <?php echo date('d M Y', strtotime($read->tanggal_post)) ?></h5>
+                            </li>
+                            <li class="separator mx-2"><span></span></li>
+                            <li>
+                                <h5><i class="fa fa-folder-open-o"></i> Pokja PKK</h5>
+                            </li>
                         </ul>
                         <a>
                             <h2>
