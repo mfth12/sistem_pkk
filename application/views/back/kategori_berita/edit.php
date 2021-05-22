@@ -2,7 +2,7 @@
     <main>
         <div class="container-fluid">
             <!-- ini nama judul halaman -->
-            <h1 class="mt-4">Ubah Kegiatan</h1>
+            <h1 class="mt-4"><?php echo $title?></h1>
             <!-- ini nama bread crumb -->
             <ol class="breadcrumb">
                 <?php foreach ($this->uri->segments as $segment) : ?>
@@ -20,7 +20,7 @@
             <!-- flash sedikit -->
             <?php
             // Validasi
-            echo validation_errors('<div class="alert alert-success">', '<button class="close" data-dismiss="alert">&times;</button> </div>');
+            echo validation_errors('<div class="alert alert-danger">', '<button class="close" data-dismiss="alert">&times;</button> </div>');
 
             // Form
             echo form_open(base_url('admin/kategori_berita/edit/' . $kategori_berita->id_kategori_berita));

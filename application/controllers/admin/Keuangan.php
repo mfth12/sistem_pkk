@@ -29,16 +29,16 @@ class Keuangan extends CI_Controller
 		$ttl_mas = $this->kas_model->total_masuk();
 		// $ttl_saldo = $ttl_mas->jumlah - $ttl_kel->jumlah;
 		$data = array(
-			'title'		=> 'Sirkulasi Keuangan',
+			'title'		=> 'Sirkulasi Keuangan Default',
 			'namasite'	=> $site['namaweb'],
 			'result' 	=> $this->kas_model->all(),
 			'nomor' 	=> $no,
 			'ttl' 		=> $this->kas_model->total_masuk(),
 			'ttl_k' 		=> $this->kas_model->total_keluar(),
 			// 'ttl' 		=> $ttl_saldo,
-			'isi'		=> 'superadmin/keuangan/list'
+			'isi'		=> 'back/keuangan/list'
 		);
-		$this->load->view('superadmin/_partials/wrapper', $data);
+		$this->load->view('back/wrapper', $data);
 	}
 
 	function tambah_pemasukan()
@@ -53,10 +53,10 @@ class Keuangan extends CI_Controller
 		$input = $this->kas_model->tambah_pemasukan($data);
 		if ($input) {
 			$this->session->set_flashdata('sukses', 'Data pemasukkan berhasil ditambahkan');
-			redirect(site_url('superadmin/keuangan'));
+			redirect(site_url('admin/keuangan'));
 		} else {
 			$this->session->set_flashdata('maaf', 'Maaf, data pemasukan gagal ditambahkan');
-			redirect(site_url('superadmin/keuangan'));
+			redirect(site_url('admin/keuangan'));
 		}
 	}
 
@@ -72,10 +72,10 @@ class Keuangan extends CI_Controller
 		$input = $this->kas_model->tambah_pengeluaran($data);
 		if ($input) {
 			$this->session->set_flashdata('sukses', 'Data pengeluaran berhasil ditambahkan');
-			redirect(site_url('superadmin/keuangan'));
+			redirect(site_url('admin/keuangan'));
 		} else {
 			$this->session->set_flashdata('maaf', 'Maaf, data pengeluaran gagal ditambahkan');
-			redirect(site_url('superadmin/keuangan'));
+			redirect(site_url('admin/keuangan'));
 		}
 	}
 
@@ -91,10 +91,10 @@ class Keuangan extends CI_Controller
 		$input = $this->kas_model->tambah_pemasukan($data);
 		if ($input) {
 			$this->session->set_flashdata('sukses', 'Data pemasukkan berhasil ditambahkan');
-			redirect(site_url('superadmin/keuangan/masukan'));
+			redirect(site_url('admin/keuangan/masukan'));
 		} else {
 			$this->session->set_flashdata('maaf', 'Maaf, data pemasukan gagal ditambahkan');
-			redirect(site_url('superadmin/keuangan/masukan'));
+			redirect(site_url('admin/keuangan/masukan'));
 		}
 	}
 
@@ -110,10 +110,10 @@ class Keuangan extends CI_Controller
 		$input = $this->kas_model->tambah_pengeluaran($data);
 		if ($input) {
 			$this->session->set_flashdata('sukses', 'Data pengeluaran berhasil ditambahkan');
-			redirect(site_url('superadmin/keuangan/keluaran'));
+			redirect(site_url('admin/keuangan/keluaran'));
 		} else {
 			$this->session->set_flashdata('maaf', 'Maaf, data pengeluaran gagal ditambahkan');
-			redirect(site_url('superadmin/keuangan/keluaran'));
+			redirect(site_url('admin/keuangan/keluaran'));
 		}
 	}
 
@@ -136,9 +136,9 @@ class Keuangan extends CI_Controller
 			'namasite'	=> $site['namaweb'],
 			'result' 	=> $this->kas_model->masuk(),
 			'ttl' 		=> $this->kas_model->total_masuk(),
-			'isi'		=> 'superadmin/keuangan/masukan'
+			'isi'		=> 'back/keuangan/masukan'
 		);
-		$this->load->view('superadmin/_partials/wrapper', $data);
+		$this->load->view('back/wrapper', $data);
 	}
 
 	function keluaran()
@@ -159,14 +159,14 @@ class Keuangan extends CI_Controller
 			'namasite'	=> $site['namaweb'],
 			'result' 	=> $this->kas_model->keluaran(),
 			'ttl' 		=> $this->kas_model->total_keluar(),
-			'isi'		=> 'superadmin/keuangan/keluaran'
+			'isi'		=> 'back/keuangan/keluaran'
 		);
-		$this->load->view('superadmin/_partials/wrapper', $data);
+		$this->load->view('back/wrapper', $data);
 	}
 
 	function ubah($nomor = null)
 	{
-		if (!isset($nomor)) redirect('superadmin/keuangan');
+		if (!isset($nomor)) redirect('admin/keuangan');
 		$site 	= $this->konfigurasi_model->listing();
 		$result = $this->kas_model->ambil_data($nomor);
 		$data = array(
@@ -176,9 +176,9 @@ class Keuangan extends CI_Controller
 			'keterangan'	=> $result[0]['keterangan'],
 			'tanggal'		=> $result[0]['tanggal'],
 			'jumlah'		=> $result[0]['jumlah'],
-			'isi'		    => 'superadmin/keuangan/edit'
+			'isi'		    => 'admin/keuangan/edit'
 		);
-		$this->load->view('superadmin/_partials/wrapper', $data);
+		$this->load->view('back/wrapper', $data);
 	}
 
 	function do_ubah($nomor = null)
@@ -193,7 +193,7 @@ class Keuangan extends CI_Controller
 			$input = $this->kas_model->ubah($this->input->post('nomor'), $data);
 			if ($input) {
 				$this->session->set_flashdata('sukses', 'Data keuangan berhasil diubah');
-				redirect(site_url('superadmin/keuangan'));
+				redirect(site_url('admin/keuangan'));
 			}
 		} else show_404();
 	}
@@ -203,10 +203,10 @@ class Keuangan extends CI_Controller
 		$hapus = $this->kas_model->hapus($nomor);
 		if ($hapus) {
 			$this->session->set_flashdata('maaf', 'Data keuangan barhasil dihapus');
-			redirect(site_url('superadmin/keuangan'));
+			redirect(site_url('admin/keuangan'));
 		} else {
 			$this->session->set_flashdata('maaf', 'Data keuangan gagal dihapus');
-			redirect(site_url('superadmin/keuangan'));
+			redirect(site_url('admin/keuangan'));
 		}
 	}
 
@@ -215,10 +215,10 @@ class Keuangan extends CI_Controller
 		$hapus = $this->kas_model->hapus($nomor);
 		if ($hapus) {
 			$this->session->set_flashdata('maaf', 'Data keuangan barhasil dihapus');
-			redirect(site_url('superadmin/keuangan/masukan'));
+			redirect(site_url('admin/keuangan/masukan'));
 		} else {
 			$this->session->set_flashdata('maaf', 'Data keuangan gagal dihapus');
-			redirect(site_url('superadmin/keuangan/masukan'));
+			redirect(site_url('admin/keuangan/masukan'));
 		}
 	}
 
@@ -227,10 +227,10 @@ class Keuangan extends CI_Controller
 		$hapus = $this->kas_model->hapus($nomor);
 		if ($hapus) {
 			$this->session->set_flashdata('maaf', 'Data keuangan barhasil dihapus');
-			redirect(site_url('superadmin/keuangan/keluaran'));
+			redirect(site_url('admin/keuangan/keluaran'));
 		} else {
 			$this->session->set_flashdata('maaf', 'Data keuangan gagal dihapus');
-			redirect(site_url('superadmin/keuangan/keluaran'));
+			redirect(site_url('admin/keuangan/keluaran'));
 		}
 	}
 
@@ -240,10 +240,10 @@ class Keuangan extends CI_Controller
 			$exec = $this->kas_model->clean();
 			if ($exec) {
 				$this->session->set_flashdata('maaf', 'Semua data keuangan berhasil dihapus');
-				redirect(site_url('superadmin/keuangan'));
+				redirect(site_url('admin/keuangan'));
 			} else {
 				$this->session->set_flashdata('maaf', 'Semua data gagal dihapus');
-				redirect(site_url('superadmin/keuangan'));
+				redirect(site_url('admin/keuangan'));
 			}
 		} else {
 			show_404(); //page not found

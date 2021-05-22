@@ -41,7 +41,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between lh-condensed">
                         <div class="d-flex">
-                            <p><a href="<?php echo site_url('superadmin') ?>" class="btn btn-success mr-2" data-toggle="modal" data-target="#tambahMasukan">
+                            <p><a href="<?php echo site_url('#') ?>" class="btn btn-success mr-2" data-toggle="modal" data-target="#tambahMasukan">
                                     <i class="fa fa-plus"></i> Tambah Pemasukan</a></p>
                         </div>
                         <div>
@@ -74,9 +74,8 @@
                                         <td><?php if ($data->jenis == "masuk") { ?><span class="badge badge-pill badge-success">Pemasukan</span> <?php }
                                                                                                                                             if ($data->jenis == "keluar") { ?><span class="badge badge-pill badge-danger">Pengeluaran</span> <?php } ?></td>
                                         <td class="text-center">
-                                            <a href="<?php echo site_url('superadmin/keuangan/ubah/' . $data->nomor) ?>" class="btn btn-sm btn-primary "><i class="fa fa-edit"></i> Ubah</a>
-                                            <!-- <a href="<?php echo site_url('superadmin/keuangan/hapus_pemasukan/' . $data->nomor) ?>"class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a> -->
-                                            <a onclick="deleteConfirm('<?php echo site_url('superadmin/keuangan/hapus_in/' . $data->nomor) ?>')" href="#!" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                            <a href="<?php echo site_url('admin/keuangan/ubah/' . $data->nomor) ?>" class="btn btn-sm btn-primary "><i class="fa fa-edit"></i> Ubah</a>
+                                            <a onclick="deleteConfirm('<?php echo site_url('admin/keuangan/hapus_in/' . $data->nomor) ?>')" href="#!" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 <?php $i++;
@@ -116,7 +115,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="<?php echo site_url('superadmin/keuangan/tambah_pemasukan_in') ?>" method="post" enctype="multipart/form-data">
+                            <form action="<?php echo site_url('admin/keuangan/tambah_pemasukan_in') ?>" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label class="col-form-label" for="nomor">Nomor</label>
                                     <input type="number" class="form-control" name="nomor" id="nomor" value="<?= $nomor; ?>" readonly="">

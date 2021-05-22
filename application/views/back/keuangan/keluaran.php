@@ -74,9 +74,8 @@
                                         <td><?php if ($data->jenis == "masuk") { ?><span class="badge badge-pill badge-success">Pemasukan</span> <?php }
                                                                                                                                             if ($data->jenis == "keluar") { ?><span class="badge badge-pill badge-danger">Pengeluaran</span> <?php } ?></td>
                                         <td class="text-center">
-                                            <a href="<?php echo site_url('superadmin/keuangan/ubah/' . $data->nomor) ?>" class="btn btn-sm btn-primary "><i class="fa fa-edit"></i> Ubah</a>
-                                            <!-- <a href="<?php echo site_url('superadmin/keuangan/hapus_pemasukan/' . $data->nomor) ?>"class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a> -->
-                                            <a onclick="deleteConfirm('<?php echo site_url('superadmin/keuangan/hapus_out/' . $data->nomor) ?>')" href="#!" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                            <a href="<?php echo site_url('admin/keuangan/ubah/' . $data->nomor) ?>" class="btn btn-sm btn-primary "><i class="fa fa-edit"></i> Ubah</a>
+                                            <a onclick="deleteConfirm('<?php echo site_url('admin/keuangan/hapus_out/' . $data->nomor) ?>')" href="#!" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
 
                                         </td>
                                     </tr>
@@ -118,7 +117,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="<?php echo site_url('superadmin/keuangan/tambah_pengeluaran_out') ?>" method="post" enctype="multipart/form-data">
+                            <form action="<?php echo site_url('admin/keuangan/tambah_pengeluaran_out') ?>" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label class="col-form-label" for="nomor2">Nomor</label>
                                     <input type="number" class="form-control" name="nomor2" id="nomor2" value="<?= $nomor; ?>" readonly="">

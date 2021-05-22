@@ -66,8 +66,8 @@
                                         <td><?php echo $berita->nama_berita ?></td>
                                         <td><?php echo $berita->nama_kategori_berita ?></td>
                                         <td><?php echo $berita->status_berita ?> - <?php echo $berita->jenis_berita ?></td>
-                                        <td class="text-center">
-                                            <a href="<?php echo base_url('admin/berita/edit/' . $berita->id_berita) ?>" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Ubah</a>
+                                        <td class="d-flex justify-content-center">
+                                            <a href="<?php echo base_url('admin/berita/edit/' . $berita->id_berita) ?>" class="btn btn-primary btn-sm mr-1"><i class="fa fa-edit"></i> Ubah</a>
                                             <?php include('delete.php') ?>
                                         </td>
                                     </tr>

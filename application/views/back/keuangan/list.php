@@ -2,7 +2,7 @@
     <main>
         <div class="container-fluid">
             <!-- ini nama judul halaman -->
-            <h1 class="mt-4">Sirkulasi Keuangan</h1>
+            <h1 class="mt-4"><?php echo $title?></h1>
             <!-- ini nama bread crumb -->
             <ol class="breadcrumb">
                 <?php foreach ($this->uri->segments as $segment) : ?>
@@ -41,9 +41,9 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between lh-condensed">
                         <div class="d-flex">
-                            <p><a href="<?php echo site_url('superadmin') ?>" class="btn btn-success mr-2" data-toggle="modal" data-target="#tambahMasukan">
+                            <p><a href="<?php echo site_url('#') ?>" class="btn btn-success mr-2" data-toggle="modal" data-target="#tambahMasukan">
                                     <i class="fa fa-plus"></i> Tambah Pemasukan</a></p>
-                            <p><a href="<?php echo site_url('superadmin') ?>" class="btn btn-danger" data-toggle="modal" data-target="#tambahKeluaran">
+                            <p><a href="<?php echo site_url('#') ?>" class="btn btn-danger" data-toggle="modal" data-target="#tambahKeluaran">
                                     <i class="fa fa-plus"></i> Tambah Pengeluaran</a></p>
                         </div>
                         <div>
@@ -72,12 +72,11 @@
                                         <td><?php echo $data->keterangan ?></td>
                                         <td><?php echo date('d/m/Y', strtotime($data->tanggal)) ?></td>
                                         <td width="180" class="text-right">Rp <?= number_format($data->jumlah, 2, ',', '.'); ?></td>
-                                        <td><?php if ($data->jenis == "masuk") { ?><a href="<?php echo site_url('superadmin/keuangan/masukan') ?>"><span class="badge badge-pill badge-success">Pemasukan</span></a> <?php }
-                                                                                                                                                                                                                if ($data->jenis == "keluar") { ?><a href="<?php echo site_url('superadmin/keuangan/keluaran') ?>"><span class="badge badge-pill badge-danger">Pengeluaran</span></a><?php } ?></td>
-                                        <td class="text-center">
-                                            <a href="<?php echo site_url('superadmin/keuangan/ubah/' . $data->nomor) ?>" class="btn btn-sm btn-primary "><i class="fa fa-edit"></i> Ubah</a>
-                                            <!-- <a href="<?php echo site_url('superadmin/keuangan/hapus_data/' . $data->nomor) ?>"class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a> -->
-                                            <a onclick="deleteConfirm('<?php echo site_url('superadmin/keuangan/hapus_data/' . $data->nomor) ?>')" href="#!" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                        <td><?php if ($data->jenis == "masuk") { ?><a href="<?php echo site_url('admin/keuangan/masukan') ?>"><span class="badge badge-pill badge-success">Pemasukan</span></a> <?php }
+                                            if ($data->jenis == "keluar") { ?><a href="<?php echo site_url('admin/keuangan/keluaran') ?>"><span class="badge badge-pill badge-danger">Pengeluaran</span></a><?php } ?></td>
+                                        <td class="d-flex justify-content-center">
+                                            <a href="<?php echo site_url('admin/keuangan/ubah/' . $data->nomor) ?>" class="btn btn-sm btn-primary mr-1"><i class="fa fa-edit"></i> Ubah</a>
+                                            <a onclick="deleteConfirm('<?php echo site_url('admin/keuangan/hapus_data/' . $data->nomor) ?>')" href="#!" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                                         </td>
                                         <!-- modal tambah user-->
                                         <!-- modal tambah user-->
@@ -165,7 +164,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="<?php echo site_url('superadmin/keuangan/tambah_pemasukan') ?>" method="post" enctype="multipart/form-data">
+                            <form action="<?php echo site_url('admin/keuangan/tambah_pemasukan') ?>" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label class="col-form-label" for="nomor">Nomor</label>
                                     <input type="number" class="form-control" name="nomor" id="nomor" value="<?= $nomor; ?>" readonly="">
@@ -206,7 +205,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="<?php echo site_url('superadmin/keuangan/tambah_pengeluaran') ?>" method="post" enctype="multipart/form-data">
+                            <form action="<?php echo site_url('admin/keuangan/tambah_pengeluaran') ?>" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label class="col-form-label" for="nomor2">Nomor</label>
                                     <input type="number" class="form-control" name="nomor2" id="nomor2" value="<?= $nomor; ?>" readonly="">

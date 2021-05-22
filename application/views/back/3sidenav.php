@@ -24,7 +24,6 @@
                         <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav">
                                 <a class="nav-link" href="<?php echo site_url('admin/berita') ?> ">Semua Berita</a>
-                                <a class="nav-link" href="<?php echo site_url('admin/berita/tambah') ?> ">Tambah Berita</a>
                                 <a class="nav-link" href="<?php echo site_url('admin/kategori_berita') ?> ">Kategori Berita</a>
                             </nav>
                         </div>
@@ -42,21 +41,21 @@
                             </nav>
                         </div>
                         <!-- bagian users -->
-                        <a class="nav-link" href="<?php echo site_url('superadmin/user') ?> ">
+                        <a class="nav-link" href="<?php echo site_url('admin/user') ?> ">
                             <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
-                            Data User
+                            User
                         </a>
                         <!-- bagian pewagai -->
-                        <a class="nav-link" href="<?php echo site_url('superadmin/konfig') ?> ">
+                        <a class="nav-link" href="<?php echo site_url('admin/konfig') ?> ">
                             <div class="sb-nav-link-icon"><i class="fas fa-wrench"></i></div>
                             Konfigurasi Website
                         </a>
                         <!-- bagian pewagai -->
-                        <a class="nav-link" href="<?php echo site_url('superadmin/sliders') ?> ">
+                        <a class="nav-link" href="<?php echo site_url('admin/sliders') ?> ">
                             <div class="sb-nav-link-icon"><i class="fas fa-images"></i></div>
                             Sliders
                         </a>
-                        <a class="nav-link" href="<?php echo site_url('superadmin/struktur') ?> ">
+                        <a class="nav-link" href="<?php echo site_url('admin/struktur') ?> ">
                             <div class="sb-nav-link-icon"><i class="fas fa-folder-open"></i></div>
                             Struktur PKK
                         </a>
@@ -74,7 +73,7 @@
                     <div class="small white">Anda masuk sebagai:</div>
                     <?php if ($this->session->userdata('akses_level') == 'superadmin') // Jika user yg login adalah pegawai
                     {
-                        echo "Administrator PKK"; // Redirect ke halaman home untuk user
+                        echo "Administrator Sistem"; // Redirect ke halaman home untuk user
                     } ?>
 
                     <?php if ($this->session->userdata('akses_level') == 'admin_desa') // Jika user yg login adalah pegawai

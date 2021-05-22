@@ -22,15 +22,18 @@ class Kategori_berita extends CI_Controller
 		$this->form_validation->set_rules(
 			'nama_kategori_berita',
 			'Nama kategori',
-			'required',
-			array('required'	=> 'Nama kategori kegiatan harus diisi')
+			'required|is_unique[kategori_berita.nama_kategori_berita]',
+			array(
+				'required'	=> 'Nama kategori berita harus diisi',
+				'is_unique'	=> 'Kategori berita <strong>'. $this->input->post('nama_kategori_berita') . '</strong> sudah ada, ganti yang lain'
+			)
 		);
 
 		if ($this->form_validation->run() === FALSE) {
 			// End validasi
 
 			$data = array(
-				'title'				=> 'Kategori Berita kuh',
+				'title'				=> 'Kategori Berita',
 				'namasite'	        => $site['namaweb'],
 				'kategori_berita'	=> $kategori_berita,
 				'isi'				=> 'back/kategori_berita/index'
@@ -71,7 +74,7 @@ class Kategori_berita extends CI_Controller
 			// End validasi
 
 			$data = array(
-				'title'				=> 'Edit Kategori Berita',
+				'title'				=> 'Edit Kategori',
 				'namasite'      	=> $site['namaweb'],
 				'kategori_berita'	=> $kategori_berita,
 				'isi'				=> 'back/kategori_berita/edit'

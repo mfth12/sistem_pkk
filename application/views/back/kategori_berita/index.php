@@ -65,8 +65,8 @@
                                         <td width="240" class="small"><?php echo $kategori_berita->keterangan ?></td>
                                         <td><?php echo $kategori_berita->urutan ?></td>
                                         <td><?php echo $kategori_berita->slug_kategori_berita ?></td>
-                                        <td class="text-center">
-                                            <a href="<?php echo base_url('admin/kategori_berita/edit/' . $kategori_berita->id_kategori_berita) ?>" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Ubah</a>
+                                        <td class="d-flex justify-content-center">
+                                            <a href="<?php echo base_url('admin/kategori_berita/edit/' . $kategori_berita->id_kategori_berita) ?>" class="btn btn-primary btn-sm mr-1"><i class="fa fa-edit"></i> Ubah</a>
 
                                             <?php include('delete.php') ?>
 
