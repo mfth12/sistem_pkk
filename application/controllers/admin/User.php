@@ -22,15 +22,14 @@ class User extends CI_Controller
 			'title' => 'Data User',
 			'namasite'	=> $site['namaweb'],
 			'userb'	=> 	$user,
-			'isi'  	=> 'superadmin/user/list'
+			'isi'  	=> 'back/user/list'
 		);
-		$this->load->view('superadmin/_partials/wrapper', $data);
+		$this->load->view('back/wrapper', $data);
 	}
 
 	// Tambah User
 	public function tambah()
 	{
-
 		// Validasi
 		$valid = $this->form_validation;
 		$valid->set_rules(
@@ -66,8 +65,8 @@ class User extends CI_Controller
 		);
 
 		if ($valid->run() === FALSE) {
-			$this->session->set_flashdata('maaf', 'Username sudah digunakan. Tidak ada data user yang ditambah');
-			redirect(site_url('superadmin/user'));
+			$this->session->set_flashdata('dihapus', 'Username sudah digunakan. Gagal menambah data user');
+			redirect(site_url('admin/user'));
 		} else {
 			$i = $this->input;
 			$data = array(
@@ -80,14 +79,14 @@ class User extends CI_Controller
 			$this->user_model->tambah($data);
 			$this->session->set_flashdata('sukses', 'User berhasil ditambah');
 		}
-		redirect(site_url('superadmin/user'));
+		redirect(site_url('admin/user'));
 		// End masuk database
 	}
 
 	// Edit User
 	public function edit($id_user = null)
 	{
-		if (!isset($id_user)) redirect('superadmin/user');
+		if (!isset($id_user)) redirect('admin/user');
 		$user = $this->user_model->detail($id_user);
 		$site 	= $this->konfigurasi_model->listing();
 		// Validasi
@@ -120,9 +119,9 @@ class User extends CI_Controller
 				'title' 	=> 'Edit User',
 				'namasite'	=> $site['namaweb'],
 				'user'	=> $user,
-				'isi' 	=> 'superadmin/user/edit'
+				'isi' 	=> 'back/user/edit'
 			);
-			$this->load->view('superadmin/_partials/wrapper', $data);
+			$this->load->view('back/wrapper', $data);
 			// masuk database
 		} else {
 			$i = $this->input;
@@ -135,7 +134,7 @@ class User extends CI_Controller
 			);
 			$this->user_model->edit($data, $id_user);
 			$this->session->set_flashdata('sukses', 'User berhasil diubah');
-			redirect(site_url('superadmin/user'));
+			redirect(site_url('admin/user'));
 		}
 		// End masuk database
 	}
@@ -147,6 +146,6 @@ class User extends CI_Controller
 		$data = array('id_user' => $id_user);
 		$this->user_model->delete($data);
 		$this->session->set_flashdata('dihapus', 'Data user berhasil dihapus');
-		redirect(site_url('superadmin/user'));
+		redirect(site_url('admin/user'));
 	}
 }

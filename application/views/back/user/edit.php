@@ -31,13 +31,13 @@
             echo validation_errors('<div class="alert alert-success">', '<button class="close" data-dismiss="alert">&times;</button> </div>');
 
             // Form
-            echo form_open_multipart('superadmin/user/edit/' . $user->id_user);
+            echo form_open_multipart('admin/user/edit/' . $user->id_user);
             ?>
 
             <!-- sekarang masuk ke kolom isi konten -->
             <div class="card mb-4">
                 <div class="card-header">
-                    <a href="<?php echo site_url('superadmin/user') ?>"><i class="fas fa-arrow-left"></i> Kembali</a>
+                    <a href="<?php echo site_url('admin/user') ?>"><i class="fas fa-arrow-left"></i> Kembali</a>
                 </div>
                 <div class="card-body">
 
@@ -66,7 +66,7 @@
                         <select name="akses_level" class="form-control">
                             <option value="<?php echo $user->akses_level ?>" selected>Tetap sebagai <?php if ($user->akses_level == 'superadmin') echo "Administrator Sistem"; ?><?php if ($user->akses_level == 'admin_desa') echo "Perangkat Desa"; ?></option>
                             <option value="admin_desa">Perangkat Desa</option>
-                            <option value="superadmin">Administrator PKK</option>
+                            <option value="superadmin">Administrator Sistem</option>
                         </select>
                     </div>
 

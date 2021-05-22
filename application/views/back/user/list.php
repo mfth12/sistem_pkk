@@ -47,7 +47,7 @@
             <div class="card mb-4">
 
                 <div class="card-body">
-                    <p><a href="<?php echo site_url('superadmin/user/tambah') ?>" class="btn btn-primary" data-toggle="modal" data-target="#tambahuser">
+                    <p><a href="<?php echo site_url('admin/user/tambah') ?>" class="btn btn-primary" data-toggle="modal" data-target="#tambahuser">
                             <i class="fa fa-plus"></i> Tambah User</a></p>
                     <div class="table-responsive">
 
@@ -71,11 +71,11 @@
                                         <td><?php echo $user->nama ?></td>
                                         <td><?php echo $user->username ?></td>
                                         <td><?php echo $user->email ?></td>
-                                        <td><?php if ($user->akses_level == 'superadmin') echo "Administrator PKK"; ?><?php if ($user->akses_level == 'admin_pkk') echo "Pengurus PKK"; ?><?php if ($user->akses_level == 'admin_desa') echo "Perangkat Desa"; ?></td>
+                                        <td><?php if ($user->akses_level == 'superadmin') echo "Administrator Sistem"; ?><?php if ($user->akses_level == 'admin_pkk') echo "Pengurus PKK"; ?><?php if ($user->akses_level == 'admin_desa') echo "Perangkat Desa"; ?></td>
                                         <td class="text-center">
-                                            <a href="<?php echo site_url('superadmin/user/edit/' . $user->id_user) ?>" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Ubah</a>
+                                            <a href="<?php echo site_url('admin/user/edit/' . $user->id_user) ?>" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Ubah</a>
                                             <?php $hey = $user->id_user; ?>
-                                            <a onclick="deleteConfirm('<?php echo site_url('superadmin/user/delete/' . $hey) ?>')" href="#!" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                            <a onclick="deleteConfirm('<?php echo site_url('admin/user/delete/' . $hey) ?>')" href="#!" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 <?php $i++;
@@ -98,7 +98,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="<?php echo site_url('superadmin/user/tambah') ?>" method="post" enctype="multipart/form-data">
+                            <form action="<?php echo site_url('admin/user/tambah') ?>" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label>Nama Lengkap</label>
                                     <input required type="text" name="nama" class="form-control" placeholder="Nama lengkap" value="<?php echo set_value('nama') ?>">
@@ -123,7 +123,7 @@
                                     <label>Level Hak Akses</label>
                                     <select name="akses_level" class="form-control">
                                         <option value="admin_desa" selected>Perangkat Desa</option>
-                                        <option value="superadmin">Administrator PKK</option>
+                                        <option value="superadmin">Administrator Sistem</option>
                                     </select>
                                 </div>
                                 <!-- end -->

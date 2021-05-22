@@ -131,7 +131,7 @@ class Keuangan extends CI_Controller
 
 		// $total = $this->kas_model->row_masuk();
 		$data = array(
-			'title'		=> 'Sirkulasi Keuangan',
+			'title'		=> 'Pemasukan Kas',
 			'nomor' 	=> $no,
 			'namasite'	=> $site['namaweb'],
 			'result' 	=> $this->kas_model->masuk(),
@@ -154,7 +154,7 @@ class Keuangan extends CI_Controller
 
 		// $total = $this->kas_model->row_masuk();
 		$data = array(
-			'title'		=> 'Sirkulasi Keuangan',
+			'title'		=> 'Pengeluaran Kas',
 			'nomor' 	=> $no,
 			'namasite'	=> $site['namaweb'],
 			'result' 	=> $this->kas_model->keluaran(),
