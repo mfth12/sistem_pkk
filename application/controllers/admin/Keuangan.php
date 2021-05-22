@@ -176,7 +176,7 @@ class Keuangan extends CI_Controller
 			'keterangan'	=> $result[0]['keterangan'],
 			'tanggal'		=> $result[0]['tanggal'],
 			'jumlah'		=> $result[0]['jumlah'],
-			'isi'		    => 'admin/keuangan/edit'
+			'isi'		    => 'back/keuangan/edit'
 		);
 		$this->load->view('back/wrapper', $data);
 	}

@@ -2,7 +2,7 @@
     <main>
         <div class="container-fluid">
             <!-- ini nama judul halaman -->
-            <h1 class="mt-4">Data User</h1>
+            <h1 class="mt-4"><?php echo $title?></h1>
             <!-- ini nama bread crumb -->
             <ol class="breadcrumb">
                 <?php foreach ($this->uri->segments as $segment) : ?>
@@ -72,8 +72,8 @@
                                         <td><?php echo $user->username ?></td>
                                         <td><?php echo $user->email ?></td>
                                         <td><?php if ($user->akses_level == 'superadmin') echo "Administrator Sistem"; ?><?php if ($user->akses_level == 'admin_pkk') echo "Pengurus PKK"; ?><?php if ($user->akses_level == 'admin_desa') echo "Perangkat Desa"; ?></td>
-                                        <td class="text-center">
-                                            <a href="<?php echo site_url('admin/user/edit/' . $user->id_user) ?>" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Ubah</a>
+                                        <td class="d-flex justify-content-center">
+                                            <a href="<?php echo site_url('admin/user/edit/' . $user->id_user) ?>" class="btn btn-primary btn-sm mr-1"><i class="fa fa-edit"></i> Ubah</a>
                                             <?php $hey = $user->id_user; ?>
                                             <a onclick="deleteConfirm('<?php echo site_url('admin/user/delete/' . $hey) ?>')" href="#!" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                                         </td>

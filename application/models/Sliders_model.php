@@ -71,38 +71,20 @@ class Sliders_model extends CI_Model //ini perintah untuk ngambil data dari data
 			'image'			=> $this->_uploadImage(),
 			'description'	=> $post["description"]
 		);
-        // $this->slider_id = uniqid();
-        // $this->name = $post["name"];
-        // $this->image = $this->_uploadImage();
-        // $this->description = $post["description"];
         return $this->db->insert($this->_table, $data);
     }
 
     public function update()
     {
         $post = $this->input->post();
-        // $this->slider_id = $post["id"];
-        // $this->name = $post["name"];
-        // $this->description = $post["description"];
-        // $this->image = $this->_uploadImage();
-
         $data = array(
             'name'	        => $post["name"],
             'nomor'	        => $post["nomor"],
 			'image'			=> $post["old_image"],
 			'description'	=> $post["description"]
 		);
-        //////////////
-
-        
-        
 
         return $this->db->update($this->_table, $data, array('slider_id' => $post['id']));
-
-
-        // $this->db->where('slider_id', $post['id']);
-		// $query = $this->db->update('slider', $data);
-		// return $query;
     }
 
     public function delete($id)
@@ -114,7 +96,7 @@ class Sliders_model extends CI_Model //ini perintah untuk ngambil data dari data
     private function _uploadImage()
     {
         $post = $this->input->post();
-        $config['upload_path']          = './assets/upload/slider/';
+        $config['upload_path']          = './back_assets/upload/slider/';
         $config['allowed_types']        = 'gif|jpg|png';
         $config['file_name']            = $post["name"];
         $config['overwrite']			= true;
@@ -125,7 +107,6 @@ class Sliders_model extends CI_Model //ini perintah untuk ngambil data dari data
         if ($this->upload->do_upload('image')) {
             return $this->upload->data("file_name");
         }
-
         return "default.jpg";
     }
 
@@ -134,7 +115,7 @@ class Sliders_model extends CI_Model //ini perintah untuk ngambil data dari data
         $slide = $this->getById($id);
         if ($slide->image != "default.jpg") {
     	    $filename = explode(".", $slide->image)[0];
-    		return array_map('unlink', glob(FCPATH."assets/upload/slider/$filename.*"));
+    		return array_map('unlink', glob(FCPATH."back_assets/upload/slider/$filename.*"));
         }
     }
 }

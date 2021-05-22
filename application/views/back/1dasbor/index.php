@@ -1,7 +1,7 @@
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid">
-            <h1 class="mt-4">Dashboard <?php if ($this->session->userdata('akses_level') == 'superadmin') echo "Administrator";
+            <h1 class="mt-4"><?php echo $title?><?php if ($this->session->userdata('akses_level') == 'superadmin') echo "Administrator";
                                         if ($this->session->userdata('akses_level') == 'admin_desa') echo "Perangkat Desa"; ?></h1>
             <!-- Breadcrumbs-->
             <ol class="breadcrumb">

@@ -116,7 +116,7 @@ class User extends CI_Controller
 			// End validasi
 
 			$data = array(
-				'title' 	=> 'Edit User',
+				'title' 	=> 'Ubah User',
 				'namasite'	=> $site['namaweb'],
 				'user'	=> $user,
 				'isi' 	=> 'back/user/edit'

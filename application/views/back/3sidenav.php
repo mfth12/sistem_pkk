@@ -11,7 +11,7 @@
                         <div class="sb-sidenav-menu-heading">Overview</div>
                         <a class="nav-link" href="<?php echo site_url('admin') ?>">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                            Dashboard
+                            Dasbor
                         </a>
                         <!-- heading nav_bar -->
                         <div class="sb-sidenav-menu-heading">Data</div>
@@ -48,7 +48,7 @@
                         <!-- bagian pewagai -->
                         <a class="nav-link" href="<?php echo site_url('admin/konfig') ?> ">
                             <div class="sb-nav-link-icon"><i class="fas fa-wrench"></i></div>
-                            Konfigurasi Website
+                            Konfigurasi
                         </a>
                         <!-- bagian pewagai -->
                         <a class="nav-link" href="<?php echo site_url('admin/sliders') ?> ">

@@ -2,7 +2,7 @@
     <main>
         <div class="container-fluid">
             <!-- ini nama judul halaman -->
-            <h1 class="mt-4"><?php echo $title ?></h1>
+            <h1 class="mt-4"><?php echo $title?></h1>
             <!-- ini nama bread crumb -->
             <ol class="breadcrumb">
                 <?php foreach ($this->uri->segments as $segment) : ?>
@@ -40,7 +40,7 @@
             <div class="card mb-4">
                 <div class="card-body">
                     <div class="d-flex">
-                        <p><a href="<?php echo site_url('superadmin/sliders') ?>" class="btn btn-success mr-2" data-toggle="modal" data-target="#tambahSlide">
+                        <p><a href="<?php echo site_url('admin/sliders') ?>" class="btn btn-success mr-2" data-toggle="modal" data-target="#tambahSlide">
                                 <i class="fa fa-plus"></i> Tambah Slide</a></p>
                     </div>
                     <div class="table-responsive">
@@ -63,7 +63,7 @@
                                             <h4><?php echo $data->nomor ?></h4>
                                         </td>
                                         <td>
-                                            <img src="<?php echo base_url('assets/upload/slider/' . $data->image) ?>" width="64" />
+                                            <img src="<?php echo base_url('back_assets/upload/slider/' . $data->image) ?>" width="64" />
                                         </td>
                                         <td>
                                             <?php echo $data->name ?>
@@ -71,24 +71,18 @@
                                         <td width="30%" class="small">
                                             <?php echo substr($data->description, 0, 150) ?>
                                         </td>
-                                        <td class="text-center">
-                                            <a href="<?php echo site_url('superadmin/sliders/ubah/' . $data->slider_id) ?>" class="btn btn-sm btn-primary "><i class="fa fa-edit"></i> Ubah</a>
-                                            <a onclick="deleteConfirm('<?php echo site_url('superadmin/sliders/delete/' . $data->slider_id) ?>')" href="#!" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Hapus</a>
+                                        <td class="d-flex justify-content-center">
+                                            <a href="<?php echo site_url('admin/sliders/edit/' . $data->slider_id) ?>" class="btn btn-sm btn-primary mr-1"><i class="fa fa-edit"></i> Ubah</a>
+                                            <a onclick="deleteConfirm('<?php echo site_url('admin/sliders/delete/' . $data->slider_id) ?>')" href="#!" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 <?php $no++;
                                 } ?>
                             </tbody>
-
-
                         </table>
                     </div> <!-- akhir div tabel -->
                 </div> <!-- akhir div card body -->
             </div> <!-- akhir div card -->
-
-
-
-            <!-- modal tambah user-->
             <!-- modal tambah user-->
             <!-- modal -->
             <div class="modal fade" id="tambahSlide" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -101,7 +95,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="<?php echo site_url('superadmin/sliders/add') ?>" method="post" enctype="multipart/form-data">
+                            <form action="<?php echo site_url('admin/sliders/add') ?>" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="image">Gambar Slide </label><small> (Max 2Mb)</small>
                                     <input class="form-control-file" required type="file" name="image" />
@@ -136,11 +130,5 @@
                     </div> <!-- modal-content -->
                 </div> <!-- modal-dialog -->
             </div> <!-- modal-fade -->
-
-
-
-
-
-
         </div> <!-- akhir container fluid -->
     </main>

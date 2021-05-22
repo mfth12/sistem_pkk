@@ -81,7 +81,7 @@ $nav_profil = $this->site_model->nav_profil();
             <div class="row">
                 <div class="col-lg-3">
                     <div class="logo-area">
-                        <a href="<?php echo base_url() ?>"><img height="50" src="<?php echo base_url('front_assets/images/' . $site['logo']) ?>" alt="logo"></a>
+                        <a href="<?php echo base_url() ?>"><img height="50" src="<?php echo base_url('back_assets/img/' . $site['logo']) ?>" alt="logo"></a>
                     </div>
                 </div>
                 <div class="col-lg-9">

@@ -2,7 +2,7 @@
 	<main>
 		<div class="container-fluid">
 			<!-- ini nama judul halaman -->
-			<h1 class="mt-4">Ubah Slide</h1>
+			<h1 class="mt-4"><?php echo $title?></h1>
 			<!-- ini nama bread crumb -->
 			<ol class="breadcrumb">
 				<?php foreach ($this->uri->segments as $segment) : ?>
@@ -23,12 +23,12 @@
 			echo validation_errors('<div class="alert alert-success">', '<button class="close" data-dismiss="alert">&times;</button> </div>');
 
 			// Form
-			echo form_open(site_url('superadmin/sliders/ubah/' . $slide->slider_id));
+			echo form_open(site_url('admin/sliders/edit/' . $slide->slider_id));
 			?>
 			<!-- sekarang masuk ke kolom isi konten -->
 			<div class="card mb-4">
 				<div class="card-header">
-					<a href="<?php echo site_url('superadmin/sliders') ?>"><i class="fas fa-arrow-left"></i> Kembali</a>
+					<a href="<?php echo site_url('admin/sliders') ?>"><i class="fas fa-arrow-left"></i> Kembali</a>
 				</div>
 				<div class="card-body">
 					<div class="card mb-4">
@@ -40,7 +40,7 @@
 					<input class="form-group" required type="hidden" name="id" value="<?php echo $slide->slider_id ?>" />
 					<div class="form-group col-md-6">
 						<label>Gambar slide sekarang</label><br>
-						<img src="<?php echo base_url('assets/upload/slider/' . $slide->image) ?>" style="max-width:200px; height:auto;">
+						<img src="<?php echo base_url('back_assets/upload/slider/' . $slide->image) ?>" style="max-width:200px; height:auto;">
 					</div>
 					<div class="form-group">
 

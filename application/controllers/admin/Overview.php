@@ -31,7 +31,7 @@ class overview extends CI_Controller
 		$slider 			= $this->sliders_model->total_all();
 		$struktur 			= $this->struktur_model->total_all();
 		$data = array(
-			'title'				=> 'Dashboard ',
+			'title'				=> 'Dasbor ',
 			'namasite'			=> $site['namaweb'],
 			'site'				=> $site,
 			'user'				=> $user,

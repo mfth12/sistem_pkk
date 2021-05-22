@@ -27,12 +27,12 @@ class Konfig extends CI_Controller
 		if ($this->form_validation->run() === FALSE) {
 
 			$data = array(
-				'title'		=> 'Konfigurasi',
+				'title'		=> 'Konfigurasi Website',
 				'namasite' 	=> $site['namaweb'],
 				'site'		=> $site,
-				'isi'		=> 'superadmin/konfig/umum'
+				'isi'		=> 'back/konfig/umum'
 			);
-			$this->load->view('superadmin/_partials/wrapper', $data);
+			$this->load->view('back/wrapper', $data);
 		} else {
 			$i = $this->input;
 			$data = array(
@@ -57,54 +57,8 @@ class Konfig extends CI_Controller
 				'id_user'			=> $this->session->userdata('id')
 			);
 			$this->konfigurasi_model->edit($data);
-			$this->session->set_flashdata('sukses', 'Site configuration updated successfully');
-			redirect(site_url('superadmin/konfig'));
-		}
-	}
-
-	// General Configuration
-	public function konfigurasi()
-	{
-		$site = $this->konfigurasi_model->listing();
-
-		// Validasi 
-		$this->form_validation->set_rules('namaweb', 'Website name website', 'required');
-		$this->form_validation->set_rules('email', 'Email', 'valid_email');
-
-		if ($this->form_validation->run() === FALSE) {
-
-			$data = array(
-				'title'		=> 'General Configuration',
-				'namasite'	=> $site['namaweb'],
-				'site'		=> $site,
-				'isi'		=> 'superadmin/konfig/umum'
-			);
-			$this->load->view('superadmin/_partials/wrapper', $data);
-		} else {
-			$i = $this->input;
-			$data = array(
-				'id_konfigurasi'	=> $i->post('id_konfigurasi'),
-				'home_setting'		=> $i->post('home_setting'),
-				'namaweb'			=> $i->post('namaweb'),
-				'tagline'			=> $i->post('tagline'),
-				'tentang'			=> $i->post('tentang'),
-				'website'			=> $i->post('website'),
-				'email'				=> $i->post('email'),
-				'alamat'			=> $i->post('alamat'),
-				'telepon'			=> $i->post('telepon'),
-				'hp'				=> $i->post('hp'),
-				'fax'				=> $i->post('fax'),
-				'keywords'			=> $i->post('keywords'),
-				'metatext'			=> $i->post('metatext'),
-				'facebook'			=> $i->post('facebook'),
-				'twitter'			=> $i->post('twitter'),
-				'instagram'			=> $i->post('instagram'),
-				'google_map'		=> $i->post('google_map'),
-				'id_user'			=> $this->session->userdata('id')
-			);
-			$this->konfigurasi_model->edit($data);
-			$this->session->set_flashdata('sukses', 'Berhasil, konfigurasi situs berhasil diperbarui');
-			redirect(site_url('superadmin/konfig'));
+			$this->session->set_flashdata('sukses', 'Konfigurasi website berhasil diperbarui');
+			redirect(site_url('admin/konfig'));
 		}
 	}
 
@@ -118,9 +72,10 @@ class Konfig extends CI_Controller
 
 		if ($v->run()) {
 
-			$config['upload_path'] 		= './assets/upload/image/';
+			$config['upload_path'] 		= './back_assets/img/';
 			$config['allowed_types'] 	= 'gif|jpg|png';
 			$config['max_size']			= '12000'; // KB
+			$config['file_name']        = 'main-logo.png';
 			$this->load->library('upload', $config);
 			if (!$this->upload->do_upload('logo')) {
 				$data = array(
@@ -128,15 +83,15 @@ class Konfig extends CI_Controller
 					'namasite' 	=> $site['namaweb'],
 					'site'		=> $site,
 					'error'		=> $this->upload->display_errors(),
-					'isi'		=> 'superadmin/konfig/umum'
+					'isi'		=> 'back/konfig/umum'
 				);
-				$this->load->view('superadmin/_partials/wrapper', $data);
+				$this->load->view('back/wrapper', $data);
 			} else {
 				$upload_data				= array('uploads' => $this->upload->data());
 				// Image Editor
 				$config['image_library']	= 'gd2';
-				$config['source_image'] 	= './assets/upload/image/' . $upload_data['uploads']['file_name'];
-				$config['new_image'] 		= './assets/upload/image/thumbs/';
+				$config['source_image'] 	= './back_assets/img/' . $upload_data['uploads']['file_name'];
+				$config['new_image'] 		= './back_assets/img/thumbs/';
 				$config['create_thumb'] 	= TRUE;
 				$config['maintain_ratio'] 	= TRUE;
 				$config['width'] 			= 150; // Pixel
@@ -145,8 +100,8 @@ class Konfig extends CI_Controller
 				$this->load->library('image_lib', $config);
 				$this->image_lib->resize();
 				// Hapus gambar lama
-				unlink('./assets/upload/image/' . $site['logo']);
-				unlink('./assets/upload/image/thumbs/' . $site['logo']);
+				unlink('./back_assets/img/' . $site['logo']);
+				unlink('./back_assets/img/thumbs/' . $site['logo']);
 				// End hapus gambar lama
 				// Masuk ke database
 				$i = $this->input;
@@ -157,7 +112,7 @@ class Konfig extends CI_Controller
 				);
 				$this->konfigurasi_model->edit($data);
 				$this->session->set_flashdata('sukses', 'Logo situs berhasil diperbarui');
-				redirect(site_url('superadmin/konfig'));
+				redirect(site_url('admin/konfig'));
 			}
 		}
 		// Default page
@@ -166,7 +121,7 @@ class Konfig extends CI_Controller
 		// 				'isi'	=> 'admin/dasbor/logo');
 		// $this->load->view('admin/layout/wrapper',$data);
 		$this->session->set_flashdata('maaf', 'Maaf, tidak ada data yang diperbarui');
-		redirect(site_url('superadmin/konfig'));
+		redirect(site_url('admin/konfig'));
 	}
 
 
@@ -179,26 +134,27 @@ class Konfig extends CI_Controller
 		$v->set_rules('id_konfigurasi', 'ID Konfigurasi', 'required');
 
 		if ($v->run()) {
-			$config['upload_path'] 		= './assets/upload/image/';
+			$config['upload_path'] 		= './back_assets/img/';
 			$config['allowed_types'] 	= 'gif|jpg|png';
-			$config['max_size']			= '12000'; // KB	
+			$config['max_size']			= '4200'; // KB
+			$config['file_name']        = 'icon_site.png';
 			$this->load->library('upload', $config);
 			if (!$this->upload->do_upload('icon')) {
 
 				$data = array(
-					'title'		=> 'New Icon',
+					'title'		=> '',
 					'namasite' 	=> $site['namaweb'],
 					'site'		=> $site,
 					'error'		=> $this->upload->display_errors(),
-					'isi'		=> 'superadmin/konfig/umum'
+					'isi'		=> 'back/konfig/umum'
 				);
-				$this->load->view('superadmin/_partials/wrapper', $data);
+				$this->load->view('back/wrapper', $data);
 			} else {
 				$upload_data				= array('uploads' => $this->upload->data());
 				// Image Editor
 				$config['image_library']	= 'gd2';
-				$config['source_image'] 	= './assets/upload/image/' . $upload_data['uploads']['file_name'];
-				$config['new_image'] 		= './assets/upload/image/thumbs/';
+				$config['source_image'] 	= './back_assets/img/' . $upload_data['uploads']['file_name'];
+				$config['new_image'] 		= './back_assets/img/thumbs/';
 				$config['create_thumb'] 	= TRUE;
 				$config['maintain_ratio'] 	= TRUE;
 				$config['width'] 			= 150; // Pixel
@@ -206,20 +162,20 @@ class Konfig extends CI_Controller
 				$config['thumb_marker'] 	= '';
 				$this->load->library('image_lib', $config);
 				// Hapus gambar lama
-				unlink('./assets/upload/image/' . $site['icon']);
-				unlink('./assets/upload/image/thumbs/' . $site['icon']);
+				unlink('./back_assets/img/' . $site['icon']);
+				unlink('./back_assets/img/thumbs/' . $site['icon']);
 				// End hapus gambar lama
 				$this->image_lib->resize();
 				// Masuk ke database
 				$i = $this->input;
 				$data = array(
-					'id_konfigurasi' => $i->post('id_konfigurasi'),
+					'id_konfigurasi'=> $i->post('id_konfigurasi'),
 					'icon'			=> $upload_data['uploads']['file_name'],
-					'id_user'			=> $this->session->userdata('id')
+					'id_user'		=> $this->session->userdata('id')
 				);
 				$this->konfigurasi_model->edit($data);
 				$this->session->set_flashdata('sukses', 'Favicon situs berhasil diperbarui');
-				redirect(site_url('superadmin/konfig'));
+				redirect(site_url('admin/konfig'));
 			}
 		}
 		// Default page
@@ -228,7 +184,7 @@ class Konfig extends CI_Controller
 		// 				'isi'	=> 'admin/dasbor/icon');
 		// $this->load->view('admin/layout/wrapper',$data);
 		$this->session->set_flashdata('maaf', 'Maaf, tidak ada data yang diperbarui');
-		redirect(site_url('superadmin/konfig'));
+		redirect(site_url('admin/konfig'));
 	}
 
 	// Quote
@@ -249,11 +205,11 @@ class Konfig extends CI_Controller
 		if ($this->form_validation->run() === FALSE) {
 
 			$data = array(
-				'title'	=> 'General Configuration - Quote Front End',
+				'title'	=> 'Quote Front End (Belum dipakai)',
 				'site'	=> $site,
-				'isi'	=> 'supeadmin/konfig/umum'
+				'isi'	=> 'admin/konfig/umum'
 			);
-			$this->load->view('superadmin/_partials/wrapper', $data);
+			$this->load->view('back/wrapper', $data);
 		} else {
 			$i = $this->input;
 			$data = array(
@@ -290,11 +246,11 @@ class Konfig extends CI_Controller
 		if ($this->form_validation->run() === FALSE) {
 
 			$data = array(
-				'title'	=> '',
+				'title'	=> 'Ucapan',
 				'site'	=> $site,
-				'isi'	=> 'supeadmin/konfig/umum'
+				'isi'	=> 'back/konfig/umum'
 			);
-			$this->load->view('superadmin/_partials/wrapper', $data);
+			$this->load->view('back/wrapper', $data);
 		} else {
 			$i = $this->input;
 			$data = array(
@@ -304,8 +260,8 @@ class Konfig extends CI_Controller
 				'id_user'			=> $this->session->userdata('id')
 			);
 			$this->konfigurasi_model->edit($data);
-			$this->session->set_flashdata('sukses', 'Konfigurasi kalimat ucapan situs berhasil diperbarui');
-			redirect(site_url('superadmin/konfig'));
+			$this->session->set_flashdata('sukses', 'Kalimat ucapan website berhasil diperbarui');
+			redirect(site_url('admin/konfig'));
 		}
 	}
 
