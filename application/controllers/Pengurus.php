@@ -24,6 +24,6 @@ class Pengurus extends CI_Controller
 			'struktur'	=> $struktur,
 			'isi'		=> 'struktur/page'
 		);
-		$this->load->view('layout/landing_home', $data);
+		$this->load->view('back/wrapper', $data);
 	}
 } // end of all	

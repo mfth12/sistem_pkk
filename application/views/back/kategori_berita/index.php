@@ -48,10 +48,9 @@
                         <table class="table table-striped table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th width="25" class="text-center">No.</th>
+                                    <th class="text-center">Urut</th>
                                     <th>Nama Kategori</th>
                                     <th>Keterangan</th>
-                                    <th>Urutan</th>
                                     <th>Slug</th>
                                     <th class="text-center">Action</th>
                                 </tr>
@@ -60,10 +59,9 @@
                                 <?php $i = 1;
                                 foreach ($kategori_berita as $kategori_berita) { ?>
                                     <tr>
-                                        <td class="text-center"><?php echo $i ?></td>
+                                        <td width="15px" class="text-center"><h4><?php echo $kategori_berita->urutan ?></h4></td>
                                         <td><?php echo $kategori_berita->nama_kategori_berita ?></td>
-                                        <td width="240" class="small"><?php echo $kategori_berita->keterangan ?></td>
-                                        <td><?php echo $kategori_berita->urutan ?></td>
+                                        <td width="30%" class="small"><?php echo $kategori_berita->keterangan ?></td>
                                         <td><?php echo $kategori_berita->slug_kategori_berita ?></td>
                                         <td class="d-flex justify-content-center">
                                             <a href="<?php echo base_url('admin/kategori_berita/edit/' . $kategori_berita->id_kategori_berita) ?>" class="btn btn-primary btn-sm mr-1"><i class="fa fa-edit"></i> Ubah</a>

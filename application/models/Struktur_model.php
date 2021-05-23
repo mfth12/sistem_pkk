@@ -99,7 +99,6 @@ class Struktur_model extends CI_Model //ini perintah untuk ngambil data dari dat
         // $this->name = $post["name"];
         // $this->description = $post["description"];
         // $this->image = $this->_uploadImage();
-
         $data = array(
             'name'	        => $post["name"],
             'nomor'	        => $post["nomor"],
@@ -107,16 +106,7 @@ class Struktur_model extends CI_Model //ini perintah untuk ngambil data dari dat
 			'description'	=> $post["description"]
 		);
         //////////////
-
-        
-        
-
         return $this->db->update($this->_table, $data, array('slider_id' => $post['id']));
-
-
-        // $this->db->where('slider_id', $post['id']);
-		// $query = $this->db->update('slider', $data);
-		// return $query;
     }
 
     public function delete($id)
@@ -128,11 +118,11 @@ class Struktur_model extends CI_Model //ini perintah untuk ngambil data dari dat
     private function _uploadImage()
     {
         $post = $this->input->post();
-        $config['upload_path']          = './assets/upload/pengurus/';
+        $config['upload_path']          = './back_assets/upload/pengurus/';
         $config['allowed_types']        = 'gif|jpg|png';
         $config['file_name']            = $post["name"];
         $config['overwrite']			= true;
-        $config['max_size']             = 2048; // 2MB saja maksimal
+        $config['max_size']             = 6048; // 2MB saja maksimal
 
         $this->load->library('upload', $config);
 
@@ -148,7 +138,7 @@ class Struktur_model extends CI_Model //ini perintah untuk ngambil data dari dat
         $slide = $this->getById($id);
         if ($slide->image != "default.jpg") {
     	    $filename = explode(".", $slide->image)[0];
-    		return array_map('unlink', glob(FCPATH."assets/upload/pengurus/$filename.*"));
+    		return array_map('unlink', glob(FCPATH."back_assets/upload/pengurus/$filename.*"));
         }
     }
 }

@@ -100,7 +100,7 @@ class Sliders_model extends CI_Model //ini perintah untuk ngambil data dari data
         $config['allowed_types']        = 'gif|jpg|png';
         $config['file_name']            = $post["name"];
         $config['overwrite']			= true;
-        $config['max_size']             = 2048; // 2MB saja maksimal
+        $config['max_size']             = 6048; // 2MB saja maksimal
 
         $this->load->library('upload', $config);
 

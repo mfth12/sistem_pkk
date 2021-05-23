@@ -112,7 +112,7 @@ class Berita_model extends CI_Model {
     {
         return $this->db->get_where('berita', ["id_berita" => $id_berita])->row();
     }
-	// Delete update
+	// Delete ketika update
 	public function delete_update ($data){
         $this->_deleteImage($data['id_berita']);
         $this->_deleteImage_thumbs($data['id_berita']);

@@ -30,9 +30,9 @@ class Struktur extends CI_Controller
             'nomor'         => $no,
             'namasite'      => $site['namaweb'],
             'struktur'      => $this->struktur_model->getAll(),
-            'isi'           => 'superadmin/struktur/list'
+            'isi'           => 'back/struktur/list'
         );
-        $this->load->view('superadmin/_partials/wrapper', $data);
+        $this->load->view('back/wrapper', $data);
     }
 
     public function add()
@@ -44,17 +44,17 @@ class Struktur extends CI_Controller
         if ($validation->run()) {
             $struktur->save();
             $this->session->set_flashdata('sukses', 'Anda berhasil menginput struktural baru');
-            redirect(site_url('superadmin/struktur'));  //menuju ke halaman admin/products/.
+            redirect(site_url('admin/struktur'));  //menuju ke halaman admin/products/.
         }
         // else{show_404();}
         $this->session->set_flashdata('maaf', 'Anda gagal menginput data struktural');
-        redirect(site_url('superadmin/struktur'));
+        redirect(site_url('admin/struktur'));
         // $this->load->view("admin/product/new_form");
     }
 
     public function ubah($id = null)
     {
-        if (!isset($id)) redirect(site_url('superadmin/struktur')); // redirect jika tidak ada $id 
+        if (!isset($id)) redirect(site_url('admin/struktur')); // redirect jika tidak ada $id 
 
         $site     = $this->konfigurasi_model->listing();
         $struktur = $this->struktur_model; //object manual
@@ -64,18 +64,18 @@ class Struktur extends CI_Controller
         if ($validation->run()) { //melakukan validasi
             $struktur->update();   //menyimpan data
             $this->session->set_flashdata('sukses', 'Data pengurus berhasil diperbarui');
-            redirect(site_url('superadmin/struktur'));  //menuju ke halaman admin/products/.
+            redirect(site_url('admin/struktur'));  //menuju ke halaman admin/products/.
         }
 
         $data = array(
             'title'        => 'Ubah Slide',
             'namasite'    => $site['namaweb'],
             'struktur'     => $struktur->getById($id),
-            'isi'        => 'superadmin/struktur/ubah'
+            'isi'        => 'back/struktur/ubah'
         );
         if (!$data["struktur"]) show_404(); //jika tidak ada data, tampilkan error
 
-        $this->load->view("superadmin/_partials/wrapper", $data); //menampilkan form edit
+        $this->load->view("back/wrapper", $data); //menampilkan form edit
     }
 
     public function delete($id = null)
@@ -83,7 +83,7 @@ class Struktur extends CI_Controller
         if (!isset($id)) show_404();
         if ($this->struktur_model->delete($id)) { //Apabila data berhasil dihapus, maka kita langsung alihkan (redirect())
             $this->session->set_flashdata('maaf', 'Data struktur telah dihapus'); // flash message
-            redirect(site_url('superadmin/struktur'));  //menuju ke halaman admin/products/.
+            redirect(site_url('admin/struktur'));  //menuju ke halaman admin/products/.
         }
     }
 }

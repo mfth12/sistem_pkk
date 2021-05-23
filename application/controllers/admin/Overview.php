@@ -7,7 +7,6 @@ class overview extends CI_Controller
 		parent::__construct();
 		$this->simple_login->terotentikasi();
 		$this->load->model('user_model');
-		$this->load->model('video_model');
 		$this->load->model('berita_model');
 		$this->load->model('produk_model');
 		$this->load->model('kategori_produk_model');

@@ -48,7 +48,7 @@
                         <table class="table table-striped table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th class="text-center">Urut Tampil</th>
+                                    <th class="text-center">Urut</th>
                                     <th>Foto</th>
                                     <th>Nama Lengkap Pengurus</th>
                                     <th>Jabatan Pengurus</th>
@@ -59,11 +59,11 @@
                                 <?php $no = 1;
                                 foreach ($struktur as $data) { ?>
                                     <tr>
-                                        <td class="text-center">
+                                        <td width="15px" class="text-center">
                                             <h4><?php echo $data->nomor ?></h4>
                                         </td>
                                         <td>
-                                            <img src="<?php echo base_url('assets/upload/pengurus/' . $data->image) ?>" width="64" />
+                                            <img src="<?php echo base_url('back_assets/upload/pengurus/' . $data->image) ?>" width="64" />
                                         </td>
                                         <td>
                                             <?php echo $data->name ?>
@@ -71,9 +71,9 @@
                                         <td width="30%" class="small">
                                             <?php echo substr($data->description, 0, 150) ?>
                                         </td>
-                                        <td class="text-center">
-                                            <a href="<?php echo site_url('superadmin/struktur/ubah/' . $data->slider_id) ?>" class="btn btn-sm btn-primary "><i class="fa fa-edit"></i> Ubah</a>
-                                            <a onclick="deleteConfirm('<?php echo site_url('superadmin/struktur/delete/' . $data->slider_id) ?>')" href="#!" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Hapus</a>
+                                        <td class="d-flex justify-content-center">
+                                            <a href="<?php echo site_url('admin/struktur/ubah/' . $data->slider_id) ?>" class="btn btn-sm btn-primary mr-1"><i class="fa fa-edit"></i> Ubah</a>
+                                            <a onclick="deleteConfirm('<?php echo site_url('admin/struktur/delete/' . $data->slider_id) ?>')" href="#!" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 <?php $no++;
@@ -85,9 +85,6 @@
                     </div> <!-- akhir div tabel -->
                 </div> <!-- akhir div card body -->
             </div> <!-- akhir div card -->
-
-
-
             <!-- modal tambah user-->
             <!-- modal tambah user-->
             <!-- modal -->
@@ -101,7 +98,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="<?php echo site_url('superadmin/struktur/add') ?>" method="post" enctype="multipart/form-data">
+                            <form action="<?php echo site_url('admin/struktur/add') ?>" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label for="image">Foto Pengurus </label><small> (Max 2Mb)</small>
                                     <input class="form-control-file" required type="file" name="image" />
@@ -124,7 +121,6 @@
                                         * harus diisi
                                     </div>
                                 </div>
-
                                 <!-- end -->
                                 <!-- end -->
                                 <!-- end -->
@@ -132,15 +128,8 @@
                                 <button type="submit" class="btn btn-success">Tambah</button>
                             </form>
                         </div> <!-- modal-body -->
-
                     </div> <!-- modal-content -->
                 </div> <!-- modal-dialog -->
             </div> <!-- modal-fade -->
-
-
-
-
-
-
         </div> <!-- akhir container fluid -->
     </main>

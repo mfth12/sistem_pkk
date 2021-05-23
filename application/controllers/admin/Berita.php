@@ -58,7 +58,7 @@ class Berita extends CI_Controller
 		if ($v->run()) {
 			$config['upload_path'] 		= './back_assets/upload/image/';
 			$config['allowed_types'] 	= 'gif|jpg|png|svg';
-			$config['max_size']			= '500'; // KB
+			$config['max_size']			= '6048'; // KB
 			$config['file_name']        = url_title($this->input->post('nama_berita'), 'dash', TRUE);
 			$this->load->library('upload', $config);
 			if (!$this->upload->do_upload('gambar')) {
@@ -152,7 +152,7 @@ class Berita extends CI_Controller
 			if (!empty($_FILES['gambar']['name'])) {
 				$config['upload_path'] 		= './back_assets/upload/image/';
 				$config['allowed_types'] 	= 'gif|jpg|png|svg';
-				$config['max_size']			= '500'; // KB	
+				$config['max_size']			= '6048'; // KB	
 				$config['file_name']        = url_title($this->input->post('nama_berita'), 'dash', TRUE);
 				$this->load->library('upload', $config);
 				if (!$this->upload->do_upload('gambar')) {

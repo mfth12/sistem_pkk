@@ -2,7 +2,7 @@
     <main>
         <div class="container-fluid">
             <!-- ini nama judul halaman -->
-            <h1 class="mt-4"><?php echo $title?></h1>
+            <h1 class="mt-4"><?php echo $title ?></h1>
             <!-- ini nama bread crumb -->
             <ol class="breadcrumb">
                 <?php foreach ($this->uri->segments as $segment) : ?>
@@ -48,7 +48,7 @@
                         <table class="table table-striped table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th class="text-center">Urut Tampil</th>
+                                    <th class="text-center">Urut</th>
                                     <th>Gambar</th>
                                     <th>Nama Judul</th>
                                     <th>Keterangan</th>
@@ -59,7 +59,7 @@
                                 <?php $no = 1;
                                 foreach ($slider as $data) { ?>
                                     <tr>
-                                        <td class="text-center">
+                                        <td width="15px"class="text-center">
                                             <h4><?php echo $data->nomor ?></h4>
                                         </td>
                                         <td>

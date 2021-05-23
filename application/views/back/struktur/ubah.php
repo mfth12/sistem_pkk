@@ -2,7 +2,7 @@
 	<main>
 		<div class="container-fluid">
 			<!-- ini nama judul halaman -->
-			<h1 class="mt-4">Ubah Pengurus</h1>
+			<h1 class="mt-4"><?php echo $title ?></h1>
 			<!-- ini nama bread crumb -->
 			<ol class="breadcrumb">
 				<?php foreach ($this->uri->segments as $segment) : ?>
@@ -23,7 +23,7 @@
 			echo validation_errors('<div class="alert alert-success">', '<button class="close" data-dismiss="alert">&times;</button> </div>');
 
 			// Form
-			echo form_open(site_url('superadmin/struktur/ubah/' . $struktur->slider_id));
+			echo form_open(site_url('admin/struktur/ubah/' . $struktur->slider_id));
 			?>
 			<!-- sekarang masuk ke kolom isi konten -->
 			<div class="card mb-4">

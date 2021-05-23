@@ -26,12 +26,12 @@ class Profile extends CI_Controller
 		if ($valid->run() === FALSE) {
 
 			$data = array(
-				'title'		=> '',
+				'title'		=> 'Profile',
 				'namasite'	=> $site['namaweb'],
 				'userb'		=> $user,
 				'isi'		=> 'profile'
 			);
-			$this->load->view('superadmin/_partials/wrapper', $data);
+			$this->load->view('back/wrapper', $data);
 		}
 	}
 
@@ -55,7 +55,7 @@ class Profile extends CI_Controller
 
 		if ($valid->run() === TRUE) {
 			$this->user_model->updateprofil($id);
-			$this->session->set_flashdata('success_edit', 'Data anda telah berhasil diperbarui');
+			$this->session->set_flashdata('success_edit', 'Data anda berhasil diperbarui');
 			clearstatcache();
 			redirect(site_url('profile'));
 		}
@@ -73,14 +73,12 @@ class Profile extends CI_Controller
 		$valid->set_rules('password_baru', 'Password', 'required');
 		$valid->set_rules('password_verif', 'Password', 'required');
 		// $user	= $this->user_model->get($id);
-		$i = $this->input;
-
 		if ($valid->run() === TRUE) {
 			$user->updatepassword($id);
 			$this->session->set_flashdata('sukses', 'Password anda berhasil diperbarui');
 			redirect(site_url('profile'));
 		}
-		redirect(site_url('profile_inigagal'));  //menuju ke halaman admin/products/.
+		redirect(site_url('profile'));  //menuju ke halaman admin/products/.
 	}
 
 

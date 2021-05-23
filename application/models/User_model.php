@@ -11,7 +11,6 @@ class User_model extends CI_Model {
 		$this->load->database();
 	}
 
-	
 	//Listing
 	public function listing() {
 		$this->db->select('*');

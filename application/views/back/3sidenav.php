@@ -1,21 +1,15 @@
 <div id="layoutSidenav">
-
-    <!-- SUPERADMIN -->
     <?php if ($this->session->userdata('akses_level') == 'superadmin') { ?>
-
         <div id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                 <div class="sb-sidenav-menu">
-                    <!-- Menu side navigation -->
                     <div class="nav">
-                        <div class="sb-sidenav-menu-heading">Overview</div>
+                        <div class="sb-sidenav-menu-heading">Utama</div>
                         <a class="nav-link" href="<?php echo site_url('admin') ?>">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Dasbor
                         </a>
-                        <!-- heading nav_bar -->
                         <div class="sb-sidenav-menu-heading">Data</div>
-                        <!-- bagian penilaian -->
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                             <div class="sb-nav-link-icon"><i class="fas fa-star"></i></div>
                             Berita
@@ -27,7 +21,6 @@
                                 <a class="nav-link" href="<?php echo site_url('admin/kategori_berita') ?> ">Kategori Berita</a>
                             </nav>
                         </div>
-                        <!-- bagian jabatan -->
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                             <div class="sb-nav-link-icon"><i class="fas fa-coins"></i></div>
                             Keuangan
@@ -40,17 +33,10 @@
                                 <a class="nav-link" href="<?php echo site_url('admin/keuangan/keluaran') ?> ">Pengeluaran</a>
                             </nav>
                         </div>
-                        <!-- bagian users -->
                         <a class="nav-link" href="<?php echo site_url('admin/user') ?> ">
                             <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                             User
                         </a>
-                        <!-- bagian pewagai -->
-                        <a class="nav-link" href="<?php echo site_url('admin/konfig') ?> ">
-                            <div class="sb-nav-link-icon"><i class="fas fa-wrench"></i></div>
-                            Konfigurasi
-                        </a>
-                        <!-- bagian pewagai -->
                         <a class="nav-link" href="<?php echo site_url('admin/sliders') ?> ">
                             <div class="sb-nav-link-icon"><i class="fas fa-images"></i></div>
                             Sliders
@@ -59,14 +45,16 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-folder-open"></i></div>
                             Struktur PKK
                         </a>
-
-                        <!-- bagian terakhir -->
+                        <a class="nav-link" href="<?php echo site_url('admin/konfig') ?> ">
+                            <div class="sb-nav-link-icon"><i class="fas fa-wrench"></i></div>
+                            Konfigurasi
+                        </a>
                         <div class="sb-sidenav-menu-heading">Akun</div>
                         <a class="nav-link" href="<?php echo site_url('profile') ?> ">
                             <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
                             Profile
                         </a>
-                        <!-- selesai side_bar -->
+
                     </div>
                 </div>
                 <div class="sb-sidenav-footer">
@@ -83,10 +71,9 @@
                 </div>
             </nav>
         </div>
-
     <?php
     } ?>
-    <!-- PERANGKATDESA -->
+
     <?php if ($this->session->userdata('akses_level') == 'admin_desa') { ?>
 
         <div id="layoutSidenav_nav">
