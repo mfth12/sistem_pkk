@@ -76,7 +76,6 @@
                 <div class="row mb-3">
                   <div class="col-md-6 order-md-1">
                     <h3>Informasi Dasar</h3>
-                    <hr>
                     <div class="form-group">
                       <label>Nama Situs</label>
                       <input type="text" name="namaweb" placeholder="Nama organisasi/perusahaan" value="<?php echo $site['namaweb'] ?>" required class="form-control">
@@ -122,8 +121,8 @@
                       <label>Handphone/seluler</label>
                       <input type="text" name="hp" placeholder="021-000000" value="<?php echo $site['hp'] ?>" class="form-control">
                     </div>
-                    <h3>Akun Sosial Media</h3>
                     <hr>
+                    <h3>Akun Sosial Media</h3>
                     <div class="form-group">
                       <label>Facebook</label>
                       <input type="url" name="facebook" placeholder="http://facebook.com/namakamu" value="<?php echo $site['facebook'] ?>" class="form-control">
@@ -139,7 +138,6 @@
                   </div>
                   <div class="col-md-6 order-md-1">
                     <h3>Modul Optimasisasi Mesin Pencarian</h3>
-                    <hr>
                     <div class="form-group">
                       <label>Katakunci (Katakunci untuk Google, Bing, dll)</label>
                       <textarea name="keywords" rows="3" class="form-control" placeholder="Kata kunci / keywords"><?php echo $site['keywords'] ?></textarea>
@@ -148,8 +146,8 @@
                       <label>Teks Meta</label>
                       <textarea name="metatext" rows="5" class="form-control" placeholder="Kode metatext"><?php echo $site['metatext'] ?></textarea>
                     </div>
-                    <h3>Lokasi Google Map</h3>
                     <hr>
+                    <h3>Lokasi Google Map</h3>
                     <div class="form-group">
                       <label>Google Map</label>
                       <textarea name="google_map" rows="5" class="form-control" placeholder="Kode dari Google Map"><?php echo $site['google_map'] ?></textarea>

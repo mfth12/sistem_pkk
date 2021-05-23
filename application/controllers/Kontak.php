@@ -1,12 +1,13 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Home extends CI_Controller
+class Kontak extends CI_Controller
 {
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->model('konfigurasi_model');
+		$this->load->model('produk_model');
 		$this->load->model('berita_model');
 		$this->load->model('kas_model');
 		$this->load->model('sliders_model');
@@ -16,18 +17,14 @@ class Home extends CI_Controller
 	public function index()
 	{
 		$site		= $this->konfigurasi_model->listing();
-		$berita		= $this->berita_model->home();
-		$slide		= $this->sliders_model->getAll();
 		$struktur	= $this->struktur_model->getAllTampil();
 		$data		= array(
-			'title'			=> $site['namaweb'] . ' ' . $site['tagline'],
-			'keywords' 		=> "PKK Desa Uma Beringin",
+			'title'			=> 'Kontak',
+			'keywords' 		=> "Kontak, PKK, Desa Uma Beringin",
 			'site'			=> $site,
-			'berita_slide'	=> $berita,
-			'slide'			=> $slide,
 			'struktur'		=> $struktur,
 			'pakai_slide'	=> true,
-			'isi'			=> 'front/isi/home'
+			'isi'			=> 'front/isi/kontak'
 		);
 		$this->load->view('front/landing', $data);
 	}

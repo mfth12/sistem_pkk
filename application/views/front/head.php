@@ -122,7 +122,7 @@ $nav_profil = $this->site_model->nav_profil();
                                         </li>
                                 </ul>
                             </li>
-                            <li><a href="#">Kontak</a></li>
+                            <li><a href="<?php echo site_url('kontak')?>">Kontak</a></li>
                         </ul>
                     </div>
                 </div>

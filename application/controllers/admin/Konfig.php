@@ -53,7 +53,6 @@ class Konfig extends CI_Controller
 				'twitter'			=> $i->post('twitter'),
 				'instagram'			=> $i->post('instagram'),
 				'google_map'		=> $i->post('google_map'),
-				'logo'				=> $i->post('logo'),
 				'id_user'			=> $this->session->userdata('id')
 			);
 			$this->konfigurasi_model->edit($data);

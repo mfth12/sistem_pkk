@@ -29,7 +29,7 @@ class Keuangan extends CI_Controller
 		$ttl_mas = $this->kas_model->total_masuk();
 		// $ttl_saldo = $ttl_mas->jumlah - $ttl_kel->jumlah;
 		$data = array(
-			'title'		=> 'Sirkulasi Keuangan Default',
+			'title'		=> 'Sirkulasi Keuangan',
 			'namasite'	=> $site['namaweb'],
 			'result' 	=> $this->kas_model->all(),
 			'nomor' 	=> $no,
@@ -131,7 +131,7 @@ class Keuangan extends CI_Controller
 
 		// $total = $this->kas_model->row_masuk();
 		$data = array(
-			'title'		=> 'Pemasukan Kas',
+			'title'		=> 'Pemasukan',
 			'nomor' 	=> $no,
 			'namasite'	=> $site['namaweb'],
 			'result' 	=> $this->kas_model->masuk(),
@@ -154,7 +154,7 @@ class Keuangan extends CI_Controller
 
 		// $total = $this->kas_model->row_masuk();
 		$data = array(
-			'title'		=> 'Pengeluaran Kas',
+			'title'		=> 'Pengeluaran',
 			'nomor' 	=> $no,
 			'namasite'	=> $site['namaweb'],
 			'result' 	=> $this->kas_model->keluaran(),
@@ -202,7 +202,7 @@ class Keuangan extends CI_Controller
 	{
 		$hapus = $this->kas_model->hapus($nomor);
 		if ($hapus) {
-			$this->session->set_flashdata('maaf', 'Data keuangan barhasil dihapus');
+			$this->session->set_flashdata('maaf', 'Data keuangan berhasil dihapus');
 			redirect(site_url('admin/keuangan'));
 		} else {
 			$this->session->set_flashdata('maaf', 'Data keuangan gagal dihapus');
@@ -214,7 +214,7 @@ class Keuangan extends CI_Controller
 	{
 		$hapus = $this->kas_model->hapus($nomor);
 		if ($hapus) {
-			$this->session->set_flashdata('maaf', 'Data keuangan barhasil dihapus');
+			$this->session->set_flashdata('maaf', 'Data keuangan berhasil dihapus');
 			redirect(site_url('admin/keuangan/masukan'));
 		} else {
 			$this->session->set_flashdata('maaf', 'Data keuangan gagal dihapus');
@@ -226,7 +226,7 @@ class Keuangan extends CI_Controller
 	{
 		$hapus = $this->kas_model->hapus($nomor);
 		if ($hapus) {
-			$this->session->set_flashdata('maaf', 'Data keuangan barhasil dihapus');
+			$this->session->set_flashdata('maaf', 'Data keuangan berhasil dihapus');
 			redirect(site_url('admin/keuangan/keluaran'));
 		} else {
 			$this->session->set_flashdata('maaf', 'Data keuangan gagal dihapus');

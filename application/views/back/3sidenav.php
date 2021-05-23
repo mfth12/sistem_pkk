@@ -33,10 +33,6 @@
                                 <a class="nav-link" href="<?php echo site_url('admin/keuangan/keluaran') ?> ">Pengeluaran</a>
                             </nav>
                         </div>
-                        <a class="nav-link" href="<?php echo site_url('admin/user') ?> ">
-                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
-                            User
-                        </a>
                         <a class="nav-link" href="<?php echo site_url('admin/sliders') ?> ">
                             <div class="sb-nav-link-icon"><i class="fas fa-images"></i></div>
                             Sliders
@@ -44,6 +40,10 @@
                         <a class="nav-link" href="<?php echo site_url('admin/struktur') ?> ">
                             <div class="sb-nav-link-icon"><i class="fas fa-folder-open"></i></div>
                             Struktur PKK
+                        </a>
+                        <a class="nav-link" href="<?php echo site_url('admin/user') ?> ">
+                            <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+                            User
                         </a>
                         <a class="nav-link" href="<?php echo site_url('admin/konfig') ?> ">
                             <div class="sb-nav-link-icon"><i class="fas fa-wrench"></i></div>

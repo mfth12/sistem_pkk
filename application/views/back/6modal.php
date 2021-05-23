@@ -9,10 +9,8 @@
       </div>
       <div class="modal-body">Silakan keluar jika anda sudah yakin, dan ingin menyudahi sesi Anda dalam sistem ini.</div>
       <div class="modal-footer">
-
         <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
         <a class="btn btn-primary" href="<?php echo site_url('auth/logout'); ?>">Keluar</a>
-
       </div>
     </div>
   </div>
