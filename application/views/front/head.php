@@ -104,13 +104,13 @@ $nav_profil = $this->site_model->nav_profil();
                                         <li><a href="kosong-link.html">+ tambahan</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#">Galeri</a>
-                                <ul class="sub-menu">
+                            <li><a href="<?php echo site_url('galeri')?>">Galeri</a>
+                                <!-- <ul class="sub-menu">
                                     <li><a href="#">Pokja I</a></li>
                                     <li><a href="#">Pokja II</a></li>
                                     <li><a href="#">Pokja III</a></li>
                                     <li><a href="#">Pokja IV</a></li>
-                                </ul>
+                                </ul> -->
                             </li>
                             <li><a href="#">Tentang</a>
                                 <ul class="sub-menu">
@@ -148,8 +148,8 @@ $nav_profil = $this->site_model->nav_profil();
                     $no = 0;
                     foreach ($slide as $data2) {
                         // masuk logika if, untuk menentukan item yang aktif 
-                        if ($no == 0) {
-                    ?>
+                        if ($no == 0) { 
+                        ?>
                             <div class="carousel-item active" style="<?php echo "background-image: url('" . base_url('back_assets/upload/slider/' . $data2->image) . "');" ?>">
                                 <div class="carousel-caption d-none d-md-block">
                                     <h2 class="h2caption" style="color: white;"><?php echo $data2->name ?></h2>

@@ -160,7 +160,7 @@ class Berita extends CI_Controller
 					//kalau gagal upload
 					$data = array(
 						'site'		=> $site,
-						'title'		=> 'Edit Berita',
+						'title'		=> 'Ubah Berita',
 						'namasite'	=> $site['namaweb'],
 						'kategori'	=> $kategori,
 						'berita'	=> $berita,
@@ -237,7 +237,7 @@ class Berita extends CI_Controller
 		// End masuk database
 		if (!$v->run()) {
 			$data = array(
-				'title'		=> 'Edit Berita',
+				'title'		=> 'Ubah Berita',
 				'site'		=> $site,
 				'namasite'	=> $site['namaweb'],
 				'kategori'	=> $kategori,
