@@ -65,9 +65,8 @@
                                         <td><?php echo $kategori_berita->slug_kategori_berita ?></td>
                                         <td class="d-flex justify-content-center">
                                             <a href="<?php echo base_url('admin/kategori_berita/edit/' . $kategori_berita->id_kategori_berita) ?>" class="btn btn-primary btn-sm mr-1"><i class="fa fa-edit"></i> Ubah</a>
-
                                             <?php include('delete.php') ?>
-
+                                            <a href="<?php echo site_url('berita/kategori/' . $kategori_berita->slug_kategori_berita) ?>" target="_blank" class="btn btn-light btn-sm ml-1"><i class="fa fa-eye"></i></a>
                                         </td>
                                     </tr>
                                 <?php $i++;

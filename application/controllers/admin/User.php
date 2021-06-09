@@ -72,7 +72,7 @@ class User extends CI_Controller
 			$data = array(
 				'nama'			=> 	$i->post('nama'),
 				'email'			=>	$i->post('email'),
-				'username'		=>	$i->post('username'),
+				'username'		=>	str_replace(' ', '_', $i->post('username')),
 				'password'		=>	$i->post('password'),
 				'akses_level'	=>  $i->post('akses_level')
 			);
@@ -128,7 +128,7 @@ class User extends CI_Controller
 			$data = array(
 				'nama'			=> 	$i->post('nama'),
 				'email'			=>	$i->post('email'),
-				'username'		=>	$i->post('username'),
+				'username'		=>	str_replace(' ', '_', $i->post('username')),
 				'password'		=>	$i->post('password'),
 				'akses_level'	=>  $i->post('akses_level')
 			);

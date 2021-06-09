@@ -68,7 +68,6 @@ class Kas_model extends CI_Model {
     	return $query->result();
 	}
 
-	
 	function nomor()
 	{
 		$this->db->select('nomor');

@@ -20,14 +20,20 @@ class Simple_login {
 	// Login
 	public function login($username, $password) {
 		$query = $this->CI->db->get_where('users', array('username' => $username, 'password' => $password));
+		$query2 = $this->CI->db->get_where('users', array('email' => $username, 'password' => $password));
 		$ben = $this->getnamauser($username);//perintah mengambil username aja kalo sama.
+		$mail = $this->getnamaemail($username); //perintah mengambil username aja kalo sama.
 
-		if(empty($ben)) {
+		if (empty($ben || $mail)) {
     		$this->CI->session->set_flashdata('maaf', 'anda belum terdaftar dalam sistem'); // Buat session flashdata
     		redirect('auth');
 		}else{
-			if($query->num_rows() == 1) {
-				$row 	= $this->CI->db->query('SELECT * FROM users WHERE username = "'.$username.'"');
+			if(($query->num_rows() == 1) || ($query2->num_rows() == 1) ) {
+				if (isset($ben)) {
+					$row 	= $this->CI->db->query('SELECT * FROM users WHERE username = "'.$username.'"');
+				} if (isset($mail)) {
+					$row 	= $this->CI->db->query('SELECT * FROM users WHERE email = "'.$username.'"');
+				}
 				$admin 	= $row->row();
 				$id 	= $admin->id_user;
 				$nama	= $admin->nama;
@@ -61,6 +67,13 @@ class Simple_login {
 	private function getnamauser($username)
   	{
 		$this->CI->db->where('username', $username);
+        $result = $this->CI->db->get('users')->row();
+        return $result;
+	}
+
+	private function getnamaemail($username)
+  	{
+		$this->CI->db->where('email', $username);
         $result = $this->CI->db->get('users')->row();
         return $result;
 	}

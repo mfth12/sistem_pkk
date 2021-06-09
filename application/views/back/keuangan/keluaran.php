@@ -41,7 +41,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between lh-condensed">
                         <div class="d-flex">
-                            <p><a href="<?php echo site_url('superadmin') ?>" class="btn btn-danger" data-toggle="modal" data-target="#tambahKeluaran">
+                            <p><a href="<?php echo site_url('admin') ?>" class="btn btn-danger" data-toggle="modal" data-target="#tambahKeluaran">
                                     <i class="fa fa-plus"></i> Tambah Pengeluaran</a></p>
                         </div>
                         <div>

@@ -28,7 +28,7 @@
 			<!-- sekarang masuk ke kolom isi konten -->
 			<div class="card mb-4">
 				<div class="card-header">
-					<a href="<?php echo site_url('superadmin/struktur') ?>"><i class="fas fa-arrow-left"></i> Kembali</a>
+					<a href="<?php echo site_url('admin/struktur') ?>"><i class="fas fa-arrow-left"></i> Kembali</a>
 				</div>
 				<div class="card-body">
 					<div class="card mb-4">

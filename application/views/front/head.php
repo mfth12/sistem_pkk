@@ -12,11 +12,8 @@ $nav_profil = $this->site_model->nav_profil();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="keywords" content="<?php echo $keywords ?>">
-    <!-- Page Title -->
     <title><?php echo $title ?></title>
-    <!-- Favicon -->
     <link rel="shortcut icon" href="<?php echo base_url('back_assets/img/' . $site['icon']) ?>" type="image/x-icon">
-    <!-- CSS All -->
     <link href="<?php echo base_url('front_assets/css/animate-3.7.0.css') ?>" type="text/css" rel="stylesheet" media="all">
     <link href="<?php echo base_url('front_assets/css/font-awesome-4.7.0.min.css') ?>" type="text/css" rel="stylesheet">
     <link href="<?php echo base_url('front_assets/fonts/flat-icon/flaticon.css') ?>" type="text/css" rel="stylesheet">
@@ -25,7 +22,6 @@ $nav_profil = $this->site_model->nav_profil();
     <link href="<?php echo base_url('front_assets/css/nice-select.css') ?>" type="text/css" rel="stylesheet">
     <link href="<?php echo base_url('front_assets/css/style.css') ?>" type="text/css" rel="stylesheet">
     <link href="<?php echo base_url('front_assets/css/dropdown.css') ?>" type="text/css" rel="stylesheet">
-    <!-- Style tambahan -->
     <style>
         * {
             transition: all 0.6s;
@@ -67,15 +63,15 @@ $nav_profil = $this->site_model->nav_profil();
 </head>
 
 <body>
-    <!-- Header Fade-out -->
     <script>
         document.body.className += 'fade-out';
     </script>
-    <!-- loading Animation -->
+
     <div class="preloader">
         <div class="spinner"></div>
-    </div><a id="button-up"></a>
-    <!-- Navigation -->
+    </div>
+    <a id="button-up"></a>
+
     <header class="header-area main-header smart-scroll p-2 blur-ios border-bawah">
         <div class="container">
             <div class="row">
@@ -93,7 +89,7 @@ $nav_profil = $this->site_model->nav_profil();
                     <div class="main-menu">
                         <ul>
                             <li><a href="<?php echo base_url() ?>">Beranda</a></li>
-                            <li><a href="<?php echo site_url('berita')?>">Berita</a>
+                            <li><a href="<?php echo site_url('berita') ?>">Berita</a>
                                 <ul class="sub-menu">
                                     <?php foreach ($nav_berita as $nav_berita) { ?>
                                         <li>
@@ -104,7 +100,7 @@ $nav_profil = $this->site_model->nav_profil();
                                         <li><a href="kosong-link.html">+ tambahan</a></li>
                                 </ul>
                             </li>
-                            <li><a href="<?php echo site_url('galeri')?>">Galeri</a>
+                            <li><a href="<?php echo site_url('galeri') ?>">Galeri</a>
                                 <!-- <ul class="sub-menu">
                                     <li><a href="#">Pokja I</a></li>
                                     <li><a href="#">Pokja II</a></li>
@@ -122,7 +118,7 @@ $nav_profil = $this->site_model->nav_profil();
                                         </li>
                                 </ul>
                             </li>
-                            <li><a href="<?php echo site_url('kontak')?>">Kontak</a></li>
+                            <li><a href="<?php echo site_url('kontak') ?>">Kontak</a></li>
                         </ul>
                     </div>
                 </div>
@@ -134,8 +130,7 @@ $nav_profil = $this->site_model->nav_profil();
     if ($pakai_slide) {
     ?>
         <header>
-            <!-- html dimulai -->
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
                 <ol class="carousel-indicators">
                     <?php $no = 0;
                     foreach ($slide as $data) { ?>
@@ -147,9 +142,8 @@ $nav_profil = $this->site_model->nav_profil();
                     <?php
                     $no = 0;
                     foreach ($slide as $data2) {
-                        // masuk logika if, untuk menentukan item yang aktif 
-                        if ($no == 0) { 
-                        ?>
+                        if ($no == 0) {
+                    ?>
                             <div class="carousel-item active" style="<?php echo "background-image: url('" . base_url('back_assets/upload/slider/' . $data2->image) . "');" ?>">
                                 <div class="carousel-caption d-none d-md-block">
                                     <h2 class="h2caption" style="color: white;"><?php echo $data2->name ?></h2>
@@ -168,10 +162,8 @@ $nav_profil = $this->site_model->nav_profil();
                         <?php
                         }
                         ?>
-                        <!-- end of logika if -->
                     <?php $no++;
                     } ?>
-                    <!-- end foreach -->
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -182,7 +174,6 @@ $nav_profil = $this->site_model->nav_profil();
                     <span class="sr-only">Selanjutnya</span>
                 </a>
             </div>
-            <!-- html selesai -->
         </header>
     <?php
     } ?>

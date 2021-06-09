@@ -69,6 +69,7 @@
                                         <td class="d-flex justify-content-center">
                                             <a href="<?php echo base_url('admin/berita/edit/' . $berita->id_berita) ?>" class="btn btn-primary btn-sm mr-1"><i class="fa fa-edit"></i> Ubah</a>
                                             <?php include('delete.php') ?>
+                                            <a href="<?php echo site_url('berita/read/' . $berita->slug_berita) ?>" target="_blank" class="btn btn-light btn-sm ml-1"><i class="fa fa-eye"></i></a>
                                         </td>
                                     </tr>
                                 <?php $i++;

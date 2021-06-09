@@ -17,12 +17,16 @@ class Keuangan extends CI_Controller
 	public function index()
 	{
 		$site 	= $this->konfigurasi_model->listing();
-		$total = $this->kas_model->row_masuk();
+		$total 	= $this->kas_model->row_masuk();
 		$result = $this->kas_model->nomor();
+		$ben	= "001";
+		$bes	= date('Ymd') . $ben;
 		if (empty($result[0]['nomor'])) {
-			$no = date('Ymd') . "000001";
-		} else {
+			$no = $bes;
+		} else if (substr($result[0]['nomor'], 0, 8) == (date('Ymd'))) {
 			$no = $result[0]['nomor'] + 1;
+		} else if (substr($result[0]['nomor'], 0, 8) != (date('Ymd'))) {
+			$no = $bes;
 		}
 
 		$ttl_kel = $this->kas_model->total_keluar();
@@ -34,7 +38,7 @@ class Keuangan extends CI_Controller
 			'result' 	=> $this->kas_model->all(),
 			'nomor' 	=> $no,
 			'ttl' 		=> $this->kas_model->total_masuk(),
-			'ttl_k' 		=> $this->kas_model->total_keluar(),
+			'ttl_k' 	=> $this->kas_model->total_keluar(),
 			// 'ttl' 		=> $ttl_saldo,
 			'isi'		=> 'back/keuangan/list'
 		);
@@ -123,10 +127,14 @@ class Keuangan extends CI_Controller
 		$site 	= $this->konfigurasi_model->listing();
 		$total = $this->kas_model->row_masuk();
 		$result = $this->kas_model->nomor();
+		$ben	= "001";
+		$bes	= date('Ymd') . $ben;
 		if (empty($result[0]['nomor'])) {
-			$no = date('Ymd') . "000001";
-		} else {
+			$no = $bes;
+		} else if (substr($result[0]['nomor'], 0, 8) == (date('Ymd'))) {
 			$no = $result[0]['nomor'] + 1;
+		} else if (substr($result[0]['nomor'], 0, 8) != (date('Ymd'))) {
+			$no = $bes;
 		}
 
 		// $total = $this->kas_model->row_masuk();
@@ -146,10 +154,14 @@ class Keuangan extends CI_Controller
 		$site 	= $this->konfigurasi_model->listing();
 		$total = $this->kas_model->row_masuk();
 		$result = $this->kas_model->nomor();
+		$ben	= "001";
+		$bes	= date('Ymd') . $ben;
 		if (empty($result[0]['nomor'])) {
-			$no = date('Ymd') . "000001";
-		} else {
+			$no = $bes;
+		} else if (substr($result[0]['nomor'], 0, 8) == (date('Ymd'))) {
 			$no = $result[0]['nomor'] + 1;
+		} else if (substr($result[0]['nomor'], 0, 8) != (date('Ymd'))) {
+			$no = $bes;
 		}
 
 		// $total = $this->kas_model->row_masuk();
