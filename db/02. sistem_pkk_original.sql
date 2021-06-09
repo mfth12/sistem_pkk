@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2021 at 08:12 AM
+-- Generation Time: Jun 09, 2021 at 12:57 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -59,8 +59,7 @@ INSERT INTO `berita` (`id_berita`, `id_user`, `id_kategori_berita`, `slug_berita
 (19, 3, 7, 'pelatihan-penulisan-surat-menyurat', 'Pelatihan Penulisan Surat-menyurat', '<p style=\"text-align: justify;\"><strong>Kegiatan</strong> berlangsung dengan sangat antusias dari masyarakat.&nbsp;Kegiatan berlangsung dengan sangat antusias dari masyarakat.&nbsp;Kegiatan berlangsung dengan sangat antusias dari masyarakat.&nbsp;Kegiatan berlangsung dengan sangat antusias dari masyarakat.&nbsp;Kegiatan berlangsung dengan sangat antusias dari masyarakat.&nbsp;</p>', 'Berita', 'Publish', 'pelatihan-penulisan-surat-menyurat.jpg', '2020-11-10 15:34:44', '2021-05-20 03:36:26'),
 (20, 3, 10, 'menuju-ekonomi-take-off-melalui-pengembangan-umkm', 'Menuju Ekonomi Take Off Melalui Pengembangan UMKM', '<p>mengaktualisasi segala program yang bersifat pengembangan industri rt guna mempercepat kesejahteraan</p>', 'Berita', 'Publish', 'menuju-ekonomi-take-off-melalui-pengembangan-umkm.jpg', '2020-11-10 15:49:46', '2021-05-20 03:35:51'),
 (21, 3, 14, 'jango-desa', 'Jango Desa', '<p style=\"text-align: justify;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in mi erat. Vestibulum at eros non tortor porttitor viverra eu vel dui. Curabitur posuere vel purus vitae auctor. Pellentesque congue commodo felis, id molestie arcu vulputate in. Vestibulum accumsan purus felis, vitae facilisis lorem venenatis eu. Etiam dignissim vehicula ipsum quis lacinia. Donec ornare sollicitudin arcu, eu pulvinar magna aliquet nec. Mauris mollis, mauris eu scelerisque iaculis, arcu eros viverra quam, sit amet sodales lectus massa id orci. Fusce ultrices ante quis orci ultrices, vel semper sapien ultrices. Duis gravida sapien magna, sit amet sodales erat tincidunt a. Proin dictum vel velit nec volutpat. Nulla quis vestibulum dolor. Fusce dignissim sapien sit amet vehicula scelerisque. Donec facilisis odio ut mi facilisis facilisis.</p>\r\n<p style=\"text-align: justify;\">Mauris quis leo euismod, ultrices nibh vitae, mattis lectus. Integer odio libero, aliquam vitae pretium at, rutrum in nunc. Vestibulum eu dui vel nisi pellentesque venenatis. Aenean felis felis, suscipit in risus non, ultricies vehicula dolor. Nam vitae neque pellentesque, egestas quam vitae, auctor sem. Proin ornare eleifend felis, eget fermentum enim finibus nec. Ut imperdiet, eros id fringilla maximus, felis lectus porttitor enim, in feugiat magna elit vehicula lorem. Phasellus consectetur, libero in viverra ultrices, neque ipsum accumsan nisi, vitae imperdiet felis enim non dui. Ut at mattis nunc, sit amet aliquam massa. Suspendisse potenti. Cras finibus eget mi at dapibus. Phasellus tincidunt varius magna ac mollis.</p>\r\n<p style=\"text-align: justify;\">Curabitur sollicitudin rhoncus justo. Maecenas posuere dolor eu nisl blandit pharetra a at neque. Aliquam euismod ligula sed metus suscipit suscipit. Sed et venenatis ex. Sed nec metus ut justo ullamcorper varius. Vivamus tincidunt massa ante, at convallis eros ullamcorper et. Etiam vel magna leo. Integer aliquam, felis vel sollicitudin pretium, leo diam finibus ligula, accumsan volutpat nisi tellus venenatis sem. Aenean aliquet, sapien non pretium aliquet, odio erat volutpat neque, id vehicula mi elit nec erat. Quisque in quam non nibh placerat pellentesque eu quis risus.</p>', 'Berita', 'Publish', 'snack.jpg', '2021-05-19 20:32:09', '2021-05-23 07:46:17'),
-(22, 3, 14, 'gdc-developer', 'GDC Developer', '<p style=\"text-align: justify;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt consectetur massa, quis porta nibh ullamcorper nec. Suspendisse at ex erat. Etiam fermentum massa eu nulla consequat, eleifend ullamcorper risus venenatis. Integer ac ante et ex molestie ultrices vitae a leo. Etiam venenatis nisl et orci sagittis ornare. Pellentesque vel interdum nibh. Quisque tempus non ligula ac mattis. Proin lacinia massa ac mi convallis, et luctus eros aliquam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla dapibus erat nec venenatis pharetra. Aliquam consectetur, erat quis faucibus venenatis, nulla leo semper leo, at eleifend sem ligula et diam. Mauris gravida ultrices ligula, vitae sagittis ante cursus et. Proin nisi ante, cursus id dapibus a, ultricies ut lorem. Fusce tincidunt molestie eros in auctor. Sed dictum libero ornare, tincidunt orci et, hendrerit diam. Nullam ultricies sed ligula a rhoncus. Nam at dictum dui, in congue elit. Maecenas quis lacus et nunc mattis tincidunt sed ornare massa. Aenean dignissim vitae mi a cursus. Phasellus purus enim, tempor nec feugiat vitae, auctor eu odio. In sed lacus in nunc tempor fermentum. Morbi egestas massa vitae nisl porttitor sodales et sit amet tortor.</p>\r\n<p style=\"text-align: justify;\">Sed elementum mauris sit amet justo varius, vel eleifend est mollis. Duis tincidunt risus maximus pretium consectetur. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam tempus, lorem ut malesuada pharetra, leo purus bibendum purus, vitae ultricies dui mi id turpis. Donec dignissim ac ante non mattis. Sed at mollis felis. Mauris eu leo sem. Aliquam aliquam volutpat odio vel feugiat. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla elit eros, lacinia ut tincidunt in, imperdiet ac quam. Sed pulvinar sem quam, eu molestie tortor consectetur ut. Ut consectetur pulvinar arcu et facilisis. Cras erat arcu, mollis imperdiet justo eget, ullamcorper tempus nunc. Vivamus aliquam metus eget elementum semper. Ut rhoncus vel leo id commodo. Quisque egestas, lorem eu aliquam hendrerit, eros tellus sodales felis, quis scelerisque orci urna in orci.</p>\r\n<p style=\"text-align: justify;\">Nullam dictum cursus varius. Phasellus eget lectus pulvinar, iaculis nisl ut, auctor nunc. Fusce egestas, felis id convallis pharetra, nulla nisl rutrum mauris, eu rhoncus sapien ipsum ultricies mi. Proin in posuere tortor. Nullam posuere nisi sed urna porttitor placerat. Donec sit amet vulputate dui. Integer finibus turpis nulla, ac consectetur sapien bibendum ut. Curabitur ipsum nulla, luctus id vehicula a, venenatis at nulla. Sed turpis orci, pretium in velit eget, semper elementum massa. Praesent et lectus aliquam, pretium tellus vel, eleifend velit. Mauris vel urna at massa euismod convallis. Fusce nunc magna, vestibulum sed dignissim at, viverra molestie neque.</p>\r\n<p style=\"text-align: justify;\">Thank you</p>', 'Berita', 'Publish', 'gdc-developer.png', '2021-05-19 20:33:44', '2021-05-23 10:59:29'),
-(23, 3, 14, 'asdd', 'asdd', '<p>Tambah data disini</p>', 'Berita', 'Publish', 'asdd.jpg', '2021-06-07 19:55:00', '2021-06-07 12:55:00');
+(22, 3, 14, 'gdc-developer', 'GDC Developer', '<p style=\"text-align: justify;\">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt consectetur massa, quis porta nibh ullamcorper nec. Suspendisse at ex erat. Etiam fermentum massa eu nulla consequat, eleifend ullamcorper risus venenatis. Integer ac ante et ex molestie ultrices vitae a leo. Etiam venenatis nisl et orci sagittis ornare. Pellentesque vel interdum nibh. Quisque tempus non ligula ac mattis. Proin lacinia massa ac mi convallis, et luctus eros aliquam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nulla dapibus erat nec venenatis pharetra. Aliquam consectetur, erat quis faucibus venenatis, nulla leo semper leo, at eleifend sem ligula et diam. Mauris gravida ultrices ligula, vitae sagittis ante cursus et. Proin nisi ante, cursus id dapibus a, ultricies ut lorem. Fusce tincidunt molestie eros in auctor. Sed dictum libero ornare, tincidunt orci et, hendrerit diam. Nullam ultricies sed ligula a rhoncus. Nam at dictum dui, in congue elit. Maecenas quis lacus et nunc mattis tincidunt sed ornare massa. Aenean dignissim vitae mi a cursus. Phasellus purus enim, tempor nec feugiat vitae, auctor eu odio. In sed lacus in nunc tempor fermentum. Morbi egestas massa vitae nisl porttitor sodales et sit amet tortor.</p>\r\n<p style=\"text-align: justify;\">Sed elementum mauris sit amet justo varius, vel eleifend est mollis. Duis tincidunt risus maximus pretium consectetur. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam tempus, lorem ut malesuada pharetra, leo purus bibendum purus, vitae ultricies dui mi id turpis. Donec dignissim ac ante non mattis. Sed at mollis felis. Mauris eu leo sem. Aliquam aliquam volutpat odio vel feugiat. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nulla elit eros, lacinia ut tincidunt in, imperdiet ac quam. Sed pulvinar sem quam, eu molestie tortor consectetur ut. Ut consectetur pulvinar arcu et facilisis. Cras erat arcu, mollis imperdiet justo eget, ullamcorper tempus nunc. Vivamus aliquam metus eget elementum semper. Ut rhoncus vel leo id commodo. Quisque egestas, lorem eu aliquam hendrerit, eros tellus sodales felis, quis scelerisque orci urna in orci.</p>\r\n<p style=\"text-align: justify;\">Nullam dictum cursus varius. Phasellus eget lectus pulvinar, iaculis nisl ut, auctor nunc. Fusce egestas, felis id convallis pharetra, nulla nisl rutrum mauris, eu rhoncus sapien ipsum ultricies mi. Proin in posuere tortor. Nullam posuere nisi sed urna porttitor placerat. Donec sit amet vulputate dui. Integer finibus turpis nulla, ac consectetur sapien bibendum ut. Curabitur ipsum nulla, luctus id vehicula a, venenatis at nulla. Sed turpis orci, pretium in velit eget, semper elementum massa. Praesent et lectus aliquam, pretium tellus vel, eleifend velit. Mauris vel urna at massa euismod convallis. Fusce nunc magna, vestibulum sed dignissim at, viverra molestie neque.</p>\r\n<p style=\"text-align: justify;\">Thank you</p>', 'Berita', 'Publish', 'gdc-developer.png', '2021-05-19 20:33:44', '2021-05-23 10:59:29');
 
 -- --------------------------------------------------------
 
@@ -113,6 +112,26 @@ INSERT INTO `galeri` (`galeri_id`, `nomor`, `name`, `image`, `description`) VALU
 (914, 5, 'Rapat Persiapan BBGRM', 'Rapat_Persiapan_BBGRN.jpg', 'Rapat PKK bersama Camat Unter Iwes untuk persiapan BBGRN 2018 '),
 (915, 20, 'Sosialisasi PERDA Ketahanan dan Kesejahteraan Keluarga', 'Sosialisasi_PERDA_Ketahanan_dan_Kesejahteraan_Keluarga.jpg', 'Sosialisasi yang diselenggarakan oleh PERDA Ketahanan dan Kesejahteraan Keluarga - Tahun 2019'),
 (916, 21, 'Sosialisasi Program Pemberdayaan Wanita', 'Sosialisasi_Program_Pemberdayaan_Wanita.jpg', 'Pra-Pelatihan Wirausaha Pekerja Migran Indonesia (PMI) Purna - Tahun 2019 ');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jenis_user`
+--
+
+CREATE TABLE `jenis_user` (
+  `id_jenis` int(6) NOT NULL,
+  `nama_jenis` varchar(64) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `jenis_user`
+--
+
+INSERT INTO `jenis_user` (`id_jenis`, `nama_jenis`) VALUES
+(232, 'admin_pkk'),
+(233, 'sekret_pokja'),
+(234, 'kades');
 
 -- --------------------------------------------------------
 
@@ -276,13 +295,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `nama`, `email`, `username`, `password`, `akses_level`) VALUES
-(3, 'Miftahul', 'ciftah12@gmail.com', 'pkkdesa', 'desa', 'superadmin'),
-(4, 'Perangkat Desa Uma Beringin', 'desa@gmail.com', 'perangkatdesa', 'desa', 'admin_desa'),
-(13, 'Rysha Apriani', 'ryshaaaaa@gmail.com', 'admin_umum', 'ibubaikhati', 'superadmin'),
-(15, 'karmila syafitri', 'karmilasyafitri7@gmail.com', 'adminpokja4', 'milayanti', 'superadmin'),
-(16, 'Rulany Indra Gartika', 'rulanyindragartika1984@gmail.com', 'adminpokja3', '170845', 'superadmin'),
-(17, 'nama lengkap anda adalah', 'sad@df.com', 'miftah_huul', '123', 'superadmin'),
-(18, 'asd', 'ciftahulhaq12@gmail.com', 'pkkdesasd', '9', 'admin_desa');
+(13, 'Rysha Apriani', 'ryshaaaaa@gmail.com', 'admin_umum', 'risa', 'superadmin'),
+(639, 'Unique', 'unique@gmail.com', 'uniq', 'uniq', 'admin_desa'),
+(640, 'Sekretaris Pokja', 'pokja3@umaberingin.desa.id', 'pkja3', 'pkja3', 'superadmin'),
+(641, 'Miftahul', 'ciftah12@gmail.com', 'pkkdesa', 'desa', 'superadmin');
 
 --
 -- Indexes for dumped tables
@@ -306,6 +322,12 @@ ALTER TABLE `data_kas`
 --
 ALTER TABLE `galeri`
   ADD PRIMARY KEY (`galeri_id`);
+
+--
+-- Indexes for table `jenis_user`
+--
+ALTER TABLE `jenis_user`
+  ADD PRIMARY KEY (`id_jenis`);
 
 --
 -- Indexes for table `kategori_berita`
@@ -363,6 +385,12 @@ ALTER TABLE `galeri`
   MODIFY `galeri_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=917;
 
 --
+-- AUTO_INCREMENT for table `jenis_user`
+--
+ALTER TABLE `jenis_user`
+  MODIFY `id_jenis` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=235;
+
+--
 -- AUTO_INCREMENT for table `kategori_berita`
 --
 ALTER TABLE `kategori_berita`
@@ -384,7 +412,7 @@ ALTER TABLE `slider`
 -- AUTO_INCREMENT for table `struktur`
 --
 ALTER TABLE `struktur`
-  MODIFY `slider_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2948;
+  MODIFY `slider_id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2949;
 
 --
 -- AUTO_INCREMENT for table `tabel_tahun`
@@ -396,7 +424,7 @@ ALTER TABLE `tabel_tahun`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=635;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=642;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
