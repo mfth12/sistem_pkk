@@ -79,10 +79,10 @@
                     <div class="col-xl-6 col-md-6">
                         <div class="card bg-primary text-white mb-4">
                             <div class="card-body">
-                                <h4><?php echo count($kategori_berita) ?> Kategori Berita</h4>
+                                <h4><?php echo count($pokja) ?> Pokja</h4>
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="<?php echo site_url('admin/kategori_berita') ?>">Lihat Detail Kategori Berita</a>
+                                <a class="small text-white stretched-link" href="<?php echo site_url('admin/pokja') ?>">Lihat Detail Pokja</a>
                                 <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                             </div>
                         </div>

@@ -93,8 +93,8 @@ $nav_profil = $this->site_model->nav_profil();
                                 <ul class="sub-menu">
                                     <?php foreach ($nav_berita as $nav_berita) { ?>
                                         <li>
-                                            <a href="<?php echo site_url('berita/kategori/' . $nav_berita->slug_kategori_berita) ?>">
-                                                <?php echo $nav_berita->nama_kategori_berita ?>
+                                            <a href="<?php echo site_url('berita/pokja/' . $nav_berita->slug_pokja) ?>">
+                                                <?php echo $nav_berita->nama_pokja ?>
                                             </a><?php } ?>
                                         </li>
                                         <li><a href="kosong-link.html">+ tambahan</a></li>

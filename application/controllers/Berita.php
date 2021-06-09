@@ -9,7 +9,7 @@ class Berita extends CI_Controller
 		parent::__construct();
 		$this->load->model('konfigurasi_model');
 		$this->load->model('berita_model');
-		$this->load->model('kategori_berita_model');
+		$this->load->model('pokja_model');
 		$this->load->model('sliders_model');
 		$this->load->model('struktur_model');
 	}
@@ -56,10 +56,10 @@ class Berita extends CI_Controller
 		$this->load->view('front/landing', $data);
 	}
 
-	// Kategori 
-	public function kategori($slug_kategori_berita = null)
+	// pokja 
+	public function pokja($slug_pokja = null)
 	{
-		if (!isset($slug_kategori_berita)) redirect('berita');
+		if (!isset($slug_pokja)) redirect('berita');
 		$config['first_link']       = 'Awal';
 		$config['last_link']        = 'Akhir';
 		$config['next_link']        = 'Selanjutnya';
@@ -79,20 +79,20 @@ class Berita extends CI_Controller
 		$config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
 		$config['last_tagl_close']  = '</span></li>';
 		$site				= $this->konfigurasi_model->listing();
-		$kategori			= $this->kategori_berita_model->read($slug_kategori_berita);
-		$jumlah_data		= $this->berita_model->jumlah_kateg($kategori->id_kategori_berita); //total row
+		$pokja			= $this->pokja_model->read($slug_pokja);
+		$jumlah_data		= $this->berita_model->jumlah_kateg($pokja->id_pokja); //total row
 		$this->load->library('pagination');
-		$config['base_url'] = base_url().'berita/kategori/'.$slug_kategori_berita.'/';
+		$config['base_url'] = base_url().'berita/pokja/'.$slug_pokja.'/';
 		$config['total_rows'] = $jumlah_data;
 		$config['per_page'] = 3;
 		$this->pagination->initialize($config);
-		$from = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
-		$id_kategori_berita	= $kategori->id_kategori_berita;
-		$berita				= $this->berita_model->kategori($id_kategori_berita, $config['per_page'], $from);
+		$from 				= ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
+		$id_pokja			= $pokja->id_pokja;
+		$berita				= $this->berita_model->pokja($id_pokja, $config['per_page'], $from);
 
 		$data	= array(
-			'title'		=> $kategori->nama_kategori_berita,
-			'keywords' 	=> 'Berita '.$kategori->nama_kategori_berita,
+			'title'		=> $pokja->nama_pokja,
+			'keywords' 	=> 'Berita '.$pokja->nama_pokja,
 			'site'		=> $site,
 			'berita'	=> $berita,
 			'pakai_slide'=> false,

@@ -4,8 +4,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-top text-center">
-                    <h2>Kata Sambutan</h2>
-                    <p>TP-PKK Desa Uma Beringin</p>
+                    <h2>Kata Mereka</h2>
+                    <p>Tentang TP-PKK Desa Uma Beringin</p>
                 </div>
             </div>
         </div>

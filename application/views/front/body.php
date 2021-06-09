@@ -34,8 +34,8 @@
                         <ul>
                             <?php $footer_berita  = $this->site_model->nav_berita(); ?>
                             <?php foreach ($footer_berita as $nav_berita) { ?>
-                                <li class="mb-2"><a href="<?php echo site_url('kegiatan/kategori/' . $nav_berita->slug_kategori_berita) ?>">
-                                        <?php echo $nav_berita->nama_kategori_berita ?>
+                                <li class="mb-2"><a href="<?php echo site_url('kegiatan/pokja/' . $nav_berita->slug_pokja) ?>">
+                                        <?php echo $nav_berita->nama_pokja ?>
                                     </a></li>
                             <?php } ?>
                         </ul>
@@ -47,8 +47,8 @@
                         <ul>
                             <?php $footer_berita  = $this->site_model->nav_berita(); ?>
                             <?php foreach ($footer_berita as $nav_berita) { ?>
-                                <li class="mb-2"><a href="<?php echo site_url('kegiatan/kategori/' . $nav_berita->slug_kategori_berita) ?>">
-                                        <?php echo $nav_berita->nama_kategori_berita ?>
+                                <li class="mb-2"><a href="<?php echo site_url('kegiatan/pokja/' . $nav_berita->slug_pokja) ?>">
+                                        <?php echo $nav_berita->nama_pokja ?>
                                     </a></li>
                             <?php } ?>
                         </ul>

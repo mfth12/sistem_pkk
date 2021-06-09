@@ -50,7 +50,7 @@
                                     <th width="25" class="text-center">No.</th>
                                     <th width="25">Gambar</th>
                                     <th>Judul Kegiatan</th>
-                                    <th>Kategori</th>
+                                    <th>Pokja</th>
                                     <th>Status - Jenis</th>
                                     <th class="text-center">Action</th>
                                 </tr>
@@ -64,7 +64,7 @@
                                             <img src="<?php echo base_url('back_assets/upload/image/thumbs/' . $berita->gambar) ?>" class="img img-responsive" width="60">
                                         </td>
                                         <td><?php echo $berita->nama_berita ?></td>
-                                        <td><?php echo $berita->nama_kategori_berita ?></td>
+                                        <td><?php echo $berita->nama_pokja ?></td>
                                         <td><?php echo $berita->status_berita ?> - <?php echo $berita->jenis_berita ?></td>
                                         <td class="d-flex justify-content-center">
                                             <a href="<?php echo base_url('admin/berita/edit/' . $berita->id_berita) ?>" class="btn btn-primary btn-sm mr-1"><i class="fa fa-edit"></i> Ubah</a>

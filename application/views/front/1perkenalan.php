@@ -4,8 +4,8 @@
         <div class="row">
             <div class="col-lg-8">
                 <div>
-                    <h1>Pemberdayaan dan Kesejahteraan Keluarga (PKK)</h1>
-                    <p class="py-3">Light earth also land can't. May you midst shall lights blessed in lights Have gathered image morning blessed grass him. Appear female rule all seas she'd winged</p>
+                    <h1><?= $site['welcome_say']; ?></h1>
+                    <p class="py-1"><?= $site['deskripsi_say']; ?></p>
                 </div>
             </div>
             <div class="col-lg-4">

@@ -41,9 +41,9 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between lh-condensed">
                         <div class="d-flex">
-                            <p><a href="<?php echo site_url('#') ?>" class="btn btn-success mr-2" data-toggle="modal" data-target="#tambahMasukan">
+                            <p><a href="<?php echo site_url('admin/keuangan/masukan') ?>" class="btn btn-success mr-2">
                                     <i class="fa fa-plus"></i> Tambah Pemasukan</a></p>
-                            <p><a href="<?php echo site_url('#') ?>" class="btn btn-danger" data-toggle="modal" data-target="#tambahKeluaran">
+                            <p><a href="<?php echo site_url('admin/keuangan/keluaran') ?>" class="btn btn-danger">
                                     <i class="fa fa-plus"></i> Tambah Pengeluaran</a></p>
                         </div>
                         <div>

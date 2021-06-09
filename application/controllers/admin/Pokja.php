@@ -7,7 +7,7 @@ class Pokja extends CI_Controller
 	{
 		parent::__construct();
 		$this->simple_login->terotentikasi();
-		$this->load->model('kategori_berita_model');
+		$this->load->model('pokja_model');
 		// if($this->session->userdata('akses_level') != 'superadmin')
 		// 	show_404();
 	}
@@ -15,17 +15,17 @@ class Pokja extends CI_Controller
 	// Index
 	public function index()
 	{
-		$kategori_berita = $this->kategori_berita_model->listing();
-		$site = $this->konfigurasi_model->listing();
+		$pokja 	= $this->pokja_model->listing();
+		$site 	= $this->konfigurasi_model->listing();
 
 		// Validasi
 		$this->form_validation->set_rules(
-			'nama_kategori_berita',
-			'Nama kategori',
-			'required|is_unique[kategori_berita.nama_kategori_berita]',
+			'nama_pokja',
+			'Nama pokja',
+			'required|is_unique[pokja.nama_pokja]',
 			array(
-				'required'	=> 'Nama kategori berita harus diisi',
-				'is_unique'	=> 'Kategori berita <strong>'. $this->input->post('nama_kategori_berita') . '</strong> sudah ada, ganti yang lain'
+				'required'	=> 'Nama pokja harus diisi',
+				'is_unique'	=> 'Pokja <strong>' . $this->input->post('nama_pokja') . '</strong> sudah ada, ganti yang lain'
 			)
 		);
 
@@ -33,78 +33,78 @@ class Pokja extends CI_Controller
 			// End validasi
 
 			$data = array(
-				'title'				=> 'Kategori Berita',
+				'title'				=> 'Pokja',
 				'namasite'	        => $site['namaweb'],
-				'kategori_berita'	=> $kategori_berita,
-				'isi'				=> 'back/kategori_berita/index'
+				'pokja'				=> $pokja,
+				'isi'				=> 'back/pokja/index'
 			);
 			$this->load->view('back/wrapper', $data);
 			// Masuk database
 		} else {
 			$i 				= $this->input;
-			$slug_kategori	= url_title($i->post('nama_kategori_berita'), 'dash', TRUE);
-			$data = array(
-				'slug_kategori_berita'	=> $slug_kategori,
-				'nama_kategori_berita'	=> $i->post('nama_kategori_berita'),
+			$slug_pokja		= url_title($i->post('nama_pokja'), 'dash', TRUE);
+			$data 			= array(
+				'slug_pokja'			=> $slug_pokja,
+				'nama_pokja'			=> $i->post('nama_pokja'),
 				'keterangan'			=> $i->post('keterangan'),
 				'urutan'				=> $i->post('urutan')
 			);
-			$this->kategori_berita_model->tambah($data);
-			$this->session->set_flashdata('sukses', 'Kategori berita berhasil ditambah');
-			redirect(site_url('admin/kategori_berita'));
+			$this->pokja_model->tambah($data);
+			$this->session->set_flashdata('sukses', 'Pokja berhasil ditambah');
+			redirect(site_url('admin/pokja'));
 		}
 		// End masuk database
 	}
 
 	// Edit
-	public function edit($id_kategori_berita)
+	public function edit($id_pokja)
 	{
-		$kategori_berita = $this->kategori_berita_model->detail($id_kategori_berita);
+		$pokja = $this->pokja_model->detail($id_pokja);
 		$site = $this->konfigurasi_model->listing();
 
 		// Validasi
 		$this->form_validation->set_rules(
-			'nama_kategori_berita',
-			'Nama kategori',
+			'nama_pokja',
+			'Nama pokja',
 			'required',
-			array('required'	=> 'Nama kategori berita harus diisi')
+			array('required'	=> 'Nama pokja harus diisi')
 		);
 
 		if ($this->form_validation->run() === FALSE) {
 			// End validasi
 
 			$data = array(
-				'title'				=> 'Edit Kategori',
+				'title'				=> 'Edit Pokja',
 				'namasite'      	=> $site['namaweb'],
-				'kategori_berita'	=> $kategori_berita,
-				'isi'				=> 'back/kategori_berita/edit'
+				'pokja'				=> $pokja,
+				'isi'				=> 'back/pokja/edit'
 			);
 			$this->load->view('back/wrapper', $data);
 			// Masuk database
 		} else {
 			$i 				= $this->input;
-			$slug_kategori	= url_title($i->post('nama_kategori_berita'), 'dash', TRUE);
+			$slug_pokja	= url_title($i->post('nama_pokja'), 'dash', TRUE);
 			$data = array(
-				'id_kategori_berita'	=> $id_kategori_berita,
-				'slug_kategori_berita'	=> $slug_kategori,
-				'nama_kategori_berita'	=> $i->post('nama_kategori_berita'),
+				'id_pokja'				=> $id_pokja,
+				'slug_pokja'			=> $slug_pokja,
+				'nama_pokja'			=> $i->post('nama_pokja'),
 				'keterangan'			=> $i->post('keterangan'),
 				'urutan'				=> $i->post('urutan')
 			);
-			$this->kategori_berita_model->edit($data);
-			$this->session->set_flashdata('sukses', 'Kategori berita berhasil diubah');
-			redirect(site_url('admin/kategori_berita'));
+			$this->pokja_model->edit($data);
+			$this->session->set_flashdata('sukses', 'Pokja berhasil diubah');
+			redirect(site_url('admin/pokja'));
 		}
 		// End masuk database
 	}
 
 	// Delete
-	public function delete($id_kategori_berita)
+	public function delete($id_pokja)
 	{
 		$this->simple_login->terotentikasi();
-		$data = array('id_kategori_berita'	=> $id_kategori_berita);
-		$this->kategori_berita_model->delete($data);
-		$this->session->set_flashdata('dihapus', 'Kategori berita berhasil dihapus');
-		redirect(site_url('admin/kategori_berita'));
+		$data = array('id_pokja' => $id_pokja);
+		$this->pokja_model->delete($data);
+		$this->session->set_flashdata('dihapus', 'Pokja berhasil dihapus');
+		redirect(site_url('admin/pokja'));
 	}
 }

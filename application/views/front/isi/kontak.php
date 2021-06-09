@@ -43,20 +43,20 @@
                 </div>
 
                 <div class="single-widget category-widget">
-                    <h4 class="title">Kategori Berita</h4>
+                    <h4 class="title">Berita Pokja</h4>
                     <?php $footer_berita  = $this->site_model->nav_berita(); ?>
                     <?php foreach ($footer_berita as $nav_berita) { ?>
-                        <!-- Kategori -->
+                        <!-- pokja -->
                         <ul>
                             <li>
-                                <a href="<?php echo site_url('berita/kategori/' . $nav_berita->slug_kategori_berita) ?>" class="justify-content-between align-items-center d-flex">
-                                    <h6><?php echo $nav_berita->nama_kategori_berita ?></h6> <span>94</span>
+                                <a href="<?php echo site_url('berita/pokja/' . $nav_berita->slug_pokja) ?>" class="justify-content-between align-items-center d-flex">
+                                    <h6><?php echo $nav_berita->nama_pokja ?></h6> <span>94</span>
                                 </a>
                             </li>
                         <?php } ?>
                         </ul>
                 </div>
-                <!-- Kategori end -->
+                <!-- pokja end -->
             </div>
         </div>
     </div>

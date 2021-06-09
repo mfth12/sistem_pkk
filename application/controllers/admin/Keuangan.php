@@ -33,7 +33,7 @@ class Keuangan extends CI_Controller
 		$ttl_mas = $this->kas_model->total_masuk();
 		// $ttl_saldo = $ttl_mas->jumlah - $ttl_kel->jumlah;
 		$data = array(
-			'title'		=> 'Sirkulasi Keuangan',
+			'title'		=> 'Keuangan',
 			'namasite'	=> $site['namaweb'],
 			'result' 	=> $this->kas_model->all(),
 			'nomor' 	=> $no,

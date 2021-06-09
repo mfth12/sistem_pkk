@@ -89,10 +89,10 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Berita Pokja</label>
-                                <select name="id_kategori_berita" class="form-control">
-                                    <?php foreach ($kategori as $kategori) { ?>
-                                        <option value="<?php echo $kategori->id_kategori_berita ?>">
-                                            <?php echo $kategori->nama_kategori_berita ?></option>
+                                <select name="id_pokja" class="form-control">
+                                    <?php foreach ($pokja as $pokja) { ?>
+                                        <option value="<?php echo $pokja->id_pokja ?>">
+                                            <?php echo $pokja->nama_pokja ?></option>
                                     <?php } ?>
                                 </select>
                             </div>

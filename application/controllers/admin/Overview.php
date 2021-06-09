@@ -9,7 +9,7 @@ class overview extends CI_Controller
 		$this->simple_login->terotentikasi();
 		$this->load->model('user_model');
 		$this->load->model('berita_model');
-		$this->load->model('kategori_berita_model');
+		$this->load->model('pokja_model');
 		$this->load->model('kas_model');
 		$this->load->model('sliders_model');
 		$this->load->model('struktur_model');
@@ -22,7 +22,7 @@ class overview extends CI_Controller
 		$site 				= $this->konfigurasi_model->listing();
 		$user				= $this->user_model->listing();
 		$berita				= $this->berita_model->listing();
-		$kategori_berita	= $this->kategori_berita_model->listing();
+		$pokja				= $this->pokja_model->listing();
 		$total 				= $this->kas_model->total_all();
 		$slider 			= $this->sliders_model->total_all();
 		$struktur 			= $this->struktur_model->total_all();
@@ -32,7 +32,7 @@ class overview extends CI_Controller
 			'site'				=> $site,
 			'user'				=> $user,
 			'berita'			=> $berita,
-			'kategori_berita'	=> $kategori_berita,
+			'pokja'				=> $pokja,
 			'total_trans'		=> $total,
 			'slider'			=> $slider,
 			'struktur'			=> $struktur,

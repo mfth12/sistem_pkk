@@ -9,7 +9,7 @@ class Berita extends CI_Controller
 		parent::__construct();
 		$this->simple_login->terotentikasi();
 		$this->load->model('berita_model');
-		$this->load->model('kategori_berita_model');
+		$this->load->model('pokja_model');
 		$this->load->model('konfigurasi_model');
 		// if($this->session->userdata('akses_level') != 'superadmin')
 		// 	show_404();
@@ -22,7 +22,7 @@ class Berita extends CI_Controller
 		$site 	= $this->konfigurasi_model->listing();
 		$data = array(
 			'site'		=> $site, //percontohan untuk yang lain, menggunakan $site-['details']
-			'title'		=> 'Berita PKK',
+			'title'		=> 'Berita',
 			'namasite'	=> $site['namaweb'],
 			'berita'	=> $berita,
 			'isi'		=> 'back/2berita/index'
@@ -34,7 +34,7 @@ class Berita extends CI_Controller
 	public function tambah()
 	{
 		$site 		= $this->konfigurasi_model->listing();
-		$kategori	= $this->kategori_berita_model->listing(); //ngambil jenis kategori
+		$pokja	= $this->pokja_model->listing(); //ngambil jenis pokja
 		// Validasi
 		$v = $this->form_validation;
 		$v->set_rules(
@@ -68,7 +68,7 @@ class Berita extends CI_Controller
 					'title'		=> 'Tambah Berita',
 					'site'		=> $site,
 					'namasite'	=> $site['namaweb'],
-					'kategori'	=> $kategori,
+					'pokja'	=> $pokja,
 					'error'		=> $this->upload->display_errors(),
 					'isi'		=> 'back/2berita/tambah'
 				);
@@ -95,7 +95,7 @@ class Berita extends CI_Controller
 				$i = $this->input;
 				$data = array(
 					'id_user'				=> $this->session->userdata('id'),
-					'id_kategori_berita'	=> $i->post('id_kategori_berita'),
+					'id_pokja'	=> $i->post('id_pokja'),
 					'slug_berita'			=> url_title($i->post('nama_berita'), 'dash', TRUE),
 					'nama_berita'			=> $i->post('nama_berita'),
 					'keterangan'			=> $i->post('keterangan'),
@@ -116,7 +116,7 @@ class Berita extends CI_Controller
 				'title'		=> 'Tambah Berita',
 				'site'		=> $site,
 				'namasite'	=> $site['namaweb'],
-				'kategori'	=> $kategori, //ngambil data kategori
+				'pokja'		=> $pokja, //ngambil data pokja
 				'isi'		=> 'back/2berita/tambah'
 			);
 			$this->load->view('back/wrapper', $data);
@@ -129,7 +129,7 @@ class Berita extends CI_Controller
 	{
 		if (!isset($id_berita)) redirect('admin/berita');
 		$berita		= $this->berita_model->detail($id_berita);
-		$kategori	= $this->kategori_berita_model->listing();
+		$pokja	= $this->pokja_model->listing();
 		$site 		= $this->konfigurasi_model->listing();
 		// Validasi
 		$v = $this->form_validation;
@@ -162,7 +162,7 @@ class Berita extends CI_Controller
 						'site'		=> $site,
 						'title'		=> 'Ubah Berita',
 						'namasite'	=> $site['namaweb'],
-						'kategori'	=> $kategori,
+						'pokja'	=> $pokja,
 						'berita'	=> $berita,
 						'error'		=> $this->upload->display_errors(),
 						'isi'		=> 'back/2berita/edit'
@@ -190,7 +190,7 @@ class Berita extends CI_Controller
 					$data = array(
 						'id_berita'				=> $id_berita,
 						'id_user'				=> $this->session->userdata('id'),
-						'id_kategori_berita'	=> $i->post('id_kategori_berita'),
+						'id_pokja'	=> $i->post('id_pokja'),
 						'slug_berita'			=> url_title($i->post('nama_berita'), 'dash', TRUE),
 						'nama_berita'			=> $i->post('nama_berita'),
 						'keterangan'			=> $i->post('keterangan'),
@@ -222,7 +222,7 @@ class Berita extends CI_Controller
 				$data = array(
 					'id_berita'				=> $id_berita,
 					'id_user'				=> $this->session->userdata('id'),
-					'id_kategori_berita'	=> $i->post('id_kategori_berita'),
+					'id_pokja'				=> $i->post('id_pokja'),
 					'slug_berita'			=> url_title($i->post('nama_berita'), 'dash', TRUE),
 					'nama_berita'			=> $i->post('nama_berita'),
 					'keterangan'			=> $i->post('keterangan'),
@@ -240,7 +240,7 @@ class Berita extends CI_Controller
 				'title'		=> 'Ubah Berita',
 				'site'		=> $site,
 				'namasite'	=> $site['namaweb'],
-				'kategori'	=> $kategori,
+				'pokja'	=> $pokja,
 				'berita'	=> $berita,
 				'isi'		=> 'back/2berita/edit'
 			);

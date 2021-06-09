@@ -98,13 +98,13 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Kategori Berita</label>
-                                <select name="id_kategori_berita" class="form-control">
-                                    <?php foreach ($kategori as $kategori) { ?>
-                                        <option value="<?php echo $kategori->id_kategori_berita ?>" <?php if ($berita->id_kategori_berita == $kategori->id_kategori_berita) {
+                                <label>Pokja Berita</label>
+                                <select name="id_pokja" class="form-control">
+                                    <?php foreach ($pokja as $pokja) { ?>
+                                        <option value="<?php echo $pokja->id_pokja ?>" <?php if ($berita->id_pokja == $pokja->id_pokja) {
                                                                                                         echo "selected";
                                                                                                     } ?>>
-                                            <?php echo $kategori->nama_kategori_berita ?></option>
+                                            <?php echo $pokja->nama_pokja ?></option>
                                     <?php } ?>
                                 </select>
                             </div>

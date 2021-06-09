@@ -23,29 +23,29 @@
             echo validation_errors('<div class="alert alert-danger">', '<button class="close" data-dismiss="alert">&times;</button> </div>');
 
             // Form
-            echo form_open(base_url('admin/kategori_berita/edit/' . $kategori_berita->id_kategori_berita));
+            echo form_open(base_url('admin/pokja/edit/' . $pokja->id_pokja));
             ?>
 
             <!-- sekarang masuk ke kolom isi konten -->
             <div class="card mb-4">
                 <div class="card-header">
-                    <a href="<?php echo site_url('admin/kategori_berita') ?>"><i class="fas fa-arrow-left"></i> Kembali</a>
+                    <a href="<?php echo site_url('admin/pokja') ?>"><i class="fas fa-arrow-left"></i> Kembali</a>
                 </div>
                 <div class="card-body">
 
                     <div class="form-group">
-                        <label>Nama kategori</label>
-                        <input type="text" name="nama_kategori_berita" placeholder="Nama kategori berita" value="<?php echo $kategori_berita->nama_kategori_berita ?>" required class="form-control">
+                        <label>Nama Pokja</label>
+                        <input type="text" name="nama_pokja" placeholder="Nama pokja" value="<?php echo $pokja->nama_pokja ?>" required class="form-control">
                     </div>
 
                     <div class="form-group">
                         <label>Keterangan</label>
-                        <textarea name="keterangan" class="form-control" placeholder="Keterangan"><?php echo $kategori_berita->keterangan ?></textarea>
+                        <textarea name="keterangan" class="form-control" placeholder="Keterangan"><?php echo $pokja->keterangan ?></textarea>
                     </div>
 
                     <div class="form-group">
                         <label>Urutan tampil</label>
-                        <input type="number" name="urutan" placeholder="Urutan tampil" value="<?php echo $kategori_berita->urutan ?>" required class="form-control">
+                        <input type="number" name="urutan" placeholder="Urutan tampil" value="<?php echo $pokja->urutan ?>" required class="form-control">
                     </div>
 
                     <div class="form-group">

@@ -165,24 +165,20 @@
             </div>
             <!-- menu kedua -->
             <div class="tab-pane fade" id="logo" role="tabpanel" aria-labelledby="logo-tab">
-              <div class="card mb-4">
-                <div class="card-body">
-                  Logo akan ditampilkan pada setiap halaman dan elemen dalam website <a href="#"><?php echo $site['namaweb'] ?></a>.
-                </div>
-              </div>
+              <h3 class="col-md-12 order-md-1">Logo Website</h3>
               <form action="<?php echo site_url('admin/konfig/logo') ?>" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="id_konfigurasi" value="<?php echo $site['id_konfigurasi'] ?>">
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-12">
                   <label>Upload Logo Baru</label>
                   <input type="file" name="logo" class="form-control" id="file">
                   <div id="imagePreview"></div>
                 </div>
-                <div class="form-group col-md-6 mb-4">
+                <div class="form-group col-md-12 mb-4">
                   <label>Logo Situs Sekarang</label><br>
                   <img src="<?php echo base_url('back_assets/img/' . $site['logo']) ?>" style="max-width:200px; height:auto;">
                 </div>
 
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-12">
                   <input type="reset" name="reset" value="Reset" class="btn btn-secondary mr-2">
                   <input type="submit" name="submit" value="Simpan Logo" class="btn btn-primary ">
                 </div>
@@ -190,49 +186,70 @@
             </div>
             <!-- menu ketiga -->
             <div class="tab-pane fade" id="icon" role="tabpanel" aria-labelledby="icon-tab">
-              <div class="card mb-4">
-                <div class="card-body">
-                  Favicon merupakan icon website dan akan ditampilkan pada setiap tab navigasi website <a href="#"><?php echo $site['namaweb'] ?></a>.
-                </div>
-              </div>
+              <h3 class="col-md-12 order-md-1">Favicon</h3>
               <form action="<?php echo site_url('admin/konfig/icon') ?>" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="id_konfigurasi" value="<?php echo $site['id_konfigurasi'] ?>">
 
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-12">
                   <label>Upload Favicon Baru</label>
                   <input type="file" name="icon" class="form-control" id="file">
                   <div id="imagePreview"></div>
                 </div>
 
-                <div class="col-md-6 mb-4">
+                <div class="col-md-12 mb-4">
                   <label>Favicon Situs Sekarang</label><br>
                   <img src="<?php echo base_url('back_assets/img/' . $site['icon']) ?>" style="max-width:200px; height:auto;">
                 </div>
 
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-12">
                   <input type="reset" name="reset" value="Reset" class="btn btn-secondary mr-2">
                   <input type="submit" name="submit" value="Simpan Favicon" class="btn btn-primary">
                 </div>
               </form>
             </div>
             <!-- menu keempat -->
+            <script src="https://cdn.tiny.cloud/1/7ko2ftgz9ujgvnh1tq2wbfamm5ztwaieu3mi3b8ayc69fxrh/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+            <script type="text/javascript">
+              tinymce.init({
+                selector: '#keterangan',
+                plugins: [
+                  'advlist autolink link image lists charmap print preview hr anchor pagebreak',
+                  'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+                  'table emoticons template paste help',
+                  'autoresize'
+                ],
+                toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | ' +
+                  'bullist numlist outdent indent | link image | print preview media fullpage | ' +
+                  'forecolor backcolor emoticons | help',
+                menu: {
+                  favs: {
+                    title: 'My Favorites',
+                    items: 'code visualaid | searchreplace | emoticons'
+                  }
+                },
+                menubar: 'favs file edit view insert format tools table help',
+                mobile: {
+                  menubar: true
+                }
+              });
+            </script>
             <div class="tab-pane fade" id="ucapan" role="tabpanel" aria-labelledby="ucapan-tab">
               <form action="<?php echo site_url('admin/konfig/ucapan') ?>" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="id_konfigurasi" value="<?php echo $site['id_konfigurasi'] ?>">
-                <h3 class="col-md-6 order-md-1">Ucapan Beranda Website</h3>
-                <div class="col-md-6 order-md-1">
+                <h3 class="col-md-12 order-md-1">Ucapan Perkenalan</h3>
+                <div class="col-md-12 order-md-1">
                   <div class="form-group">
-                    <label>Judul Ucapan</label>
+                    <label>Judul</label>
                     <input type="text" name="welcome_say" placeholder="Judul Ucapan" value="<?php echo $site['welcome_say'] ?>" required class="form-control">
                   </div>
 
                   <div class="form-group">
-                    <label>Deksripsi Ucapan Sambutan</label>
-                    <textarea name="deskripsi_say" rows="6" class="form-control" placeholder="Deskripsi kalimat sambutan"><?php echo $site['deskripsi_say'] ?></textarea>
+                    <label>Deksripsi</label>
+                    <textarea name="deskripsi_say" id="keterangan" class="form-control" placeholder="Deskripsi kalimat sambutan"><?php echo $site['deskripsi_say'] ?></textarea>
                   </div>
                 </div>
 
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-12">
                   <input type="reset" name="reset" value="Reset" class="btn btn-secondary mr-2">
                   <input type="submit" name="submit" value="Simpan Ucapan" class="btn btn-primary">
                 </div>

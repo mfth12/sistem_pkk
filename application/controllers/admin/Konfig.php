@@ -9,7 +9,7 @@ class Konfig extends CI_Controller
 		parent::__construct();
 		$this->simple_login->terotentikasi();
 		$this->load->model('berita_model');
-		$this->load->model('kategori_berita_model');
+		// $this->load->model('pokja_model');
 		$this->load->model('konfigurasi_model');
 		if ($this->session->userdata('akses_level') != 'superadmin')
 			show_404();

@@ -40,7 +40,7 @@
             <div class="card mb-4">
                 <div class="card-body">
                     <p><button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                            <i class="fa fa-plus"></i> Tambah Kategori
+                            <i class="fa fa-plus"></i> Tambah Pokja
                         </button></p>
 
                     <?php include('tambah.php') ?>
@@ -49,7 +49,7 @@
                             <thead>
                                 <tr>
                                     <th class="text-center">Urut</th>
-                                    <th>Nama Kategori</th>
+                                    <th>Nama Pokja</th>
                                     <th>Keterangan</th>
                                     <th>Slug</th>
                                     <th class="text-center">Action</th>
@@ -57,16 +57,16 @@
                             </thead>
                             <tbody>
                                 <?php $i = 1;
-                                foreach ($kategori_berita as $kategori_berita) { ?>
+                                foreach ($pokja as $pokja) { ?>
                                     <tr>
-                                        <td width="15px" class="text-center"><h4><?php echo $kategori_berita->urutan ?></h4></td>
-                                        <td><?php echo $kategori_berita->nama_kategori_berita ?></td>
-                                        <td width="30%" class="small"><?php echo $kategori_berita->keterangan ?></td>
-                                        <td><?php echo $kategori_berita->slug_kategori_berita ?></td>
+                                        <td width="15px" class="text-center"><h4><?php echo $pokja->urutan ?></h4></td>
+                                        <td><?php echo $pokja->nama_pokja ?></td>
+                                        <td width="30%" class="small"><?php echo $pokja->keterangan ?></td>
+                                        <td><?php echo $pokja->slug_pokja ?></td>
                                         <td class="d-flex justify-content-center">
-                                            <a href="<?php echo base_url('admin/kategori_berita/edit/' . $kategori_berita->id_kategori_berita) ?>" class="btn btn-primary btn-sm mr-1"><i class="fa fa-edit"></i> Ubah</a>
+                                            <a href="<?php echo base_url('admin/pokja/edit/' . $pokja->id_pokja) ?>" class="btn btn-primary btn-sm mr-1"><i class="fa fa-edit"></i> Ubah</a>
                                             <?php include('delete.php') ?>
-                                            <a href="<?php echo site_url('berita/kategori/' . $kategori_berita->slug_kategori_berita) ?>" target="_blank" class="btn btn-light btn-sm ml-1"><i class="fa fa-eye"></i></a>
+                                            <a href="<?php echo site_url('berita/pokja/' . $pokja->slug_pokja) ?>" target="_blank" class="btn btn-light btn-sm ml-1"><i class="fa fa-eye"></i></a>
                                         </td>
                                     </tr>
                                 <?php $i++;

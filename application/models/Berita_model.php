@@ -17,10 +17,10 @@ class Berita_model extends CI_Model {
 	}
 
 	public function listing() {
-		$this->db->select('berita.*, kategori_berita.nama_kategori_berita, users.nama');
+		$this->db->select('berita.*, pokja.nama_pokja, users.nama');
 		$this->db->from('berita');
 		// Join
-		$this->db->join('kategori_berita','kategori_berita.id_kategori_berita = berita.id_kategori_berita', 'LEFT');
+		$this->db->join('pokja','pokja.id_pokja = berita.id_pokja', 'LEFT');
 		$this->db->join('users','users.id_user = berita.id_user','LEFT');
 		// End join
 		$this->db->order_by('id_berita','DESC');
@@ -30,10 +30,10 @@ class Berita_model extends CI_Model {
 	
 	//Read
 	public function read($slug_berita) {
-		$this->db->select('berita.*, kategori_berita.nama_kategori_berita, users.nama');
+		$this->db->select('berita.*, pokja.nama_pokja, users.nama');
 		$this->db->from('berita');
 		// Join
-		$this->db->join('kategori_berita','kategori_berita.id_kategori_berita = berita.id_kategori_berita', 'LEFT');
+		$this->db->join('pokja','pokja.id_pokja = berita.id_pokja', 'LEFT');
 		$this->db->join('users','users.id_user = berita.id_user','LEFT');
 		// End join
 		$this->db->where('slug_berita',$slug_berita);
@@ -42,10 +42,10 @@ class Berita_model extends CI_Model {
 		return $query->row();
 	}
 	
-	//Kategori
-	public function kategori($id_kategori_berita, $limit, $start) {
+	//pokja
+	public function pokja($id_pokja, $limit, $start) {
 		$this->db->where('status_berita','Publish');
-		$this->db->where('berita.id_kategori_berita',$id_kategori_berita);
+		$this->db->where('berita.id_pokja',$id_pokja);
 		$this->db->order_by('id_berita','DESC');
 		$query = $this->db->get('berita',$limit, $start);
 		return $query->result();
@@ -69,19 +69,19 @@ class Berita_model extends CI_Model {
 		return $result->result();
 	}
 
-	// jumlah kategori
+	// jumlah pokja
 	function jumlah_kateg($su){
 		$this->db->where('status_berita','Publish');
-		$this->db->where('id_kategori_berita',$su);
+		$this->db->where('id_pokja',$su);
 		return $this->db->get('berita')->num_rows();
 	}
 	
 	//Home
 	public function home() {
-		$this->db->select('berita.*, kategori_berita.nama_kategori_berita, users.nama');
+		$this->db->select('berita.*, pokja.nama_pokja, users.nama');
 		$this->db->from('berita');
 		// Join
-		$this->db->join('kategori_berita','kategori_berita.id_kategori_berita = berita.id_kategori_berita', 'LEFT');
+		$this->db->join('pokja','pokja.id_pokja = berita.id_pokja', 'LEFT');
 		$this->db->join('users','users.id_user = berita.id_user','LEFT');
 		// End join
 		$this->db->where('berita.status_berita','Publish');

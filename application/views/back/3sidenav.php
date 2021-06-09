@@ -26,7 +26,7 @@
                                 <a class="nav-link" href="<?php echo site_url('admin/keuangan/keluaran') ?> ">Pengeluaran</a>
                             </nav>
                         </div>
-                        <a class="nav-link" href="<?php echo site_url('admin/kategori_berita') ?> ">
+                        <a class="nav-link" href="<?php echo site_url('admin/pokja') ?> ">
                             <div class="sb-nav-link-icon"><i class="fas fa-map"></i></div>
                             Pokja
                         </a>
@@ -50,18 +50,6 @@
                         </a>
 
                     </div>
-                </div>
-                <div class="sb-sidenav-footer">
-                    <div class="small white">Anda masuk sebagai:</div>
-                    <?php if ($this->session->userdata('akses_level') == 'superadmin') // Jika user yg login adalah pegawai
-                    {
-                        echo "Administrator Sistem"; // Redirect ke halaman home untuk user
-                    } ?>
-
-                    <?php if ($this->session->userdata('akses_level') == 'admin_desa') // Jika user yg login adalah pegawai
-                    {
-                        echo "Perangkat Desa"; // Redirect ke halaman home untuk user
-                    } ?>
                 </div>
             </nav>
         </div>
