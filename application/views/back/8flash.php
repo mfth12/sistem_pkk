@@ -8,15 +8,6 @@
 <?php endif; ?>
 
 <!-- berbagai macam badge ada disini -->
-<?php if ($this->session->flashdata('selamatdatang')) : ?>
-	<div class="alert alert-success">
-		<button class="close" data-dismiss="alert">&times;</button>
-		<strong>Selamat Datang! </strong>
-		<?php echo $this->session->flashdata('selamatdatang'); ?>
-	</div>
-<?php endif; ?>
-
-<!-- berbagai macam badge ada disini -->
 <?php if ($this->session->flashdata('success')) : ?>
 	<div class="alert alert-success">
 		<button class="close" data-dismiss="alert">&times;</button>

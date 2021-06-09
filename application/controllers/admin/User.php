@@ -42,8 +42,12 @@ class User extends CI_Controller
 		$valid->set_rules(
 			'email',
 			'Email',
-			'required',
-			array('required' => 'Email harus diisi')
+			'required|is_unique[users.email]',
+			array(
+				'required' 	=> 'Email harus diisi',
+				'is_unique'	=> 'Email <strong>' . $this->input->post('email') .
+				'</strong> sudah digunakan. Gagal menambah user.'
+			)
 		);
 
 		$valid->set_rules(
@@ -64,15 +68,15 @@ class User extends CI_Controller
 			array('required' => 'Password harus diisi')
 		);
 
-		if ($valid->run() === FALSE) {
-			$this->session->set_flashdata('dihapus', 'Username sudah digunakan. Gagal menambah data user');
-			redirect(site_url('admin/user'));
-		} else {
+		// if ($valid->run() === FALSE) {
+		// 	$this->session->set_flashdata('dihapus', 'Gagal menambah user');
+		// 	redirect(site_url('admin/user'));
+		if ($valid->run()) {
 			$i = $this->input;
 			$data = array(
 				'nama'			=> 	$i->post('nama'),
 				'email'			=>	$i->post('email'),
-				'username'		=>	str_replace(' ', '_', $i->post('username')),
+				'username'		=>	strtolower(str_replace(' ', '_', $i->post('username'))),
 				'password'		=>	$i->post('password'),
 				'akses_level'	=>  $i->post('akses_level')
 			);

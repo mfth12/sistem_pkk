@@ -87,7 +87,7 @@
                 <div class="col-12 col-md-5 mx-auto mt-6">
                     <form action="<?php echo base_url('index.php/auth/login'); ?>" method="POST">
                         <div class="form-group">
-                            <input type="text" class="form-control" name="username" placeholder="Email / Username" required autofocus />
+                            <input type="text" class="form-control" name="username" placeholder="Username / Email" required autofocus />
                         </div>
                         <div class="form-group">
                             <input type="password" class="form-control" name="password" placeholder="Password" required />

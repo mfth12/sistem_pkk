@@ -1,8 +1,8 @@
 <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid">
-            <h1 class="mt-4"><?php echo $title?><?php if ($this->session->userdata('akses_level') == 'superadmin') echo "Administrator";
-                                        if ($this->session->userdata('akses_level') == 'admin_desa') echo "Perangkat Desa"; ?></h1>
+            <h1 class="mt-4"><?php echo $title ?><?php if ($this->session->userdata('akses_level') == 'superadmin') echo "Administrator";
+                                                    if ($this->session->userdata('akses_level') == 'admin_desa') echo "Perangkat Desa"; ?></h1>
             <!-- Breadcrumbs-->
             <ol class="breadcrumb">
                 <?php foreach ($this->uri->segments as $segment) : ?>
@@ -18,11 +18,14 @@
                 <?php endforeach; ?>
             </ol>
             <!-- Breadcrumbs-->
-            <div class="card mb-4">
-                <div class="card-body font-italic">
-                    Selamat datang di Sistem Informasi PKK Desa Uma Beringin. Anda berada pada halaman dasbor sistem.
+            <?php if ($this->session->flashdata('sukses')) : ?>
+                <div class="alert alert-success">
+                    <button class="close" data-dismiss="alert">&times;</button>
+                    <strong><?php echo $this->session->flashdata('sukses'); ?></strong>
+                    <?php echo $this->session->userdata('nama'); ?>, di Sistem Informasi PKK Desa Uma Beringin!
                 </div>
-            </div>
+            <?php endif; ?>
+
             <?php if ($this->session->userdata('akses_level') == 'superadmin') { ?>
                 <div class="row">
                     <div class="col-xl-3 col-md-6">
