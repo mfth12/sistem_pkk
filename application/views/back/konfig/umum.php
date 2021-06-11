@@ -47,7 +47,7 @@
         echo '</div>';
       }
       // Error
-      echo validation_errors('<div class="alert alert-success">', '</div>');
+      echo validation_errors('<div class="alert alert-danger">', '</div>');
       ?>
       <!-- sekarang masuk ke kolom isi konten -->
       <div class="card mb-4">
@@ -64,6 +64,9 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" id="ucapan-tab" data-toggle="tab" href="#ucapan" role="tab" aria-controls="ucapan" aria-selected="false">Ucapan</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url('admin/periode') ?>" aria-selected="false">Periode</a>
             </li>
           </ul>
         </div>

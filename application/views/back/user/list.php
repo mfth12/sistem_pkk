@@ -47,7 +47,7 @@
             <div class="card mb-4">
 
                 <div class="card-body">
-                    <p><a href="<?php echo site_url('admin/user/tambah') ?>" class="btn btn-primary" data-toggle="modal" data-target="#tambahuser">
+                    <p><a href="<?php echo site_url('admin/user/tambah') ?>" class="btn btn-success" data-toggle="modal" data-target="#tambahuser">
                             <i class="fa fa-plus"></i> Tambah User</a></p>
                     <div class="table-responsive">
 

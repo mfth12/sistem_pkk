@@ -35,8 +35,6 @@ class Profile extends CI_Controller
 		}
 	}
 
-
-
 	public function edits($id = null)
 	{
 		if (!isset($id)) redirect('profile');
@@ -78,9 +76,7 @@ class Profile extends CI_Controller
 			$this->session->set_flashdata('sukses', 'Password anda berhasil diperbarui');
 			redirect(site_url('profile'));
 		}
-		redirect(site_url('profile'));  //menuju ke halaman admin/products/.
+		redirect(site_url('profile'));
 	}
-
-
 	// end
 }

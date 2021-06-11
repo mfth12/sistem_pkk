@@ -52,6 +52,7 @@ class Auth extends CI_Controller
 	public function logout()
 	{
 		$this->session->sess_destroy(); // Hapus semua session
+		$this->session->set_flashdata('maaf', 'Anda telah keluar dari sistem.');
 		redirect('auth');
 	}
 

@@ -27,7 +27,7 @@ class Konfig extends CI_Controller
 		if ($this->form_validation->run() === FALSE) {
 
 			$data = array(
-				'title'		=> 'Konfigurasi Website',
+				'title'		=> 'Konfigurasi',
 				'namasite' 	=> $site['namaweb'],
 				'site'		=> $site,
 				'isi'		=> 'back/konfig/umum'
@@ -177,63 +177,12 @@ class Konfig extends CI_Controller
 				redirect(site_url('admin/konfig'));
 			}
 		}
-		// Default page
-		// $data = array(	'title'	=> 'New Icon',
-		// 				'site'	=> $site,
-		// 				'isi'	=> 'admin/dasbor/icon');
-		// $this->load->view('admin/layout/wrapper',$data);
 		$this->session->set_flashdata('maaf', 'Maaf, tidak ada data yang diperbarui');
 		redirect(site_url('admin/konfig'));
 	}
 
-	// Quote
-	public function quote()
-	{
-		$site = $this->konfigurasi_model->listing();
 
-		// Validasi 
-		$this->form_validation->set_rules('judul_1', 'Judul Quote 1', 'required');
-		$this->form_validation->set_rules('pesan_1', 'Pesan Quote 1', 'required');
-		$this->form_validation->set_rules('judul_2', 'Judul Quote 2', 'required');
-		$this->form_validation->set_rules('pesan_2', 'Pesan Quote 2', 'required');
-		$this->form_validation->set_rules('judul_3', 'Judul Quote 3', 'required');
-		$this->form_validation->set_rules('pesan_3', 'Pesan Quote 3', 'required');
-		$this->form_validation->set_rules('judul_4', 'Judul Quote 4', 'required');
-		$this->form_validation->set_rules('pesan_4', 'Pesan Quote 4', 'required');
-
-		if ($this->form_validation->run() === FALSE) {
-
-			$data = array(
-				'title'	=> 'Quote Front End (Belum dipakai)',
-				'site'	=> $site,
-				'isi'	=> 'admin/konfig/umum'
-			);
-			$this->load->view('back/wrapper', $data);
-		} else {
-			$i = $this->input;
-			$data = array(
-				'id_konfigurasi'	=> $i->post('id_konfigurasi'),
-				'judul_1'			=> $i->post('judul_1'),
-				'pesan_1'			=> $i->post('pesan_1'),
-				'judul_2'			=> $i->post('judul_2'),
-				'pesan_2'			=> $i->post('pesan_2'),
-				'judul_3'			=> $i->post('judul_3'),
-				'pesan_3'			=> $i->post('pesan_3'),
-				'judul_4'			=> $i->post('judul_4'),
-				'pesan_4'			=> $i->post('pesan_4'),
-				'judul_5'			=> $i->post('judul_5'),
-				'pesan_5'			=> $i->post('pesan_5'),
-				'judul_6'			=> $i->post('judul_6'),
-				'pesan_6'			=> $i->post('pesan_6'),
-				'id_user'			=> $this->session->userdata('id')
-			);
-			$this->konfigurasi_model->edit($data);
-			$this->session->set_flashdata('sukses', 'Konfigurasi quotes situs berhasil diperbarui');
-			redirect(site_url('superadmin/konfig'));
-		}
-	}
-
-	// Quote
+	// Ucapan
 	public function ucapan()
 	{
 		$site = $this->konfigurasi_model->listing();

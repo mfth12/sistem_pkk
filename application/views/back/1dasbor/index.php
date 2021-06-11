@@ -19,10 +19,10 @@
             </ol>
             <!-- Breadcrumbs-->
             <?php if ($this->session->flashdata('sukses')) : ?>
-                <div class="alert alert-success">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <button class="close" data-dismiss="alert">&times;</button>
-                    <strong><?php echo $this->session->flashdata('sukses'); ?></strong>
-                    <?php echo $this->session->userdata('nama'); ?>, di Sistem Informasi PKK Desa Uma Beringin!
+                    <?php echo $this->session->flashdata('sukses'); ?>
+                    <strong><?php echo $this->session->userdata('nama'); ?></strong> di Sistem Informasi PKK Desa Uma Beringin!
                 </div>
             <?php endif; ?>
 

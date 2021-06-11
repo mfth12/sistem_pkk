@@ -25,7 +25,7 @@ class Pokja extends CI_Controller
 			'required|is_unique[pokja.nama_pokja]',
 			array(
 				'required'	=> 'Nama pokja harus diisi',
-				'is_unique'	=> 'Pokja <strong>' . $this->input->post('nama_pokja') . '</strong> sudah ada, ganti yang lain'
+				'is_unique'	=> 'Pokja <strong>' . $this->input->post('nama_pokja') . '</strong> sudah ada, tidak dapat menambah data pokja yang sama.'
 			)
 		);
 

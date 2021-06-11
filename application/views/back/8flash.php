@@ -24,3 +24,11 @@
 		<?php echo $this->session->flashdata('maaf'); ?>
 	</div>
 <?php endif; ?>
+
+<!-- berbagai macam badge ada disini -->
+<?php if ($this->session->flashdata('warning')) : ?>
+	<div class="alert alert-warning">
+		<button class="close" data-dismiss="alert">&times;</button>
+		<?php echo $this->session->flashdata('warning'); ?>
+	</div>
+<?php endif; ?>
