@@ -104,7 +104,8 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text">Hak akses</span>
                   </div>
-                  <input type="text" value="<?php if ($userb->akses_level == 'superadmin') echo "Administrator PKK"; ?><?php if ($userb->akses_level == 'admin_pkk') echo "Pengurus PKK"; ?><?php if ($userb->akses_level == 'admin_desa') echo "Perangkat Desa"; ?> " class="form-control" placeholder="Username" disabled>
+                  <input type="text" value="<?php if ($userb->akses_level == 'superadmin') echo "Admin PKK"; ?><?php if ($userb->akses_level == 'sekret_pkk') echo "Sekretaris Pokja"; ?><?php if ($userb->akses_level == 'kades') echo "Kepala Desa"; ?>
+                  " class="form-control" placeholder="Username" disabled>
                 </div>
               </div>
             </div>

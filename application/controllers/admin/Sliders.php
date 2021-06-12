@@ -25,7 +25,7 @@ class Sliders extends CI_Controller
         }
 
         $data = array(
-            'title'      => 'Gambar Slider',
+            'title'      => 'Gambar Slide',
             'nomor'      => $no,
             'namasite'   => $site['namaweb'],
             'slider'     => $this->sliders_model->getAll(),

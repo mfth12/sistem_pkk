@@ -78,7 +78,7 @@
                                                 <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete<?php echo $periode->id_periode ?>">
                                                     <i class="fa fa-trash"></i>
                                                 </button>
-                                            <?php } ?>
+                                            <?php } else {  ?> <i>Aksi tidak diizinkan</i> <?php  }?>
                                             <?php include('modal.php') ?>
                                         </td>
                                     </tr>

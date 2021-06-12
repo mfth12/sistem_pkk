@@ -29,11 +29,11 @@
 
                 <?php
                 // Form
-                echo form_open('admin/periode');
+                echo form_open('admin/periode/tambah');
                 ?>
                 <div class="form-group">
                     <label class="col-form-label" for="jumlah">Periode Baru</label>
-                    <input type="number" class="form-control" name="nama_periode" id="jumlah" placeholder="Tahun" required>
+                    <input type="number" class="form-control" name="nama_periode" id="jumlah" min="1990" max="2599" placeholder="Tahun" required>
                 </div>
                 <input type="password" name="pswd" placeholder="Password anda" required class="form-control">
                 <input type="hidden" name="ket" value="tidak" required class="form-control">

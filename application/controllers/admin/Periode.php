@@ -18,10 +18,21 @@ class Periode extends CI_Controller
 	{
 		$periode 	= $this->periode_model->listing();
 		$site 		= $this->konfigurasi_model->listing();
-
 		$id_user 	= $this->session->userdata('id');
 		$user		= $this->user_model->get($id_user);
-		$i 			= $this->input;
+
+		$data = array(
+			'title'				=> 'Periode',
+			'namasite'	        => $site['namaweb'],
+			'periode'			=> $periode,
+			'user'				=> $user,
+			'isi'				=> 'back/periode/index'
+		);
+		$this->load->view('back/wrapper', $data);
+	}
+
+	public function tambah() {
+		$i 	= $this->input;
 		if ($i->post('pswd')!=$i->post('pswd_lama')) {
 			$this->session->set_flashdata('dihapus', 'Maaf, password anda salah! Tidak dapat menambah data periode.');
 			redirect(site_url('admin/periode'));
@@ -38,18 +49,7 @@ class Periode extends CI_Controller
 			)
 		);
 
-		if ($this->form_validation->run() === FALSE) {
-			// End validasi
-			$data = array(
-				'title'				=> 'Periode',
-				'namasite'	        => $site['namaweb'],
-				'periode'			=> $periode,
-				'user'				=> $user,
-				'isi'				=> 'back/periode/index'
-			);
-			$this->load->view('back/wrapper', $data);
-			// Masuk database
-		} else {
+		if ($this->form_validation->run() === TRUE) {
 			$data = array(
 				'nama_periode'			=> $i->post('nama_periode'),
 				'ket'					=> $i->post('ket')
