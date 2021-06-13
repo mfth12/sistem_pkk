@@ -58,7 +58,11 @@ class Simple_login
 						$this->CI->session->set_flashdata('sukses', 'Selamat datang ');
 						redirect('admin');
 					}
-					if ($this->CI->session->userdata('akses_level') == 'admin_desa') {
+					if ($this->CI->session->userdata('akses_level') == 'sekret_pokja') {
+						$this->CI->session->set_flashdata('sukses', 'Selamat datang ');
+						redirect('admin');
+					}
+					if ($this->CI->session->userdata('akses_level') == 'kades') {
 						$this->CI->session->set_flashdata('sukses', 'Selamat datang ');
 						redirect('admin');
 					}

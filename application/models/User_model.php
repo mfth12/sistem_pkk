@@ -52,7 +52,6 @@ class User_model extends CI_Model {
 	//update datails
 	public function updateprofil($id)
     {
-		$_table = "users";
 		$i = $this->input;
 
 	if (isset($id))
@@ -71,7 +70,6 @@ class User_model extends CI_Model {
 	//update password
 	public function updatepassword($id)
     {
-		$_table = "users";
 		$post = $this->input->post();
         if($post["password_lama"] == $post["data_password_lama"]) 
         {
@@ -85,12 +83,12 @@ class User_model extends CI_Model {
             else 
             { // dan jika tidak berisi inputan
                 $this->session->set_flashdata('maaf', 'Konfirmasi password baru anda tidak sama. Silakan periksa kembali password baru dan konfirmasi anda.');
-                redirect(site_url('profile'));  //menuju ke halaman admin/products/.
+                redirect(site_url('profile')); 
             }
         } //if untuk ngecek password lama
         else {
             $this->session->set_flashdata('maaf', 'Anda salah menginput password lama.');
-            redirect(site_url('profile'));  //menuju ke halaman admin/products/.
+            redirect(site_url('profile'));
         }
         return $this->db->update($this->_table, $data, array('id_user' => $id));
 	}

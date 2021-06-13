@@ -2,7 +2,7 @@
     <main>
         <div class="container-fluid">
             <!-- ini nama judul halaman -->
-            <h1 class="mt-4"><?php echo $title?></h1>
+            <h1 class="mt-4"><?php echo $title ?></h1>
             <!-- ini nama bread crumb -->
             <ol class="breadcrumb">
                 <?php foreach ($this->uri->segments as $segment) : ?>
@@ -42,9 +42,9 @@
                     <div class="d-flex justify-content-between lh-condensed">
                         <div class="d-flex">
                             <p><a href="<?php echo site_url('admin/keuangan/masukan') ?>" class="btn btn-success mr-2">
-                                    <i class="fa fa-plus"></i> Tambah Pemasukan</a></p>
+                                    Pemasukan</a></p>
                             <p><a href="<?php echo site_url('admin/keuangan/keluaran') ?>" class="btn btn-danger">
-                                    <i class="fa fa-plus"></i> Tambah Pengeluaran</a></p>
+                                    Pengeluaran</a></p>
                         </div>
                         <div>
                             <p><a href="#!" onclick="window.print()" class="btn btn-secondary">
@@ -73,13 +73,11 @@
                                         <td><?php echo date('d/m/Y', strtotime($data->tanggal)) ?></td>
                                         <td width="180" class="text-right">Rp <?= number_format($data->jumlah, 2, ',', '.'); ?></td>
                                         <td><?php if ($data->jenis == "masuk") { ?><a href="<?php echo site_url('admin/keuangan/masukan') ?>"><span class="badge badge-pill badge-success">Pemasukan</span></a> <?php }
-                                            if ($data->jenis == "keluar") { ?><a href="<?php echo site_url('admin/keuangan/keluaran') ?>"><span class="badge badge-pill badge-danger">Pengeluaran</span></a><?php } ?></td>
+                                                                                                                                                                                                            if ($data->jenis == "keluar") { ?><a href="<?php echo site_url('admin/keuangan/keluaran') ?>"><span class="badge badge-pill badge-danger">Pengeluaran</span></a><?php } ?></td>
                                         <td class="d-flex justify-content-center">
                                             <a href="<?php echo site_url('admin/keuangan/ubah/' . $data->nomor) ?>" class="btn btn-sm btn-primary mr-1"><i class="fa fa-edit"></i> Ubah</a>
                                             <a onclick="deleteConfirm('<?php echo site_url('admin/keuangan/hapus_data/' . $data->nomor) ?>')" href="#!" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                                         </td>
-                                        <!-- modal tambah user-->
-                                        <!-- modal tambah user-->
                                         <!-- modal -->
                                         <div class="modal fade" id="edits<?php echo $data->nomor ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
@@ -109,8 +107,6 @@
                                                                 <label class="col-form-label" for="jumlah2">Jumlah</label>
                                                                 <input type="number" class="form-control" name="jumlah2" id="jumlah2" value="<?php echo $row['keterangan']; ?>" placeholder="Jumlah" required="">
                                                             </div>
-                                                            <!-- end -->
-                                                            <!-- end -->
                                                             <!-- end -->
                                                             <button class="btn btn-secondary mr-1" type="button" data-dismiss="modal">Batal</button>
                                                             <button type="submit" class="btn btn-danger">Tambah</button>

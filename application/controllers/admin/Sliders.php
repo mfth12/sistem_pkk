@@ -7,7 +7,6 @@ class Sliders extends CI_Controller
     {
         parent::__construct();
         $this->simple_login->terotentikasi();
-        // $this->load->model('user_model');
         $this->load->model("sliders_model");
         $this->load->library('form_validation');
         if ($this->session->userdata('akses_level') != 'superadmin')
@@ -45,10 +44,8 @@ class Sliders extends CI_Controller
             $this->session->set_flashdata('sukses', 'Berhasil menginput gambar slide');
             redirect(site_url('admin/sliders'));  //menuju ke halaman admin/products/.
         }
-        // else{show_404();}
         $this->session->set_flashdata('maaf', 'Anda gagal menginput gambar slide');
         redirect(site_url('admin/sliders'));
-        // $this->load->view("admin/product/new_form");
     }
 
     public function edit($id = null)
@@ -56,25 +53,30 @@ class Sliders extends CI_Controller
         if (!isset($id)) redirect(site_url('admin/sliders')); // redirect jika tidak ada $id 
 
         $site     = $this->konfigurasi_model->listing();
-        $slide = $this->sliders_model; //object manual
-        $validation = $this->form_validation; //object validation
-        $validation->set_rules($slide->rulesUbah()); //meneraptkan rules
+        $slide = $this->sliders_model;
+        $validation = $this->form_validation;
+        $validation->set_rules($slide->rulesUbah());
 
-        if ($validation->run()) { //melakukan validasi
-            $slide->update();   //menyimpan data
-            $this->session->set_flashdata('sukses', 'Slide berhasil diperbarui');
-            redirect(site_url('admin/sliders'));  //menuju ke halaman admin/products/.
+        if ($validation->run()) {
+            if (!$_FILES['image']['name']) { //untuk kosong
+                $slide->update(); 
+                $this->session->set_flashdata('sukses', 'Data slide berhasil diperbarui. Gambar tidak berubah.');
+                redirect(site_url('admin/sliders'));  //menuju ke halaman admin/products/.
+            } else { //untuk berisi
+                $slide->update_baru();
+                $this->session->set_flashdata('sukses', 'Data slide dan gambar berhasil diperbarui');
+                redirect(site_url('admin/sliders'));  //menuju ke halaman admin/products/.
+            }
+
+        } else {
+            $data = array(
+                'title'       => 'Ubah Slide',
+                'namasite'    => $site['namaweb'],
+                'slide'       => $slide->getById($id),
+                'isi'         => 'back/slider/edit'
+            );
+            $this->load->view("back/wrapper", $data); //menampilkan form edit
         }
-
-        $data = array(
-            'title'       => 'Ubah Slide',
-            'namasite'    => $site['namaweb'],
-            'slide'       => $slide->getById($id),
-            'isi'         => 'back/slider/edit'
-        );
-        if (!$data["slide"]) show_404(); //jika tidak ada data, tampilkan error
-
-        $this->load->view("back/wrapper", $data); //menampilkan form edit
     }
 
     public function delete($id = null)

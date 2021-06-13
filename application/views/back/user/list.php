@@ -71,7 +71,7 @@
                                         <td><?php echo $user->nama ?></td>
                                         <td><?php echo $user->username ?></td>
                                         <td><?php echo $user->email ?></td>
-                                        <td><?php if ($user->akses_level == 'superadmin') echo "Administrator Sistem"; ?><?php if ($user->akses_level == 'admin_pkk') echo "Pengurus PKK"; ?><?php if ($user->akses_level == 'admin_desa') echo "Perangkat Desa"; ?></td>
+                                        <td><?php if ($user->akses_level == 'superadmin') echo "Admin PKK"; ?><?php if ($user->akses_level == 'sekret_pokja') echo "Sekretaris Pokja"; ?><?php if ($user->akses_level == 'kades') echo "Kepala Desa"; ?></td>
                                         <td class="d-flex justify-content-center">
                                             <a href="<?php echo site_url('admin/user/edit/' . $user->id_user) ?>" class="btn btn-primary btn-sm mr-1"><i class="fa fa-edit"></i> Ubah</a>
                                             <?php $hey = $user->id_user; ?>
@@ -122,15 +122,16 @@
                                 <div class="form-group">
                                     <label>Level Hak Akses</label>
                                     <select name="akses_level" class="form-control">
-                                        <option value="admin_desa" selected>Perangkat Desa</option>
-                                        <option value="superadmin">Administrator Sistem</option>
+                                        <option value="superadmin">Admin PKK</option>
+                                        <option value="sekret_pokja" selected>Sekretaris Pokja</option>
+                                        <option value="kades">Kepala Desa</option>
                                     </select>
                                 </div>
                                 <!-- end -->
                                 <!-- end -->
                                 <!-- end -->
                                 <button class="btn btn-secondary mr-1" type="button" data-dismiss="modal">Batal</button>
-                                <button type="submit" class="btn btn-primary">Tambah</button>
+                                <button type="submit" class="btn btn-success">Tambah</button>
                             </form>
                         </div>
                         <!-- <div class="modal-footer">

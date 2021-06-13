@@ -12,8 +12,8 @@ class Sliders_model extends CI_Model //ini perintah untuk ngambil data dari data
     public function rules()
     {
         return [
-            ['field' => 'name',
-            'label' => 'Name',
+            ['field' => 'nama_slide',
+            'label' => 'Nama slide',
             'rules' => 'required'],
 
             ['field' => 'description',
@@ -25,8 +25,8 @@ class Sliders_model extends CI_Model //ini perintah untuk ngambil data dari data
     public function rulesUbah()
     {
         return [
-            ['field' => 'name',
-            'label' => 'Name',
+            ['field' => 'nama_slide',
+            'label' => 'Nama slide',
             'rules' => 'required'],
 
             ['field' => 'description',
@@ -66,7 +66,7 @@ class Sliders_model extends CI_Model //ini perintah untuk ngambil data dari data
     {
         $post = $this->input->post();
         $data = array(
-            'name'	        => $post["name"],
+            'name'	        => $post["nama_slide"],
             'nomor'	        => $post["nomor"],
 			'image'			=> $this->_uploadImage(),
 			'description'	=> $post["description"]
@@ -78,12 +78,23 @@ class Sliders_model extends CI_Model //ini perintah untuk ngambil data dari data
     {
         $post = $this->input->post();
         $data = array(
-            'name'	        => $post["name"],
+            'name'	        => $post["nama_slide"],
             'nomor'	        => $post["nomor"],
-			'image'			=> $post["old_image"],
+			'image'			=> $post["image_lama"],
 			'description'	=> $post["description"]
 		);
+        return $this->db->update($this->_table, $data, array('slider_id' => $post['id']));
+    }
 
+    public function update_baru()
+    {
+        $post = $this->input->post();
+        $data = array(
+            'name'	        => $post["nama_slide"],
+            'nomor'	        => $post["nomor"],
+			'image'			=> $this->_uploadImage(),
+			'description'	=> $post["description"]
+		);
         return $this->db->update($this->_table, $data, array('slider_id' => $post['id']));
     }
 
@@ -98,7 +109,7 @@ class Sliders_model extends CI_Model //ini perintah untuk ngambil data dari data
         $post = $this->input->post();
         $config['upload_path']          = './back_assets/upload/slider/';
         $config['allowed_types']        = 'gif|jpg|png';
-        $config['file_name']            = $post["name"];
+        $config['file_name']            = $post["nama_slide"];
         $config['overwrite']			= true;
         $config['max_size']             = 6048; // 2MB saja maksimal
 

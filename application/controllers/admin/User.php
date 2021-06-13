@@ -19,10 +19,10 @@ class User extends CI_Controller
 		$user = $this->user_model->listing();
 		$site = $this->konfigurasi_model->listing();
 		$data = array(
-			'title' => 'Data User',
+			'title' 	=> 'Data User',
 			'namasite'	=> $site['namaweb'],
-			'userb'	=> 	$user,
-			'isi'  	=> 'back/user/list'
+			'userb'		=> 	$user,
+			'isi'  		=> 'back/user/list'
 		);
 		$this->load->view('back/wrapper', $data);
 	}
@@ -57,7 +57,7 @@ class User extends CI_Controller
 			array(
 				'required' 	=> 'Username harus diisi',
 				'is_unique'	=> 'Username: <strong>' . $this->input->post('username') .
-					'</strong> sudah digunakan. Buat username baru!'
+				'</strong> sudah digunakan. Buat username baru!'
 			)
 		);
 
@@ -68,9 +68,6 @@ class User extends CI_Controller
 			array('required' => 'Password harus diisi')
 		);
 
-		// if ($valid->run() === FALSE) {
-		// 	$this->session->set_flashdata('dihapus', 'Gagal menambah user');
-		// 	redirect(site_url('admin/user'));
 		if ($valid->run()) {
 			$i = $this->input;
 			$data = array(
@@ -106,7 +103,14 @@ class User extends CI_Controller
 			'email',
 			'Email',
 			'required',
-			array('required' => 'email harus diisi')
+			array('required' => 'Email harus diisi')
+		);
+
+		$valid->set_rules(
+			'username',
+			'Username',
+			'required',
+			array('required' => 'Username harus diisi')
 		);
 
 		$valid->set_rules(

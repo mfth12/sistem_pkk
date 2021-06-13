@@ -59,16 +59,16 @@
                                 <?php $no = 1;
                                 foreach ($slider as $data) { ?>
                                     <tr>
-                                        <td width="15px"class="text-center">
+                                        <td width="15px" class="text-center">
                                             <h4><?php echo $data->nomor ?></h4>
                                         </td>
                                         <td>
                                             <img src="<?php echo base_url('back_assets/upload/slider/' . $data->image) ?>" width="64" />
                                         </td>
-                                        <td>
+                                        <td width="25%" >
                                             <?php echo $data->name ?>
                                         </td>
-                                        <td width="30%" class="small">
+                                        <td width="35%" class="small">
                                             <?php echo substr($data->description, 0, 150) ?>
                                         </td>
                                         <td class="d-flex justify-content-center">
@@ -97,17 +97,16 @@
                         <div class="modal-body">
                             <form action="<?php echo site_url('admin/sliders/add') ?>" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <label for="image">Gambar Slide </label><small> (Max 2Mb)</small>
+                                    <label for="image">Gambar Slide Baru</label><small> (Max 2Mb)</small>
                                     <input class="form-control-file" required type="file" name="image" />
                                 </div>
-
                                 <div class="form-group">
-                                    <label for="name">Judul Slide *</label>
-                                    <input class="form-control" required type="text" name="name" placeholder="Nama judul slide" />
+                                    <label for="nama_slide">Judul Slide *</label>
+                                    <input class="form-control" required type="text" name="nama_slide" placeholder="Nama judul slide" />
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="name">Urutan Tampil *</label>
+                                    <label for="nomor">Urutan Tampil *</label>
                                     <input class="form-control" required type="number" name="nomor" value="<?php echo $nomor ?>" placeholder="<?php echo $nomor ?>" />
                                 </div>
 

@@ -129,8 +129,8 @@ $nav_profil = $this->site_model->nav_profil();
     <?php
     if ($pakai_slide) {
     ?>
-        <header>
-            <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+        <header> 
+            <div id="carouselExampleIndicators" class="carousel slide <?php if ($site['slide_setting'] == "Fade") { echo "carousel-fade"; } ?> " data-ride="carousel">
                 <ol class="carousel-indicators">
                     <?php $no = 0;
                     foreach ($slide as $data) { ?>

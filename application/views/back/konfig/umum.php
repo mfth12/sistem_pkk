@@ -92,24 +92,18 @@
                       <textarea name="tentang" rows="3" class="form-control" placeholder="Summary of the company"><?php echo $site['tentang'] ?></textarea>
                     </div>
                     <div class="form-group">
-                      <label>Background halaman utama situs</label>
-                      <select name="home_setting" class="form-control">
-                        <option value="Image">Image Background</option>
-                        <option value="Video" <?php if ($site['home_setting'] == "Video") {
-                                                echo "selected";
-                                              } ?>>Video Background</option>
+                      <label>Efek Slide Halaman Utama</label>
+                      <select name="slide_setting" class="form-control">
+                        <option value="Geser" <?php if ($site['slide_setting'] == "Geser") { echo "selected"; } ?>>Slide Geser</option>
+                        <option value="Fade" <?php if ($site['slide_setting'] == "Fade") { echo "selected"; } ?>>Slide Timbul</option>
                       </select>
-                    </div>
-                    <div class="form-group">
-                      <label>Alamat website</label>
-                      <input type="url" name="website" placeholder="<?php echo base_url() ?>" value="<?php echo $site['website'] ?>" class="form-control">
                     </div>
                     <div class="form-group">
                       <label>Email resmi</label>
                       <input type="email" name="email" placeholder="youremail@address.com" value="<?php echo $site['email'] ?>" class="form-control" required>
                     </div>
                     <div class="form-group">
-                      <label>Alamat</label>
+                      <label>Alamat Lengkap</label>
                       <textarea name="alamat" rows="3" class="form-control" placeholder="Alamat perusahaan/organisasi"><?php echo $site['alamat'] ?></textarea>
                     </div>
                     <div class="form-group">
@@ -117,14 +111,11 @@
                       <input type="text" name="telepon" placeholder="021-000000" value="<?php echo $site['telepon'] ?>" class="form-control">
                     </div>
                     <div class="form-group">
-                      <label>Fax</label>
-                      <input type="text" name="fax" placeholder="021-000000" value="<?php echo $site['fax'] ?>" class="form-control">
-                    </div>
-                    <div class="form-group">
                       <label>Handphone/seluler</label>
                       <input type="text" name="hp" placeholder="021-000000" value="<?php echo $site['hp'] ?>" class="form-control">
                     </div>
-                    <hr>
+                  </div>
+                  <div class="col-md-6 order-md-1">
                     <h3>Akun Sosial Media</h3>
                     <div class="form-group">
                       <label>Facebook</label>
@@ -137,17 +128,6 @@
                     <div class="form-group">
                       <label>Instagram</label>
                       <input type="url" name="instagram" placeholder="http://instagram.com/namakamu" value="<?php echo $site['instagram'] ?>" class="form-control">
-                    </div>
-                  </div>
-                  <div class="col-md-6 order-md-1">
-                    <h3>Modul Optimasisasi Mesin Pencarian</h3>
-                    <div class="form-group">
-                      <label>Katakunci (Katakunci untuk Google, Bing, dll)</label>
-                      <textarea name="keywords" rows="3" class="form-control" placeholder="Kata kunci / keywords"><?php echo $site['keywords'] ?></textarea>
-                    </div>
-                    <div class="form-group">
-                      <label>Teks Meta</label>
-                      <textarea name="metatext" rows="5" class="form-control" placeholder="Kode metatext"><?php echo $site['metatext'] ?></textarea>
                     </div>
                     <hr>
                     <h3>Lokasi Google Map</h3>

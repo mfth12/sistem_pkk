@@ -11,10 +11,12 @@ class Auth extends CI_Controller
 	{
 		$this->simple_login->terotentikasi();
 		$site = $this->konfigurasi_model->listing();
-		if ($this->session->userdata('terotentikasi')) {
+		if ($this->session->userdata('terotentikasi')) { //mengembalikan jika ingin akses halaman auth lagi
 			if ($this->session->userdata('akses_level') == 'superadmin')
 				redirect('admin');
-			if ($this->session->userdata('akses_level') == 'admin_desa')
+			if ($this->session->userdata('akses_level') == 'sekret_pokja')
+				redirect('admin');
+			if ($this->session->userdata('akses_level') == 'kades')
 				redirect('admin');
 		}
 		$data  = array('site'  => $site);
@@ -52,7 +54,6 @@ class Auth extends CI_Controller
 	public function logout()
 	{
 		$this->session->sess_destroy(); // Hapus semua session
-		$this->session->set_flashdata('maaf', 'Anda telah keluar dari sistem.');
 		redirect('auth');
 	}
 

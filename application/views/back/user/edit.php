@@ -26,14 +26,11 @@
                 echo $error;
                 echo '</div>';
             }
-
             // Validasi
-            echo validation_errors('<div class="alert alert-success">', '<button class="close" data-dismiss="alert">&times;</button> </div>');
-
+            echo validation_errors('<div class="alert alert-danger">', '<button class="close" data-dismiss="alert">&times;</button> </div>');
             // Form
             echo form_open_multipart('admin/user/edit/' . $user->id_user);
             ?>
-
             <!-- sekarang masuk ke kolom isi konten -->
             <div class="card mb-4">
                 <div class="card-header">
@@ -43,43 +40,38 @@
 
                     <div class="form-group">
                         <label>Nama Lengkap</label>
-                        <input type="text" name="nama" class="form-control" placeholder="Nama lengkap" value="<?php echo $user->nama ?>">
+                        <input required type="text" name="nama" class="form-control" placeholder="Nama lengkap" value="<?php echo $user->nama ?>">
                     </div>
 
                     <div class="form-group">
                         <label>Email</label>
-                        <input type="email" name="email" class="form-control" placeholder="email" value="<?php echo $user->email ?>">
+                        <input required type="email" name="email" class="form-control" placeholder="email" value="<?php echo $user->email ?>">
                     </div>
 
                     <div class="form-group">
                         <label>Username</label>
-                        <input type="text" name="username" class="form-control" placeholder="username" value="<?php echo $user->username ?>">
+                        <input required type="text" name="username" class="form-control" placeholder="username" value="<?php echo $user->username ?>">
                     </div>
 
                     <div class="form-group">
                         <label>Password</label>
-                        <input type="password" name="password" class="form-control" placeholder="password" value="<?php echo $user->password ?>">
+                        <input required type="password" name="password" class="form-control" placeholder="password" value="<?php echo $user->password ?>">
                     </div>
 
                     <div class="form-group">
                         <label>Level Hak Akses</label>
                         <select name="akses_level" class="form-control">
-                            <option value="<?php echo $user->akses_level ?>" selected>Tetap sebagai <?php if ($user->akses_level == 'superadmin') echo "Administrator Sistem"; ?><?php if ($user->akses_level == 'admin_desa') echo "Perangkat Desa"; ?></option>
-                            <option value="admin_desa">Perangkat Desa</option>
-                            <option value="superadmin">Administrator Sistem</option>
+                            <option value="superadmin" <?php if ($user->akses_level == "superadmin") { echo "selected"; } ?>>Admin PKK</option>
+                            <option value="sekret_pokja" <?php if ($user->akses_level == "sekret_pokja") { echo "selected"; } ?>>Sekretaris Pokja</option>
+                            <option value="kades" <?php if ($user->akses_level == "kades") { echo "selected"; } ?>>Kepala Desa</option>
                         </select>
                     </div>
 
                     <div class="form-group mb-2">
                         <input type="reset" name="reset" value="Reset" class="btn btn-secondary">
-                        <input type="submit" name="submit" value="Ubah User" class="btn btn-primary">
+                        <input type="submit" name="submit" value="Ubah User" class="btn btn-success">
                     </div>
-
-
-
                     <?php echo form_close() ?>
-
-
                 </div> <!-- akhir div card body -->
             </div> <!-- akhir div card -->
         </div> <!-- akhir container fluid -->

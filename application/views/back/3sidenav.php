@@ -14,18 +14,18 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-star"></i></div>
                             Berita
                         </a>
-                        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                        <a class="nav-link" href="<?php echo site_url('admin/proker') ?> ">
+                            <div class="sb-nav-link-icon"><i class="fas fa-briefcase"></i></div>
+                            Program Kerja
+                        </a>
+                        <a class="nav-link" href="<?php echo site_url('admin/keuangan') ?> ">
                             <div class="sb-nav-link-icon"><i class="fas fa-coins"></i></div>
                             Keuangan
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                         </a>
-                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link" href="<?php echo site_url('admin/keuangan') ?> ">Sirkulasi</a>
-                                <a class="nav-link" href="<?php echo site_url('admin/keuangan/masukan') ?> ">Pemasukan</a>
-                                <a class="nav-link" href="<?php echo site_url('admin/keuangan/keluaran') ?> ">Pengeluaran</a>
-                            </nav>
-                        </div>
+                        <a class="nav-link" href="<?php echo site_url('admin/surat') ?> ">
+                            <div class="sb-nav-link-icon"><i class="fas fa-paste"></i></div>
+                            Surat
+                        </a>
                         <a class="nav-link" href="<?php echo site_url('admin/pokja') ?> ">
                             <div class="sb-nav-link-icon"><i class="fas fa-map"></i></div>
                             Pokja
@@ -38,7 +38,7 @@
                         </a>
                         <div class="collapse" id="website" aria-labelledby="headingTree" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <a class="nav-link" href="<?php echo site_url('admin/struktur') ?> "><div class="sb-nav-link-icon"><i class="fas fa-folder-open"></i></div>Struktur</a>
+                                <a class="nav-link" href="<?php echo site_url('admin/struktur') ?> "><div class="sb-nav-link-icon"><i class="fas fa-folder-open"></i></div>Pengurus</a>
                                 <a class="nav-link" href="<?php echo site_url('admin/sliders') ?> "><div class="sb-nav-link-icon"><i class="fas fa-image"></i></div>Sliders</a>
                                 <a class="nav-link" href="<?php echo site_url('admin/user') ?> "><div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>User</a>
                                 <a class="nav-link" href="<?php echo site_url('admin/konfig') ?> "><div class="sb-nav-link-icon"><i class="fas fa-wrench"></i></div>Konfigurasi</a>

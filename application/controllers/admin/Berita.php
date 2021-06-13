@@ -190,7 +190,7 @@ class Berita extends CI_Controller
 					$data = array(
 						'id_berita'				=> $id_berita,
 						'id_user'				=> $this->session->userdata('id'),
-						'id_pokja'	=> $i->post('id_pokja'),
+						'id_pokja'				=> $i->post('id_pokja'),
 						'slug_berita'			=> url_title($i->post('nama_berita'), 'dash', TRUE),
 						'nama_berita'			=> $i->post('nama_berita'),
 						'keterangan'			=> $i->post('keterangan'),
@@ -198,7 +198,7 @@ class Berita extends CI_Controller
 						'status_berita'			=> $i->post('status_berita'),
 						'gambar'				=> $upload_data['uploads']['file_name']
 					);
-					$gambar_lama = $this->berita_model->getById($id_berita);;
+					$gambar_lama = $this->berita_model->getById($id_berita);
 					if ($gambar_lama->gambar != "default.jpg") {
 						$filename = explode(".", $gambar_lama->gambar)[0];
 						array_map('unlink', glob(FCPATH."back_assets/upload/image/$filename.*"));
@@ -211,7 +211,6 @@ class Berita extends CI_Controller
 				}
 			} else {
 				// Proses ke database
-				
 				$judul_input = url_title($this->input->post('nama_berita'), 'dash', TRUE);
 				$ben = $this->berita_model->match_slug($judul_input);//perintah mengambil username aja kalo sama.
 				if($ben==$judul_input) {
