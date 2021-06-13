@@ -63,6 +63,9 @@
               <a class="nav-link" id="icon-tab" data-toggle="tab" href="#icon" role="tab" aria-controls="icon" aria-selected="false">Favicon</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" id="background-tab" data-toggle="tab" href="#background" role="tab" aria-controls="background" aria-selected="false">Backgroud</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" id="ucapan-tab" data-toggle="tab" href="#ucapan" role="tab" aria-controls="ucapan" aria-selected="false">Ucapan</a>
             </li>
             <li class="nav-item">
@@ -153,7 +156,7 @@
                 <input type="hidden" name="id_konfigurasi" value="<?php echo $site['id_konfigurasi'] ?>">
                 <div class="form-group col-md-12">
                   <label>Upload Logo Baru</label>
-                  <input type="file" name="logo" class="form-control" id="file">
+                  <input type="file" name="logo" class="form-control" id="file1">
                   <div id="imagePreview"></div>
                 </div>
                 <div class="form-group col-md-12 mb-4">
@@ -175,7 +178,7 @@
 
                 <div class="form-group col-md-12">
                   <label>Upload Favicon Baru</label>
-                  <input type="file" name="icon" class="form-control" id="file">
+                  <input type="file" name="icon" class="form-control" id="file2">
                   <div id="imagePreview"></div>
                 </div>
 
@@ -187,6 +190,28 @@
                 <div class="form-group col-md-12">
                   <input type="reset" name="reset" value="Reset" class="btn btn-secondary mr-2">
                   <input type="submit" name="submit" value="Simpan Favicon" class="btn btn-primary">
+                </div>
+              </form>
+            </div>
+            <!-- menu tambahan -->
+            <div class="tab-pane fade" id="background" role="tabpanel" aria-labelledby="background-tab">
+              <h3 class="col-md-12 order-md-1">Background</h3>
+              <form action="<?php echo site_url('admin/konfig/background') ?>" method="post" enctype="multipart/form-data">
+                <input type="hidden" name="id_konfigurasi" value="<?php echo $site['id_konfigurasi'] ?>">
+
+                <div class="form-group col-md-12">
+                  <label>Upload Background Baru</label>
+                  <input type="file" name="back" class="form-control" id="file3">
+                </div>
+
+                <div class="col-md-9 mb-4">
+                  <label>Background Situs Sekarang</label><br>
+                  <img src="<?php echo base_url('back_assets/img/' . $site['background']) ?>" style="max-width:80%; height:auto;">
+                </div>
+
+                <div class="form-group col-md-12">
+                  <input type="reset" name="reset" value="Reset" class="btn btn-secondary mr-2">
+                  <input type="submit" name="submit" value="Simpan Background" class="btn btn-primary">
                 </div>
               </form>
             </div>

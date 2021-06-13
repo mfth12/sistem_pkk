@@ -23,7 +23,6 @@
 			echo validation_errors('<div class="alert alert-success">', '<button class="close" data-dismiss="alert">&times;</button> </div>');
 
 			// Form
-			// echo form_open(site_url('admin/sliders/edit/' . $slide->slider_id));
 			echo form_open_multipart('admin/sliders/edit/' . $slide->slider_id);
 			?>
 			<!-- sekarang masuk ke kolom isi konten -->
@@ -44,10 +43,10 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="gambar">Gambar Slide </label><small> (Max 2Mb)</small>
+						<label for="image">Gambar Slide </label><small> (Max 2Mb)</small>
 						<input class="form-control" name="image" type="file"/>
-					</div>
 						<input type="hidden" name="image_lama" value="<?php echo $slide->image ?>" />
+					</div>
 					<div class="form-group">
 						<label for="nama_slide">Judul Slide *</label>
 						<input class="form-control" required type="text" name="nama_slide" value="<?php echo $slide->name ?>" />

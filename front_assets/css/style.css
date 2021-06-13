@@ -759,7 +759,7 @@ textarea:focus {
 }
 .newsletter-area {
 	background-color: #f9f9f9;
-	background-image: url("../images/newsletter-bg.jpg");
+	
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;

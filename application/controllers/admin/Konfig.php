@@ -71,6 +71,8 @@ class Konfig extends CI_Controller
 			$config['allowed_types'] 	= 'gif|jpg|png';
 			$config['max_size']			= '12000'; // KB
 			$config['file_name']        = 'main-logo.png';
+			unlink('./back_assets/img/' . $site['logo']);
+			unlink('./back_assets/img/thumbs/' . $site['logo']);
 			$this->load->library('upload', $config);
 			if (!$this->upload->do_upload('logo')) {
 				$data = array(
@@ -95,8 +97,6 @@ class Konfig extends CI_Controller
 				$this->load->library('image_lib', $config);
 				$this->image_lib->resize();
 				// Hapus gambar lama
-				unlink('./back_assets/img/' . $site['logo']);
-				unlink('./back_assets/img/thumbs/' . $site['logo']);
 				// End hapus gambar lama
 				// Masuk ke database
 				$i = $this->input;
@@ -110,11 +110,6 @@ class Konfig extends CI_Controller
 				redirect(site_url('admin/konfig'));
 			}
 		}
-		// Default page
-		// $data = array(	'title'	=> 'New logo',
-		// 				'site'	=> $site,
-		// 				'isi'	=> 'admin/dasbor/logo');
-		// $this->load->view('admin/layout/wrapper',$data);
 		$this->session->set_flashdata('maaf', 'Maaf, tidak ada data yang diperbarui');
 		redirect(site_url('admin/konfig'));
 	}
@@ -133,6 +128,8 @@ class Konfig extends CI_Controller
 			$config['allowed_types'] 	= 'gif|jpg|png';
 			$config['max_size']			= '4200'; // KB
 			$config['file_name']        = 'icon_site.png';
+			unlink('./back_assets/img/' . $site['icon']);
+			unlink('./back_assets/img/thumbs/' . $site['icon']);
 			$this->load->library('upload', $config);
 			if (!$this->upload->do_upload('icon')) {
 
@@ -157,8 +154,6 @@ class Konfig extends CI_Controller
 				$config['thumb_marker'] 	= '';
 				$this->load->library('image_lib', $config);
 				// Hapus gambar lama
-				unlink('./back_assets/img/' . $site['icon']);
-				unlink('./back_assets/img/thumbs/' . $site['icon']);
 				// End hapus gambar lama
 				$this->image_lib->resize();
 				// Masuk ke database
@@ -170,6 +165,62 @@ class Konfig extends CI_Controller
 				);
 				$this->konfigurasi_model->edit($data);
 				$this->session->set_flashdata('sukses', 'Favicon situs berhasil diperbarui');
+				redirect(site_url('admin/konfig'));
+			}
+		}
+		$this->session->set_flashdata('maaf', 'Maaf, tidak ada data yang diperbarui');
+		redirect(site_url('admin/konfig'));
+	}
+
+	// Konfigurasi background
+	public function background()
+	{
+		$site = $this->konfigurasi_model->listing();
+
+		$v = $this->form_validation;
+		$v->set_rules('id_konfigurasi', 'ID Konfigurasi', 'required');
+
+		if ($v->run()) {
+			$config['upload_path'] 		= './back_assets/img/';
+			$config['allowed_types'] 	= 'gif|jpg|png';
+			$config['max_size']			= '6200'; // KB
+			$config['file_name']        = 'background.jpg';
+			unlink('./back_assets/img/' . $site['background']);
+			unlink('./back_assets/img/thumbs/' . $site['background']);
+			$this->load->library('upload', $config);
+			if (!$this->upload->do_upload('back')) {
+				$data = array(
+					'title'		=> '',
+					'namasite' 	=> $site['namaweb'],
+					'site'		=> $site,
+					'error'		=> $this->upload->display_errors(),
+					'isi'		=> 'back/konfig/umum'
+				);
+				$this->load->view('back/wrapper', $data);
+			} else {
+				$upload_data				= array('uploads' => $this->upload->data());
+				// Image Editor
+				$config['image_library']	= 'gd2';
+				$config['source_image'] 	= './back_assets/img/' . $upload_data['uploads']['file_name'];
+				$config['new_image'] 		= './back_assets/img/thumbs/';
+				$config['create_thumb'] 	= TRUE;
+				$config['maintain_ratio'] 	= TRUE;
+				$config['width'] 			= 450; // Pixel
+				// $config['height'] 			= 150; // Pixel
+				$config['thumb_marker'] 	= '';
+				$this->load->library('image_lib', $config);
+				// Hapus gambar lama
+				// End hapus gambar lama
+				$this->image_lib->resize();
+				// Masuk ke database
+				$i = $this->input;
+				$data = array(
+					'id_konfigurasi'=> $i->post('id_konfigurasi'),
+					'background'	=> $upload_data['uploads']['file_name'],
+					'id_user'		=> $this->session->userdata('id')
+				);
+				$this->konfigurasi_model->edit($data);
+				$this->session->set_flashdata('sukses', 'Background situs berhasil diperbarui');
 				redirect(site_url('admin/konfig'));
 			}
 		}

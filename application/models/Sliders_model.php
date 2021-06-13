@@ -65,10 +65,11 @@ class Sliders_model extends CI_Model //ini perintah untuk ngambil data dari data
     public function save()
     {
         $post = $this->input->post();
+        $acak = uniqid('SLIDE', FALSE);
         $data = array(
             'name'	        => $post["nama_slide"],
             'nomor'	        => $post["nomor"],
-			'image'			=> $this->_uploadImage(),
+			'image'			=> $this->_uploadImage($acak),
 			'description'	=> $post["description"]
 		);
         return $this->db->insert($this->_table, $data);
@@ -89,10 +90,12 @@ class Sliders_model extends CI_Model //ini perintah untuk ngambil data dari data
     public function update_baru()
     {
         $post = $this->input->post();
+        $acak = uniqid('SLIDE', FALSE);
+        $this->_deleteImage($post['id']);
         $data = array(
             'name'	        => $post["nama_slide"],
             'nomor'	        => $post["nomor"],
-			'image'			=> $this->_uploadImage(),
+			'image'			=> $this->_uploadImage($acak),
 			'description'	=> $post["description"]
 		);
         return $this->db->update($this->_table, $data, array('slider_id' => $post['id']));
@@ -104,12 +107,12 @@ class Sliders_model extends CI_Model //ini perintah untuk ngambil data dari data
         return $this->db->delete($this->_table, array("slider_id" => $id));
     }
 
-    private function _uploadImage()
+    private function _uploadImage($acak)
     {
-        $post = $this->input->post();
+        // $post = $this->input->post();
         $config['upload_path']          = './back_assets/upload/slider/';
         $config['allowed_types']        = 'gif|jpg|png';
-        $config['file_name']            = $post["nama_slide"];
+        $config['file_name']            = $acak;
         $config['overwrite']			= true;
         $config['max_size']             = 6048; // 2MB saja maksimal
 

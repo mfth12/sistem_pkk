@@ -23,7 +23,8 @@
 			echo validation_errors('<div class="alert alert-success">', '<button class="close" data-dismiss="alert">&times;</button> </div>');
 
 			// Form
-			echo form_open(site_url('admin/struktur/ubah/' . $struktur->slider_id));
+			echo form_open_multipart('admin/struktur/ubah/' . $struktur->struktur_id);
+			// echo form_open(site_url('admin/struktur/ubah/' . $struktur->struktur_id));
 			?>
 			<!-- sekarang masuk ke kolom isi konten -->
 			<div class="card mb-4">
@@ -31,21 +32,21 @@
 					<a href="<?php echo site_url('admin/struktur') ?>"><i class="fas fa-arrow-left"></i> Kembali</a>
 				</div>
 				<div class="card-body">
-					<div class="card mb-4">
-						<div class="card-body">
-							Mohon maaf, anda hanya dapat merubah detail <a href="#">pengurus</a>. Fitur ini tidak dapat merubah foto
-							<a href="#">pengurus</a>. Anda bisa menambahkan item pengurus dan menuliskan deskripsi baru di menu tambah <a href="#">pengurus</a>.
-						</div>
-					</div>
-					<input class="form-group" required type="hidden" name="id" value="<?php echo $struktur->slider_id ?>" />
+					<input class="form-group" required type="hidden" name="id" value="<?php echo $struktur->struktur_id ?>" />
 					<div class="form-group col-md-6">
 						<label>Foto pengurus sekarang</label><br>
-						<img src="<?php echo base_url('assets/upload/pengurus/' . $struktur->image) ?>" style="max-width:200px; height:auto;">
+						<img src="<?php echo base_url('back_assets/upload/pengurus/' . $struktur->image) ?>" style="max-width:60%; height:auto;">
+					</div>
+					<div class="card mb-4">
+						<div class="card-body">
+						Anda dapat mengubah foto pengurus dengan memilih <a href="#">foto</a> yang baru. 
+						Jika, tidak ingin mengubah anda dapat mengabaikan kolom input foto.
+						</div>
 					</div>
 					<div class="form-group">
-
-						<input class="form-control-file" required type="hidden" name="image" />
-						<input type="hidden" name="old_image" value="<?php echo $struktur->image ?>" />
+						<label for="image">Foto Pengurus </label><small> (Max 2Mb)</small>
+						<input class="form-control" type="file" name="image" />
+						<input type="hidden" name="image_lama" value="<?php echo $struktur->image ?>" />
 					</div>
 
 					<div class="form-group">
@@ -65,6 +66,7 @@
 							* harus diisi
 						</div>
 					</div>
+					<button type="reset" value="Reset" class="btn btn-secondary">Reset</button>
 					<button type="submit" class="btn btn-primary">Simpan</button>
 
 					<?php echo form_close() ?>

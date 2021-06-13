@@ -3,7 +3,7 @@
     $this->load->view($isi);
 } ?>
 <!-- Langganan Area Starts -->
-<section class="newsletter-area section-padding">
+<section class="newsletter-area section-padding" style="<?php echo "background-image: url('" . base_url('back_assets/img/background.jpg') . "');" ?>">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">

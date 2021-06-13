@@ -16,7 +16,7 @@ class Struktur extends CI_Controller
 
     public function index()
     {
-        $site     = $this->konfigurasi_model->listing();
+        $site   = $this->konfigurasi_model->listing();
         $result = $this->struktur_model->nomor();
         if (empty($result[0]['nomor'])) {
             $no = "1";
@@ -45,10 +45,8 @@ class Struktur extends CI_Controller
             $this->session->set_flashdata('sukses', 'Anda berhasil menginput struktural baru');
             redirect(site_url('admin/struktur'));  //menuju ke halaman admin/products/.
         }
-        // else{show_404();}
         $this->session->set_flashdata('maaf', 'Anda gagal menginput data struktural');
         redirect(site_url('admin/struktur'));
-        // $this->load->view("admin/product/new_form");
     }
 
     public function ubah($id = null)
@@ -60,21 +58,26 @@ class Struktur extends CI_Controller
         $validation = $this->form_validation; //object validation
         $validation->set_rules($struktur->rulesUbah()); //meneraptkan rules
 
-        if ($validation->run()) { //melakukan validasi
-            $struktur->update();   //menyimpan data
-            $this->session->set_flashdata('sukses', 'Data pengurus berhasil diperbarui');
-            redirect(site_url('admin/struktur'));  //menuju ke halaman admin/products/.
+        if ($validation->run()) {
+            if (!$_FILES['image']['name']) { //untuk kosong
+                $struktur->update(); 
+                $this->session->set_flashdata('sukses', 'Data pengurus berhasil diperbarui. Foto tidak berubah.');
+                redirect(site_url('admin/struktur'));  //menuju ke halaman admin/products/.
+            } else { //untuk berisi
+                $struktur->update_baru();
+                $this->session->set_flashdata('sukses', 'Data pengurus dan foto berhasil diperbarui');
+                redirect(site_url('admin/struktur'));  //menuju ke halaman admin/products/.
+            }
+
+        } else {
+            $data = array(
+                'title'       => 'Ubah Slide',
+                'namasite'    => $site['namaweb'],
+                'struktur'       => $struktur->getById($id),
+                'isi'         => 'back/struktur/ubah'
+            );
+            $this->load->view("back/wrapper", $data); //menampilkan form edit
         }
-
-        $data = array(
-            'title'        => 'Ubah Pengurus',
-            'namasite'    => $site['namaweb'],
-            'struktur'     => $struktur->getById($id),
-            'isi'        => 'back/struktur/ubah'
-        );
-        if (!$data["struktur"]) show_404(); //jika tidak ada data, tampilkan error
-
-        $this->load->view("back/wrapper", $data); //menampilkan form edit
     }
 
     public function delete($id = null)

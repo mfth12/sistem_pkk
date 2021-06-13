@@ -3,7 +3,7 @@
 class Struktur_model extends CI_Model //ini perintah untuk ngambil data dari database
 {
     private $_table = "struktur"; //nama tabel database
-    public $slider_id;
+    public $struktur_id;
     public $name;
     public $price;
     public $image = "default.jpg";
@@ -65,7 +65,7 @@ class Struktur_model extends CI_Model //ini perintah untuk ngambil data dari dat
     
     public function getById($id)
     {
-        return $this->db->get_where($this->_table, ["slider_id" => $id])->row();
+        return $this->db->get_where($this->_table, ["struktur_id" => $id])->row();
     }
 
     function nomor()
@@ -79,48 +79,56 @@ class Struktur_model extends CI_Model //ini perintah untuk ngambil data dari dat
     public function save()
     {
         $post = $this->input->post();
+        $acak = uniqid('PENGURUS', FALSE);
         $data = array(
             'name'	        => $post["name"],
             'nomor'	        => $post["nomor"],
-			'image'			=> $this->_uploadImage(),
+			'image'			=> $this->_uploadImage($acak),
 			'description'	=> $post["description"]
 		);
-        // $this->slider_id = uniqid();
-        // $this->name = $post["name"];
-        // $this->image = $this->_uploadImage();
-        // $this->description = $post["description"];
         return $this->db->insert($this->_table, $data);
     }
 
     public function update()
     {
         $post = $this->input->post();
-        // $this->slider_id = $post["id"];
-        // $this->name = $post["name"];
-        // $this->description = $post["description"];
-        // $this->image = $this->_uploadImage();
         $data = array(
             'name'	        => $post["name"],
             'nomor'	        => $post["nomor"],
-			'image'			=> $post["old_image"],
+			'image'			=> $post["image_lama"],
 			'description'	=> $post["description"]
 		);
         //////////////
-        return $this->db->update($this->_table, $data, array('slider_id' => $post['id']));
+        return $this->db->update($this->_table, $data, array('struktur_id' => $post['id']));
+    }
+
+    public function update_baru()
+    {
+        $post = $this->input->post();
+        $acak = uniqid('PENGURUS', FALSE);
+        $this->_deleteImage($post['id']);
+        $data = array(
+            'name'	        => $post["name"],
+            'nomor'	        => $post["nomor"],
+			'image'			=> $this->_uploadImage($acak),
+			'description'	=> $post["description"]
+		);
+        //////////////
+        return $this->db->update($this->_table, $data, array('struktur_id' => $post['id']));
     }
 
     public function delete($id)
     {
         $this->_deleteImage($id);
-        return $this->db->delete($this->_table, array("slider_id" => $id));
+        return $this->db->delete($this->_table, array("struktur_id" => $id));
     }
 
-    private function _uploadImage()
+    private function _uploadImage($acak)
     {
-        $post = $this->input->post();
+        // $post = $this->input->post();
         $config['upload_path']          = './back_assets/upload/pengurus/';
         $config['allowed_types']        = 'gif|jpg|png';
-        $config['file_name']            = $post["name"];
+        $config['file_name']            = $acak;
         $config['overwrite']			= true;
         $config['max_size']             = 6048; // 2MB saja maksimal
 
@@ -129,7 +137,6 @@ class Struktur_model extends CI_Model //ini perintah untuk ngambil data dari dat
         if ($this->upload->do_upload('image')) {
             return $this->upload->data("file_name");
         }
-
         return "default.jpg";
     }
 
