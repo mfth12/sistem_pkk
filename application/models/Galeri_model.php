@@ -12,8 +12,8 @@ class Galeri_model extends CI_Model //ini perintah untuk ngambil data dari datab
     public function rules()
     {
         return [
-            ['field' => 'name',
-            'label' => 'Name',
+            ['field' => 'nama_galeri',
+            'label' => 'Nama Galeri',
             'rules' => 'required'],
 
             ['field' => 'description',
@@ -25,8 +25,8 @@ class Galeri_model extends CI_Model //ini perintah untuk ngambil data dari datab
     public function rulesUbah()
     {
         return [
-            ['field' => 'name',
-            'label' => 'Name',
+            ['field' => 'nama_galeri',
+            'label' => 'Nama Galeri',
             'rules' => 'required'],
 
             ['field' => 'description',
@@ -37,11 +37,11 @@ class Galeri_model extends CI_Model //ini perintah untuk ngambil data dari datab
 
     public function getAll()
     {
-        $this->db->order_by("nomor", "asc");
+        $this->db->order_by("nomor", "desc");
         return $this->db->get($this->_table)->result();
     }
-    
-    public function getById($id)
+
+        public function getById($id)
     {
         return $this->db->get_where($this->_table, ["galeri_id" => $id])->row();
     }
@@ -50,14 +50,14 @@ class Galeri_model extends CI_Model //ini perintah untuk ngambil data dari datab
 	{
 		$this->db->select('nomor');
 		$this->db->order_by('nomor DESC');
-		$query = $this->db->get('slider');
+		$query = $this->db->get('galeri');
 		return $query->result_array();
     }
 
     function total_all()
     {
     	$this->db->select('nomor');
-    	$this->db->from('slider');
+    	$this->db->from('galeri');
     	$query = $this->db->get();
     	return $query->result();
     }
@@ -65,10 +65,11 @@ class Galeri_model extends CI_Model //ini perintah untuk ngambil data dari datab
     public function save()
     {
         $post = $this->input->post();
+        $acak = uniqid('GALERI', FALSE);
         $data = array(
-            'name'	        => $post["name"],
+            'name'	        => $post["nama_galeri"],
             'nomor'	        => $post["nomor"],
-			'image'			=> $this->_uploadImage(),
+			'image'			=> $this->_uploadImage($acak),
 			'description'	=> $post["description"]
 		);
         return $this->db->insert($this->_table, $data);
@@ -78,12 +79,25 @@ class Galeri_model extends CI_Model //ini perintah untuk ngambil data dari datab
     {
         $post = $this->input->post();
         $data = array(
-            'name'	        => $post["name"],
+            'name'	        => $post["nama_galeri"],
             'nomor'	        => $post["nomor"],
-			'image'			=> $post["old_image"],
+			'image'			=> $post["image_lama"],
 			'description'	=> $post["description"]
 		);
+        return $this->db->update($this->_table, $data, array('galeri_id' => $post['id']));
+    }
 
+    public function update_baru()
+    {
+        $post = $this->input->post();
+        $acak = uniqid('GALERI', FALSE);
+        $this->_deleteImage($post['id']);
+        $data = array(
+            'name'	        => $post["nama_galeri"],
+            'nomor'	        => $post["nomor"],
+			'image'			=> $this->_uploadImage($acak),
+			'description'	=> $post["description"]
+		);
         return $this->db->update($this->_table, $data, array('galeri_id' => $post['id']));
     }
 
@@ -93,12 +107,12 @@ class Galeri_model extends CI_Model //ini perintah untuk ngambil data dari datab
         return $this->db->delete($this->_table, array("galeri_id" => $id));
     }
 
-    private function _uploadImage()
+    private function _uploadImage($acak)
     {
-        $post = $this->input->post();
-        $config['upload_path']          = './back_assets/upload/slider/';
+        // $post = $this->input->post();
+        $config['upload_path']          = './back_assets/upload/galeri/';
         $config['allowed_types']        = 'gif|jpg|png';
-        $config['file_name']            = $post["name"];
+        $config['file_name']            = $acak;
         $config['overwrite']			= true;
         $config['max_size']             = 6048; // 2MB saja maksimal
 
@@ -115,7 +129,7 @@ class Galeri_model extends CI_Model //ini perintah untuk ngambil data dari datab
         $slide = $this->getById($id);
         if ($slide->image != "default.jpg") {
     	    $filename = explode(".", $slide->image)[0];
-    		return array_map('unlink', glob(FCPATH."back_assets/upload/slider/$filename.*"));
+    		return array_map('unlink', glob(FCPATH."back_assets/upload/galeri/$filename.*"));
         }
     }
 }

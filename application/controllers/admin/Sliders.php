@@ -52,8 +52,8 @@ class Sliders extends CI_Controller
     {
         if (!isset($id)) redirect(site_url('admin/sliders')); // redirect jika tidak ada $id 
 
-        $site     = $this->konfigurasi_model->listing();
-        $slide = $this->sliders_model;
+        $site       = $this->konfigurasi_model->listing();
+        $slide      = $this->sliders_model;
         $validation = $this->form_validation;
         $validation->set_rules($slide->rulesUbah());
 
@@ -61,11 +61,11 @@ class Sliders extends CI_Controller
             if (!$_FILES['image']['name']) { //untuk kosong
                 $slide->update(); 
                 $this->session->set_flashdata('sukses', 'Data slide berhasil diperbarui. Gambar tidak berubah.');
-                redirect(site_url('admin/sliders'));  //menuju ke halaman admin/products/.
+                redirect(site_url('admin/sliders')); 
             } else { //untuk berisi
                 $slide->update_baru();
                 $this->session->set_flashdata('sukses', 'Data slide dan gambar berhasil diperbarui');
-                redirect(site_url('admin/sliders'));  //menuju ke halaman admin/products/.
+                redirect(site_url('admin/sliders'));
             }
 
         } else {

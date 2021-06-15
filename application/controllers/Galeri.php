@@ -6,7 +6,6 @@ class Galeri extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('user_model');
 		$this->load->model('galeri_model');
 		$this->load->library('form_validation');
 	}
@@ -15,7 +14,7 @@ class Galeri extends CI_Controller
 	{
 		$site		= $this->konfigurasi_model->listing();
 		$data 		= array(
-			'title'      	=> 'Gambar Galeri',
+			'title'      	=> 'Foto Galeri',
 			'keywords' 	 	=> "Kontak, PKK, Desa Uma Beringin",
 			'site'			=> $site,
 			'pakai_slide'	=> false,

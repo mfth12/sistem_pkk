@@ -39,6 +39,7 @@
                         <div class="collapse" id="website" aria-labelledby="headingTree" data-parent="#sidenavAccordion">
                             <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
                                 <a class="nav-link" href="<?php echo site_url('admin/struktur') ?> "><div class="sb-nav-link-icon"><i class="fas fa-folder-open"></i></div>Pengurus</a>
+                                <a class="nav-link" href="<?php echo site_url('admin/galeri') ?> "><div class="sb-nav-link-icon"><i class="fas fa-image"></i></div>Galeri Foto</a>
                                 <a class="nav-link" href="<?php echo site_url('admin/sliders') ?> "><div class="sb-nav-link-icon"><i class="fas fa-image"></i></div>Sliders</a>
                                 <a class="nav-link" href="<?php echo site_url('admin/user') ?> "><div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>User</a>
                                 <a class="nav-link" href="<?php echo site_url('admin/konfig') ?> "><div class="sb-nav-link-icon"><i class="fas fa-wrench"></i></div>Konfigurasi</a>

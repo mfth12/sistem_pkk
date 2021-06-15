@@ -4,7 +4,7 @@
             <div class="col-lg-12">
                 <div class="section-top text-center">
                     <h2><?php echo $title ?></h2>
-                    <p>Galeri Foto <?php echo $site['namaweb'] . ' ' . $site['tagline'] ?></p>
+                    <p>Foto Galeri <?php echo $site['namaweb'] . ' ' . $site['tagline'] ?></p>
                 </div>
             </div>
         </div>
@@ -77,14 +77,14 @@
                         <?php $bo = 1;
                         foreach ($galeri as $ben) {
                             if ($bo == 1) { ?>
-                                <div class="carousel-item active"> <img src="<?php echo base_url('back_assets/upload/galeri/' . $ben->image) ?>" alt="item<?php echo $bo; ?>">
+                                <div class="carousel-item active"> <img width="100%" src="<?php echo base_url('back_assets/upload/galeri/' . $ben->image) ?>" alt="item<?php echo $bo; ?>">
                                     <div class="carousel-caption">
                                         <h3 class="text-white"><?php echo $ben->name ?></h3>
                                         <p><?php echo $ben->description ?></p>
                                     </div>
                                 </div>
                             <?php } else { ?>
-                                <div class="carousel-item"> <img src="<?php echo base_url('back_assets/upload/galeri/' . $ben->image) ?>" alt="item<?php echo $bo; ?>">
+                                <div class="carousel-item"> <img width="100%" src="<?php echo base_url('back_assets/upload/galeri/' . $ben->image) ?>" alt="item<?php echo $bo; ?>">
                                     <div class="carousel-caption">
                                         <h3 class="text-white"><?php echo $ben->name ?></h3>
                                         <p><?php echo $ben->description ?></p>

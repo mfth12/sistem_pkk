@@ -117,10 +117,6 @@
                                         * harus diisi
                                     </div>
                                 </div>
-
-                                <!-- end -->
-                                <!-- end -->
-                                <!-- end -->
                                 <button class="btn btn-secondary mr-1" type="button" data-dismiss="modal">Batal</button>
                                 <button type="submit" class="btn btn-success">Tambah</button>
                             </form>

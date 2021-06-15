@@ -23,48 +23,47 @@
 			echo validation_errors('<div class="alert alert-success">', '<button class="close" data-dismiss="alert">&times;</button> </div>');
 
 			// Form
-			echo form_open(site_url('admin/struktur/ubah/' . $struktur->slider_id));
+			echo form_open_multipart('admin/galeri/edit/' . $galeri->galeri_id);
 			?>
 			<!-- sekarang masuk ke kolom isi konten -->
 			<div class="card mb-4">
 				<div class="card-header">
-					<a href="<?php echo site_url('admin/struktur') ?>"><i class="fas fa-arrow-left"></i> Kembali</a>
+					<a href="<?php echo site_url('admin/galeri') ?>"><i class="fas fa-arrow-left"></i> Kembali</a>
 				</div>
 				<div class="card-body">
+					<input class="form-group" required type="hidden" name="id" value="<?php echo $galeri->galeri_id ?>" />
+					<div class="form-group col-md-6">
+						<label>Foto Galeri Sekarang</label><br>
+						<img src="<?php echo base_url('back_assets/upload/galeri/' . $galeri->image) ?>" style="max-width:100%; height:auto;">
+					</div>
 					<div class="card mb-4">
 						<div class="card-body">
-							Mohon maaf, anda hanya dapat merubah detail <a href="#">pengurus</a>. Fitur ini tidak dapat merubah foto
-							<a href="#">pengurus</a>. Anda bisa menambahkan item pengurus dan menuliskan deskripsi baru di menu tambah <a href="#">pengurus</a>.
+							Anda dapat mengubah foto galeri dengan memilih <a href="#">file foto</a> yang baru. 
+							Jika tidak ingin mengubah, anda dapat mengabaikan kolom input foto.
 						</div>
 					</div>
-					<input class="form-group" required type="hidden" name="id" value="<?php echo $struktur->slider_id ?>" />
-					<div class="form-group col-md-6">
-						<label>Foto pengurus sekarang</label><br>
-						<img src="<?php echo base_url('assets/upload/pengurus/' . $struktur->image) ?>" style="max-width:200px; height:auto;">
+					<div class="form-group">
+						<label for="image">Foto Galeri </label><small> (Max 2Mb)</small>
+						<input class="form-control" name="image" type="file"/>
+						<input type="hidden" name="image_lama" value="<?php echo $galeri->image ?>" />
 					</div>
 					<div class="form-group">
-
-						<input class="form-control-file" required type="hidden" name="image" />
-						<input type="hidden" name="old_image" value="<?php echo $struktur->image ?>" />
+						<label for="nama_galeri">Judul Foto *</label>
+						<input class="form-control" required type="text" name="nama_galeri" value="<?php echo $galeri->name ?>" />
 					</div>
-
 					<div class="form-group">
-						<label for="name">Nama Pengurus *</label>
-						<input class="form-control" required type="text" name="name" value="<?php echo $struktur->name ?>" />
+						<label for="nomor">Urutan Tampil *</label>
+						<input class="form-control" required type="number" name="nomor" value="<?php echo $galeri->nomor ?>" placeholder="<?php echo $galeri->nomor ?>" />
 					</div>
 
 					<div class="form-group">
-						<label for="name">Urutan Tampil *</label>
-						<input class="form-control" required type="number" name="nomor" value="<?php echo $struktur->nomor ?>" placeholder="<?php echo $struktur->nomor ?>" />
-					</div>
-
-					<div class="form-group">
-						<label for="deskription">Keterangan Slide *</label>
-						<textarea class="form-control" name="description" required><?php echo $struktur->description ?></textarea>
+						<label for="description">Keterangan Foto *</label>
+						<textarea class="form-control" name="description" required><?php echo $galeri->description ?></textarea>
 						<div class="small text-muted">
 							* harus diisi
 						</div>
 					</div>
+					<button type="reset" value="Reset" class="btn btn-secondary">Reset</button>
 					<button type="submit" class="btn btn-primary">Simpan</button>
 
 					<?php echo form_close() ?>

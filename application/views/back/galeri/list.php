@@ -40,94 +40,92 @@
             <div class="card mb-4">
                 <div class="card-body">
                     <div class="d-flex">
-                        <p><a href="<?php echo site_url('superadmin/struktural') ?>" class="btn btn-success mr-2" data-toggle="modal" data-target="#tambahSlide">
-                                <i class="fa fa-plus"></i> Tambah Pengurus</a></p>
+                        <p><a href="<?php echo site_url('admin/galeri') ?>" class="btn btn-success mr-2" data-toggle="modal" data-target="#tambahSlide">
+                                <i class="fa fa-plus"></i> Tambah Galeri</a></p>
                     </div>
                     <div class="table-responsive">
                         <!-- masuk ke tabel -->
                         <table class="table table-striped table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
+                                    <th class="text-center"></th>
+                                    <th>Gambar</th>
+                                    <th>Nama Judul</th>
+                                    <th>Keterangan</th>
                                     <th class="text-center">Urut</th>
-                                    <th>Foto</th>
-                                    <th>Nama Lengkap Pengurus</th>
-                                    <th>Jabatan Pengurus</th>
                                     <th class="text-center">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php $no = 1;
-                                foreach ($struktur as $data) { ?>
+                                foreach ($galeri as $data) { ?>
                                     <tr>
+                                        <td class="text-center">
+                                            <h4><?php echo $no ?></h4>
+                                        </td>
+                                        <td>
+                                            <img src="<?php echo base_url('back_assets/upload/galeri/' . $data->image) ?>" width="64" />
+                                        </td>
+                                        <td width="25%" >
+                                            <?php echo $data->name ?>
+                                        </td>
+                                        <td width="35%" class="small">
+                                            <?php echo substr($data->description, 0, 150) ?>
+                                        </td>
                                         <td width="15px" class="text-center">
                                             <h4><?php echo $data->nomor ?></h4>
                                         </td>
-                                        <td>
-                                            <img src="<?php echo base_url('back_assets/upload/pengurus/' . $data->image) ?>" width="64" />
-                                        </td>
-                                        <td>
-                                            <?php echo $data->name ?>
-                                        </td>
-                                        <td width="30%" class="small">
-                                            <?php echo substr($data->description, 0, 150) ?>
-                                        </td>
                                         <td class="d-flex justify-content-center">
-                                            <a href="<?php echo site_url('admin/struktur/ubah/' . $data->slider_id) ?>" class="btn btn-sm btn-primary mr-1"><i class="fa fa-edit"></i> Ubah</a>
-                                            <a onclick="deleteConfirm('<?php echo site_url('admin/struktur/delete/' . $data->slider_id) ?>')" href="#!" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                            <a href="<?php echo site_url('admin/galeri/edit/' . $data->galeri_id) ?>" class="btn btn-sm btn-primary mr-1"><i class="fa fa-edit"></i> Ubah</a>
+                                            <a onclick="deleteConfirm('<?php echo site_url('admin/galeri/delete/' . $data->galeri_id) ?>')" href="#!" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 <?php $no++;
                                 } ?>
                             </tbody>
-
-
                         </table>
                     </div> <!-- akhir div tabel -->
                 </div> <!-- akhir div card body -->
             </div> <!-- akhir div card -->
-            <!-- modal tambah user-->
             <!-- modal tambah user-->
             <!-- modal -->
             <div class="modal fade" id="tambahSlide" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Tambah Slide</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Tambah Galeri</h5>
                             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="<?php echo site_url('admin/struktur/add') ?>" method="post" enctype="multipart/form-data">
+                            <form action="<?php echo site_url('admin/galeri/add') ?>" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <label for="image">Foto Pengurus </label><small> (Max 2Mb)</small>
+                                    <label for="image">Foto Galeri Baru</label><small> (Max 2Mb)</small>
                                     <input class="form-control-file" required type="file" name="image" />
                                 </div>
-
                                 <div class="form-group">
-                                    <label for="name">Nama Pengurus *</label>
-                                    <input class="form-control" required type="text" name="name" placeholder="Nama Lengkap" />
+                                    <label for="nama_galeri">Judul Foto *</label>
+                                    <input class="form-control" required type="text" name="nama_galeri" placeholder="Nama judul foto" />
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="name">Urutan Tampil *</label>
+                                    <label for="nomor">Urutan Tampil *</label>
                                     <input class="form-control" required type="number" name="nomor" value="<?php echo $nomor ?>" placeholder="<?php echo $nomor ?>" />
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="deskription">Jabatan Pengurus *</label>
-                                    <textarea class="form-control" name="description" required placeholder="Keterangan Jabatan Pengurus"></textarea>
+                                    <label for="deskription">Keterangan Foto *</label>
+                                    <textarea class="form-control" name="description" required placeholder="Keterangan Slide"></textarea>
                                     <div class="small text-muted">
                                         * harus diisi
                                     </div>
                                 </div>
-                                <!-- end -->
-                                <!-- end -->
-                                <!-- end -->
                                 <button class="btn btn-secondary mr-1" type="button" data-dismiss="modal">Batal</button>
                                 <button type="submit" class="btn btn-success">Tambah</button>
                             </form>
                         </div> <!-- modal-body -->
+
                     </div> <!-- modal-content -->
                 </div> <!-- modal-dialog -->
             </div> <!-- modal-fade -->

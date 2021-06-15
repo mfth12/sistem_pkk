@@ -1,0 +1,35 @@
+SELECT 
+    berita.*, 
+    pokja.nama_pokja, 
+    users.nama
+FROM
+    berita
+LEFT JOIN pokja
+    ON pokja.id_pokja = berita.id_pokja;
+LEFT JOIN users
+    ON users.id_user = berita.id_user;
+ORDER BY 
+    id_berita, DESC
+
+
+
+
+SELECT user.namaa, komentar.komen, user.pekerjaan
+FROM komentar INNER JOIN user
+ON komentar.id_user=user.id_user
+ORDER BY id_user
+
+SELECT komentar.*,user.namaa, user.pekerjaan
+FROM komentar INNER JOIN user
+ON komentar.id_user=user.id_user
+ORDER BY komentar.id_user
+
+
+SELECT berita.*, pokja.nama_pokja, users.nama
+FROM berita
+LEFT JOIN pokja ON pokja.id_pokja = berita.id_pokja
+LEFT JOIN users ON users.id_user = berita.id_user
+ORDER BY berita.id_berita DESC
+
+
+
