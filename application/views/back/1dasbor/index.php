@@ -151,53 +151,34 @@
             <?php
             } ?>
 
-
-            <!-- SUPERADMIN -->
-            <?php if ($this->session->userdata('akses_level') == 'admin_desa') { ?>
-                <!-- kolom isi konten -->
+            <?php if ($this->session->userdata('akses_level') == 'sekret_pokja') { ?>
                 <div class="row">
                     <div class="col-xl-3 col-md-6">
                         <div class="card bg-primary text-white mb-4">
                             <div class="card-body">
-                                <h4><?php echo count($berita) ?> Kegiatan</h4>
+                                <h4><?php echo count($berita) ?> Berita</h4>
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="<?php echo site_url('admin/kegiatan') ?>">Lihat Detail Kegiatan</a>
+                                <a class="small text-white stretched-link" href="<?php echo site_url('admin/berita') ?>">Lihat Detail Berita</a>
                                 <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                             </div>
                         </div>
                     </div>
                     <div class="col-xl-3 col-md-6">
-                        <div class="card bg-success text-white mb-4">
+                        <div class="card bg-secondary text-white mb-4">
                             <div class="card-body">
-                                <h4><?php echo count($total_trans) ?> Data Keuangan</h4>
+                                <h4><?php echo count($galeri) ?> Galeri</h4>
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="<?php echo site_url('admin/keuangan') ?>">Lihat Detail Keuangan</a>
-                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card bg-danger text-white mb-4">
-                            <div class="card-body">
-                                <h4><?php echo count($user) ?> User</h4>
-                            </div>
-                            <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="<?php echo site_url('admin/user') ?>">Lihat Detail User</a>
+                                <a class="small text-white stretched-link" href="<?php echo site_url('admin/galeri') ?>">Lihat Detail Galeri</a>
                                 <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <div class="row">
-
-                </div>
-                <!-- end of kolom isi konten -->
             <?php
             } ?>
+
 
         </div>
     </main>

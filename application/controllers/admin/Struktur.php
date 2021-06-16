@@ -43,7 +43,7 @@ class Struktur extends CI_Controller
         if ($validation->run()) {
             $struktur->save();
             $this->session->set_flashdata('sukses', 'Anda berhasil menginput struktural baru');
-            redirect(site_url('admin/struktur'));  //menuju ke halaman admin/products/.
+            redirect(site_url('admin/struktur')); 
         }
         $this->session->set_flashdata('maaf', 'Anda gagal menginput data struktural');
         redirect(site_url('admin/struktur'));
@@ -51,22 +51,22 @@ class Struktur extends CI_Controller
 
     public function ubah($id = null)
     {
-        if (!isset($id)) redirect(site_url('admin/struktur')); // redirect jika tidak ada $id 
+        if (!isset($id)) redirect(site_url('admin/struktur')); 
 
         $site     = $this->konfigurasi_model->listing();
-        $struktur = $this->struktur_model; //object manual
-        $validation = $this->form_validation; //object validation
-        $validation->set_rules($struktur->rulesUbah()); //meneraptkan rules
+        $struktur = $this->struktur_model; 
+        $validation = $this->form_validation; 
+        $validation->set_rules($struktur->rulesUbah());
 
         if ($validation->run()) {
             if (!$_FILES['image']['name']) { //untuk kosong
                 $struktur->update(); 
                 $this->session->set_flashdata('sukses', 'Data pengurus berhasil diperbarui. Foto tidak berubah.');
-                redirect(site_url('admin/struktur'));  //menuju ke halaman admin/products/.
+                redirect(site_url('admin/struktur')); 
             } else { //untuk berisi
                 $struktur->update_baru();
                 $this->session->set_flashdata('sukses', 'Data pengurus dan foto berhasil diperbarui');
-                redirect(site_url('admin/struktur'));  //menuju ke halaman admin/products/.
+                redirect(site_url('admin/struktur'));
             }
 
         } else {
@@ -76,16 +76,16 @@ class Struktur extends CI_Controller
                 'struktur'       => $struktur->getById($id),
                 'isi'         => 'back/struktur/ubah'
             );
-            $this->load->view("back/wrapper", $data); //menampilkan form edit
+            $this->load->view("back/wrapper", $data);
         }
     }
 
     public function delete($id = null)
     {
         if (!isset($id)) show_404();
-        if ($this->struktur_model->delete($id)) { //Apabila data berhasil dihapus, maka kita langsung alihkan (redirect())
-            $this->session->set_flashdata('maaf', 'Data struktur telah dihapus'); // flash message
-            redirect(site_url('admin/struktur'));  //menuju ke halaman admin/products/.
+        if ($this->struktur_model->delete($id)) {
+            $this->session->set_flashdata('maaf', 'Data pengurus telah dihapus');
+            redirect(site_url('admin/struktur'));  
         }
     }
 }

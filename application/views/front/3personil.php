@@ -5,7 +5,7 @@
                <div class="col-lg-12">
                    <div class="section-top text-center">
                        <h2>Pengurus TP-PKK</h2>
-                       <p>Pengurus TP (Tim Penegak) PKK (Pemberdayaan dan Kesejahteraan Keluarga) Desa Uma Beringin Periode 2017-2022</p>
+                       <p>Pengurus TP (Tim Penggerak) PKK (Pemberdayaan dan Kesejahteraan Keluarga) Desa Uma Beringin</p>
                    </div>
                </div>
            </div>
@@ -27,8 +27,8 @@
                <?php } ?>
            </div>
        </div>
-       <div class="more-job-btn mt-3 text-center">
-           <a href="#" class="template-btn">Selengkapnya<span class="flaticon-next"></span></a>
+       <div class="more-job-btn mt-5 text-center">
+           <a href="<?php echo site_url('pengurus') ?>" class="template-btn">Selengkapnya<span class="flaticon-next"></span></a>
        </div>
    </section>
    <!-- Team Area End -->

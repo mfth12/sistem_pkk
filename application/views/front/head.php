@@ -2,6 +2,7 @@
 $site       = $this->konfigurasi_model->listing();
 $nav_berita = $this->site_model->nav_berita();
 $nav_profil = $this->site_model->nav_profil();
+$this->load->model('galeri_model');
 ?>
 
 <!DOCTYPE html>
@@ -101,24 +102,21 @@ $nav_profil = $this->site_model->nav_profil();
                                 </ul>
                             </li>
                             <li><a href="<?php echo site_url('galeri') ?>">Galeri</a>
-                                <!-- <ul class="sub-menu">
-                                    <li><a href="#">Pokja I</a></li>
-                                    <li><a href="#">Pokja II</a></li>
-                                    <li><a href="#">Pokja III</a></li>
-                                    <li><a href="#">Pokja IV</a></li>
-                                </ul> -->
+                            </li>
+                            </li>
+                            <li><a href="<?php echo site_url('pengurus') ?>">Pengurus</a>
                             </li>
                             <li><a href="#">Tentang</a>
-                                <ul class="sub-menu">
-                                    <?php foreach ($nav_profil as $nav_profil) { ?>
-                                        <li>
-                                            <a href="<?php echo site_url('berita/read/' . $nav_profil->slug_berita) ?>">
-                                                <?php echo $nav_profil->nama_berita ?>
-                                            </a><?php } ?>
-                                        </li>
-                                </ul>
-                            </li>
-                            <li><a href="<?php echo site_url('kontak') ?>">Kontak</a></li>
+                            <ul class="sub-menu">
+                                <?php foreach ($nav_profil as $nav_profil) { ?>
+                                    <li>
+                                        <a href="<?php echo site_url('berita/read/' . $nav_profil->slug_berita) ?>">
+                                        <?php echo $nav_profil->nama_berita ?>
+                                    </a><?php } ?>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a href="<?php echo site_url('kontak') ?>">Kontak</a></li>
                         </ul>
                     </div>
                 </div>

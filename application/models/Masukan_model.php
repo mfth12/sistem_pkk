@@ -27,18 +27,11 @@ class Masukan_model extends CI_Model //ini perintah untuk ngambil data dari data
         return $this->db->get_where($this->_table, ["masukan_id" => $id])->row();
     }
 
-    function nomor()
-	{
-		$this->db->select('nomor');
-		$this->db->order_by('nomor DESC');
-		$query = $this->db->get('slider');
-		return $query->result_array();
-    }
 
     function total_all()
     {
-    	$this->db->select('nomor');
-    	$this->db->from('slider');
+    	$this->db->select('masukan_id');
+    	$this->db->from('masukan');
     	$query = $this->db->get();
     	return $query->result();
     }

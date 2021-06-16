@@ -27,6 +27,19 @@ class Berita_model extends CI_Model {
 		$query = $this->db->get();
 		return $query->result();
 	}
+
+	public function listing_sekret($you) {
+		$this->db->select('berita.*, pokja.nama_pokja, users.nama');
+		$this->db->from('berita');
+		$this->db->where('slug_berita',$you);
+		// Join
+		$this->db->join('pokja','pokja.id_pokja = berita.id_pokja', 'LEFT');
+		$this->db->join('users','users.id_user = berita.id_user','LEFT');
+		// End join
+		$this->db->order_by('id_berita','DESC');
+		$query = $this->db->get();
+		return $query->result();
+	}
 	
 	//Read
 	public function read($slug_berita) {

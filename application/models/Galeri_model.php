@@ -40,6 +40,13 @@ class Galeri_model extends CI_Model //ini perintah untuk ngambil data dari datab
         $this->db->order_by("nomor", "desc");
         return $this->db->get($this->_table)->result();
     }
+ 
+    public function getAll_limit()
+    {
+        $this->db->order_by("nomor", "desc");
+		$this->db->limit(17);
+        return $this->db->get($this->_table)->result();
+    }
 
         public function getById($id)
     {

@@ -58,3 +58,35 @@
         </div>
     <?php
     } ?>
+
+    <?php if ($this->session->userdata('akses_level') == 'sekret_pokja') { ?>
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Utama</div>
+                        <a class="nav-link" href="<?php echo site_url('admin') ?>">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Dasbor
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Data</div>
+                        <a class="nav-link" href="<?php echo site_url('admin/berita') ?> ">
+                            <div class="sb-nav-link-icon"><i class="fas fa-star"></i></div>
+                            Berita Pokja
+                        </a>
+                        <a class="nav-link" href="<?php echo site_url('admin/galeri') ?> ">
+                            <div class="sb-nav-link-icon"><i class="fas fa-image"></i></div>
+                            Galeri Pokja
+                        </a>
+                        
+                        <div class="sb-sidenav-menu-heading">Akun</div>
+                        <a class="nav-link" href="<?php echo site_url('profile') ?> "> <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+                            Profile
+                        </a>
+
+                    </div>
+                </div>
+            </nav>
+        </div>
+    <?php
+    } ?>

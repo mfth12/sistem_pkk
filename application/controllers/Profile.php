@@ -8,7 +8,6 @@ class Profile extends CI_Controller
 		parent::__construct();
 		$this->simple_login->terotentikasi();
 		$this->load->model('user_model');
-		// $this->load->user_model();
 	}
 
 	// Profil

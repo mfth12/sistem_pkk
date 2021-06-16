@@ -15,8 +15,6 @@ class overview extends CI_Controller
 		$this->load->model('masukan_model');
 		$this->load->model('galeri_model');
 		$this->load->model('struktur_model');
-		// if($this->session->userdata('akses_level') != 'superadmin')
-		// 	show_404();
 	}
 
 	public function index()

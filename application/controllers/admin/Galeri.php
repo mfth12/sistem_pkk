@@ -9,7 +9,7 @@ class Galeri extends CI_Controller
         $this->simple_login->terotentikasi();
         $this->load->model("galeri_model");
         $this->load->library('form_validation');
-        if ($this->session->userdata('akses_level') != 'superadmin')
+        if (!($this->session->userdata('akses_level') == "superadmin" || $this->session->userdata('akses_level') == "sekret_pokja"))
             show_404();
     }
 

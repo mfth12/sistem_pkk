@@ -11,6 +11,7 @@ class Berita extends CI_Controller
 		$this->load->model('berita_model');
 		$this->load->model('pokja_model');
 		$this->load->model('konfigurasi_model');
+		$this->load->model('user_model');
 		// if($this->session->userdata('akses_level') != 'superadmin')
 		// 	show_404();
 	}
@@ -21,7 +22,7 @@ class Berita extends CI_Controller
 		$berita = $this->berita_model->listing();
 		$site 	= $this->konfigurasi_model->listing();
 		$data = array(
-			'site'		=> $site, //percontohan untuk yang lain, menggunakan $site-['details']
+			'site'		=> $site,
 			'title'		=> 'Berita',
 			'namasite'	=> $site['namaweb'],
 			'berita'	=> $berita,
@@ -34,8 +35,7 @@ class Berita extends CI_Controller
 	public function tambah()
 	{
 		$site 		= $this->konfigurasi_model->listing();
-		$pokja	= $this->pokja_model->listing(); //ngambil jenis pokja
-		// Validasi
+		$pokja		= $this->pokja_model->listing();
 		$v = $this->form_validation;
 		$v->set_rules(
 			'nama_berita',

@@ -4,33 +4,33 @@
 } ?>
 
 <?php if ($subscribe) { ?>
-<section class="newsletter-area section-padding" style="<?php echo "background-image: url('" . base_url('back_assets/img/'.$site["background"]). "');" ?>">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-top text-center">
-                    <h2>Dapatkan informasi terbaru</h2>
-                    <p>Berlangganan berita PKK Desa Uma Beringin</p>
+    <section class="newsletter-area section-padding" style="<?php echo "background-image: url('" . base_url('back_assets/img/' . $site["background"]) . "');" ?>">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-top text-center">
+                        <h2>Dapatkan informasi terbaru</h2>
+                        <p>Berlangganan berita PKK Desa Uma Beringin</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <form action="#">
+                        <input type="email" placeholder="Email anda" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email anda'" required>
+                        <button type="submit" class="template-btn">Langganan</button>
+                    </form>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <form action="#">
-                    <input type="email" placeholder="Email anda" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email anda'" required>
-                    <button type="submit" class="template-btn">Langganan</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 <?php } ?>
 <!-- Footer Area Starts -->
 <footer class="footer-area section-padding">
     <div class="footer-widget">
         <div class="container">
             <div class="row">
-                <div class="col-xl-4 col-lg-4">
+                <div class="col-xl-6 col-lg-6">
                     <div class="single-widget-home mb-5 mb-lg-0">
                         <h3 class="mb-4">Berita</h3>
                         <ul>
@@ -43,31 +43,16 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-xl-4 col-lg-4">
-                    <div class="single-widget-home mb-5 mb-lg-0">
-                        <h3 class="mb-4">Galeri PKK</h3>
-                        <ul>
-                            <?php $footer_berita  = $this->site_model->nav_berita(); ?>
-                            <?php foreach ($footer_berita as $nav_berita) { ?>
-                                <li class="mb-2"><a href="<?php echo site_url('berita/pokja/' . $nav_berita->slug_pokja) ?>">
-                                        <?php echo $nav_berita->nama_pokja ?>
-                                    </a></li>
-                            <?php } ?>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-xl-4 col-lg-4">
+                <div class="col-xl-6 col-lg-6">
                     <div class="single-widge-home">
-                        <h3 class="mb-4">Kontak</h3>
+                        <h3 class="mb-4">Galeri</h3>
                         <div class="feed">
-                            <img src="<?php echo base_url('front_assets/images/feed1.jpg') ?>" alt="feed">
-                            <img src="<?php echo base_url('front_assets/images/feed2.jpg') ?>" alt="feed">
-                            <img src="<?php echo base_url('front_assets/images/feed3.jpg') ?>" alt="feed">
-                            <img src="<?php echo base_url('front_assets/images/feed4.jpg') ?>" alt="feed">
-                            <img src="<?php echo base_url('front_assets/images/feed5.jpg') ?>" alt="feed">
-                            <img src="<?php echo base_url('front_assets/images/feed6.jpg') ?>" alt="feed">
-                            <img src="<?php echo base_url('front_assets/images/feed7.jpg') ?>" alt="feed">
-                            <img src="<?php echo base_url('front_assets/images/feed8.jpg') ?>" alt="feed">
+                            <?php
+                            $galeri = $this->galeri_model->getAll_limit();
+                            foreach ($galeri as $gal) { ?>
+                                <img style="background: no-repeat center center scroll; -webkit-background-size: cover; -moz-background-size: cover; -o-background-size: cover; background-size: cover; 
+                                width:70px; height:55px;" src="<?php echo base_url('back_assets/upload/galeri/' . $gal->image) ?>" alt="feed">
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
