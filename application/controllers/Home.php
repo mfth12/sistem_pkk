@@ -10,6 +10,7 @@ class Home extends CI_Controller
 		$this->load->model('berita_model');
 		$this->load->model('kas_model');
 		$this->load->model('sliders_model');
+		$this->load->model('quote_model');
 		$this->load->model('struktur_model');
 	}
 
@@ -18,6 +19,7 @@ class Home extends CI_Controller
 		$site		= $this->konfigurasi_model->listing();
 		$berita		= $this->berita_model->home();
 		$slide		= $this->sliders_model->getAll();
+		$quotes		= $this->quote_model->getAll();
 		$struktur	= $this->struktur_model->getAllTampil();
 		$data		= array(
 			'title'			=> $site['namaweb'] . ' ' . $site['tagline'],
@@ -25,8 +27,10 @@ class Home extends CI_Controller
 			'site'			=> $site,
 			'berita_slide'	=> $berita,
 			'slide'			=> $slide,
+			'quotes'		=> $quotes,
 			'struktur'		=> $struktur,
 			'pakai_slide'	=> true,
+			'subscribe'		=> true,
 			'isi'			=> 'front/isi/home'
 		);
 		$this->load->view('front/landing', $data);

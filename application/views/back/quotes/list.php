@@ -40,44 +40,44 @@
             <div class="card mb-4">
                 <div class="card-body">
                     <div class="d-flex">
-                        <p><a href="<?php echo site_url('admin/galeri') ?>" class="btn btn-success mr-2" data-toggle="modal" data-target="#tambahSlide">
-                                <i class="fa fa-plus"></i> Tambah Galeri</a></p>
+                        <p><a href="<?php echo site_url('admin/quotes') ?>" class="btn btn-success mr-2" data-toggle="modal" data-target="#tambahSlide">
+                                <i class="fa fa-plus"></i> Tambah Quotes</a></p>
                     </div>
                     <div class="table-responsive">
                         <!-- masuk ke tabel -->
                         <table class="table table-striped table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th class="text-center"></th>
-                                    <th>Gambar</th>
                                     <th class="text-center">Urut</th>
-                                    <th>Nama Judul</th>
-                                    <th>Keterangan</th>
+                                    <th>Foto</th>
+                                    <th>Nama Lengkap</th>
+                                    <th>Jabatan Sosial</th>
+                                    <th>Quotes</th>
                                     <th class="text-center">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php $no = 1;
-                                foreach ($galeri as $data) { ?>
+                                foreach ($quote as $data) { ?>
                                     <tr>
-                                        <td class="text-center">
-                                            <?php echo $no ?>
-                                        </td>
-                                        <td>
-                                            <img src="<?php echo base_url('back_assets/upload/galeri/' . $data->image) ?>" width="64" />
-                                        </td>
                                         <td width="15px" class="text-center">
                                             <h4><?php echo $data->nomor ?></h4>
                                         </td>
-                                        <td width="25%" >
+                                        <td>
+                                            <img src="<?php echo base_url('back_assets/upload/quote/' . $data->image) ?>" width="64" />
+                                        </td>
+                                        <td>
                                             <?php echo $data->name ?>
                                         </td>
-                                        <td width="35%" class="small">
+                                        <td>
+                                            <?php echo $data->jabatan ?>
+                                        </td>
+                                        <td minwidth="25%" class="small">
                                             <?php echo substr($data->description, 0, 150) ?>
                                         </td>
                                         <td class="d-flex justify-content-center">
-                                            <a href="<?php echo site_url('admin/galeri/edit/' . $data->galeri_id) ?>" class="btn btn-sm btn-primary mr-1"><i class="fa fa-edit"></i> Ubah</a>
-                                            <a onclick="deleteConfirm('<?php echo site_url('admin/galeri/delete/' . $data->galeri_id) ?>')" href="#!" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                            <a href="<?php echo site_url('admin/quotes/edit/' . $data->quote_id) ?>" class="btn btn-sm btn-primary mr-1"><i class="fa fa-edit"></i> Ubah</a>
+                                            <a onclick="deleteConfirm('<?php echo site_url('admin/quotes/delete/' . $data->quote_id) ?>')" href="#!" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 <?php $no++;
@@ -93,30 +93,34 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Tambah Galeri</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Tambah Quotes</h5>
                             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="<?php echo site_url('admin/galeri/add') ?>" method="post" enctype="multipart/form-data">
+                            <form action="<?php echo site_url('admin/quotes/add') ?>" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
-                                    <label for="image">Foto Galeri Baru</label><small> (Max 2Mb)</small>
+                                    <label for="image">Foto</label><small> (Max 2Mb)</small>
                                     <input class="form-control-file" required type="file" name="image" />
                                 </div>
                                 <div class="form-group">
-                                    <label for="nama_galeri">Judul Foto *</label>
-                                    <input class="form-control" required type="text" name="nama_galeri" placeholder="Judul foto" />
+                                    <label for="nama_quote">Nama Pemilik Quote *</label>
+                                    <input class="form-control" required type="text" name="nama_quote" placeholder="Nama pemilik quote" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="jabatan">Jabatan Sosial *</label>
+                                    <input class="form-control" required type="text" name="jabatan" placeholder="Jabatan sosial" />
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="nomor">Urutan Tampil *</label>
+                                    <label for="nomor">Urut *</label>
                                     <input class="form-control" required type="number" name="nomor" value="<?php echo $nomor ?>" placeholder="<?php echo $nomor ?>" />
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="deskription">Keterangan Foto *</label>
-                                    <textarea class="form-control" name="description" required placeholder="Keterangan Foto"></textarea>
+                                    <label for="deskription">Quotes *</label><small> (10-80 Karakter)</small>
+                                    <textarea class="form-control" minlength="10" maxlength="80" name="description" required placeholder="Quotes"></textarea>
                                     <div class="small text-muted">
                                         * harus diisi
                                     </div>

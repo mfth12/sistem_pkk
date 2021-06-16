@@ -46,8 +46,7 @@ $this->load->view('front/1perkenalan.php');
         <a href="<?php echo site_url('berita') ?>" class="template-btn">Baca Selengkapnya<span class="flaticon-next"></span></a>
     </div>
 </section>
-<!-- Berita slide ends -->
 <?php
 $this->load->view('front/3personil.php');
-$this->load->view('front/2sambutan.php');
+$this->load->view('front/2katamereka.php');
 ?>

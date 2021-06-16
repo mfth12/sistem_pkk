@@ -111,10 +111,10 @@
                     <div class="col-xl-3 col-md-6">
                         <div class="card bg-secondary text-white mb-4">
                             <div class="card-body">
-                                <h4><?php //echo count($user) ?> Galeri</h4>
+                                <h4><?php echo count($galeri) ?> Galeri</h4>
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
-                                <a class="small text-white stretched-link" href="<?php //echo site_url('admin/user') ?>">Lihat Detail Galeri</a>
+                                <a class="small text-white stretched-link" href="<?php echo site_url('admin/galeri') ?>">Lihat Detail Galeri</a>
                                 <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                             </div>
                         </div>
@@ -126,6 +126,17 @@
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
                                 <a class="small text-white stretched-link" href="<?php echo site_url('admin/struktur') ?>">Lihat Detail Pengurus</a>
+                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card bg-secondary text-white mb-4">
+                            <div class="card-body">
+                                <h4><?php echo count($masukan) ?> Pesan</h4>
+                            </div>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <a class="small text-white stretched-link" href="<?php echo site_url('admin/masukan') ?>">Lihat Detail Pesan Masuk</a>
                                 <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                             </div>
                         </div>

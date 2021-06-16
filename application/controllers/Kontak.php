@@ -23,6 +23,7 @@ class Kontak extends CI_Controller
 			'keywords' 		=> "Kontak, PKK, Desa Uma Beringin",
 			'site'			=> $site,
 			'struktur'		=> $struktur,
+			'subscribe' 	=> false,
 			'pakai_slide'	=> false,
 			'isi'			=> 'front/isi/kontak'
 		);

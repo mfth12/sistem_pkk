@@ -2,8 +2,9 @@
 <?php if ($isi) {
     $this->load->view($isi);
 } ?>
-<!-- Langganan Area Starts -->
-<section class="newsletter-area section-padding" style="<?php echo "background-image: url('" . base_url('back_assets/img/background.jpg') . "');" ?>">
+
+<?php if ($subscribe) { ?>
+<section class="newsletter-area section-padding" style="<?php echo "background-image: url('" . base_url('back_assets/img/'.$site["background"]). "');" ?>">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -23,6 +24,7 @@
         </div>
     </div>
 </section>
+<?php } ?>
 <!-- Footer Area Starts -->
 <footer class="footer-area section-padding">
     <div class="footer-widget">
@@ -34,7 +36,7 @@
                         <ul>
                             <?php $footer_berita  = $this->site_model->nav_berita(); ?>
                             <?php foreach ($footer_berita as $nav_berita) { ?>
-                                <li class="mb-2"><a href="<?php echo site_url('kegiatan/pokja/' . $nav_berita->slug_pokja) ?>">
+                                <li class="mb-2"><a href="<?php echo site_url('berita/pokja/' . $nav_berita->slug_pokja) ?>">
                                         <?php echo $nav_berita->nama_pokja ?>
                                     </a></li>
                             <?php } ?>
@@ -47,7 +49,7 @@
                         <ul>
                             <?php $footer_berita  = $this->site_model->nav_berita(); ?>
                             <?php foreach ($footer_berita as $nav_berita) { ?>
-                                <li class="mb-2"><a href="<?php echo site_url('kegiatan/pokja/' . $nav_berita->slug_pokja) ?>">
+                                <li class="mb-2"><a href="<?php echo site_url('berita/pokja/' . $nav_berita->slug_pokja) ?>">
                                         <?php echo $nav_berita->nama_pokja ?>
                                     </a></li>
                             <?php } ?>
@@ -95,10 +97,9 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="social-icons">
                         <ul>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                            <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                            <li><a href="<?php echo $site['twitter'] ?>" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="<?php echo $site['facebook'] ?>" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="<?php echo $site['instagram'] ?>" target="_blank"><i class="fa fa-instagram"></i></a></li>
                         </ul>
                     </div>
                 </div>

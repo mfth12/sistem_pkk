@@ -69,9 +69,6 @@
               <a class="nav-link" id="ucapan-tab" data-toggle="tab" href="#ucapan" role="tab" aria-controls="ucapan" aria-selected="false">Ucapan</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="<?php echo site_url('admin/quotes') ?>" aria-selected="false">Quotes</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="<?php echo site_url('admin/periode') ?>" aria-selected="false">Periode</a>
             </li>
           </ul>
@@ -87,15 +84,15 @@
                     <h3>Informasi Dasar</h3>
                     <div class="form-group">
                       <label>Nama Situs</label>
-                      <input type="text" name="namaweb" placeholder="Nama organisasi/perusahaan" value="<?php echo $site['namaweb'] ?>" required class="form-control">
+                      <input type="text" name="namaweb" placeholder="Nama Situs" value="<?php echo $site['namaweb'] ?>" required class="form-control">
                     </div>
                     <div class="form-group">
                       <label>Nama Desa</label>
-                      <input type="text" name="tagline" placeholder="Company tagline/motto" value="<?php echo $site['tagline'] ?>" class="form-control">
+                      <input type="text" name="tagline" placeholder="Nama Desa" value="<?php echo $site['tagline'] ?>" required class="form-control">
                     </div>
                     <div class="form-group">
                       <label>Keterangan situs</label>
-                      <textarea name="tentang" rows="3" class="form-control" placeholder="Summary of the company"><?php echo $site['tentang'] ?></textarea>
+                      <textarea name="tentang" rows="3" class="form-control" placeholder="Keterangan Situs"><?php echo $site['tentang'] ?></textarea>
                     </div>
                     <div class="form-group">
                       <label>Efek Slide Halaman Utama</label>
@@ -110,7 +107,7 @@
                     </div>
                     <div class="form-group">
                       <label>Alamat Lengkap</label>
-                      <textarea name="alamat" rows="3" class="form-control" placeholder="Alamat perusahaan/organisasi"><?php echo $site['alamat'] ?></textarea>
+                      <textarea name="alamat" rows="3" class="form-control" placeholder="Alamat lengkap"><?php echo $site['alamat'] ?></textarea>
                     </div>
                     <div class="form-group">
                       <label>Nomer Telp</label>
@@ -118,7 +115,7 @@
                     </div>
                     <div class="form-group">
                       <label>Handphone/seluler</label>
-                      <input type="text" name="hp" placeholder="021-000000" value="<?php echo $site['hp'] ?>" class="form-control">
+                      <input type="text" name="hp" placeholder="+628-00000-0000" value="<?php echo $site['hp'] ?>" class="form-control">
                     </div>
                   </div>
                   <div class="col-md-6 order-md-1">

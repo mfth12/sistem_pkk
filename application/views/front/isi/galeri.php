@@ -93,9 +93,7 @@
                             <?php  }
                             $bo++; ?>
                         <?php  } ?>
-                        <!--end carousel-inner-->
                     </div>
-                    <!--Begin Previous and Next buttons-->
                     <a class="carousel-control-prev" href="#myGallery" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Previous</span>
@@ -104,13 +102,8 @@
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>
-                    <!--end carousel-->
                 </div>
-                <!--end modal-body-->
             </div>
-            <!--end modal-content-->
         </div>
-        <!--end modal-dialoge-->
     </div>
-    <!--end myModal-->>
 </div>

@@ -12,6 +12,8 @@ class overview extends CI_Controller
 		$this->load->model('pokja_model');
 		$this->load->model('kas_model');
 		$this->load->model('sliders_model');
+		$this->load->model('masukan_model');
+		$this->load->model('galeri_model');
 		$this->load->model('struktur_model');
 		// if($this->session->userdata('akses_level') != 'superadmin')
 		// 	show_404();
@@ -25,6 +27,8 @@ class overview extends CI_Controller
 		$pokja				= $this->pokja_model->listing();
 		$total 				= $this->kas_model->total_all();
 		$slider 			= $this->sliders_model->total_all();
+		$masukan 			= $this->masukan_model->total_all();
+		$galeri 			= $this->galeri_model->total_all();
 		$struktur 			= $this->struktur_model->total_all();
 		$data = array(
 			'title'				=> 'Dasbor ',
@@ -35,6 +39,8 @@ class overview extends CI_Controller
 			'pokja'				=> $pokja,
 			'total_trans'		=> $total,
 			'slider'			=> $slider,
+			'masukan'			=> $masukan,
+			'galeri'			=> $galeri,
 			'struktur'			=> $struktur,
 			'isi'				=> 'back/1dasbor/index'
 		);

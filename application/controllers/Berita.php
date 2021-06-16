@@ -50,6 +50,7 @@ class Berita extends CI_Controller
 			'keywords' 		=> "Berita, PKK, Desa Uma Beringin",
 			'berita'		=> $berita_list,
 			'site'			=> $site,
+			'subscribe' 	=> true,
 			'pakai_slide'	=> false,
 			'isi'			=> 'front/isi/berita'
 		);
@@ -95,6 +96,7 @@ class Berita extends CI_Controller
 			'keywords' 	=> 'Berita '.$pokja->nama_pokja,
 			'site'		=> $site,
 			'berita'	=> $berita,
+			'subscribe' => true,
 			'pakai_slide'=> false,
 			'isi'		=> 'front/isi/berita'
 		);
@@ -119,6 +121,7 @@ class Berita extends CI_Controller
 			'berita'	=> $berita,
 			'read'		=> $read,
 			'slide'		=> $slide,
+			'subscribe' => true,
 			'pakai_slide' => false,
 			'struktur'	=> $struktur,
 			'isi'		=> 'front/isi/berita_detail'

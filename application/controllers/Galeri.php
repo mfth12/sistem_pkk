@@ -18,6 +18,7 @@ class Galeri extends CI_Controller
 			'keywords' 	 	=> "Kontak, PKK, Desa Uma Beringin",
 			'site'			=> $site,
 			'pakai_slide'	=> false,
+			'subscribe' 	=> true,
 			'galeri'     	=> $this->galeri_model->getAll(),
 			'isi'        	=> 'front/isi/galeri'
 		);
