@@ -27,7 +27,7 @@
             // Validasi
             echo validation_errors('<div class="alert alert-danger">', '<button class="close" data-dismiss="alert">&times;</button> </div>');
             // Form
-            echo form_open_multipart('admin/berita/tambah');
+            echo form_open_multipart('admin/berita/tambah_utama');
             ?>
             <div class="card mb-4">
                 <div class="card-header">

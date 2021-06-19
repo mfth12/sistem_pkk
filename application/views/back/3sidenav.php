@@ -26,10 +26,6 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-paste"></i></div>
                             Surat
                         </a>
-                        <a class="nav-link" href="<?php echo site_url('admin/pokja') ?> ">
-                            <div class="sb-nav-link-icon"><i class="fas fa-map"></i></div>
-                            Pokja
-                        </a>
 
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#website" aria-expanded="false" aria-controls="collapsePages">
                             <div class="sb-nav-link-icon"><i class="fas fa-hashtag"></i></div>

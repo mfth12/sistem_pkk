@@ -69,6 +69,9 @@
               <a class="nav-link" id="ucapan-tab" data-toggle="tab" href="#ucapan" role="tab" aria-controls="ucapan" aria-selected="false">Ucapan</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="<?php echo site_url('admin/pokja') ?>" aria-selected="false">Pokja</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="<?php echo site_url('admin/periode') ?>" aria-selected="false">Periode</a>
             </li>
           </ul>

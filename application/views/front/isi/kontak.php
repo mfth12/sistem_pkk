@@ -52,7 +52,7 @@
                         </div>
                         <div class="info-text">
                             <h4><?php if ($site['telepon']) {echo $site['telepon']. " (Telepon)";} ?></h4>
-                            <p><?php if ($site['hp']) {echo $site['hp']. " (Salular)";} ?></p>
+                            <p><?php if ($site['hp']) {echo $site['hp']. " (Seluler)";} ?></p>
                         </div>
                     </div>
                     <div class="d-flex">

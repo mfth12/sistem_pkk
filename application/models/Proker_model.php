@@ -17,11 +17,10 @@ class Proker_model extends CI_Model {
 	}
 
 	public function listing() {
-		$this->db->select('proker.*, pokja.nama_pokja, users.nama');
+		$this->db->select('proker.*, pokja.nama_pokja');
 		$this->db->from('proker');
 		// Join
 		$this->db->join('pokja','pokja.id_pokja = proker.id_pokja', 'LEFT');
-		$this->db->join('users','users.id_user = proker.id_user','LEFT');
 		// End join
 		$this->db->order_by('id_proker','DESC');
 		$query = $this->db->get();
@@ -29,12 +28,11 @@ class Proker_model extends CI_Model {
 	}
 
 	public function listing_sekret($you) {
-		$this->db->select('proker.*, pokja.nama_pokja, users.nama');
+		$this->db->select('proker.*, pokja.nama_pokja');
 		$this->db->from('proker');
 		$this->db->where('slug_berita',$you);
 		// Join
 		$this->db->join('pokja','pokja.id_pokja = proker.id_pokja', 'LEFT');
-		$this->db->join('users','users.id_user = proker.id_user','LEFT');
 		// End join
 		$this->db->order_by('id_proker','DESC');
 		$query = $this->db->get();
@@ -43,11 +41,10 @@ class Proker_model extends CI_Model {
 	
 	//Read
 	public function read($slug_berita) {
-		$this->db->select('proker.*, pokja.nama_pokja, users.nama');
+		$this->db->select('proker.*, pokja.nama_pokja');
 		$this->db->from('proker');
 		// Join
 		$this->db->join('pokja','pokja.id_pokja = proker.id_pokja', 'LEFT');
-		$this->db->join('users','users.id_user = proker.id_user','LEFT');
 		// End join
 		$this->db->where('slug_berita',$slug_berita);
 		$this->db->order_by('id_proker','DESC');
@@ -91,11 +88,10 @@ class Proker_model extends CI_Model {
 	
 	//Home
 	public function home() {
-		$this->db->select('proker.*, pokja.nama_pokja, users.nama');
+		$this->db->select('proker.*, pokja.nama_pokja');
 		$this->db->from('proker');
 		// Join
 		$this->db->join('pokja','pokja.id_pokja = proker.id_pokja', 'LEFT');
-		$this->db->join('users','users.id_user = proker.id_user','LEFT');
 		// End join
 		$this->db->where('proker.status_berita','Publish');
 		$this->db->order_by('id_proker','DESC');

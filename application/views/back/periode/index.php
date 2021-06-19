@@ -45,7 +45,6 @@
                     <p><button class="btn btn-secondary" data-toggle="modal" data-target="#myModal">
                             <i class="fa fa-plus"></i> Tambah Periode
                         </button></p>
-                        <strong><?php echo $this->session->userdata('active_periode'); ?></strong>
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                             <thead>

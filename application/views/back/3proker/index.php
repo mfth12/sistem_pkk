@@ -31,78 +31,92 @@
                 echo '</div>';
             }
             echo validation_errors('<div class="alert alert-danger">', '<button class="close" data-dismiss="alert">&times;</button></div>'); ?>
-            
+
             <div class="card mb-4">
-                <div class="card-body">
-                    <p><a href="<?php echo base_url('admin/proker/tambah_utama') ?>" class="btn btn-primary">
-                        <i class="fa fa-plus"></i> Tambah Program Utama</a></p>
-                    <div class="table-responsive">
-                        <table class="table table-striped table-bordered table-hover" id="TableJeu" width="100%" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th width="25px" class="text-center">No.</th>
-                                    <th>Program Kerja Utama</th>
-                                    <th width="190px" class="text-center">Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php // $i = 1;
-                                //foreach ($proker as $proker) { ?>
-                                    <tr>
-                                        <td class="text-center"><?php // echo $i ?></td>
-                                            <td><?php // echo $proker->nama_berita ?></td>
-                                        <td class="d-flex justify-content-center">
-                                            <a href="<?php //echo base_url('admin/proker/edit/' . $proker->id_proker) ?>" class="btn btn-light btn-sm mr-1"><i class="fa fa-edit"></i> Ubah</a>
-                                            <?php // include('delete.php') ?>
-                                            <a href="<?php //echo site_url('proker/read/' . $proker->slug_berita) ?>" target="_blank" class="btn btn-light btn-sm ml-1"><i class="fa fa-eye"></i></a>
-                                        </td>
-                                    </tr>
-                                <?php // $i++;
-                                //} ?>
-                            </tbody>
-                        </table>
-                    </div>
+                <div class="card-header">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link" id="utama-tab" data-toggle="tab" href="#utama" role="tab" aria-controls="utama" aria-selected="true">Program Utama</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="detail-tab" data-toggle="tab" href="#detail" role="tab" aria-controls="detail" aria-selected="false">Detail Program</a>
+                        </li>
+                    </ul>
                 </div>
-            </div>
-
-
-            <div class="card mb-4">
                 <div class="card-body">
-                    <p><a href="<?php echo base_url('admin/proker/tambah_detail') ?>" class="btn btn-secondary">
-                        <i class="fa fa-plus"></i> Tambah Detail Program</a></p>
-                    <div class="table-responsive">
-                        <table class="table table-striped table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th width="25" class="text-center">No.</th>
-                                    <th width="25">Gambar</th>
-                                    <th>Program Kerja</th>
-                                    <th>Pokja</th>
-                                    <th>Status</th>
-                                    <th class="text-center">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php $i = 1;
-                                foreach ($proker as $proker) { ?>
-                                    <tr>
-                                        <td class="text-center"><?php echo $i ?></td>
-                                        <td>
-                                            <img src="<?php echo base_url('back_assets/upload/image/thumbs/' . $proker->gambar) ?>" class="img img-responsive" width="60">
-                                        </td>
-                                        <td><?php echo $proker->nama_berita ?></td>
-                                        <td><?php echo $proker->nama_pokja ?></td>
-                                        <td><?php echo $proker->status_berita ?></td>
-                                        <td class="d-flex justify-content-center">
-                                            <a href="<?php echo base_url('admin/proker/edit/' . $proker->id_proker) ?>" class="btn btn-primary btn-sm mr-1"><i class="fa fa-edit"></i> Ubah</a>
-                                            <?php include('delete.php') ?>
-                                            <a href="<?php echo site_url('proker/read/' . $proker->slug_berita) ?>" target="_blank" class="btn btn-light btn-sm ml-1"><i class="fa fa-eye"></i></a>
-                                        </td>
-                                    </tr>
-                                <?php $i++;
-                                } ?>
-                            </tbody>
-                        </table>
+                    <div class="tab-content" id="myTabContent">
+                        <!-- menu pertama -->
+                        <div class="tab-pane fade" id="utama" role="tabpanel" aria-labelledby="utama-tab">
+                            <p><a href="<?php echo base_url('admin/proker/tambah_utama') ?>" class="btn btn-primary">
+                                    <i class="fa fa-plus"></i> Tambah Program Utama</a></p>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="TableJeu" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th width="25px" class="text-center">No.</th>
+                                            <th>Program Kerja Utama</th>
+                                            <th width="190px" class="text-center">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php // $i = 1;
+                                        //foreach ($proker as $proker) { 
+                                        ?>
+                                        <tr>
+                                            <td class="text-center"><?php // echo $i 
+                                                                    ?></td>
+                                            <td><?php // echo $proker->nama_berita 
+                                                ?></td>
+                                            <td class="d-flex justify-content-center">
+                                                <a href="<?php //echo base_url('admin/proker/edit/' . $proker->id_proker) 
+                                                            ?>" class="btn btn-light btn-sm mr-1"><i class="fa fa-edit"></i> Ubah</a>
+                                                <?php // include('delete.php') 
+                                                ?>
+                                                <a href="<?php //echo site_url('proker/read/' . $proker->slug_berita) 
+                                                            ?>" target="_blank" class="btn btn-light btn-sm ml-1"><i class="fa fa-eye"></i></a>
+                                            </td>
+                                        </tr>
+                                        <?php // $i++;
+                                        //} 
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- menu kedua -->
+                        <div class="tab-pane fade" id="detail" role="tabpanel" aria-labelledby="detail-tab">
+                            <p><a href="<?php echo base_url('admin/proker/tambah_detail') ?>" class="btn btn-secondary">
+                                    <i class="fa fa-plus"></i> Tambah Detail Program</a></p>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th width="25" class="text-center">No.</th>
+                                            <th>Detail Program Kerja</th>
+                                            <th>Pokja</th>
+                                            <th>Status</th>
+                                            <th class="text-center">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php $i = 1;
+                                        foreach ($proker as $proker) { ?>
+                                            <tr>
+                                                <td class="text-center"><?php echo $i ?></td>
+                                                <td><?php echo $proker->nama_proker ?></td>
+                                                <td><?php echo $proker->nama_pokja ?></td>
+                                                <td><?php echo $proker->status ?></td>
+                                                <td class="d-flex justify-content-center">
+                                                    <a href="<?php echo base_url('admin/proker/edit/' . $proker->id_proker) ?>" class="btn btn-primary btn-sm mr-1"><i class="fa fa-edit"></i> Ubah</a>
+                                                    <?php include('delete.php') ?>
+                                                </td>
+                                            </tr>
+                                        <?php $i++;
+                                        } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

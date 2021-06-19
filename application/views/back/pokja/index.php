@@ -2,7 +2,7 @@
     <main>
         <div class="container-fluid">
             <!-- ini nama judul halaman -->
-            <h1 class="mt-4"><?php echo $title?></h1>
+            <h1 class="mt-4"><?php echo $title ?></h1>
             <!-- ini nama bread crumb -->
             <ol class="breadcrumb">
                 <?php foreach ($this->uri->segments as $segment) : ?>
@@ -35,11 +35,12 @@
             // Error
             echo validation_errors('<div class="alert alert-danger">', '<button class="close" data-dismiss="alert">&times;</button></div>');
             ?>
-
-            <!-- sekarang masuk ke kolom isi konten -->
             <div class="card mb-4">
+                <div class="card-header">
+                    <a href="<?php echo site_url('admin/konfig') ?>"><i class="fas fa-arrow-left"></i> Kembali</a>
+                </div>
                 <div class="card-body">
-                    <p><button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                    <p><button class="btn btn-secondary" data-toggle="modal" data-target="#myModal">
                             <i class="fa fa-plus"></i> Tambah Pokja
                         </button></p>
 
@@ -59,7 +60,9 @@
                                 <?php $i = 1;
                                 foreach ($pokja as $pokja) { ?>
                                     <tr>
-                                        <td width="15px" class="text-center"><h4><?php echo $pokja->urutan ?></h4></td>
+                                        <td width="15px" class="text-center">
+                                            <h4><?php echo $pokja->urutan ?></h4>
+                                        </td>
                                         <td><?php echo $pokja->nama_pokja ?></td>
                                         <td width="30%" class="small"><?php echo $pokja->keterangan ?></td>
                                         <td><?php echo $pokja->slug_pokja ?></td>
