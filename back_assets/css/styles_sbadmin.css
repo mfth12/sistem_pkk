@@ -11,6 +11,8 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+
+
 :root {
 	--blue: #007bff;
 	--indigo: #6610f2;
@@ -42,11 +44,25 @@
 	--font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
+::selection {
+	background-color: #0073d1a4;
+	color: #ffffff;
+}
+::-moz-selection{
+	background-color: #0073d1a4;
+	color: #ffffff;
+}
+::-webkit-selection{
+	background-color: #0073d1a4;
+	color: #ffffff;
+}
+
 *,
 *::before,
 *::after {
 	box-sizing: border-box;
 }
+
 
 html {
 	font-family: sans-serif;

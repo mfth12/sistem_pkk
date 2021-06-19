@@ -67,12 +67,12 @@
                                         </td>
                                         <td>
                                             <?php $de = $data->email ?>
-                                            <a href="mailto: <?= $de; ?>" target="_blank" ><?php echo $data->email ?></a>
+                                            <a href="mailto:<?= $de; ?>" target="_blank"><?php echo $data->email ?></a>
                                         </td>
                                         <td>
                                             <?php echo $data->keperluan ?>
                                         </td>
-                                        <td width="25%" class="small">
+                                        <td width="25%" class="small" style="text-align: justify;">
                                             <?php echo $data->description ?>
                                         </td>
                                         <td class="d-flex justify-content-center">

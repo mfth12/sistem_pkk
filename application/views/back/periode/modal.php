@@ -2,13 +2,14 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Anda yakin ingin menghapus data ini?</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Anda yakin ingin menghapus periode ini?</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body text-left">
-                Data yang telah dihapus tidak bisa dikembalikan.
+            <div class="modal-body text-justify">
+                Penghapusan periode akan berakibat pada seluruh data di dalam sistem. Seluruh data yang terekam pada periode tersebut akan
+                hilang dan tidak dapat dikembalikan lagi. Lakukan pertimbangan sebelum mengambil keputusan menghapus item periode.
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
@@ -67,10 +68,11 @@
                     <h3>Anda yakin ingin mengaktifkan periode ini?</h3>
                 </div>
                 <div class="form-group">
-                    <label class="col-form-label" for="jumlah">Konfirmasi Password Anda</label>
+                    <label class="col-form-label" for="pswd">Konfirmasi Password Anda</label>
                     <input type="password" name="pswd" placeholder="Password Anda" required class="form-control">
                 </div>
                 <input type="hidden" name="pswd_lama" value="<?php echo $user->password ?>" class="form-control" />
+                <input type="text" disabled name="saved_per" value="<?php echo $konfig ?>" class="form-control" />
             </div>
 
             <div class="modal-footer">

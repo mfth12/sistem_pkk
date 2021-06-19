@@ -1,58 +1,97 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Berita extends CI_Controller
+class Proker extends CI_Controller
 {
-	// Load database
 	public function __construct()
 	{
 		parent::__construct();
 		$this->simple_login->terotentikasi();
-		$this->load->model('berita_model');
+		$this->load->model('proker_model');
 		$this->load->model('pokja_model');
 		$this->load->model('konfigurasi_model');
-		$this->load->model('user_model');
-		// if($this->session->userdata('akses_level') != 'superadmin')
-		// 	show_404();
+		if ($this->session->userdata('akses_level') != 'superadmin')
+			show_404();
 	}
 
-	// Index
 	public function index()
 	{
-		$berita = $this->berita_model->listing();
+		$proker = $this->proker_model->listing();
 		$site 	= $this->konfigurasi_model->listing();
 		$data = array(
 			'site'		=> $site,
-			'title'		=> 'Berita',
+			'title'		=> 'Program Kerja',
 			'namasite'	=> $site['namaweb'],
-			'berita'	=> $berita,
-			'isi'		=> 'back/2berita/index'
+			'proker'	=> $proker,
+			'isi'		=> 'back/3proker/index'
 		);
 		$this->load->view('back/wrapper', $data);
 	}
 
+	// Tambah Utama
+	public function tambah_utama()
+	{
+		$site 		= $this->konfigurasi_model->listing();
+		$pokja		= $this->pokja_model->listing();
+		$v 			= $this->form_validation;
+		$v->set_rules(
+			'proker_utama',
+			'Program kerja utama',
+			'required',
+			array('required'	=> 'Keterangan Program kerja harus diisi')
+		);
+
+		if ($v->run()) {
+			$i = $this->input;
+			$data = array(
+				'id_user'		=> $this->session->userdata('id'),
+				'id_pokja'		=> $i->post('id_pokja'),
+				'slug_berita'	=> url_title($i->post('nama_berita'), 'dash', TRUE),
+				'nama_berita'	=> $i->post('nama_berita'),
+				'keterangan'	=> $i->post('keterangan'),
+				'jenis_berita'	=> $i->post('jenis_berita'),
+				'status_berita'	=> $i->post('status_berita'),
+				'tanggal_post'	=> date('Y-m-d H:i:s')
+			);
+			$this->proker_model->tambah($data);
+			$this->session->set_flashdata('sukses', 'Kegiatan berhasil ditambah.');
+			redirect(base_url('admin/proker'));
+		}
+
+		if (!$v->run()) {
+			// disini halaman default nya
+			$data = array(
+				'title'		=> 'Tambah Program Utama',
+				'site'		=> $site,
+				'namasite'	=> $site['namaweb'],
+				'pokja'		=> $pokja, //ngambil data pokja
+				'isi'		=> 'back/3proker/tambah_utama'
+			);
+			$this->load->view('back/wrapper', $data);
+		}
+	}
 	// Tambah
 	public function tambah()
 	{
 		$site 		= $this->konfigurasi_model->listing();
 		$pokja		= $this->pokja_model->listing();
-		$v = $this->form_validation;
+		$v 			= $this->form_validation;
 		$v->set_rules(
 			'nama_berita',
-			'Judul berita',
-			'required|is_unique[berita.nama_berita]',
+			'Judul program kerja',
+			'required|is_unique[proker.nama_berita]',
 			array(
-				'required'		=> 'Judul berita harus diisi',
-				'is_unique'		=> 'Judul berita: <strong>' . $this->input->post('nama_berita') . '</strong> sudah ada. Buat judul yang berbeda'
+				'required'		=> 'Judul Program kerja harus diisi',
+				'is_unique'		=> 'Program kerja: <strong>' . $this->input->post('nama_berita') . '</strong> sudah ada. Buat judul yang berbeda'
 			)
 		);
 		$v->set_rules(
 			'keterangan',
-			'Keterangan berita',
+			'Keterangan Program kerja',
 			'required',
 			array(
-				'required'	=> 'Keterangan berita harus diisi'
-				)
+				'required'	=> 'Keterangan Program kerja harus diisi'
+			)
 		);
 
 		if ($v->run()) {
@@ -62,8 +101,6 @@ class Berita extends CI_Controller
 			$config['file_name']        = url_title($this->input->post('nama_berita'), 'dash', TRUE);
 			$this->load->library('upload', $config);
 			if (!$this->upload->do_upload('gambar')) {
-				// End validasi
-				//kalau gagal upload
 				$datas = array(
 					'title'		=> 'Tambah Berita',
 					'site'		=> $site,
@@ -90,7 +127,7 @@ class Berita extends CI_Controller
 				$config['thumb_marker'] 	= '';
 				$this->load->library('image_lib', $config);
 				$this->image_lib->resize();
-					
+
 				// Proses ke database
 				$i = $this->input;
 				$data = array(
@@ -104,48 +141,37 @@ class Berita extends CI_Controller
 					'gambar'				=> $upload_data['uploads']['file_name'],
 					'tanggal_post'			=> date('Y-m-d H:i:s')
 				);
-				$this->berita_model->tambah($data);
-				$this->session->set_flashdata('sukses', 'Berita berhasil ditambah.');
-				redirect(base_url('admin/berita'));
+				$this->proker_model->tambah($data);
+				$this->session->set_flashdata('sukses', 'Kegiatan berhasil ditambah.');
+				redirect(base_url('admin/proker'));
 			}
 		}
 
-		if (!$v->run()){
-			// disini halaman default nya
+		if (!$v->run()) {
 			$data = array(
-				'title'		=> 'Tambah Berita',
+				'title'		=> 'Tambah Program Utama',
 				'site'		=> $site,
 				'namasite'	=> $site['namaweb'],
 				'pokja'		=> $pokja, //ngambil data pokja
-				'isi'		=> 'back/2berita/tambah'
+				'isi'		=> 'back/3proker/tambah_utama'
 			);
 			$this->load->view('back/wrapper', $data);
 		}
-		
 	}
 
-	// Edit
-	public function edit($id_berita = null)
+	public function edit($id_proker = null)
 	{
-		if (!isset($id_berita)) redirect('admin/berita');
-		$berita		= $this->berita_model->detail($id_berita);
-		$pokja	= $this->pokja_model->listing();
+		if (!isset($id_proker)) redirect('admin/proker');
+		$proker		= $this->proker_model->detail($id_proker);
+		$pokja		= $this->pokja_model->listing();
 		$site 		= $this->konfigurasi_model->listing();
 		// Validasi
 		$v = $this->form_validation;
 		$v->set_rules(
-			'nama_berita',
-			'Judul berita',
-			'required',
-			array(
-				'required'		=> 'Judul berita harus diisi'
-			)
-		);
-		$v->set_rules(
 			'keterangan',
-			'Keterangan berita',
+			'Keterangan program kerja',
 			'required',
-			array('required'		=> 'Keterangan berita harus diisi')
+			array('required' => 'Keterangan program kerja harus diisi')
 		);
 
 		if ($v->run()) {
@@ -156,19 +182,16 @@ class Berita extends CI_Controller
 				$config['file_name']        = url_title($this->input->post('nama_berita'), 'dash', TRUE);
 				$this->load->library('upload', $config);
 				if (!$this->upload->do_upload('gambar')) {
-					// End validasi
-					//kalau gagal upload
 					$data = array(
 						'site'		=> $site,
 						'title'		=> 'Ubah Berita',
 						'namasite'	=> $site['namaweb'],
 						'pokja'	=> $pokja,
-						'berita'	=> $berita,
+						'proker'	=> $proker,
 						'error'		=> $this->upload->display_errors(),
 						'isi'		=> 'back/2berita/edit'
 					);
 					$this->load->view('back/wrapper', $data);
-					// Masuk database
 				} else {
 					$upload_data				= array('uploads' => $this->upload->data());
 					// Image Editor
@@ -188,7 +211,7 @@ class Berita extends CI_Controller
 					// Proses ke database
 					$i = $this->input;
 					$data = array(
-						'id_berita'				=> $id_berita,
+						'id_proker'				=> $id_proker,
 						'id_user'				=> $this->session->userdata('id'),
 						'id_pokja'				=> $i->post('id_pokja'),
 						'slug_berita'			=> url_title($i->post('nama_berita'), 'dash', TRUE),
@@ -198,28 +221,28 @@ class Berita extends CI_Controller
 						'status_berita'			=> $i->post('status_berita'),
 						'gambar'				=> $upload_data['uploads']['file_name']
 					);
-					$gambar_lama = $this->berita_model->getById($id_berita);
+					$gambar_lama = $this->proker_model->getById($id_proker);
 					if ($gambar_lama->gambar != "default.jpg") {
 						$filename = explode(".", $gambar_lama->gambar)[0];
-						array_map('unlink', glob(FCPATH."back_assets/upload/image/$filename.*"));
-						array_map('unlink', glob(FCPATH."back_assets/upload/image/thumbs/$filename.*"));
+						array_map('unlink', glob(FCPATH . "back_assets/upload/image/$filename.*"));
+						array_map('unlink', glob(FCPATH . "back_assets/upload/image/thumbs/$filename.*"));
 					}
-					$this->berita_model->edit($data);
-					// $this->berita_model->delete_update($data);
-					$this->session->set_flashdata('sukses', 'Berita berhasil diubah, gambar diperbarui.');
-					redirect(base_url('admin/berita'));
+					$this->proker_model->edit($data);
+					// $this->proker_model->delete_update($data);
+					$this->session->set_flashdata('sukses', 'Program kerja berhasil diubah, gambar diperbarui.');
+					redirect(base_url('admin/proker'));
 				}
 			} else {
 				// Proses ke database
 				$judul_input = url_title($this->input->post('nama_berita'), 'dash', TRUE);
-				$ben = $this->berita_model->match_slug($judul_input);//perintah mengambil username aja kalo sama.
-				if($ben==$judul_input) {
+				$ben = $this->proker_model->match_slug($judul_input); //perintah mengambil username aja kalo sama.
+				if ($ben == $judul_input) {
 					$this->session->set_flashdata('dihapus', 'Judul sudah ada 56.'); // Buat session flashdata
-					redirect(base_url('admin/berita'));
+					redirect(base_url('admin/proker'));
 				}
 				$i = $this->input;
 				$data = array(
-					'id_berita'				=> $id_berita,
+					'id_proker'				=> $id_proker,
 					'id_user'				=> $this->session->userdata('id'),
 					'id_pokja'				=> $i->post('id_pokja'),
 					'slug_berita'			=> url_title($i->post('nama_berita'), 'dash', TRUE),
@@ -228,9 +251,9 @@ class Berita extends CI_Controller
 					'jenis_berita'			=> $i->post('jenis_berita'),
 					'status_berita'			=> $i->post('status_berita')
 				);
-				$this->berita_model->edit($data);
-				$this->session->set_flashdata('sukses', 'Berita berhasil diubah, gambar tidak diperbarui.');
-				redirect(base_url('admin/berita'));
+				$this->proker_model->edit($data);
+				$this->session->set_flashdata('sukses', 'Program kerja berhasil diubah, gambar tidak diperbarui.');
+				redirect(base_url('admin/proker'));
 			}
 		}
 		// End masuk database
@@ -240,7 +263,7 @@ class Berita extends CI_Controller
 				'site'		=> $site,
 				'namasite'	=> $site['namaweb'],
 				'pokja'	=> $pokja,
-				'berita'	=> $berita,
+				'proker'	=> $proker,
 				'isi'		=> 'back/2berita/edit'
 			);
 			$this->load->view('back/wrapper', $data);
@@ -248,13 +271,12 @@ class Berita extends CI_Controller
 	}
 
 	// Delete
-	public function delete($id_berita)
+	public function delete($id_proker)
 	{
 		$this->simple_login->terotentikasi();
-		$data = array('id_berita' => $id_berita);
-		$this->berita_model->delete($data);//menghapus direktori
-		$this->session->set_flashdata('dihapus', 'Data berita berhasil dihapus');
-		redirect(site_url('admin/berita'));
+		$data = array('id_proker' => $id_proker);
+		$this->proker_model->delete($data); //menghapus direktori
+		$this->session->set_flashdata('dihapus', 'Data program kerja berhasil dihapus');
+		redirect(site_url('admin/proker'));
 	}
-
 }

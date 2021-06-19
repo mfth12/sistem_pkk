@@ -42,7 +42,6 @@
                     <p><a href="<?php echo base_url('admin/berita/tambah') ?>" class="btn btn-primary">
                             <i class="fa fa-plus"></i> Tambah Berita</a></p>
                     <div class="table-responsive">
-
                         <!-- masuk ke tabel -->
                         <table class="table table-striped table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                             <thead>
@@ -51,7 +50,7 @@
                                     <th width="25">Gambar</th>
                                     <th>Judul Kegiatan</th>
                                     <th>Pokja</th>
-                                    <th>Status - Jenis</th>
+                                    <th>Status</th>
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
@@ -65,7 +64,7 @@
                                         </td>
                                         <td><?php echo $berita->nama_berita ?></td>
                                         <td><?php echo $berita->nama_pokja ?></td>
-                                        <td><?php echo $berita->status_berita ?> - <?php echo $berita->jenis_berita ?></td>
+                                        <td><?php echo $berita->status_berita ?></td>
                                         <td class="d-flex justify-content-center">
                                             <a href="<?php echo base_url('admin/berita/edit/' . $berita->id_berita) ?>" class="btn btn-primary btn-sm mr-1"><i class="fa fa-edit"></i> Ubah</a>
                                             <?php include('delete.php') ?>

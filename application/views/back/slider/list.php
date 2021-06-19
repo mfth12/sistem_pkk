@@ -68,7 +68,7 @@
                                         <td width="25%" >
                                             <?php echo $data->name ?>
                                         </td>
-                                        <td width="35%" class="small">
+                                        <td width="35%" class="small" style="text-align: justify;">
                                             <?php echo substr($data->description, 0, 150) ?>
                                         </td>
                                         <td class="d-flex justify-content-center">

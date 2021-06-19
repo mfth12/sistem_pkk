@@ -15,6 +15,15 @@ class Konfigurasi_model extends CI_Model {
 		$query = $this->db->get();
 		return $query->row_array();
 	}
+
+	public function ambil() {
+		$this->db->select('*');
+		$this->db->from('konfigurasi');
+		$this->db->where('id_konfigurasi','1');
+		$this->db->order_by('id_konfigurasi','DESC');
+		$query = $this->db->get();
+		return $query->row_array();
+	}
 	
 	// Detail
 	public function detail($id_konfigurasi) {
@@ -35,12 +44,6 @@ class Konfigurasi_model extends CI_Model {
 	public function edit($data) {
 		$this->db->where('id_konfigurasi',$data['id_konfigurasi']);
 		$this->db->update('konfigurasi',$data);
-	}
-	
-	// Check delete
-	public function check($id_konfigurasi) {
-		$query = $this->db->get_where('produk',array('id_konfigurasi' => $id_konfigurasi));
-		return $query->num_rows();
 	}
 	
 	// Delete

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="shortcut icon" href="<?php echo base_url('back_assets/img/' . $site['icon']) ?>" type="image/x-icon">
+    <link rel="shortcut icon" href="<?php echo base_url('back_assets/img/pkk_baru_dark.png') ?>" type="image/x-icon">
     <title>Akses ke Sistem</title>
     <!-- CCS utama -->
     <link href="<?php echo base_url('back_assets/css/styles_sbadmin.css') ?>" rel="stylesheet">
@@ -112,7 +112,7 @@
                         <p style="vertical-align: middle;" class="text-muted text-center">Copyright &copy;
                             <script>
                                 document.write(new Date().getFullYear());
-                            </script> - <?= $site['namaweb'] . $site['tagline']; ?>. All rights reserved.
+                            </script> - <?= $site['namaweb'] ." ". $site['tagline']; ?>. All rights reserved.
                         </p>
                     </span>
                 </div>

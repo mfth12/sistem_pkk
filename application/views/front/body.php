@@ -10,15 +10,15 @@
                 <div class="col-lg-12">
                     <div class="section-top text-center">
                         <h2>Dapatkan informasi terbaru</h2>
-                        <p>Berlangganan berita PKK Desa Uma Beringin</p>
+                        <p>Berlangganan Berita PKK Desa Uma Beringin</p>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
                     <form action="#">
-                        <input type="email" placeholder="Email anda" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email anda'" required>
-                        <button type="submit" class="template-btn">Langganan</button>
+                        <input type="email" placeholder="Email anda"  onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email anda'" required>
+                        <button onclick="showSwal('success-message')" type="submit" class="template-btn">Langganan</button>
                     </form>
                 </div>
             </div>
@@ -85,6 +85,7 @@
                             <li><a href="<?php echo $site['twitter'] ?>" target="_blank"><i class="fa fa-twitter"></i></a></li>
                             <li><a href="<?php echo $site['facebook'] ?>" target="_blank"><i class="fa fa-facebook"></i></a></li>
                             <li><a href="<?php echo $site['instagram'] ?>" target="_blank"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="<?php echo site_url('auth') ?>"><i class="fa fa-user"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -124,6 +125,7 @@
         });
     }
 </script>
+
 <script>
     $(function() {
         $('body').removeClass('fade-out');

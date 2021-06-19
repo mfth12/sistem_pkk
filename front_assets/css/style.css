@@ -1,5 +1,17 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600");
+::selection {
+    background-color: #4fc6f1b9;
+    color: #ffffff;
+}
+::-moz-selection{
+    background-color: #4fc6f1b9;
+    color: #ffffff;
+}
+::-webkit-selection{
+    background-color: #4fc6f1b9;
+    color: #ffffff;
+}
 html {
 	scroll-behavior: smooth;
   }

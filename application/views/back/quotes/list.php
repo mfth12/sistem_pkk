@@ -72,7 +72,7 @@
                                         <td>
                                             <?php echo $data->jabatan ?>
                                         </td>
-                                        <td minwidth="25%" class="small">
+                                        <td minwidth="25%" class="small" style="text-align: justify;">
                                             <?php echo substr($data->description, 0, 150) ?>
                                         </td>
                                         <td class="d-flex justify-content-center">

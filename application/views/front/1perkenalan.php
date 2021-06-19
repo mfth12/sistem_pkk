@@ -9,7 +9,7 @@
                 </div>
             </div>
             <div class="col-lg-4">
-                <img src="<?php echo base_url('back_assets/img/' . $site['icon']) ?>" alt="" style="padding: 20px 20px 20px 20px;" width="85%">
+                <img src="<?php echo base_url('back_assets/img/' . $site['foto_sambutan']) ?>" alt="" style="padding: 20px 20px 20px 20px;" width="85%">
             </div>
         </div>
     </div>

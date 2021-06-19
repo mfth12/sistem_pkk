@@ -9,8 +9,9 @@ class Periode extends CI_Controller
 		$this->simple_login->terotentikasi();
 		$this->load->model('periode_model');
 		$this->load->model('user_model');
-		// if($this->session->userdata('akses_level') != 'superadmin')
-		// 	show_404();
+		$this->load->model('konfigurasi_model');
+		if($this->session->userdata('akses_level') != 'superadmin')
+			show_404();
 	}
 
 	// Index
@@ -24,6 +25,7 @@ class Periode extends CI_Controller
 		$data = array(
 			'title'				=> 'Periode',
 			'namasite'	        => $site['namaweb'],
+			'konfig'	    	=> $site['periode'],
 			'periode'			=> $periode,
 			'user'				=> $user,
 			'isi'				=> 'back/periode/index'
@@ -34,7 +36,7 @@ class Periode extends CI_Controller
 	public function tambah() {
 		$i 	= $this->input;
 		if ($i->post('pswd')!=$i->post('pswd_lama')) {
-			$this->session->set_flashdata('dihapus', 'Maaf, password anda salah! Tidak dapat menambah data periode.');
+			$this->session->set_flashdata('dihapus', 'Maaf, password anda salah! Tidak dapat menambah periode.');
 			redirect(site_url('admin/periode'));
 		}
 		
@@ -57,6 +59,9 @@ class Periode extends CI_Controller
 			$this->periode_model->tambah($data);
 			$this->session->set_flashdata('sukses', 'Periode berhasil ditambah');
 			redirect(site_url('admin/periode'));
+		} if ($this->form_validation->run() === FALSE) {
+			$this->session->set_flashdata('dihapus', 'Terjadi kesalahan');
+			redirect(site_url('admin/periode'));
 		}
 	}
 
@@ -69,26 +74,38 @@ class Periode extends CI_Controller
 		}
 		$i 	= $this->input;
 		if ($i->post('pswd')!=$i->post('pswd_lama')) {
-			$this->session->set_flashdata('dihapus', 'Maaf, password anda salah! Tidak dapat mengaktifkan periode.');
+			$this->session->set_flashdata('dihapus', 'Maaf, password anda salah! Gagal mengaktifkan periode.');
 			redirect(site_url('admin/periode'));
 		}
+
 		$nyari = $this->periode_model->nyari();
 		$nyari_de = $nyari->id_periode;
+		
+		//nonaktif periode
 		$dat = array(
 			'id_periode'	=> $nyari_de,
 			'ket'			=> 'tidak'
 		);
 		$this->periode_model->aktivasi($dat);
 
+		//proses aktivasi periode
 		$data = array(
 			'id_periode'	=> $id,
 			'ket'			=> 'aktif'
 		);
 		$this->periode_model->aktivasi($data);
+
+		//saving aktivasi periode
+		$data3 = array(
+			'id_konfigurasi'=> '1',
+			'periode'		=> $id
+		);
+		// $site = $this->konfigurasi_model->listing();
+		$this->session->set_userdata('active_periode', $id);
+		$this->konfigurasi_model->edit($data3);
 		$this->session->set_flashdata('sukses', 'Selamat, periode berhasil diaktifkan');
 		redirect(site_url('admin/periode'));
 	}
-
 
 	// Delete
 	public function delete($id_periode)

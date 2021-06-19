@@ -9,7 +9,6 @@ class Konfig extends CI_Controller
 		parent::__construct();
 		$this->simple_login->terotentikasi();
 		$this->load->model('berita_model');
-		// $this->load->model('pokja_model');
 		$this->load->model('konfigurasi_model');
 		if ($this->session->userdata('akses_level') != 'superadmin')
 			show_404();
@@ -71,8 +70,10 @@ class Konfig extends CI_Controller
 			$config['allowed_types'] 	= 'gif|jpg|png';
 			$config['max_size']			= '12000'; // KB
 			$config['file_name']        = 'main-logo.png';
-			unlink('./back_assets/img/' . $site['logo']);
-			unlink('./back_assets/img/thumbs/' . $site['logo']);
+			if ($_FILES['logo']['name']) { //untuk berisi
+				unlink('./back_assets/img/' . $site['logo']);
+				unlink('./back_assets/img/thumbs/' . $site['logo']);
+            }
 			$this->load->library('upload', $config);
 			if (!$this->upload->do_upload('logo')) {
 				$data = array(
@@ -110,7 +111,7 @@ class Konfig extends CI_Controller
 				redirect(site_url('admin/konfig'));
 			}
 		}
-		$this->session->set_flashdata('maaf', 'Maaf, tidak ada data yang diperbarui');
+		$this->session->set_flashdata('maaf', 'Maaf, logo website tidak berhasil diperbarui');
 		redirect(site_url('admin/konfig'));
 	}
 
@@ -127,12 +128,14 @@ class Konfig extends CI_Controller
 			$config['upload_path'] 		= './back_assets/img/';
 			$config['allowed_types'] 	= 'gif|jpg|png';
 			$config['max_size']			= '4200'; // KB
-			$config['file_name']        = 'icon_site.png';
-			unlink('./back_assets/img/' . $site['icon']);
-			unlink('./back_assets/img/thumbs/' . $site['icon']);
+			$config['file_name']        = 'icon_resmi.png';
+			if ($_FILES['icon']['name']) { //untuk berisi
+				unlink('./back_assets/img/' . $site['icon']);
+				unlink('./back_assets/img/thumbs/' . $site['icon']);
+            }
 			$this->load->library('upload', $config);
 			if (!$this->upload->do_upload('icon')) {
-
+				
 				$data = array(
 					'title'		=> '',
 					'namasite' 	=> $site['namaweb'],
@@ -164,11 +167,11 @@ class Konfig extends CI_Controller
 					'id_user'		=> $this->session->userdata('id')
 				);
 				$this->konfigurasi_model->edit($data);
-				$this->session->set_flashdata('sukses', 'Favicon situs berhasil diperbarui');
+				$this->session->set_flashdata('sukses', 'Favicon website berhasil diperbarui');
 				redirect(site_url('admin/konfig'));
 			}
 		}
-		$this->session->set_flashdata('maaf', 'Maaf, tidak ada data yang diperbarui');
+		$this->session->set_flashdata('maaf', 'Maaf, favicon website tidak berhasil diperbarui');
 		redirect(site_url('admin/konfig'));
 	}
 
@@ -185,8 +188,10 @@ class Konfig extends CI_Controller
 			$config['allowed_types'] 	= 'gif|jpg|png';
 			$config['max_size']			= '6200'; // KB
 			$config['file_name']        = 'background.jpg';
-			unlink('./back_assets/img/' . $site['background']);
-			unlink('./back_assets/img/thumbs/' . $site['background']);
+			if ($_FILES['back']['name']) { //untuk berisi
+				unlink('./back_assets/img/' . $site['background']);
+				unlink('./back_assets/img/thumbs/' . $site['background']);
+            }
 			$this->load->library('upload', $config);
 			if (!$this->upload->do_upload('back')) {
 				$data = array(
@@ -220,11 +225,11 @@ class Konfig extends CI_Controller
 					'id_user'		=> $this->session->userdata('id')
 				);
 				$this->konfigurasi_model->edit($data);
-				$this->session->set_flashdata('sukses', 'Background situs berhasil diperbarui');
+				$this->session->set_flashdata('sukses', 'Background website berhasil diperbarui');
 				redirect(site_url('admin/konfig'));
 			}
 		}
-		$this->session->set_flashdata('maaf', 'Maaf, tidak ada data yang diperbarui');
+		$this->session->set_flashdata('maaf', 'Maaf, background website tidak berhasil diperbarui');
 		redirect(site_url('admin/konfig'));
 	}
 
@@ -238,28 +243,75 @@ class Konfig extends CI_Controller
 		$this->form_validation->set_rules('welcome_say', 'Judul Ucapan', 'required');
 		$this->form_validation->set_rules('deskripsi_say', 'Deksripsi Ucapan Sambutan', 'required');
 
-		if ($this->form_validation->run() === FALSE) {
+		if ($this->form_validation->run() === TRUE) {
+			$config['upload_path'] 		= './back_assets/img/';
+			$config['allowed_types'] 	= 'gif|jpg|png';
+			$config['max_size']			= '6200'; // KB
+			$config['file_name']        = 'sambutan_background.jpg';
+			if ($_FILES['foto_sambutan']['name']) { //untuk berisi
+				unlink('./back_assets/img/' . $site['foto_sambutan']);
+				unlink('./back_assets/img/thumbs/' . $site['foto_sambutan']);
+			} 
+			$this->load->library('upload', $config);
+			if (!$_FILES['foto_sambutan']['name']) {
+				if (($this->input->post('deskripsi_say') == $site['deskripsi_say']) && ($this->input->post('welcome_say') == $site['welcome_say'])) {
+					$this->session->set_flashdata('maaf', 'Tidak ada data ucapan yang diperbarui');
+					redirect(site_url('admin/konfig'));
+				}
+				$i = $this->input;
+				$data = array(
+					'id_konfigurasi'	=> $i->post('id_konfigurasi'),
+					'welcome_say'		=> $i->post('welcome_say'),
+					'deskripsi_say'		=> $i->post('deskripsi_say'),
+					'id_user'			=> $this->session->userdata('id')
+				);
+				$this->konfigurasi_model->edit($data);
+				$this->session->set_flashdata('sukses', 'Ucapan website berhasil diperbarui. Foto tidak berubah.');
+				redirect(site_url('admin/konfig'));
+			}
 
-			$data = array(
-				'title'	=> 'Ucapan',
-				'site'	=> $site,
-				'isi'	=> 'back/konfig/umum'
-			);
-			$this->load->view('back/wrapper', $data);
-		} else {
-			$i = $this->input;
-			$data = array(
-				'id_konfigurasi'	=> $i->post('id_konfigurasi'),
-				'welcome_say'		=> $i->post('welcome_say'),
-				'deskripsi_say'		=> $i->post('deskripsi_say'),
-				'id_user'			=> $this->session->userdata('id')
-			);
-			$this->konfigurasi_model->edit($data);
-			$this->session->set_flashdata('sukses', 'Kalimat ucapan website berhasil diperbarui');
-			redirect(site_url('admin/konfig'));
+			if (!$this->upload->do_upload('foto_sambutan')) {
+				$data = array(
+					'title'		=> '',
+					'namasite' 	=> $site['namaweb'],
+					'site'		=> $site,
+					'error'		=> $this->upload->display_errors(),
+					'isi'		=> 'back/konfig/umum'
+				);
+				$this->load->view('back/wrapper', $data);
+			} else {
+				$upload_data = array('uploads' => $this->upload->data());
+				// Image Editor
+				$config['image_library']	= 'gd2';
+				$config['source_image'] 	= './back_assets/img/' . $upload_data['uploads']['file_name'];
+				$config['new_image'] 		= './back_assets/img/thumbs/';
+				$config['create_thumb'] 	= TRUE;
+				$config['maintain_ratio'] 	= TRUE;
+				$config['width'] 			= 450; // Pixel
+				$config['thumb_marker'] 	= '';
+				$this->load->library('image_lib', $config);
+				$this->image_lib->resize();
+				$i = $this->input;
+				$data = array(
+					'id_konfigurasi'	=> $i->post('id_konfigurasi'),
+					'welcome_say'		=> $i->post('welcome_say'),
+					'deskripsi_say'		=> $i->post('deskripsi_say'),
+					'foto_sambutan'		=> $upload_data['uploads']['file_name'],
+					'id_user'			=> $this->session->userdata('id')
+				);
+				$this->konfigurasi_model->edit($data);
+				$this->session->set_flashdata('sukses', 'Ucapan website dan foto berhasil diperbarui');
+				redirect(site_url('admin/konfig'));
+			}
 		}
+		$data = array(
+			'title'	=> 'Ucapan',
+			'site'	=> $site,
+			'isi'	=> 'back/konfig/umum'
+		);
+		$this->session->set_flashdata('maaf', 'Maaf, Ucapan website tidak berhasil diperbarui');
+		redirect(site_url('admin/konfig'));
 	}
-
 	//end of all
 	//end of all
 	//end of all

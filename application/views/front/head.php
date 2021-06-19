@@ -98,7 +98,6 @@ $this->load->model('galeri_model');
                                                 <?php echo $nav_berita->nama_pokja ?>
                                             </a><?php } ?>
                                         </li>
-                                        <li><a href="kosong-link.html">+ tambahan</a></li>
                                 </ul>
                             </li>
                             <li><a href="<?php echo site_url('galeri') ?>">Galeri</a>

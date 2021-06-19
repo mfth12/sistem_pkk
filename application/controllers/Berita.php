@@ -112,6 +112,7 @@ class Berita extends CI_Controller
 		$site	= $this->konfigurasi_model->listing();
 		$berita	= $this->berita_model->home();
 		$read	= $this->berita_model->read($slug_berita);
+		if (!isset($read)) show_404();
 		$slide	= $this->sliders_model->getAll();
 		$struktur	= $this->struktur_model->getAllTampil();
 		$data	= array(

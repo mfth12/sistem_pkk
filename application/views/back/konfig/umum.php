@@ -47,7 +47,7 @@
         echo '</div>';
       }
       // Error
-      echo validation_errors('<div class="alert alert-danger">', '</div>');
+      echo validation_errors('<div class="alert alert-danger">','</div>');
       ?>
       <!-- sekarang masuk ke kolom isi konten -->
       <div class="card mb-4">
@@ -97,8 +97,12 @@
                     <div class="form-group">
                       <label>Efek Slide Halaman Utama</label>
                       <select name="slide_setting" class="form-control">
-                        <option value="Geser" <?php if ($site['slide_setting'] == "Geser") { echo "selected"; } ?>>Slide Geser</option>
-                        <option value="Fade" <?php if ($site['slide_setting'] == "Fade") { echo "selected"; } ?>>Slide Timbul</option>
+                        <option value="Geser" <?php if ($site['slide_setting'] == "Geser") {
+                                                echo "selected";
+                                              } ?>>Slide Geser</option>
+                        <option value="Fade" <?php if ($site['slide_setting'] == "Fade") {
+                                                echo "selected";
+                                              } ?>>Slide Timbul</option>
                       </select>
                     </div>
                     <div class="form-group">
@@ -253,8 +257,21 @@
 
                   <div class="form-group">
                     <label>Deksripsi</label>
-                    <textarea name="deskripsi_say" id="keterangan" class="form-control" placeholder="Deskripsi kalimat sambutan"><?php echo $site['deskripsi_say'] ?></textarea>
+                    <textarea name="deskripsi_say" id="keterangan" class="form-control" required placeholder="Deskripsi kalimat sambutan"><?php echo $site['deskripsi_say'] ?></textarea>
                   </div>
+                </div>
+                <div class="col-md-4 order-md-1">
+
+                  <div class="form-group">
+                    <label>Foto Sambutan Sekarang</label><br>
+                    <img src="<?php echo base_url('back_assets/img/thumbs/' . $site['foto_sambutan']) ?>" style="max-width:80%; height:auto;">
+                  </div>
+
+                  <div class="form-group">
+                    <label>Upload Foto Sambutan</label>
+                    <input type="file" name="foto_sambutan" class="form-control">
+                  </div>
+
                 </div>
 
                 <div class="form-group col-md-12">
