@@ -101,9 +101,7 @@
                                 <label>Pokja Berita</label>
                                 <select name="id_pokja" class="form-control">
                                     <?php foreach ($pokja as $pokja) { ?>
-                                        <option value="<?php echo $pokja->id_pokja ?>" <?php if ($berita->id_pokja == $pokja->id_pokja) {
-                                                                                                        echo "selected";
-                                                                                                    } ?>>
+                                        <option value="<?php echo $pokja->id_pokja ?>" <?php if ($berita->id_pokja == $pokja->id_pokja) { echo "selected"; } ?>>
                                             <?php echo $pokja->nama_pokja ?></option>
                                     <?php } ?>
                                 </select>
@@ -117,9 +115,7 @@
                                 <label>Jenis Posting</label>
                                 <select name="jenis_berita" class="form-control">
                                     <option value="Berita">Berita</option>
-                                    <option value="Profil" <?php if ($berita->jenis_berita == "Profil") {
-                                                                echo "selected";
-                                                            } ?>>Profil PKK</option>
+                                    <option value="Profil" <?php if ($berita->jenis_berita == "Profil") { echo "selected";} ?>>Profil PKK</option>
                                 </select>
                             </div>
                         </div>

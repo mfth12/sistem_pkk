@@ -73,7 +73,7 @@
                                         <td><?php echo $user->email ?></td>
                                         <td><?php if ($user->akses_level == 'superadmin') echo "Admin PKK"; ?><?php if ($user->akses_level == 'sekret_pokja') echo "Sekretaris Pokja"; ?><?php if ($user->akses_level == 'kades') echo "Kepala Desa"; ?></td>
                                         <td class="d-flex justify-content-center">
-                                            <a href="<?php echo site_url('admin/user/edit/' . $user->id_user) ?>" class="btn btn-primary btn-sm mr-1"><i class="fa fa-edit"></i> Ubah</a>
+                                            <a href="<?php echo site_url('admin/user/edit/' . $user->id_user) ?>" class="btn btn-secondary btn-sm mr-1"><i class="fa fa-edit"></i> Ubah</a>
                                             <?php $hey = $user->id_user; ?>
                                             <a onclick="deleteConfirm('<?php echo site_url('admin/user/delete/' . $hey) ?>')" href="#!" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                                         </td>

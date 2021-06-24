@@ -27,7 +27,7 @@
             // Validasi
             echo validation_errors('<div class="alert alert-danger">', '<button class="close" data-dismiss="alert">&times;</button> </div>');
             // Form
-            echo form_open_multipart('admin/proker/tambah_utama');
+            echo form_open_multipart('admin/proker/edit_utama/' . $proker->id_proker_utama);
             ?>
             <div class="card mb-4">
                 <div class="card-header">
@@ -37,22 +37,21 @@
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
                             <div class="form-group form-group-lg">
-                                <label>Program Kerja Utama *</label>
-                                <input placeholder="Nama Program" type="text" autofocus name="nama_proker_utama" value="<?php echo set_value('nama_proker_utama') ?>" required class="form-control">
+                                <label>Program Kerja *</label>
+                                <input type="text" autofocus name="nama_proker_utama" value="<?php echo $proker->nama_proker_utama ?>" required class="form-control">
+                                <input type="hidden" name="id_proker_utama" value="<?php echo $proker->id_proker_utama ?>" required class="form-control">
                             </div>
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
                             <div class="form-group">
                                 <label>Pokja *</label>
                                 <select name="id_pokja" class="form-control" required>
-                                    <?php foreach ($pokja as $pokja) { 
-                                        if ($pokja->id_pokja != 74) {?>
-                                        <option value="<?php echo $pokja->id_pokja ?>">
+                                    <?php foreach ($pokja as $pokja) { ?>
+                                        <option value="<?php echo $pokja->id_pokja ?>" <?php if ($proker->id_pokja == $pokja->id_pokja) { echo "selected"; } ?>>
                                             <?php echo $pokja->nama_pokja ?></option>
-                                    <?php } } ?>
+                                    <?php } ?>
                                 </select>
                             </div>
                         </div>
@@ -61,9 +60,8 @@
                         <div class="col-lg-8 col-md-6">
                             <div class="form-group">
                                 <label>Keterangan Program</label><small> (Opsional)</small>
-                                <textarea placeholder="Keterangan" name="keterangan" rows="5" class="form-control"><?php echo set_value('keterangan') ?></textarea>
+                                <textarea placeholder="Keterangan" name="keterangan" rows="5" class="form-control"><?php echo $proker->keterangan ?></textarea>
                                 <div class="small text-muted">
-                                    * harus diisi
                                 </div>
                             </div>
                         </div>
@@ -71,7 +69,7 @@
 
                     <div class="form-group">
                         <input type="reset" name="reset" value="Reset" class="btn btn-secondary">
-                        <input type="submit" name="submit" value="Tambah Program Kerja" class="btn btn-primary">
+                        <input type="submit" name="submit" value="Simpan" class="btn btn-primary">
                     </div>
                 </div>
             </div>

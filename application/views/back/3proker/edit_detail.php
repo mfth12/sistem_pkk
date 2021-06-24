@@ -27,41 +27,55 @@
             // Validasi
             echo validation_errors('<div class="alert alert-danger">', '<button class="close" data-dismiss="alert">&times;</button> </div>');
             // Form
-            echo form_open_multipart('admin/proker/tambah_utama');
+            echo form_open_multipart('admin/proker/edit/' . $proker->id_proker);
             ?>
             <div class="card mb-4">
                 <div class="card-header">
-                    <a href="<?php echo site_url('admin/proker') ?>"><i class="fas fa-arrow-left"></i> Kembali</a>
+                    <a href="<?php echo site_url('admin/proker/detail') ?>"><i class="fas fa-arrow-left"></i> Kembali</a>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
                             <div class="form-group form-group-lg">
-                                <label>Program Kerja Utama *</label>
-                                <input placeholder="Nama Program" type="text" autofocus name="nama_proker_utama" value="<?php echo set_value('nama_proker_utama') ?>" required class="form-control">
+                                <label>Program Kerja *</label>
+                                <input type="text" autofocus name="nama_proker" value="<?php echo $proker->nama_proker ?>" required class="form-control">
+                                <input type="hidden" name="id_proker" value="<?php echo $proker->id_proker?>" required class="form-control">
                             </div>
                         </div>
                     </div>
-
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
                             <div class="form-group">
-                                <label>Pokja *</label>
-                                <select name="id_pokja" class="form-control" required>
-                                    <?php foreach ($pokja as $pokja) { 
-                                        if ($pokja->id_pokja != 74) {?>
-                                        <option value="<?php echo $pokja->id_pokja ?>">
-                                            <?php echo $pokja->nama_pokja ?></option>
-                                    <?php } } ?>
+                                <label>Proker Utama *</label>
+                                <select name="id_proker_utama" class="form-control" required>
+                                    <?php foreach ($proker_utama as $proker_utama) { ?>
+                                        <option value="<?php echo $proker_utama->id_proker_utama ?>" <?php if ($proker_utama->id_proker_utama == $proker->id_proker_utama) { echo "selected"; } ?>>
+                                        <?php echo "[" . $proker_utama->nama_pokja . "] - " . $proker_utama->nama_proker_utama ?></option>
+                                    <?php } ?>
                                 </select>
                             </div>
                         </div>
                     </div>
+                    
                     <div class="row">
                         <div class="col-lg-8 col-md-6">
                             <div class="form-group">
-                                <label>Keterangan Program</label><small> (Opsional)</small>
-                                <textarea placeholder="Keterangan" name="keterangan" rows="5" class="form-control"><?php echo set_value('keterangan') ?></textarea>
+                                <label>Keterangan Program</label>
+                                <textarea placeholder="Keterangan" name="keterangan" rows="5" class="form-control"><?php echo $proker->keterangan_proker ?></textarea>
+                                <div class="small text-muted">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-lg-8 col-md-6">
+                            <div class="form-group form-group-lg">
+                                <label>Status Program *</label>
+                                <select name="status" class="form-control" required>
+                                    <option value="Terlaksana">Terlaksana</option>
+                                    <option value="Tidak" <?php if ($proker->status == "Tidak") { echo "selected";} ?>>Tidak</option>
+                                </select>
                                 <div class="small text-muted">
                                     * harus diisi
                                 </div>
@@ -71,7 +85,7 @@
 
                     <div class="form-group">
                         <input type="reset" name="reset" value="Reset" class="btn btn-secondary">
-                        <input type="submit" name="submit" value="Tambah Program Kerja" class="btn btn-primary">
+                        <input type="submit" name="submit" value="Simpan" class="btn btn-primary">
                     </div>
                 </div>
             </div>

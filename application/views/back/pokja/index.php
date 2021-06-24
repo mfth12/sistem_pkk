@@ -68,7 +68,7 @@
                                         <td><?php echo $pokja->slug_pokja ?></td>
                                         <td class="d-flex justify-content-center">
                                             <a href="<?php echo base_url('admin/pokja/edit/' . $pokja->id_pokja) ?>" class="btn btn-primary btn-sm mr-1"><i class="fa fa-edit"></i> Ubah</a>
-                                            <?php include('delete.php') ?>
+                                            <?php // include('delete.php') ?> 
                                             <a href="<?php echo site_url('berita/pokja/' . $pokja->slug_pokja) ?>" target="_blank" class="btn btn-light btn-sm ml-1"><i class="fa fa-eye"></i></a>
                                         </td>
                                     </tr>

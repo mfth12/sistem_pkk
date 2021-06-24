@@ -36,57 +36,50 @@
                 <div class="card-header">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" id="utama-tab" data-toggle="tab" href="#utama" role="tab" aria-controls="utama" aria-selected="true">Program Utama</a>
+                            <a class="nav-link" href="<?php echo site_url('admin/proker') ?>" aria-selected="false">Program Utama</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?php echo site_url('admin/proker/detail') ?>" aria-selected="false">Detail Program</a>
+                            <a class="nav-link active" id="detail-tab" data-toggle="tab" href="#detail" role="tab" aria-controls="detail" aria-selected="true">Detail Program</a>
                         </li>
                     </ul>
                 </div>
                 <div class="card-body">
                     <div class="tab-content" id="myTabContent">
-                        <!-- menu pertama -->
-                        <div class="tab-pane fade show active" id="utama" role="tabpanel" aria-labelledby="utama-tab">
-                            <div class="d-flex">
-                                <!-- <select id="pilih_pokja" name="id_pokja" class="form-control col-md-2 mr-2">
-                                    <?php // foreach ($pokja as $pokja) { ?>
-                                        <option value="<?php // echo $pokja->id_pokja ?>">
-                                            <?php // echo $pokja->nama_pokja ?></option>
-                                    <?php // } ?>
-                                </select> -->
-                                <p><a href="<?php echo site_url('admin/proker/tambah_utama') ?>" class="btn btn-primary">
-                                        <i class="fa fa-plus"></i> Tambah Program Utama</a></p>
-                            </div>
-
-
+                        <!-- menu kedua -->
+                        <div class="tab-pane fade show active" id="detail" role="tabpanel" aria-labelledby="detail-tab">
+                            <p><a href="<?php echo site_url('admin/proker/tambah_detail') ?>" class="btn btn-secondary">
+                                    <i class="fa fa-plus"></i> Tambah Detail Program</a></p>
                             <div class="table-responsive">
                                 <table class="table table-striped table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th width="25px" class="text-center">No.</th>
-                                            <th>Pokja</th>
-                                            <th>Program Kerja Utama</th>
-                                            <th width="190px" class="text-center">Aksi</th>
+                                            <th width="25" class="text-center">No.</th>
+                                            <th>Program Utama</th>
+                                            <th>Detail Program Kerja</th>
+                                            <th>Keterangan Proker</th>
+                                            <th>Status</th>
+                                            <th class="text-center">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php $i = 1;
-                                        foreach ($proker as $proker) {
-                                        ?>
+                                        foreach ($proker as $proker) { ?>
                                             <tr>
                                                 <td class="text-center"><?php echo $i ?></td>
-                                                <td>
-                                                    <?php echo $proker->nama_pokja ?>
+                                                <td width="15%"><strong><?php echo $proker->nama_proker_utama ?></strong></td>
+                                                <td class="text-justify">
+                                                <?php echo $proker->nama_proker ?>
                                                 </td>
-                                                <td>
-                                                    <?php echo $proker->nama_proker_utama ?>
+                                                <td class="text-justify">
+                                                <?php echo $proker->keterangan_proker ?>
                                                 </td>
+                                                <td><?php echo $proker->status ?></td>
                                                 <td class="d-flex justify-content-center">
-                                                    <a href="<?php echo base_url('admin/proker/edit_utama/' . $proker->id_proker_utama) ?>" class="btn btn-light btn-sm mr-1"><i class="fa fa-edit"></i> Ubah</a>
-                                                    <button class="btn btn-light btn-sm" data-toggle="modal" data-target="#Delete<?php echo $proker->id_proker_utama ?>">
+                                                    <a href="<?php echo base_url('admin/proker/edit/' . $proker->id_proker) ?>" class="btn btn-primary btn-sm mr-1"><i class="fa fa-edit"></i></a>
+                                                    <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#Delete<?php echo $proker->id_proker ?>">
                                                         <i class="fa fa-trash"></i>
                                                     </button>
-                                                    <div class="modal fade" id="Delete<?php echo $proker->id_proker_utama ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal fade" id="Delete<?php echo $proker->id_proker ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
@@ -100,7 +93,7 @@
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                                                                    <a href="<?php echo base_url('admin/proker/delete_utama/' . $proker->id_proker_utama) ?>" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</a>
+                                                                    <a href="<?php echo base_url('admin/proker/delete_detail/' . $proker->id_proker) ?>" class="btn btn-danger"><i class="fa fa-trash"></i> Hapus</a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -108,8 +101,7 @@
                                                 </td>
                                             </tr>
                                         <?php $i++;
-                                        }
-                                        ?>
+                                        } ?>
                                     </tbody>
                                 </table>
                             </div>

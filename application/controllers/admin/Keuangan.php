@@ -45,44 +45,6 @@ class Keuangan extends CI_Controller
 		$this->load->view('back/wrapper', $data);
 	}
 
-	function tambah_pemasukan()
-	{
-		$data = array(
-			'nomor'			=> $this->input->post('nomor'),
-			'keterangan'	=> $this->input->post('keterangan'),
-			'tanggal' 		=> $this->input->post('tanggal'),
-			'jumlah' 		=> $this->input->post('jumlah'),
-			'jenis' 		=> 'masuk'
-		);
-		$input = $this->kas_model->tambah_pemasukan($data);
-		if ($input) {
-			$this->session->set_flashdata('sukses', 'Data pemasukkan berhasil ditambahkan');
-			redirect(site_url('admin/keuangan'));
-		} else {
-			$this->session->set_flashdata('maaf', 'Maaf, data pemasukan gagal ditambahkan');
-			redirect(site_url('admin/keuangan'));
-		}
-	}
-
-	function tambah_pengeluaran()
-	{
-		$data = array(
-			'nomor'			=> $this->input->post('nomor2'),
-			'keterangan'	=> $this->input->post('keterangan2'),
-			'tanggal' 		=> $this->input->post('tanggal2'),
-			'jumlah' 		=> $this->input->post('jumlah2'),
-			'jenis' 		=> 'keluar'
-		);
-		$input = $this->kas_model->tambah_pengeluaran($data);
-		if ($input) {
-			$this->session->set_flashdata('sukses', 'Data pengeluaran berhasil ditambahkan');
-			redirect(site_url('admin/keuangan'));
-		} else {
-			$this->session->set_flashdata('maaf', 'Maaf, data pengeluaran gagal ditambahkan');
-			redirect(site_url('admin/keuangan'));
-		}
-	}
-
 	function tambah_pemasukan_in()
 	{
 		$data = array(

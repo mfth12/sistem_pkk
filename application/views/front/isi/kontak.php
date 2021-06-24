@@ -68,7 +68,7 @@
 
 
                 <div class="single-widget category-widget">
-                    <h4 class="title">Sosial Media</h4>
+                    <h4 class="title">Sosial Media Kami</h4>
                     <ul>
                         <li>
                             <a href="<?php echo $site['twitter'] ?>" target="_blank" class="justify-content-between align-items-center d-flex">

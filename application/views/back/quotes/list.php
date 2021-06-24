@@ -76,7 +76,7 @@
                                             <?php echo substr($data->description, 0, 150) ?>
                                         </td>
                                         <td class="d-flex justify-content-center">
-                                            <a href="<?php echo site_url('admin/quotes/edit/' . $data->quote_id) ?>" class="btn btn-sm btn-primary mr-1"><i class="fa fa-edit"></i> Ubah</a>
+                                            <a href="<?php echo site_url('admin/quotes/edit/' . $data->quote_id) ?>" class="btn btn-sm btn-secondary mr-1"><i class="fa fa-edit"></i> Ubah</a>
                                             <a onclick="deleteConfirm('<?php echo site_url('admin/quotes/delete/' . $data->quote_id) ?>')" href="#!" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>

@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-top text-center">
-                        <h2>Dapatkan informasi terbaru</h2>
+                        <h2>Dapatkan Informasi Terbaru</h2>
                         <p>Berlangganan Berita PKK Desa Uma Beringin</p>
                     </div>
                 </div>
