@@ -2,7 +2,7 @@
 	<main>
 		<div class="container-fluid">
 			<!-- ini nama judul halaman -->
-			<h1 class="mt-4"><?php echo $title?></h1>
+			<h1 class="mt-4"><?php echo $title ?></h1>
 			<!-- ini nama bread crumb -->
 			<ol class="breadcrumb">
 				<?php foreach ($this->uri->segments as $segment) : ?>
@@ -23,19 +23,25 @@
 			echo validation_errors('<div class="alert alert-danger">', '<button class="close" data-dismiss="alert">&times;</button> </div>');
 
 			// Form
-			echo form_open(site_url('admin/keuangan/do_ubah/' . $nomor));
+			echo form_open(site_url('admin/keuangan/ubah_masukan/' . $nomor));
 			?>
 
 			<!-- sekarang masuk ke kolom isi konten -->
 			<div class="card mb-4">
 				<div class="card-header">
-					<a href="<?php echo site_url('admin/keuangan') ?>"><i class="fas fa-arrow-left"></i> Kembali</a>
+					<a href="<?php echo site_url('admin/keuangan/masukan') ?>"><i class="fas fa-arrow-left"></i> Kembali</a>
 				</div>
 				<div class="card-body">
 
 					<div class="form-group">
 						<label class="col-form-label" for="nomor">Nomor</label>
 						<input type="number" class="form-control" name="nomor" id="nomor" value="<?= $nomor; ?>" readonly="">
+					</div>
+					<div class="form-group">
+						<label>Pokja *</label>
+						<select name="id_pokja" class="form-control" required>
+							<option value="<?php echo $id_pokja ?>"><?php echo $nama_pokja ?></option>
+						</select>
 					</div>
 					<div class="form-group">
 						<label class="col-form-label" for="keterangan">Keterangan</label>

@@ -111,8 +111,11 @@ class Kas_model extends CI_Model {
 
 	function ambil_data($nomor)
 	{
+		$this->db->select('data_kas.*, pokja.id_pokja, pokja.nama_pokja');
+		$this->db->from('data_kas');
+		$this->db->join('pokja', 'data_kas.id_pokja = pokja.id_pokja', 'LEFT');
 		$this->db->where('nomor', $nomor);
-		$query = $this->db->get('data_kas');
+		$query = $this->db->get();
 		return $query->result_array();
 	}
 

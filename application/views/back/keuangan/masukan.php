@@ -74,10 +74,10 @@
                                         <td><?php echo $data->keterangan ?></td>
                                         <td><?php echo date('d M Y', strtotime($data->tanggal)) ?></td>
                                         <td width="180" class="text-right">Rp <?= number_format($data->jumlah, 2, ',', '.'); ?></td>
-                                        <td><?php if ($data->jenis == "masuk") { ?><span class="badge badge-pill badge-success" style="font-weight: unset;">Pemasukan</span> <?php }
-                                                                                                                                                                            if ($data->jenis == "keluar") { ?><span class="badge badge-pill badge-danger" style="font-weight: unset;">Pengeluaran</span> <?php } ?></td>
+                                        <td><?php if ($data->jenis == "masuk") { ?><span class="badge badge-pill badge-success" style="font-weight: unset;">Pemasukan</span> <?php } ?>
+                                            <?php if ($data->jenis == "keluar") { ?><span class="badge badge-pill badge-danger" style="font-weight: unset;">Pengeluaran</span> <?php } ?></td>
                                         <td class="d-flex justify-content-center">
-                                            <a href="<?php echo site_url('admin/keuangan/ubah/' . $data->nomor) ?>" class="btn btn-sm btn-light mr-1"><i class="fa fa-edit"></i> Ubah</a>
+                                            <a href="<?php echo site_url('admin/keuangan/ubah_masukan/' . $data->nomor) ?>" class="btn btn-sm btn-light mr-1"><i class="fa fa-edit"></i> Ubah</a>
                                             <a onclick="deleteConfirm('<?php echo site_url('admin/keuangan/hapus_in/' . $data->nomor) ?>')" href="#!" class="btn btn-light btn-sm"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
@@ -99,15 +99,10 @@
                                 </tr>
                             </thead>
                         </table>
-                    </div> <!-- akhir div tabel -->
-                </div> <!-- akhir div card body -->
-            </div> <!-- akhir div card -->
+                    </div> 
+                </div> 
+            </div> 
 
-
-
-            <!-- modal tambah user-->
-            <!-- modal tambah user-->
-            <!-- modal -->
             <div class="modal fade" id="tambahMasukan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -118,10 +113,21 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="<?php echo site_url('admin/keuangan/tambah_pemasukan_in') ?>" method="post" enctype="multipart/form-data">
+                            <form action="<?php echo site_url('admin/keuangan/masukan') ?>" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label class="col-form-label" for="nomor">Nomor</label>
                                     <input type="number" class="form-control" name="nomor" id="nomor" value="<?= $nomor; ?>" readonly="">
+                                </div>
+                                <div class="form-group">
+                                    <label>Pokja *</label>
+                                    <select name="id_pokja" class="form-control" required>
+                                        <?php foreach ($pokja as $pokja) {
+                                            if ($pokja->id_pokja == 74) { ?>
+                                                <option value="<?php echo $pokja->id_pokja ?>">
+                                                    <?php echo $pokja->nama_pokja ?></option>
+                                        <?php }
+                                        } ?>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-form-label" for="keterangan">Keterangan Pemasukan</label>

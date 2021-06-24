@@ -77,7 +77,7 @@
                                         <td><?php if ($data->jenis == "masuk") { ?><span class="badge badge-pill badge-success" style="font-weight: unset;">Pemasukan</span> <?php }
                                                                                                                                                                             if ($data->jenis == "keluar") { ?><span class="badge badge-pill badge-danger" style="font-weight: unset;">Pengeluaran</span> <?php } ?></td>
                                         <td class="d-flex justify-content-center">
-                                            <a href="<?php echo site_url('admin/keuangan/ubah/' . $data->nomor) ?>" class="btn btn-sm btn-light mr-1"><i class="fa fa-edit"></i> Ubah</a>
+                                            <a href="<?php echo site_url('admin/keuangan/ubah_keluaran/' . $data->nomor) ?>" class="btn btn-sm btn-light mr-1"><i class="fa fa-edit"></i> Ubah</a>
                                             <a onclick="deleteConfirm('<?php echo site_url('admin/keuangan/hapus_out/' . $data->nomor) ?>')" href="#!" class="btn btn-light btn-sm"><i class="fas fa-trash"></i></a>
 
                                         </td>
@@ -104,12 +104,6 @@
                 </div> <!-- akhir div card body -->
             </div> <!-- akhir div card -->
 
-
-
-
-            <!-- modal tambah user-->
-            <!-- modal tambah user-->
-            <!-- modal -->
             <div class="modal fade" id="tambahKeluaran" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -120,10 +114,26 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="<?php echo site_url('admin/keuangan/tambah_pengeluaran_out') ?>" method="post" enctype="multipart/form-data">
+                            <form action="<?php echo site_url('admin/keuangan/keluaran') ?>" method="post" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <label class="col-form-label" for="nomor2">Nomor</label>
                                     <input type="number" class="form-control" name="nomor2" id="nomor2" value="<?= $nomor; ?>" readonly="">
+                                </div>
+                                <!-- <div class="form-group">
+                                    <label for="image">Bukti Transaksi</label><small> (Max 2Mb)</small>
+                                    <input class="form-control" required type="file" name="image" />
+                                </div> -->
+
+                                <div class="form-group">
+                                    <label>Pokja *</label>
+                                    <select name="id_pokja" class="form-control" required>
+                                        <?php foreach ($pokja as $pokja) {
+                                            if ($pokja->id_pokja != 74) { ?>
+                                                <option value="<?php echo $pokja->id_pokja ?>">
+                                                    <?php echo $pokja->nama_pokja ?></option>
+                                        <?php }
+                                        } ?>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label class="col-form-label" for="keterangan2">Keterangan Pengeluaran</label>
