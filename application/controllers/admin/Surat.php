@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Keuangan extends CI_Controller
+class Surat extends CI_Controller
 {
 
 	public function __construct()
@@ -9,17 +9,17 @@ class Keuangan extends CI_Controller
 		parent::__construct();
 		$this->simple_login->terotentikasi();
 		$this->load->library('form_validation');
-		$this->load->model('kas_model');
+		$this->load->model('surat_model');
 		$this->load->model('pokja_model');
-		// if($this->session->userdata('akses_level') != 'superadmin')
-		// 	show_404();
+		if($this->session->userdata('akses_level') != 'superadmin')
+			show_404();
 	}
 
 	public function index()
 	{
 		$site 	= $this->konfigurasi_model->listing();
-		$total 	= $this->kas_model->row_masuk();
-		$result = $this->kas_model->nomor();
+		$total 	= $this->surat_model->row_masuk();
+		$result = $this->surat_model->nomor();
 		$ben	= "001";
 		$bes	= date('Ymd') . $ben;
 		if (empty($result[0]['nomor'])) {
@@ -31,23 +31,22 @@ class Keuangan extends CI_Controller
 		}
 
 		$data = array(
-			'title'		=> 'Keuangan',
+			'title'		=> 'Surat',
 			'namasite'	=> $site['namaweb'],
-			'result' 	=> $this->kas_model->all(),
+			'result' 	=> $this->surat_model->all(),
 			'nomor' 	=> $no,
-			'ttl' 		=> $this->kas_model->total_masuk(),
-			'ttl_k' 	=> $this->kas_model->total_keluar(),
-			// 'ttl' 		=> $ttl_saldo,
-			'isi'		=> 'back/keuangan/list'
+			'ttl' 		=> $this->surat_model->total_masuk(),
+			'ttl_k' 	=> $this->surat_model->total_keluar(),
+			'isi'		=> 'back/surat/list'
 		);
 		$this->load->view('back/wrapper', $data);
 	}
 	
-	function masukan()
+	function masuk()
 	{
 		$pokja 	= $this->pokja_model->listing();
 		$site 	= $this->konfigurasi_model->listing();
-		$result = $this->kas_model->nomor();
+		$result = $this->surat_model->nomor();
 		$v 		= $this->form_validation;
 		$v->set_rules(
 			'keterangan',
@@ -65,7 +64,7 @@ class Keuangan extends CI_Controller
 				'jumlah' 		=> $this->input->post('jumlah'),
 				'jenis' 		=> 'masuk'
 			);
-			$input = $this->kas_model->tambah_pemasukan($data);
+			$input = $this->surat_model->tambah_pemasukan($data);
 			if ($input) {
 				$this->session->set_flashdata('sukses', 'Data pemasukkan berhasil ditambahkan');
 				redirect(site_url('admin/keuangan/masukan'));
@@ -85,25 +84,25 @@ class Keuangan extends CI_Controller
 			} else if (substr($result[0]['nomor'], 0, 8) != (date('Ymd'))) {
 				$no = $bes;
 			}
-			// $total = $this->kas_model->row_masuk();
+			// $total = $this->surat_model->row_masuk();
 			$data = array(
 				'title'		=> 'Pemasukan',
 				'nomor' 	=> $no,
 				'pokja'		=> $pokja,
 				'namasite'	=> $site['namaweb'],
-				'result' 	=> $this->kas_model->masuk(),
-				'ttl' 		=> $this->kas_model->total_masuk(),
-				'isi'		=> 'back/keuangan/masukan'
+				'result' 	=> $this->surat_model->masuk(),
+				'ttl' 		=> $this->surat_model->total_masuk(),
+				'isi'		=> 'back/surat/masukan'
 			);
 			$this->load->view('back/wrapper', $data);
 		}
 	}
 
-	function keluaran()
+	function keluar()
 	{
 		$pokja 	= $this->pokja_model->listing();
 		$site 	= $this->konfigurasi_model->listing();
-		$result = $this->kas_model->nomor();
+		$result = $this->surat_model->nomor();
 		$v 		= $this->form_validation;
 		$v->set_rules(
 			'keterangan2',
@@ -133,9 +132,9 @@ class Keuangan extends CI_Controller
 					'namasite'	=> $site['namaweb'],
 					'pokja'		=> $pokja,
 					'error'		=> $this->upload->display_errors(),
-					'result' 	=> $this->kas_model->keluaran(),
-					'ttl' 		=> $this->kas_model->total_keluar(),
-					'isi'		=> 'back/keuangan/keluaran'
+					'result' 	=> $this->surat_model->keluaran(),
+					'ttl' 		=> $this->surat_model->total_keluar(),
+					'isi'		=> 'back/surat/keluaran'
 				);
 				$this->load->view('back/wrapper', $data);
 			} else { //kalau berhasil diupload ke sistem
@@ -150,7 +149,7 @@ class Keuangan extends CI_Controller
 						'jumlah' 		=> $this->input->post('jumlah2'),
 						'jenis' 		=> 'keluar'
 					);
-				$input = $this->kas_model->tambah_pengeluaran($data);
+				$input = $this->surat_model->tambah_pengeluaran($data);
 				if ($input) {
 					$this->session->set_flashdata('sukses', 'Data pengeluaran berhasil ditambahkan');
 					redirect(site_url('admin/keuangan/keluaran'));
@@ -172,25 +171,25 @@ class Keuangan extends CI_Controller
 				$no = $bes;
 			}
 
-			// $total = $this->kas_model->row_masuk();
+			// $total = $this->surat_model->row_masuk();
 			$data = array(
 				'title'		=> 'Pengeluaran',
 				'nomor' 	=> $no,
 				'namasite'	=> $site['namaweb'],
 				'pokja'		=> $pokja,
-				'result' 	=> $this->kas_model->keluaran(),
-				'ttl' 		=> $this->kas_model->total_keluar(),
-				'isi'		=> 'back/keuangan/keluaran'
+				'result' 	=> $this->surat_model->keluaran(),
+				'ttl' 		=> $this->surat_model->total_keluar(),
+				'isi'		=> 'back/surat/keluaran'
 			);
 			$this->load->view('back/wrapper', $data);
 		}
 	}
 
-	function ubah_masukan($nomor = null)
+	function ubah_masuk($nomor = null)
 	{
 		if (!isset($nomor)) redirect('admin/keuangan');
 		$site 	= $this->konfigurasi_model->listing();
-		$result = $this->kas_model->ambil_data($nomor);
+		$result = $this->surat_model->ambil_data($nomor);
 		$v 		= $this->form_validation;
 		$v->set_rules(
 			'keterangan',
@@ -208,7 +207,7 @@ class Keuangan extends CI_Controller
 					'tanggal' 		=> $this->input->post('tanggal'),
 					'jumlah' 		=> $this->input->post('jumlah')
 				);
-				$input = $this->kas_model->ubah($this->input->post('nomor'), $data);
+				$input = $this->surat_model->ubah($this->input->post('nomor'), $data);
 				if ($input) {
 					$this->session->set_flashdata('sukses', 'Data keuangan berhasil diubah');
 					redirect(site_url('admin/keuangan/masukan'));
@@ -225,18 +224,18 @@ class Keuangan extends CI_Controller
 				'keterangan'	=> $result[0]['keterangan'],
 				'tanggal'		=> $result[0]['tanggal'],
 				'jumlah'		=> $result[0]['jumlah'],
-				'isi'		    => 'back/keuangan/edit_masuk'
+				'isi'		    => 'back/surat/edit_masuk'
 			);
 			$this->load->view('back/wrapper', $data);
 		}
 	}
 
-	function ubah_keluaran($nomor = null)
+	function ubah_keluar($nomor = null)
 	{
 		if (!isset($nomor)) redirect('admin/keuangan');
 		$pokja 	= $this->pokja_model->listing();
 		$site 	= $this->konfigurasi_model->listing();
-		$result = $this->kas_model->ambil_data($nomor);
+		$result = $this->surat_model->ambil_data($nomor);
 		$v 		= $this->form_validation;
 		$v->set_rules(
 			'keterangan',
@@ -257,7 +256,7 @@ class Keuangan extends CI_Controller
 						'tanggal' 		=> $this->input->post('tanggal'),
 						'jumlah' 		=> $this->input->post('jumlah')
 					);
-					$input = $this->kas_model->ubah($this->input->post('nomor'), $data);
+					$input = $this->surat_model->ubah($this->input->post('nomor'), $data);
 					if ($input) {
 						$this->session->set_flashdata('sukses', 'Data keuangan berhasil diubah, bukti transaksi tidak berubah.');
 						redirect(site_url('admin/keuangan/keluaran'));
@@ -286,9 +285,9 @@ class Keuangan extends CI_Controller
 						'namasite'	=> $site['namaweb'],
 						'pokja'		=> $pokja,
 						'error'		=> $this->upload->display_errors(),
-						'result' 	=> $this->kas_model->keluaran(),
-						'ttl' 		=> $this->kas_model->total_keluar(),
-						'isi'		=> 'back/keuangan/keluaran'
+						'result' 	=> $this->surat_model->keluaran(),
+						'ttl' 		=> $this->surat_model->total_keluar(),
+						'isi'		=> 'back/surat/keluaran'
 					);
 					$this->load->view('back/wrapper', $data);
 				} else { //kalau berhasil diupload ke sistem
@@ -303,7 +302,7 @@ class Keuangan extends CI_Controller
 						'jumlah' 		=> $this->input->post('jumlah'),
 						'jenis' 		=> 'keluar'
 					);
-					$input = $this->kas_model->ubah($this->input->post('nomor'), $data);
+					$input = $this->surat_model->ubah($this->input->post('nomor'), $data);
 					if ($input) {
 						$this->session->set_flashdata('sukses', 'Data pengeluaran dan bukti transaksi, berhasil diperbarui');
 						redirect(site_url('admin/keuangan/keluaran'));
@@ -325,7 +324,7 @@ class Keuangan extends CI_Controller
 				'keterangan'	=> $result[0]['keterangan'],
 				'tanggal'		=> $result[0]['tanggal'],
 				'jumlah'		=> $result[0]['jumlah'],
-				'isi'		    => 'back/keuangan/edit_keluar'
+				'isi'		    => 'back/surat/edit_keluar'
 			);
 			$this->load->view('back/wrapper', $data);
 		}
@@ -333,7 +332,7 @@ class Keuangan extends CI_Controller
 
 	function hapus_data($nomor)
 	{
-		$hapus = $this->kas_model->hapus($nomor);
+		$hapus = $this->surat_model->hapus($nomor);
 		if ($hapus) {
 			$this->session->set_flashdata('maaf', 'Data keuangan berhasil dihapus');
 			redirect(site_url('admin/keuangan'));
@@ -345,7 +344,7 @@ class Keuangan extends CI_Controller
 
 	function hapus_in($nomor)
 	{
-		$hapus = $this->kas_model->hapus($nomor);
+		$hapus = $this->surat_model->hapus($nomor);
 		if ($hapus) {
 			$this->session->set_flashdata('maaf', 'Data keuangan berhasil dihapus');
 			redirect(site_url('admin/keuangan/masukan'));
@@ -357,7 +356,7 @@ class Keuangan extends CI_Controller
 
 	function hapus_out($nomor)
 	{
-		$hapus = $this->kas_model->hapus($nomor);
+		$hapus = $this->surat_model->hapus($nomor);
 		if ($hapus) {
 			$this->session->set_flashdata('maaf', 'Data keuangan berhasil dihapus');
 			redirect(site_url('admin/keuangan/keluaran'));
@@ -370,7 +369,7 @@ class Keuangan extends CI_Controller
 	function clean()
 	{
 		if ($this->session->userdata('akses_level') == "superadmin") {
-			$exec = $this->kas_model->clean();
+			$exec = $this->surat_model->clean();
 			if ($exec) {
 				$this->session->set_flashdata('maaf', 'Semua data keuangan berhasil dihapus');
 				redirect(site_url('admin/keuangan'));

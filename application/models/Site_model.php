@@ -13,8 +13,7 @@ class Site_model extends CI_Model
 	// Nav berita
 	public function nav_berita()
 	{
-		$this->db->select('berita.*,pokja.nama_pokja,
-						  pokja.slug_pokja');
+		$this->db->select('berita.*,pokja.nama_pokja, pokja.slug_pokja');
 		$this->db->from('berita');
 		$this->db->join('pokja', 'pokja.id_pokja = berita.id_pokja');
 		$this->db->group_by('berita.id_pokja');

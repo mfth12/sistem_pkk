@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Kas_model extends CI_Model {
+class Surat_model extends CI_Model {
 
 	function all(){
 		// $this->db->where('jenis', 'masuk');
-		$this->db->from('data_kas');
+		$this->db->from('surat');
         $this->db->order_by('nomor DESC');
     	$this->db->where('id_periode', $this->session->userdata('active_periode'));
         $query = $this->db->get();
@@ -14,7 +14,7 @@ class Kas_model extends CI_Model {
 
 	function masuk(){
 		// $this->db->where('jenis', 'masuk');
-		$this->db->from('data_kas');
+		$this->db->from('surat');
         $this->db->order_by('nomor DESC');
     	$this->db->where('jenis', 'masuk');
     	$this->db->where('id_periode', $this->session->userdata('active_periode'));
@@ -24,7 +24,7 @@ class Kas_model extends CI_Model {
 
 	function keluaran(){
 		// $this->db->where('jenis', 'masuk');
-		$this->db->from('data_kas');
+		$this->db->from('surat');
         $this->db->order_by('nomor DESC');
     	$this->db->where('jenis', 'keluar');
     	$this->db->where('id_periode', $this->session->userdata('active_periode'));
@@ -33,7 +33,7 @@ class Kas_model extends CI_Model {
 	}
 	
     function row_masuk(){
-		$this->db->from('data_kas');
+		$this->db->from('surat');
     	$this->db->where('jenis', 'masuk');
     	$this->db->where('id_periode', $this->session->userdata('active_periode'));
         $query = $this->db->get();
@@ -41,7 +41,7 @@ class Kas_model extends CI_Model {
 	}
 	
     function row_keluar(){
-		$this->db->from('data_kas');
+		$this->db->from('surat');
     	$this->db->where('jenis', 'keluar');
     	$this->db->where('id_periode', $this->session->userdata('active_periode'));
         $query = $this->db->get();
@@ -51,7 +51,7 @@ class Kas_model extends CI_Model {
     function total_all()
     {
     	$this->db->select('jumlah');
-    	$this->db->from('data_kas');
+    	$this->db->from('surat');
     	// $this->db->where('jenis', 'masuk');
     	$this->db->where('id_periode', $this->session->userdata('active_periode'));
     	$query = $this->db->get();
@@ -61,7 +61,7 @@ class Kas_model extends CI_Model {
     function total_masuk()
     {
     	$this->db->select('jumlah');
-    	$this->db->from('data_kas');
+    	$this->db->from('surat');
     	$this->db->where('jenis', 'masuk');
     	$this->db->where('id_periode', $this->session->userdata('active_periode'));
     	$query = $this->db->get();
@@ -71,7 +71,7 @@ class Kas_model extends CI_Model {
     function total_keluar()
     {
     	$this->db->select('jumlah');
-    	$this->db->from('data_kas');
+    	$this->db->from('surat');
     	$this->db->where('jenis', 'keluar');
     	$this->db->where('id_periode', $this->session->userdata('active_periode'));
     	$query = $this->db->get();
@@ -81,7 +81,7 @@ class Kas_model extends CI_Model {
 	function nomor()
 	{
 		$this->db->select('nomor');
-    	$this->db->from('data_kas');
+    	$this->db->from('surat');
 		$this->db->order_by('nomor DESC');
 		$query = $this->db->get();
 		return $query->result_array();
@@ -89,20 +89,20 @@ class Kas_model extends CI_Model {
 
 	function tambah_pemasukan($data)
 	{
-		$query = $this->db->insert('data_kas', $data);
+		$query = $this->db->insert('surat', $data);
 		return $query;
 	}
 
 	function tambah_pengeluaran($data)
 	{
-		$query = $this->db->insert('data_kas', $data);
+		$query = $this->db->insert('surat', $data);
 		return $query;
 	}
 
 	function ubah($nomor, $data)
 	{
 		$this->db->where('nomor', $nomor);
-		$query = $this->db->update('data_kas', $data);
+		$query = $this->db->update('surat', $data);
 		return $query;
 	}
 
@@ -110,7 +110,7 @@ class Kas_model extends CI_Model {
 	{
         $this->_deleteImage($nomor);
 		$this->db->where('nomor', $nomor);
-		$query = $this->db->delete('data_kas');
+		$query = $this->db->delete('surat');
 		return $query;
 	}
 
@@ -125,15 +125,15 @@ class Kas_model extends CI_Model {
 
     function clean()
     {
-        $query = $this->db->truncate('data_kas');
+        $query = $this->db->truncate('surat');
         return $query;
     }
 	
 	function ambil_data($nomor)
 	{
-		$this->db->select('data_kas.*, pokja.id_pokja, pokja.nama_pokja');
-		$this->db->from('data_kas');
-		$this->db->join('pokja', 'data_kas.id_pokja = pokja.id_pokja', 'LEFT');
+		$this->db->select('surat.*, pokja.id_pokja, pokja.nama_pokja');
+		$this->db->from('surat');
+		$this->db->join('pokja', 'surat.id_pokja = pokja.id_pokja', 'LEFT');
 		$this->db->where('nomor', $nomor);
 		$query = $this->db->get();
 		return $query->result_array();
@@ -141,7 +141,7 @@ class Kas_model extends CI_Model {
 
 	public function getById($id)
     {
-        return $this->db->get_where('data_kas', ["nomor" => $id])->row();
+        return $this->db->get_where('surat', ["nomor" => $id])->row();
     }
 	
 	///////////////////////////////

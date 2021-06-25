@@ -12,6 +12,7 @@ class overview extends CI_Controller
 		$this->load->model('proker_model');
 		$this->load->model('pokja_model');
 		$this->load->model('kas_model');
+		$this->load->model('surat_model');
 		$this->load->model('sliders_model');
 		$this->load->model('masukan_model');
 		$this->load->model('galeri_model');
@@ -24,6 +25,7 @@ class overview extends CI_Controller
 		$user				= $this->user_model->listing();
 		$berita				= $this->berita_model->listing();
 		$proker				= $this->proker_model->listing();
+		$surat 				= $this->surat_model->total_all();
 		$pokja				= $this->pokja_model->listing();
 		$total 				= $this->kas_model->total_all();
 		$slider 			= $this->sliders_model->total_all();
@@ -37,6 +39,7 @@ class overview extends CI_Controller
 			'user'				=> $user,
 			'berita'			=> $berita,
 			'proker'			=> $proker,
+			'surat'				=> $surat,
 			'pokja'				=> $pokja,
 			'total_trans'		=> $total,
 			'slider'			=> $slider,
