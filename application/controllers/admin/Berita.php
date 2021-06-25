@@ -68,7 +68,7 @@ class Berita extends CI_Controller
 					'title'		=> 'Tambah Berita',
 					'site'		=> $site,
 					'namasite'	=> $site['namaweb'],
-					'pokja'	=> $pokja,
+					'pokja'		=> $pokja,
 					'error'		=> $this->upload->display_errors(),
 					'isi'		=> 'back/2berita/tambah'
 				);
@@ -95,7 +95,7 @@ class Berita extends CI_Controller
 				$i = $this->input;
 				$data = array(
 					'id_user'				=> $this->session->userdata('id'),
-					'id_pokja'	=> $i->post('id_pokja'),
+					'id_pokja'				=> $i->post('id_pokja'),
 					'slug_berita'			=> url_title($i->post('nama_berita'), 'dash', TRUE),
 					'nama_berita'			=> $i->post('nama_berita'),
 					'keterangan'			=> $i->post('keterangan'),

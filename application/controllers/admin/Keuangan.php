@@ -42,7 +42,6 @@ class Keuangan extends CI_Controller
 		);
 		$this->load->view('back/wrapper', $data);
 	}
-
 	
 	function masukan()
 	{
@@ -113,22 +112,55 @@ class Keuangan extends CI_Controller
 			array('required'	=> 'Nota keuangan harus diisi')
 		);
 		if ($v->run()) {
-			$data = array(
-				'id_periode'	=> $this->session->userdata('active_periode'),
-				'nomor'			=> $this->input->post('nomor2'),
-				'keterangan'	=> $this->input->post('keterangan2'),
-				'tanggal' 		=> $this->input->post('tanggal2'),
-				'jumlah' 		=> $this->input->post('jumlah2'),
-				'jenis' 		=> 'keluar'
-			);
-			$input = $this->kas_model->tambah_pengeluaran($data);
-			if ($input) {
-				$this->session->set_flashdata('sukses', 'Data pengeluaran berhasil ditambahkan');
-				redirect(site_url('admin/keuangan/keluaran'));
-			} else {
-				$this->session->set_flashdata('maaf', 'Maaf, data pengeluaran gagal ditambahkan');
-				redirect(site_url('admin/keuangan/keluaran'));
+			$config['upload_path'] 		= './back_assets/upload/transaksi/';
+			$config['allowed_types'] 	= 'gif|jpg|png|svg';
+			$config['max_size']			= '6048'; // KB
+			$config['file_name']        = $this->input->post('nomor2');
+			$this->
+			load->library('upload', $config);
+			if (!$this->upload->do_upload('image')) {
+				$ben	= "001";
+				$bes	= date('Ymd') . $ben;
+				if (empty($result[0]['nomor'])) {
+					$no = $bes;
+				} else if (substr($result[0]['nomor'], 0, 8) == (date('Ymd'))) {
+					$no = $result[0]['nomor'] + 1;
+				} else if (substr($result[0]['nomor'], 0, 8) != (date('Ymd'))) {
+					$no = $bes;
+				}
+				$data = array(
+					'title'		=> 'Pengeluaran',
+					'nomor' 	=> $no,
+					'namasite'	=> $site['namaweb'],
+					'pokja'		=> $pokja,
+					'error'		=> $this->upload->display_errors(),
+					'result' 	=> $this->kas_model->keluaran(),
+					'ttl' 		=> $this->kas_model->total_keluar(),
+					'isi'		=> 'back/keuangan/keluaran'
+				);
+				$this->load->view('back/wrapper', $data);
+			} else { //kalau berhasil diupload ke sistem
+				$upload_data				= array('uploads' => $this->upload->data());
+				$data = array(
+						'id_periode'	=> $this->session->userdata('active_periode'),
+						'image'			=> $upload_data['uploads']['file_name'],
+						'id_pokja'		=> $this->input->post('id_pokja'),
+						'nomor'			=> $this->input->post('nomor2'),
+						'keterangan'	=> $this->input->post('keterangan2'),
+						'tanggal' 		=> $this->input->post('tanggal2'),
+						'jumlah' 		=> $this->input->post('jumlah2'),
+						'jenis' 		=> 'keluar'
+					);
+				$input = $this->kas_model->tambah_pengeluaran($data);
+				if ($input) {
+					$this->session->set_flashdata('sukses', 'Data pengeluaran berhasil ditambahkan');
+					redirect(site_url('admin/keuangan/keluaran'));
+				} else {
+					$this->session->set_flashdata('maaf', 'Maaf, data pengeluaran gagal ditambahkan');
+					redirect(site_url('admin/keuangan/keluaran'));
+				}
 			}
+			
 		}
 		if (!$v->run()) {
 			$ben	= "001";
@@ -203,6 +235,7 @@ class Keuangan extends CI_Controller
 	function ubah_keluaran($nomor = null)
 	{
 		if (!isset($nomor)) redirect('admin/keuangan');
+		$pokja 	= $this->pokja_model->listing();
 		$site 	= $this->konfigurasi_model->listing();
 		$result = $this->kas_model->ambil_data($nomor);
 		$v 		= $this->form_validation;
@@ -214,25 +247,82 @@ class Keuangan extends CI_Controller
 		);
 
 		if ($v->run()) {
-			if (isset($nomor)) {
-				$data = array(
-					'nomor'			=> $this->input->post('nomor'),
-					'keterangan'	=> $this->input->post('keterangan'),
-					'tanggal' 		=> $this->input->post('tanggal'),
-					'jumlah' 		=> $this->input->post('jumlah')
-				);
-				$input = $this->kas_model->ubah($this->input->post('nomor'), $data);
-				if ($input) {
-					$this->session->set_flashdata('sukses', 'Data keuangan berhasil diubah');
-					redirect(site_url('admin/keuangan/keluaran'));
+			if (!$_FILES['image']['name']) { //untuk kosong
+				if (isset($nomor)) {
+					$data = array(
+						'id_periode'	=> $this->session->userdata('active_periode'),
+						'image'			=> $this->input->post('image_lama'),
+						'id_pokja'		=> $this->input->post('id_pokja'),
+						 // ////
+						'keterangan'	=> $this->input->post('keterangan'),
+						'tanggal' 		=> $this->input->post('tanggal'),
+						'jumlah' 		=> $this->input->post('jumlah')
+					);
+					$input = $this->kas_model->ubah($this->input->post('nomor'), $data);
+					if ($input) {
+						$this->session->set_flashdata('sukses', 'Data keuangan berhasil diubah, bukti transaksi tidak berubah.');
+						redirect(site_url('admin/keuangan/keluaran'));
+					}
+				} else show_404();
+			} else { //kalau ada isi
+				$config['upload_path'] 		= './back_assets/upload/transaksi/';
+				$config['allowed_types'] 	= 'gif|jpg|png|svg';
+				$config['max_size']			= '6048'; // KB
+				$config['file_name']        = $this->input->post('nomor');
+				$this->load->library('upload', $config);
+
+				if (!$this->upload->do_upload('image')) {
+					$ben	= "001";
+					$bes	= date('Ymd') . $ben;
+					if (empty($result[0]['nomor'])) {
+						$no = $bes;
+					} else if (substr($result[0]['nomor'], 0, 8) == (date('Ymd'))) {
+						$no = $result[0]['nomor'] + 1;
+					} else if (substr($result[0]['nomor'], 0, 8) != (date('Ymd'))) {
+						$no = $bes;
+					}
+					$data = array(
+						'title'		=> 'Pengeluaran',
+						'nomor' 	=> $no,
+						'namasite'	=> $site['namaweb'],
+						'pokja'		=> $pokja,
+						'error'		=> $this->upload->display_errors(),
+						'result' 	=> $this->kas_model->keluaran(),
+						'ttl' 		=> $this->kas_model->total_keluar(),
+						'isi'		=> 'back/keuangan/keluaran'
+					);
+					$this->load->view('back/wrapper', $data);
+				} else { //kalau berhasil diupload ke sistem
+					$upload_data = array('uploads' => $this->upload->data());
+					$data = array(
+						'id_periode'	=> $this->session->userdata('active_periode'),
+						'image'			=> $upload_data['uploads']['file_name'],
+						'id_pokja'		=> $this->input->post('id_pokja'),
+						'nomor'			=> $this->input->post('nomor'),
+						'keterangan'	=> $this->input->post('keterangan'),
+						'tanggal' 		=> $this->input->post('tanggal'),
+						'jumlah' 		=> $this->input->post('jumlah'),
+						'jenis' 		=> 'keluar'
+					);
+					$input = $this->kas_model->ubah($this->input->post('nomor'), $data);
+					if ($input) {
+						$this->session->set_flashdata('sukses', 'Data pengeluaran dan bukti transaksi, berhasil diperbarui');
+						redirect(site_url('admin/keuangan/keluaran'));
+					} else {
+						$this->session->set_flashdata('maaf', 'Maaf, data pengeluaran gagal diperbarui');
+						redirect(site_url('admin/keuangan/keluaran'));
+					}
 				}
-			} else show_404();
+			}
 		}
 		if (!$v->run()) {
 			$data = array(
 				'title'		    => 'Ubah Pengeluaran',
+				'pokja'			=> $pokja,
 				'namasite'	    => $site['namaweb'],
 				'nomor'			=> $result[0]['nomor'],
+				'id_pokja_this'	=> $result[0]['id_pokja'],
+				'image'			=> $result[0]['image'],
 				'keterangan'	=> $result[0]['keterangan'],
 				'tanggal'		=> $result[0]['tanggal'],
 				'jumlah'		=> $result[0]['jumlah'],

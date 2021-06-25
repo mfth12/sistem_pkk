@@ -32,8 +32,8 @@
                 echo $this->session->flashdata('maaf');
                 echo '</div>';
             }
-            // Error
-            echo validation_errors('<div class="alert alert-danger">', '<button class="close" data-dismiss="alert">&times;</button></div>');
+            // Validasi
+            echo validation_errors('<div class="alert alert-danger">', '<button class="close" data-dismiss="alert">&times;</button> </div>');
             ?>
 
             <!-- sekarang masuk ke kolom isi konten -->
@@ -61,6 +61,7 @@
                                     <th width="25" class="text-center">No.</th>
                                     <th width="30%">Keterangan</th>
                                     <th>Tanggal</th>
+                                    <th>Bukti</th>
                                     <th>Jumlah</th>
                                     <th>Jenis</th>
                                     <th class="text-center">Action</th>
@@ -73,11 +74,14 @@
                                         <td class="text-center"><?php echo $i ?></td>
                                         <td><?php echo $data->keterangan ?></td>
                                         <td><?php echo date('d M Y', strtotime($data->tanggal)) ?></td>
+                                        <td>
+                                            <a href="<?php echo base_url('back_assets/upload/transaksi/' . $data->image) ?>" target="_blank">Lihat</a>
+                                        </td>
                                         <td width="180" class="text-right">Rp <?= number_format($data->jumlah, 2, ',', '.'); ?></td>
                                         <td><?php if ($data->jenis == "masuk") { ?><span class="badge badge-pill badge-success" style="font-weight: unset;">Pemasukan</span> <?php }
                                                                                                                                                                             if ($data->jenis == "keluar") { ?><span class="badge badge-pill badge-danger" style="font-weight: unset;">Pengeluaran</span> <?php } ?></td>
                                         <td class="d-flex justify-content-center">
-                                            <a href="<?php echo site_url('admin/keuangan/ubah_keluaran/' . $data->nomor) ?>" class="btn btn-sm btn-light mr-1"><i class="fa fa-edit"></i> Ubah</a>
+                                            <a href="<?php echo site_url('admin/keuangan/ubah_keluaran/' . $data->nomor) ?>" class="btn btn-sm btn-light mr-1"><i class="fa fa-edit"></i></a>
                                             <a onclick="deleteConfirm('<?php echo site_url('admin/keuangan/hapus_out/' . $data->nomor) ?>')" href="#!" class="btn btn-light btn-sm"><i class="fas fa-trash"></i></a>
 
                                         </td>
@@ -93,7 +97,7 @@
                                 }
                                 ?>
                                 <tr>
-                                    <th colspan="3" scope="col">TOTAL <small>(Pengeluaran)</small></th>
+                                    <th colspan="4" scope="col">TOTAL <small>(Pengeluaran)</small></th>
                                     <th width="130" class="text-right" scope="col">Rp. <?= number_format($jumlah, 2, ',', '.'); ?></th>
                                     <th scope="col">&nbsp;</th>
                                     <th scope="col">&nbsp;</th>
@@ -119,10 +123,10 @@
                                     <label class="col-form-label" for="nomor2">Nomor</label>
                                     <input type="number" class="form-control" name="nomor2" id="nomor2" value="<?= $nomor; ?>" readonly="">
                                 </div>
-                                <!-- <div class="form-group">
+                                <div class="form-group">
                                     <label for="image">Bukti Transaksi</label><small> (Max 2Mb)</small>
                                     <input class="form-control" required type="file" name="image" />
-                                </div> -->
+                                </div>
 
                                 <div class="form-group">
                                     <label>Pokja *</label>

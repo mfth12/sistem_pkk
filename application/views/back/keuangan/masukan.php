@@ -77,7 +77,7 @@
                                         <td><?php if ($data->jenis == "masuk") { ?><span class="badge badge-pill badge-success" style="font-weight: unset;">Pemasukan</span> <?php } ?>
                                             <?php if ($data->jenis == "keluar") { ?><span class="badge badge-pill badge-danger" style="font-weight: unset;">Pengeluaran</span> <?php } ?></td>
                                         <td class="d-flex justify-content-center">
-                                            <a href="<?php echo site_url('admin/keuangan/ubah_masukan/' . $data->nomor) ?>" class="btn btn-sm btn-light mr-1"><i class="fa fa-edit"></i> Ubah</a>
+                                            <a href="<?php echo site_url('admin/keuangan/ubah_masukan/' . $data->nomor) ?>" class="btn btn-sm btn-light mr-1"><i class="fa fa-edit"></i></a>
                                             <a onclick="deleteConfirm('<?php echo site_url('admin/keuangan/hapus_in/' . $data->nomor) ?>')" href="#!" class="btn btn-light btn-sm"><i class="fas fa-trash"></i></a>
                                         </td>
                                     </tr>
