@@ -25,7 +25,7 @@ class overview extends CI_Controller
 		$user				= $this->user_model->listing();
 		$berita				= $this->berita_model->listing();
 		$proker				= $this->proker_model->listing();
-		$surat 				= $this->surat_model->total_all();
+		$surat 				= $this->surat_model->all();
 		$pokja				= $this->pokja_model->listing();
 		$total 				= $this->kas_model->total_all();
 		$slider 			= $this->sliders_model->total_all();

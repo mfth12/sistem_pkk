@@ -94,7 +94,7 @@
                                 ?>
                                 <tr>
                                     <th colspan="3" scope="col">SALDO TOTAL</th>
-                                    <th width="130" class="text-right" scope="col">Rp. <?= number_format($jumlah, 2, ',', '.'); ?></th>
+                                    <th class="text-right" scope="col">Rp. <?= number_format($jumlah, 2, ',', '.'); ?></th>
                                     <th scope="col">&nbsp;</th>
                                 </tr>
                             </thead>

@@ -17,30 +17,38 @@
 					</li>
 				<?php endforeach; ?>
 			</ol>
-			<!-- flash sedikit -->
 			<?php
+			
+            // Error
+            if (isset($error)) {
+                echo '<div class="alert alert-warning">';
+                echo '<button class="close" data-dismiss="alert">&times;</button>';
+                echo $error;
+                echo '</div>';
+            }
 			// Validasi
 			echo validation_errors('<div class="alert alert-danger">', '<button class="close" data-dismiss="alert">&times;</button> </div>');
-
 			// Form
-			echo form_open_multipart('admin/keuangan/ubah_keluaran/' . $nomor);
-
+			echo form_open_multipart('admin/surat/ubah_keluar/' . $id_surat);
 			?>
 
 			<!-- sekarang masuk ke kolom isi konten -->
 			<div class="card mb-4">
 				<div class="card-header">
-					<a href="<?php echo site_url('admin/keuangan/keluaran') ?>"><i class="fas fa-arrow-left"></i> Kembali</a>
+					<a href="<?php echo site_url('admin/surat/keluar') ?>"><i class="fas fa-arrow-left"></i> Kembali</a>
 				</div>
 				<div class="card-body">
 
 					<div class="form-group">
-						<label class="col-form-label" for="nomor">Nomor</label>
-						<input type="number" class="form-control" name="nomor" id="nomor" value="<?= $nomor; ?>" readonly="">
+						<label class="col-form-label" for="nomor">No. Surat</label>
+						<input type="text" class="form-control" name="nomor" value="<?= $nomor; ?>" placeholder="001/SKRT/TP-PKK/II/2021">
+						<input type="hidden" class="form-control" name="id_surat" value="<?= $id_surat; ?>" >
 					</div>
 					<div class="form-group col-md-4">
-						<label>Bukti Transaksi</label><br>
-						<img src="<?php echo base_url('back_assets/upload/transaksi/' . $image) ?>" style="max-width:100%; height:auto;">
+						<label>Berkas Surat </label><small> (Klik untuk melihat)</small><br>
+						<a target="_blank" href="<?php echo base_url('back_assets/upload/surat/' . $image) ?>">
+						<img src="<?php echo base_url('back_assets/upload/surat/' . $image) ?>" style="max-width:100%; height:auto;">
+						</a>
 					</div>
 					<div class=" col-md-4 form-group">
 						<input class="form-control" name="image" type="file" />
@@ -57,17 +65,14 @@
 						</select>
 					</div>
 					<div class="form-group">
-						<label class="col-form-label" for="keterangan">Keterangan</label>
-						<textarea class="form-control" name="keterangan" id="keterangan" placeholder="Keterangan" required=""><?= $keterangan; ?></textarea>
+						<label class="col-form-label" for="keterangan">Keterangan Surat</label>
+						<textarea class="form-control" name="keterangan" placeholder="Keterangan" required=""><?= $keterangan; ?></textarea>
 					</div>
 					<div class="form-group">
 						<label class="col-form-label" for="tanggal">Tanggal</label>
-						<input type="date" class="form-control" name="tanggal" id="tanggal" value="<?= $tanggal; ?>" required="">
+						<input type="date" class="form-control" name="tanggal" value="<?= $tanggal; ?>" required="">
 					</div>
-					<div class="form-group">
-						<label class="col-form-label" for="jumlah">Jumlah</label>
-						<input type="number" class="form-control" name="jumlah" id="jumlah" placeholder="Jumlah" value="<?= $jumlah; ?>" required="">
-					</div>
+					<button type="reset" value="Reset" class="btn btn-secondary">Reset</button>
 					<button type="submit" class="btn btn-primary">Simpan</button>
 
 					<?php echo form_close() ?>

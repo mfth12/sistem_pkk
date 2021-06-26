@@ -5,29 +5,35 @@ class Surat_model extends CI_Model {
 
 	function all(){
 		// $this->db->where('jenis', 'masuk');
+		$this->db->select('surat.*, pokja.nama_pokja');
 		$this->db->from('surat');
-        $this->db->order_by('nomor DESC');
+        $this->db->order_by('id_surat DESC');
     	$this->db->where('id_periode', $this->session->userdata('active_periode'));
+		$this->db->join('pokja','pokja.id_pokja = surat.id_pokja', 'LEFT');
         $query = $this->db->get();
         return $query->result();
 	}
 
 	function masuk(){
 		// $this->db->where('jenis', 'masuk');
+		$this->db->select('surat.*, pokja.nama_pokja');
 		$this->db->from('surat');
-        $this->db->order_by('nomor DESC');
+        $this->db->order_by('id_surat DESC');
     	$this->db->where('jenis', 'masuk');
     	$this->db->where('id_periode', $this->session->userdata('active_periode'));
+		$this->db->join('pokja','pokja.id_pokja = surat.id_pokja', 'LEFT');
         $query = $this->db->get();
         return $query->result();
 	}
 
-	function keluaran(){
+	function keluar(){
 		// $this->db->where('jenis', 'masuk');
+		$this->db->select('surat.*, pokja.nama_pokja');
 		$this->db->from('surat');
-        $this->db->order_by('nomor DESC');
+        $this->db->order_by('id_surat DESC');
     	$this->db->where('jenis', 'keluar');
     	$this->db->where('id_periode', $this->session->userdata('active_periode'));
+		$this->db->join('pokja','pokja.id_pokja = surat.id_pokja', 'LEFT');
         $query = $this->db->get();
         return $query->result();
 	}
@@ -48,36 +54,6 @@ class Surat_model extends CI_Model {
         return $query->num_rows();
     }
 	
-    function total_all()
-    {
-    	$this->db->select('jumlah');
-    	$this->db->from('surat');
-    	// $this->db->where('jenis', 'masuk');
-    	$this->db->where('id_periode', $this->session->userdata('active_periode'));
-    	$query = $this->db->get();
-    	return $query->result();
-	}
-	
-    function total_masuk()
-    {
-    	$this->db->select('jumlah');
-    	$this->db->from('surat');
-    	$this->db->where('jenis', 'masuk');
-    	$this->db->where('id_periode', $this->session->userdata('active_periode'));
-    	$query = $this->db->get();
-    	return $query->result();
-	}
-	
-    function total_keluar()
-    {
-    	$this->db->select('jumlah');
-    	$this->db->from('surat');
-    	$this->db->where('jenis', 'keluar');
-    	$this->db->where('id_periode', $this->session->userdata('active_periode'));
-    	$query = $this->db->get();
-    	return $query->result();
-	}
-
 	function nomor()
 	{
 		$this->db->select('nomor');
@@ -93,7 +69,7 @@ class Surat_model extends CI_Model {
 		return $query;
 	}
 
-	function tambah_pengeluaran($data)
+	function tambah_suratkeluar($data)
 	{
 		$query = $this->db->insert('surat', $data);
 		return $query;
@@ -101,7 +77,7 @@ class Surat_model extends CI_Model {
 
 	function ubah($nomor, $data)
 	{
-		$this->db->where('nomor', $nomor);
+		$this->db->where('id_surat', $nomor);
 		$query = $this->db->update('surat', $data);
 		return $query;
 	}
@@ -109,17 +85,26 @@ class Surat_model extends CI_Model {
 	function hapus($nomor)
 	{
         $this->_deleteImage($nomor);
-		$this->db->where('nomor', $nomor);
+		$this->db->where('id_surat', $nomor);
 		$query = $this->db->delete('surat');
 		return $query;
 	}
+
+	function hapus_gambar($id)
+    {
+        $uang = $this->getById($id);
+        if ($uang->image != "default.jpg") {
+    	    $filename = explode(".", $uang->image)[0];
+    		return array_map('unlink', glob(FCPATH."back_assets/upload/surat/$filename.*"));
+        }
+    }
 
 	private function _deleteImage($id)
     {
         $uang = $this->getById($id);
         if ($uang->image != "default.jpg") {
     	    $filename = explode(".", $uang->image)[0];
-    		return array_map('unlink', glob(FCPATH."back_assets/upload/transaksi/$filename.*"));
+    		return array_map('unlink', glob(FCPATH."back_assets/upload/surat/$filename.*"));
         }
     }
 
@@ -134,121 +119,15 @@ class Surat_model extends CI_Model {
 		$this->db->select('surat.*, pokja.id_pokja, pokja.nama_pokja');
 		$this->db->from('surat');
 		$this->db->join('pokja', 'surat.id_pokja = pokja.id_pokja', 'LEFT');
-		$this->db->where('nomor', $nomor);
+		$this->db->where('id_surat', $nomor);
 		$query = $this->db->get();
 		return $query->result_array();
 	}
 
 	public function getById($id)
     {
-        return $this->db->get_where('surat', ["nomor" => $id])->row();
+        return $this->db->get_where('surat', ["id_surat" => $id])->row();
     }
 	
 	///////////////////////////////
-
-    function row_harian($tanggal){
-    	$this->db->where('tanggal', $tanggal);
-        $query = $this->db->get('data');
-        return $query->num_rows();
-    }
-
-	function laporan_harian($tanggal, $number, $offset)
-	{
-		$this->db->where('tanggal', $tanggal);
-        $this->db->order_by('nomor DESC');
-        $query = $this->db->get('data', $number, $offset);
-        return $query->result();
-	}
-
-	function row_periode($mulai, $sampai)
-	{
-		$this->db->where('tanggal >=', $mulai);
-		$this->db->where('tanggal <=', $sampai);
-        $query = $this->db->get('data');
-        return $query->num_rows();
-	}
-
-	function laporan_periode($mulai, $sampai, $number, $offset)
-	{
-		$this->db->where('tanggal >=', $mulai);
-		$this->db->where('tanggal <=', $sampai);
-        $this->db->order_by('nomor DESC');
-        $query = $this->db->get('data', $number, $offset);
-        return $query->result();
-	}
-
-	function keluar($number, $offset){
-		$this->db->where('jenis', 'keluar');
-        $this->db->order_by('nomor DESC');
-        $query = $this->db->get('data', $number, $offset);
-        return $query->result();
-    }
-
-    function row_cari($search)
-    {
-        $this->db->from('data');
-        $this->db->or_like($search);
-        $query = $this->db->get();
-        return $query->num_rows();
-    }
-
-    function cari($batas=null, $offset=null, $search=null)
-    {
-        $this->db->from('data');
-        if($batas != null){
-           $this->db->limit($batas, $offset);
-        }
-        if ($search != null) {
-           $this->db->or_like($search);
-        }
-        $this->db->order_by('nomor DESC');
-        $query = $this->db->get();
-     
-        if ($query->num_rows() > 0) {
-            return $query->result();
-        }
-    }
-
-    function total_harian_masuk($tanggal)
-    {
-    	$this->db->select('jumlah');
-    	$this->db->from('data');
-    	$this->db->where('tanggal', $tanggal);
-    	$this->db->where('jenis','masuk');
-    	$query = $this->db->get();
-    	return $query->result();
-    }
-
-    function total_harian_keluar($tanggal)
-    {
-    	$this->db->select('jumlah');
-    	$this->db->from('data');
-    	$this->db->where('tanggal', $tanggal);
-    	$this->db->where('jenis','keluar');
-    	$query = $this->db->get();
-    	return $query->result();
-    }
-
-    function total_periode_masuk($mulai, $sampai)
-    {
-    	$this->db->select('jumlah');
-    	$this->db->from('data');
-		$this->db->where('tanggal >=', $mulai);
-		$this->db->where('tanggal <=', $sampai);
-    	$this->db->where('jenis', 'masuk');
-    	$query = $this->db->get();
-    	return $query->result();
-    }
-
-    function total_periode_keluar($mulai, $sampai)
-    {
-    	$this->db->select('jumlah');
-    	$this->db->from('data');
-		$this->db->where('tanggal >=', $mulai);
-		$this->db->where('tanggal <=', $sampai);
-    	$this->db->where('jenis', 'keluar');
-    	$query = $this->db->get();
-    	return $query->result();
-    }
-
 }

@@ -26,6 +26,10 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-paste"></i></div>
                             Surat
                         </a>
+                        <a class="nav-link" href="<?php echo site_url('admin/laporan') ?> ">
+                            <div class="sb-nav-link-icon"><i class="fas fa-file"></i></div>
+                            Laporan
+                        </a>
 
                         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#website" aria-expanded="false" aria-controls="collapsePages">
                             <div class="sb-nav-link-icon"><i class="fas fa-hashtag"></i></div>

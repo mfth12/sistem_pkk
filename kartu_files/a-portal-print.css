@@ -1,0 +1,92 @@
+/* CSS Document */
+/* created by PT. Gamatechno Indonesia 2006/01 */
+body {
+   font-family: Tahoma;
+   font-size: 11px;
+ 
+}
+
+h1, h2, h3, h4, h5, h6 {
+   padding: 2px;
+   margin: 0px;
+}
+div.page{
+      size: landscape;
+}
+div.page-portrait {
+   visibility: visible;
+   font-family: Tahoma;
+   font-size: 11px;
+   margin: 0 auto;
+   /*width: 17cm;*/
+}
+
+div.page-landscape {
+   visibility: visible;
+   font-family: Tahoma;
+   font-size: 11px;
+   margin: 0 auto;
+   /*width: 25.5cm;*/
+
+}
+
+table {
+   border-collapse: collapse;
+}
+
+.box {
+   border: 1px solid #ccc;
+   padding: 4px;
+}
+
+table tr td {
+   font-family: Tahoma;
+   font-size: 11px;
+   padding: 2px;
+}
+
+table tr th {
+   font-family: Tahoma;
+   font-size: 11px;
+   font-weight: bold;
+   background-color: #eee;
+   padding: 2px;
+}
+
+.tabel-common tr td {
+   font-family: Tahoma;
+   font-size: 11px;
+   padding: 2px;
+   border: 1px solid #ccc;
+}
+
+.tabel-common tr th {
+   font-family: Tahoma;
+   font-size: 11px;
+   font-weight: bold;
+   background-color: #eee;
+   padding: 2px;
+   border: 1px solid #ccc;
+}
+
+.tabel-info tr td, th {
+   font-family: Tahoma;
+   font-size: 11px;
+   padding: 2px;
+   font-weight: normal;
+}
+
+div.nobreak .hidden {
+   visibility: hidden;
+}
+
+div.page-break .hidden {
+   visibility: visible;
+   margin: 11px 0px 11px 0px;
+}
+
+.signature img {
+   z-index: 6;
+   position: relative;
+   margin: 0px 0px 0px -1.5cm;
+}
