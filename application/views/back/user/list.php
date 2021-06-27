@@ -39,6 +39,13 @@
                 echo $this->session->flashdata('maaf');
                 echo '</div>';
             }
+            // File upload error
+            if (isset($error)) {
+                echo '<div class="alert alert-danger">';
+                echo '<button class="close" data-dismiss="alert">&times;</button>';
+                echo $error;
+                echo '</div>';
+            }
             // Error
             echo validation_errors('<div class="alert alert-danger">', '<button class="close" data-dismiss="alert">&times;</button></div>');
             ?>

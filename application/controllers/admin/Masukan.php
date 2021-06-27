@@ -34,7 +34,7 @@ class Masukan extends CI_Controller
 
         if ($validation->run()) {
             $slide->save();
-            $this->session->set_flashdata('sukses', 'Terimakasih telah menghubungi kami. Kami akan memberikan respon dari form yang telah anda kirim melalui email.');
+            $this->session->set_flashdata('sukses', 'Terimakasih telah menghubungi kami. Kami akan memberikan respon melalui email dari form yang telah anda kirim.');
             redirect(site_url('kontak'));  //menuju ke halaman admin/products/.
         }
         $this->session->set_flashdata('maaf', 'Anda gagal mengirim form ke kami.');

@@ -43,7 +43,7 @@
                         <div class="d-flex">
                             <p><a href="<?php echo site_url('admin/keuangan/masukan') ?>" class="btn btn-success mr-2">
                                     Pemasukan</a></p>
-                            <p><a href="<?php echo site_url('admin/keuangan/keluaran') ?>" class="btn btn-danger">
+                            <p><a href="<?php echo site_url('admin/keuangan/keluaran') ?>" class="btn btn-danger mr-2">
                                     Pengeluaran</a></p>
                         </div>
                         <div>

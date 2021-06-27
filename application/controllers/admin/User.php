@@ -59,13 +59,6 @@ class User extends CI_Controller
 			)
 		);
 
-		$valid->set_rules(
-			'password',
-			'Password',
-			'required',
-			array('required' => 'Password harus diisi')
-		);
-
 		if ($valid->run()) {
 			$i = $this->input;
 			$data = array(
@@ -77,8 +70,8 @@ class User extends CI_Controller
 			);
 			$this->user_model->tambah($data);
 			$this->session->set_flashdata('sukses', 'User berhasil ditambah');
+			redirect(site_url('admin/user'));
 		}
-		redirect(site_url('admin/user'));
 		// End masuk database
 	}
 

@@ -11,5 +11,18 @@
         $('#deleteModal').modal();
     }
 </script>
+<script>
+    function showME() {
+        var x = document.getElementById("laporanku");
+        var button = document.getElementById("btnku");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+            button.style.btn = "btn-danger";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
 </body>
+
 </html>

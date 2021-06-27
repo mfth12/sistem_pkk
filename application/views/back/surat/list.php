@@ -42,7 +42,7 @@
                         <div class="d-flex">
                             <p><a href="<?php echo site_url('admin/surat/masuk') ?>" class="btn btn-success mr-2">
                             <i class="fas fa-download"> </i> Surat Masuk</a></p>
-                            <p><a href="<?php echo site_url('admin/surat/keluar') ?>" class="btn btn-danger">
+                            <p><a href="<?php echo site_url('admin/surat/keluar') ?>" class="btn btn-danger mr-2">
                             <i class="fas fa-upload"> </i> Surat Keluar</a></p>
                         </div>
                         <div>
