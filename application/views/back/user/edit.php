@@ -55,7 +55,7 @@
 
                     <div class="form-group">
                         <label>Password</label>
-                        <input required type="password" name="password" class="form-control" placeholder="password" value="<?php echo $user->password ?>">
+                        <input required type="password" name="password" class="form-control" placeholder="password" pattern=".{4,}" minlength="4" maxlength="32" title="Four characters is the minimum password"  value="<?php echo $user->password ?>">
                     </div>
 
                     <div class="form-group">

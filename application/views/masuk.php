@@ -87,10 +87,10 @@
                 <div class="col-12 col-md-5 mx-auto mt-6">
                     <form action="<?php echo base_url('index.php/auth/login'); ?>" method="POST">
                         <div class="form-group">
-                            <input type="text" class="form-control" name="username" placeholder="Username / Email" required autofocus />
+                            <input type="text" class="form-control" minlength="4" maxlength="32" name="username" placeholder="Username / Email" required autofocus />
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" name="password" placeholder="Password" required />
+                            <input type="password" pattern=".{4,}" minlength="4" maxlength="32" title="Four characters is the minimum password" class="form-control" name="password" placeholder="Password" required />
                         </div>
                         <div class="form-group">
                             <div class="d-flex justify-content-between">
