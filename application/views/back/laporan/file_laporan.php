@@ -4593,7 +4593,7 @@
                         <p class="c20"><span class="c7">Surat masuk</span></p>
                     </td>
                     <td class="c37" colspan="1" rowspan="1">
-                        <p class="c20"><span class="c7">: &nbsp;56 Surat</span></p>
+                        <p class="c20"><span class="c7">: <?= count($surat_in); ?> Surat</span></p>
                     </td>
                 </tr>
                 <tr class="c22">
@@ -4601,7 +4601,7 @@
                         <p class="c20"><span class="c7">Surat keluar</span></p>
                     </td>
                     <td class="c37" colspan="1" rowspan="1">
-                        <p class="c20"><span class="c7">: 109 Surat</span></p>
+                        <p class="c20"><span class="c7">: <?= count($surat_out); ?> Surat</span></p>
                     </td>
                 </tr>
             </tbody>
@@ -4612,29 +4612,30 @@
             <li class="c39 c27 c54 li-bullet-8"><span class="c7">Program Kerja Sekretariat Tahun <?= $periode->nama_periode; ?> meliputi:</span></li>
         </ol>
         <ol class="c3 lst-kix_rks3eq3lostr-0 start" start="1">
-            <li class="c25 li-bullet-2"><span class="c7">Urusan Tata Usaha </span></li>
-            <li class="c25 li-bullet-2"><span class="c7">Urusan Rumah Tangga</span></li>
-            <li class="c25 li-bullet-2"><span class="c7">Urusan Pengorganisasian</span></li>
+        <!--  -->
+            <?php $i = 1; foreach ($proker as $proker) { if ($proker->id_pokja == 75) { ?>
+            <li class="c25 li-bullet-2"><span class="c7"><?= $proker->nama_proker_utama; ?></span></li>
+            <?php } $i++; } ?>
+        <!--  -->
         </ol>
         <ol class="c3 lst-kix_90cy8679l488-0" start="2">
             <li class="c27 c36 li-bullet-9"><span class="c7">Realisasi Pelaksanaan Kegiatan Program Kerja Sekretariat Tahun
             <?= $periode->nama_periode; ?> sebagai berikut:</span></li>
         </ol>
-        <ol class="c3 lst-kix_wna8ap3qej0i-0 start" start="1">
-            <li class="c39 c51 c27 li-bullet-2"><span class="c7">Urusan Tata Usaha </span></li>
+        
+        <?php $i = 1; foreach ($proker2 as $proker) { if ($proker->id_pokja == 75) { ?>
+        <ol class="c3 lst-kix_wna8ap3qej0i-0 <?php echo ($i < 2 ? 'start' : ' '); ?>" start="<?= $i; ?>">
+            <li class="c39 c27 c51 li-bullet-2"><span class="c7"><?= $proker->nama_proker_utama; ?></span></li>
         </ol>
-        <ol class="c3 lst-kix_xmt95i6g980y-0 start" start="1">
-            <li class="c19 li-bullet-2"><span class="c7">Melaksanakan administrasi</span></li>
-            <li class="c19 li-bullet-2"><span class="c7">Kumpul</span></li>
-            <li class="c19 li-bullet-2"><span class="c7">Mengajukan surat masuk dan keluar</span></li>
-        </ol>
-        <ol class="c3 lst-kix_wna8ap3qej0i-0" start="2">
-            <li class="c39 c27 c51 li-bullet-2"><span class="c7">Urusan Rumah Tangga</span></li>
-        </ol>
-        <ol class="c3 lst-kix_birqwkopnzqc-0 start" start="1">
-            <li class="c25 li-bullet-2"><span class="c7">Melaksanakan administrasi</span></li>
-            <li class="c25 li-bullet-2"><span class="c7">Kumpul</span></li>
-        </ol>
+        <!-- detail  -->
+            <?php $j = 1; foreach ($proker_detail as $detail) { if ($detail->id_proker_utama == $proker->id_proker_utama) { ?>
+            <ol class="c3 lst-kix_birqwkopnzqc-0 <?php echo ($j < 2 ? 'start' : ' '); ?>" start="<?= $j; ?>">
+                <li class="c25 li-bullet-2"><span class="c7"><?= $detail->nama_proker; ?></span></li>
+            </ol>
+            <?php } $j++; } ?>
+        <!-- detail -->
+        <?php } $i++; } ?>
+            
         <p class="c8"><span class="c7"></span></p>
         <p class="c8"><span class="c7"></span></p>
         <ol class="c3 lst-kix_gvvi04n5wp7w-0" start="2">
@@ -4646,32 +4647,24 @@
         </ol><a id="t.0b2e85c60e8908650e215994c92fde11973a136d"></a><a id="t.2"></a>
         <table class="c42 c50">
             <tbody>
+            <!-- loop masukan -->
+                <?php $f = 0; $deis =0; foreach ($masuk as $masuk) { if ($masuk->id_pokja) { ?>
                 <tr class="c22">
                     <td class="c44" colspan="1" rowspan="1">
-                        <ol class="c3 lst-kix_37192y3bqvf7-0 start" start="1">
-                            <li class="c20 c47 li-bullet-2"><span class="c7">Dana dari APBDes Tahun <?= $periode->nama_periode; ?></span></li>
-                        </ol>
+                        <p style="padding-left: 45px;"> <span class="c7">- <?= $masuk->keterangan; ?></span> </p> 
                     </td>
                     <td class="c15" colspan="1" rowspan="1">
-                        <p class="c12"><span class="c7">Rp. 51.660.000,-</span></p>
+                        <p class="c12"><span class="c7">Rp. <?= number_format($masuk->jumlah, 2, ',', '.'); ?></span></p>
                     </td>
                 </tr>
-                <tr class="c22">
-                    <td class="c44" colspan="1" rowspan="1">
-                        <ol class="c3 lst-kix_37192y3bqvf7-0" start="2">
-                            <li class="c20 c47 li-bullet-2"><span class="c7">Lainnya</span></li>
-                        </ol>
-                    </td>
-                    <td class="c15" colspan="1" rowspan="1">
-                        <p class="c12"><span class="c7">Rp. 455.000,-</span></p>
-                    </td>
-                </tr>
+                <?php } $f++; $deis += $masuk->jumlah; } ?>
+            <!-- loop masukan -->
                 <tr class="c22">
                     <td class="c44" colspan="1" rowspan="1">
                         <p class="c20"><span class="c17">Total Penerimaan Dana Tahun <?= $periode->nama_periode; ?></span></p>
                     </td>
                     <td class="c15" colspan="1" rowspan="1">
-                        <p class="c12"><span class="c17">Rp. 63.455.000,-</span></p>
+                        <p class="c12"><span class="c17">Rp. <?= number_format($deis, 2, ',', '.'); ?></span></p>
                     </td>
                 </tr>
             </tbody>
@@ -4680,111 +4673,49 @@
         <ol class="c3 lst-kix_71f4ohrf4t0-0" start="2">
             <li class="c29 c27 li-bullet-12"><span class="c7">Pengeluaran</span></li>
         </ol>
-        <ol class="c3 lst-kix_ksii4vlro0nk-0 start" start="1">
-            <li class="c39 c27 c52 li-bullet-2"><span class="c7">Sekretariat</span></li>
-        </ol><a id="t.3d4040d75665ae3b6375b13a6788cd01d50fe712"></a><a id="t.3"></a>
-        <table class="c42 c43">
-            <tbody>
-                <tr class="c22">
-                    <td class="c6" colspan="1" rowspan="1">
-                        <ol class="c3 lst-kix_8foream5wzwh-0 start" start="1">
-                            <li class="c20 c32 li-bullet-2"><span class="c7">sdbfb</span></li>
-                        </ol>
-                    </td>
-                    <td class="c15" colspan="1" rowspan="1">
-                        <p class="c12"><span class="c7">Rp. 560.000,-</span></p>
-                    </td>
-                </tr>
-                <tr class="c22">
-                    <td class="c6" colspan="1" rowspan="1">
-                        <ol class="c3 lst-kix_8foream5wzwh-0" start="2">
-                            <li class="c20 c32 li-bullet-2"><span class="c7">adae</span></li>
-                        </ol>
-                    </td>
-                    <td class="c15" colspan="1" rowspan="1">
-                        <p class="c12"><span class="c7">Rp. 455.000,-</span></p>
-                    </td>
-                </tr>
-                <tr class="c22">
-                    <td class="c6" colspan="1" rowspan="1">
-                        <p class="c20"><span class="c17">Total Pengeluaran Sekretariat Tahun <?= $periode->nama_periode; ?></span></p>
-                    </td>
-                    <td class="c15" colspan="1" rowspan="1">
-                        <p class="c12"><span class="c17">Rp. 24.455.000,-</span></p>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <ol class="c3 lst-kix_ksii4vlro0nk-0" start="2">
-            <li class="c27 c48 li-bullet-2"><span class="c7">POKJA I</span></li>
-        </ol><a id="t.a118d5e66823a4fb85b9d13f1dd7d9a519d2c3d4"></a><a id="t.4"></a>
-        <table class="c42 c43">
-            <tbody>
-                <tr class="c22">
-                    <td class="c6" colspan="1" rowspan="1">
-                        <ol class="c3 lst-kix_8foream5wzwh-0" start="3">
-                            <li class="c20 c32 li-bullet-2"><span class="c7">sdbfb</span></li>
-                        </ol>
-                    </td>
-                    <td class="c15" colspan="1" rowspan="1">
-                        <p class="c12"><span class="c7">Rp. 560.000,-</span></p>
-                    </td>
-                </tr>
-                <tr class="c22">
-                    <td class="c6" colspan="1" rowspan="1">
-                        <ol class="c3 lst-kix_8foream5wzwh-0" start="4">
-                            <li class="c20 c32 li-bullet-2"><span class="c7">adae</span></li>
-                        </ol>
-                    </td>
-                    <td class="c15" colspan="1" rowspan="1">
-                        <p class="c12"><span class="c7">Rp. 455.000,-</span></p>
-                    </td>
-                </tr>
-                <tr class="c22">
-                    <td class="c6" colspan="1" rowspan="1">
-                        <p class="c20"><span class="c17">Total Pengeluaran Pokja I Tahun <?= $periode->nama_periode; ?></span></p>
-                    </td>
-                    <td class="c15" colspan="1" rowspan="1">
-                        <p class="c12"><span class="c17">Rp. 24.455.000,-</span></p>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <ol class="c3 lst-kix_ksii4vlro0nk-0" start="3">
-            <li class="c48 c27 li-bullet-2"><span class="c7">POKJA II</span></li>
-        </ol><a id="t.a5af69c4a9305f51b4c69f9a6a1b2f5bbd63bf27"></a><a id="t.5"></a>
-        <table class="c42 c43">
-            <tbody>
-                <tr class="c22">
-                    <td class="c6" colspan="1" rowspan="1">
-                        <ol class="c3 lst-kix_8foream5wzwh-0" start="5">
-                            <li class="c20 c32 li-bullet-2"><span class="c7">sdbfb</span></li>
-                        </ol>
-                    </td>
-                    <td class="c15" colspan="1" rowspan="1">
-                        <p class="c12"><span class="c7">Rp. 560.000,-</span></p>
-                    </td>
-                </tr>
-                <tr class="c22">
-                    <td class="c6" colspan="1" rowspan="1">
-                        <ol class="c3 lst-kix_8foream5wzwh-0" start="6">
-                            <li class="c20 c32 li-bullet-2"><span class="c7">adae</span></li>
-                        </ol>
-                    </td>
-                    <td class="c15" colspan="1" rowspan="1">
-                        <p class="c12"><span class="c7">Rp. 455.000,-</span></p>
-                    </td>
-                </tr>
-                <tr class="c22">
-                    <td class="c6" colspan="1" rowspan="1">
-                        <p class="c20"><span class="c17">Total Pengeluaran Pokja II Tahun <?= $periode->nama_periode; ?></span></p>
-                    </td>
-                    <td class="c15" colspan="1" rowspan="1">
-                        <p class="c12"><span class="c17">Rp. 24.455.000,-</span></p>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+
+        <!-- pengeluaran -->
+        <?php $cc = 0; $keluar_semua = 0; foreach ($keluar as $keluar1) { if ($keluar1->id_pokja != 74) { ?>
+            <ol class="c3 lst-kix_ksii4vlro0nk-0 <?php echo ($cc < 1 ? 'start' : ' '); ?>" start="<?= $cc; ?>">
+                <li class="c39 c27 c52 li-bullet-2"><span class="c7"><?= strtoupper("$keluar1->nama_pokja"); ?></span></li>
+            </ol><a id="t.3d4040d75665ae3b6375b13a6788cd01d50fe712"></a><a id="t.3"></a>
+            <table class="c42 c43">
+                <tbody>
+                    <!-- keluar -->
+                    <?php $b12 =1; $jumlah_kel = 0; foreach ($keluar_detail as $keluar) { if ($keluar->id_pokja == $keluar1->id_pokja) { ?>
+                    <tr class="c22">
+                        <td class="c44" colspan="1" rowspan="1">
+                            <p style="padding-left: 25px;"> <span class="c7">- <?= $keluar->keterangan; ?></span> </p> 
+                        </td>
+
+                        <td class="c15" colspan="1" rowspan="1">
+                            <p class="c12"><span class="c7">Rp. <?= number_format($keluar->jumlah, 2, ',', '.'); ?></span></p>
+                        </td>
+                    </tr>
+                    <?php $b12++; $jumlah_kel += $keluar->jumlah; }  } ?>
+                    <!-- keluars -->
+                    
+                    <tr class="c22">
+                        <td class="c6" colspan="1" rowspan="1">
+                            <p class="c20"><span class="c17">Total Pengeluaran <?= $keluar1->nama_pokja; ?> Tahun <?= $periode->nama_periode; ?></span></p>
+                        </td>
+                        <td class="c15" colspan="1" rowspan="1">
+                            <p class="c12"><span class="c17">Rp. <?= number_format($jumlah_kel, 2, ',', '.'); ?></span></p>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+            
+        <p class="c8"><span class="c7"></span></p>
+        <!-- pengeluaran -->
+        <?php $cc++; } $keluar_semua += $jumlah_kel; } 
+        
+        //menghitung jumlah keluar
+        $semua_kel = $keluar_semua;
+        ?>
+
+
         <p class="c8"><span class="c7"></span></p>
         <p class="c39 c27 c34"><span class="c7">Jadi Jumlah:</span></p><a id="t.29dd20909746433461f26b8bee41cf43a899efd3"></a><a id="t.6"></a>
         <table class="c18">
@@ -4794,7 +4725,7 @@
                         <p class="c20"><span class="c7">Penerimaan</span></p>
                     </td>
                     <td class="c11" colspan="1" rowspan="1">
-                        <p class="c12"><span class="c17">Rp. 560.000,-</span></p>
+                        <p class="c12"><span class="c17">Rp. <?= number_format($deis, 2, ',', '.'); ?></span></p>
                     </td>
                 </tr>
                 <tr class="c22">
@@ -4802,15 +4733,16 @@
                         <p class="c20"><span class="c7">Pengeluaran</span></p>
                     </td>
                     <td class="c11" colspan="1" rowspan="1">
-                        <p class="c12"><span class="c17">Rp. 560.000,-</span></p>
+                        <p class="c12"><span class="c17">Rp. <?= number_format($semua_kel, 2, ',', '.'); ?></span></p>
                     </td>
                 </tr>
+                <?php $saldo = $deis - $semua_kel; ?>
                 <tr class="c22">
                     <td class="c0" colspan="1" rowspan="1">
-                        <p class="c20"><span class="c7">Saldo</span></p>
+                        <p class="c20"><span class="c7">Saldo Akhir</span></p>
                     </td>
                     <td class="c11" colspan="1" rowspan="1">
-                        <p class="c12"><span class="c17">N I H I L</span></p>
+                        <p class="c12"><span class="c17">Rp. <?= number_format($saldo, 2, ',', '.'); ?></span></p>
                     </td>
                 </tr>
             </tbody>
@@ -4820,51 +4752,33 @@
         <ol class="c3 lst-kix_gvvi04n5wp7w-0" start="3">
             <li class="c10 li-bullet-13"><span class="c53">PELAKSANAAN KEGIATAN PROGRAM KERJA POKJA-POKJA</span></li>
         </ol>
-        <ol class="c3 lst-kix_my00o6uffxh0-0 start" start="1">
-            <li class="c39 c27 c46 li-bullet-14"><span class="c17">POKJA I</span></li>
-        </ol>
-        <p class="c23"><span class="c7">Realisasi Pelaksanaan Program Kerja Tahun <?= $periode->nama_periode; ?>:</span></p>
-        <ol class="c3 lst-kix_ok7asa2uofcu-0 start" start="1">
-            <li class="c2 li-bullet-5"><span class="c7">Penghayatan dan Pengamalan Pancasila</span></li>
-        </ol>
-        <p class="c16"><span class="c7">1.1. Melaksanakan kegiatan rutin</span></p>
-        <ol class="c3 lst-kix_ok7asa2uofcu-0" start="2">
-            <li class="c2 li-bullet-1"><span class="c7">Penghayatan dan Pengamalan Pancasila</span></li>
-        </ol>
-        <p class="c16"><span class="c7">1.1. Melaksanakan kegiatan rutin</span></p>
-        <p class="c16"><span class="c7">1.2. Melaksanakan lainnya</span></p>
-        <p class="c16"><span class="c7">1.3. Melaksanakan lainnya lagiii</span></p>
+
+
+    
+        <!-- pokja -->
+        <?php $f = 0; foreach ($proker_utama as $proker) { if ($proker->id_pokja != 75) { ?>
+            <!-- judul -->
+            <p class="c8"><span class="c7"></span></p>
+            <p style="text-transform: uppercase" class="c23"><span class="c7"><strong><?= $f.'. '.$proker->nama_pokja; ?></strong></span></p>
+            <!-- judul -->
+        <p class="c23"><span class="c7">Realisasi Pelaksanaan Program Kerja <?= $proker->nama_pokja; ?> Tahun <?= $periode->nama_periode; ?>:</span></p>
+            <!-- sub-judul -->
+            <?php $lomp = 1; foreach ($proker_utama2_judul as $detail) {  if ($detail->id_pokja == $proker->id_pokja) { ?>
+                <p class="c23"><span class="c7"><?= $lomp.'. '.$detail->nama_proker_utama; ?></span></p>
+                <!-- detail program kerja -->
+                <?php $th = 1; foreach ($proker_utama2 as $disini) {  if ($disini->nama_proker_utama == $detail->nama_proker_utama) { ?>
+                    <p class="c16"><span class="c7"><?= $lomp.'. '.$th.'. '.$disini->nama_proker; ?></span></p>
+                <?php $th++; } } ?>
+                <!-- detail program kerja -->
+            <?php $lomp++; } } ?>
+        
+        <?php } $f++; } ?>
         <p class="c8"><span class="c7"></span></p>
-        <ol class="c3 lst-kix_my00o6uffxh0-0" start="2">
-            <li class="c39 c46 c27 li-bullet-15"><span class="c17">POKJA II</span></li>
-        </ol>
-        <p class="c23"><span class="c7">Realisasi Pelaksanaan Program Kerja Tahun <?= $periode->nama_periode; ?>:</span></p>
-        <ol class="c3 lst-kix_ok7asa2uofcu-0" start="3">
-            <li class="c2 li-bullet-16"><span class="c7">Penghayatan dan Pengamalan Pancasila</span></li>
-        </ol>
-        <p class="c16"><span class="c7">1.1. Melaksanakan kegiatan rutin</span></p>
-        <ol class="c3 lst-kix_ok7asa2uofcu-0" start="4">
-            <li class="c2 li-bullet-16"><span class="c7">Penghayatan dan Pengamalan Pancasila</span></li>
-        </ol>
-        <p class="c16"><span class="c7">1.1. Melaksanakan kegiatan rutin</span></p>
-        <p class="c16"><span class="c7">1.2. Melaksanakan lainnya</span></p>
-        <p class="c16"><span class="c7">1.3. Melaksanakan lainnya lagiii</span></p>
-        <p class="c16 c28"><span class="c7"></span></p>
-        <ol class="c3 lst-kix_my00o6uffxh0-0" start="3">
-            <li class="c39 c46 c27 li-bullet-15"><span class="c17">POKJA III</span></li>
-        </ol>
-        <p class="c23"><span class="c7">Realisasi Pelaksanaan Program Kerja Tahun <?= $periode->nama_periode; ?>:</span></p>
-        <ol class="c3 lst-kix_ok7asa2uofcu-0" start="5">
-            <li class="c2 li-bullet-1"><span class="c7">Penghayatan dan Pengamalan Pancasila</span></li>
-        </ol>
-        <p class="c16"><span class="c7">1.1. Melaksanakan kegiatan rutin</span></p>
-        <ol class="c3 lst-kix_ok7asa2uofcu-0" start="6">
-            <li class="c2 li-bullet-1"><span class="c7">Penghayatan dan Pengamalan Pancasila</span></li>
-        </ol>
-        <p class="c16"><span class="c7">1.1. Melaksanakan kegiatan rutin</span></p>
-        <p class="c16"><span class="c7">1.2. Melaksanakan lainnya</span></p>
-        <p class="c16"><span class="c7">1.3. Melaksanakan lainnya lagiii</span></p>
-        <p class="c16 c28"><span class="c7"></span></p>
+
+        
+
+
+
         <ol class="c3 lst-kix_nbmfhvfosahu-0" start="3">
             <li class="c27 c45 li-bullet-0"><span class="c17">HAMBATAN / PERMASALAHAN</span></li>
         </ol>
