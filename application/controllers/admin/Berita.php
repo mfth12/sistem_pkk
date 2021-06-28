@@ -12,8 +12,8 @@ class Berita extends CI_Controller
 		$this->load->model('pokja_model');
 		$this->load->model('konfigurasi_model');
 		$this->load->model('user_model');
-		// if($this->session->userdata('akses_level') != 'superadmin')
-		// 	show_404();
+		if (!($this->session->userdata('akses_level') == "superadmin" || $this->session->userdata('akses_level') == "sekret_pokja"))
+            show_404();
 	}
 
 	// Index

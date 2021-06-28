@@ -78,6 +78,37 @@
                             <div class="sb-nav-link-icon"><i class="fas fa-image"></i></div>
                             Galeri Pokja
                         </a>
+                        <a class="nav-link" href="<?php echo site_url('admin/sliders') ?> ">
+                            <div class="sb-nav-link-icon"><i class="fas fa-image"></i></div>
+                            Slider
+                        </a>
+                        
+                        <div class="sb-sidenav-menu-heading">Akun</div>
+                        <a class="nav-link" href="<?php echo site_url('profile') ?> "> <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+                            Profile
+                        </a>
+
+                    </div>
+                </div>
+            </nav>
+        </div>
+    <?php
+    } ?>
+    
+    <?php if ($this->session->userdata('akses_level') == 'kades') { ?>
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Utama</div>
+                        <a class="nav-link" href="<?php echo site_url('admin') ?>">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Dasbor
+                        </a>
+                        <a class="nav-link" href="<?php echo site_url('admin/laporan') ?> ">
+                            <div class="sb-nav-link-icon"><i class="fas fa-file"></i></div>
+                            Laporan
+                        </a>
                         
                         <div class="sb-sidenav-menu-heading">Akun</div>
                         <a class="nav-link" href="<?php echo site_url('profile') ?> "> <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>

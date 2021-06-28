@@ -17,6 +17,7 @@ class overview extends CI_Controller
 		$this->load->model('masukan_model');
 		$this->load->model('galeri_model');
 		$this->load->model('struktur_model');
+		$this->load->model('periode_model');
 	}
 
 	public function index()
@@ -32,10 +33,12 @@ class overview extends CI_Controller
 		$masukan 			= $this->masukan_model->total_all();
 		$galeri 			= $this->galeri_model->total_all();
 		$struktur 			= $this->struktur_model->total_all();
+		$periode 		= $this->periode_model->detail($this->session->userdata('active_periode'));
 		$data = array(
 			'title'				=> 'Dasbor ',
 			'namasite'			=> $site['namaweb'],
 			'site'				=> $site,
+			'tahun_aktif'		=> $periode,
 			'user'				=> $user,
 			'berita'			=> $berita,
 			'proker'			=> $proker,

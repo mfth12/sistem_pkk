@@ -9,6 +9,8 @@ class User extends CI_Controller
 		parent::__construct();
 		$this->load->model('user_model');
 		$this->simple_login->terotentikasi();
+		if($this->session->userdata('akses_level') != 'superadmin')
+			show_404();
 	}
 
 	// Index

@@ -51,19 +51,35 @@
                         <div>
                             <h3>Laporan Tahun <?= $tahun_aktif->nama_periode; ?></h3>
                             <?php if ($btn) { ?>
+                                <?php if ($this->session->userdata('akses_level') == 'superadmin') { ?>
                                 <p>Laporan periode ini belum tersedia. Silakan lanjut untuk mulai membuat laporan.</p>
+                                <?php } else { ?>
+                                    <p>Laporan periode ini belum tersedia. Silakan hubungi sekretaris PKK agar segera melakukan pembuatan laporan menggunakan sistem.</p> 
+                                <?php } ?>
                             <?php } else { ?>
                                 <p>Laporan periode ini telah tersedia.</p>
                             <?php } ?>
                         </div>
                         <div class="d-flex">
+                            <?php if ($this->session->userdata('akses_level') == 'superadmin') { ?>
+
                             <?php if ($btn) {
-                            ?><p><a id="btnku" href="#!" onclick="showME()" class="btn btn-success mr-2"> <i class="fa fa-arrow-right"></i> Buat</a></p>
-                            <?php } else { ?>
-                                <p><a id="b" href="#!" onclick="showME()" class="btn btn-secondary mr-2"> <i class="fa fa-edit"></i> Ubah</a></p>
-                                <p><a href="<?php echo base_url('admin/laporan/cetak') ?>" class="btn btn-primary mr-2"> <i class="fa fa-download"></i> Download</a></p>
-                                <p><a href="<?php echo base_url('admin/laporan/view') ?>" target="_blank" class="btn btn-primary"> <i class="fa fa-print"></i> Cetak</a></p>
+                                ?><p><a id="btnku" href="#!" onclick="showME()" class="btn btn-success mr-2"> <i class="fa fa-arrow-right"></i> Buat</a></p>
+                                <?php } else { ?>
+                                    <p><a id="b" href="#!" onclick="showME()" class="btn btn-secondary mr-2"> <i class="fa fa-edit"></i> Ubah</a></p>
+                                    <p><a href="<?php echo base_url('admin/laporan/view') ?>" target="_blank" class="btn btn-primary"> <i class="fa fa-print"></i> Cetak</a></p>
+                                <?php } ?>
+
+                            <?php
+                            } else { ?>
+                                <?php if ($btn) { ?>
+                                <?php } else { ?>
+                                    <p><a href="<?php echo base_url('admin/laporan/view') ?>" target="_blank" class="btn btn-primary"> <i class="fa fa-print"></i> Cetak</a></p>
+                                <?php } ?>
+
                             <?php } ?>
+
+                            
 
                         </div>
                     </div>

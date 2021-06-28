@@ -11,8 +11,8 @@ class Keuangan extends CI_Controller
 		$this->load->library('form_validation');
 		$this->load->model('kas_model');
 		$this->load->model('pokja_model');
-		// if($this->session->userdata('akses_level') != 'superadmin')
-		// 	show_404();
+		if($this->session->userdata('akses_level') != 'superadmin')
+			show_404();
 	}
 
 	public function index()

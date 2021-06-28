@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 28, 2021 at 02:14 AM
+-- Generation Time: Jun 28, 2021 at 04:09 AM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.2
 
@@ -182,7 +182,7 @@ CREATE TABLE `konfigurasi` (
 --
 
 INSERT INTO `konfigurasi` (`id_konfigurasi`, `slide_setting`, `namaweb`, `tagline`, `tentang`, `periode`, `welcome_say`, `deskripsi_say`, `email`, `alamat`, `telepon`, `hp`, `logo`, `icon`, `foto_sambutan`, `background`, `facebook`, `twitter`, `instagram`, `google_map`, `id_user`, `tanggal`) VALUES
-(1, 'Fade', 'PKK Desa', 'Uma Beringin', 'Tim Penggerak (TP) Pemberdayaan dan Kesejahteraan Keluarga (PKK) Desa Uma Beringin', 13852, 'Selamat Datang Di PKK Desa Uma Beringin', '<blockquote>\r\n<p style=\"text-align: justify;\">Pemberdayaan dan Kesejahteraan Keluarga atau PKK adalah Organisasi kemasyarakatan yang memberdayakan wanita untuk turut berpartisipasi dalam pembangunan Indonesia. PKK sebagai gerakan pembangunan masyarakat bermula dari seminar <em>Home Economic</em> di Bogor tahun 1957. Sebagai tindak lanjut dari seminar tersebut, pada tahun 1961 panitia penyusunan tata susunan pelajaran pada Pendidikan Kesejahteraan Keluarga (PKK), Kementerian Pendidikan bersama kementerian-kementerian lainnya menyusun 10 segi kehidupan keluarga. Gerakan PKK dimasyarakatkan berawal dari kepedulian istri gubernur Jawa Tengah pada tahun 1967 (Ibu Isriati Moenadi) setelah melihat keadaan masyarakat yang menderita busung lapar.</p>\r\n</blockquote>\r\n<p style=\"text-align: justify;\"><strong><br />Salam,<br /></strong><strong>Ketua TP-PKK Desa Uma Beringin</strong></p>', 'pkk.desa@umaberingin.desa.id', 'Jalan Kerato, Kecamatan Unter Iwes, Kabupaten Sumbawa, Nusa Tenggara Barat. 84316', '021-8736162', '+62 813-3184-7725', 'main-logo.png', 'icon_resmi.png', 'sambutan_background.jpg', 'background.jpg', 'https://facebook.com/mfth12', 'https://twitter.com/mfth12s', 'https://instagram.com/mfth12s', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d986.5025979505724!2d117.41213782917971!3d-8.498369473238402!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dcb93257d72a773%3A0x62afa7e787164542!2sKantor%20Desa%20Uma%20Beringin!5e0!3m2!1sen!2sid!4v1603527755215!5m2!1sen!2sid\" width=\"100%\" height=\"450\" frameborder=\"0\" style=\"border:0;\" allowfullscreen=\"\" aria-hidden=\"false\" tabindex=\"0\"></iframe>', 641, '2021-06-28 00:11:07');
+(1, 'Fade', 'PKK Desa', 'Uma Beringin', 'Tim Penggerak (TP) Pemberdayaan dan Kesejahteraan Keluarga (PKK) Desa Uma Beringin', 13851, 'Selamat Datang Di PKK Desa Uma Beringin', '<blockquote>\r\n<p style=\"text-align: justify;\">Pemberdayaan dan Kesejahteraan Keluarga atau PKK adalah Organisasi kemasyarakatan yang memberdayakan wanita untuk turut berpartisipasi dalam pembangunan Indonesia. PKK sebagai gerakan pembangunan masyarakat bermula dari seminar <em>Home Economic</em> di Bogor tahun 1957. Sebagai tindak lanjut dari seminar tersebut, pada tahun 1961 panitia penyusunan tata susunan pelajaran pada Pendidikan Kesejahteraan Keluarga (PKK), Kementerian Pendidikan bersama kementerian-kementerian lainnya menyusun 10 segi kehidupan keluarga. Gerakan PKK dimasyarakatkan berawal dari kepedulian istri gubernur Jawa Tengah pada tahun 1967 (Ibu Isriati Moenadi) setelah melihat keadaan masyarakat yang menderita busung lapar.</p>\r\n</blockquote>\r\n<p style=\"text-align: justify;\"><strong><br />Salam,<br /></strong><strong>Ketua TP-PKK Desa Uma Beringin</strong></p>', 'pkk.desa@umaberingin.desa.id', 'Jalan Kerato, Kecamatan Unter Iwes, Kabupaten Sumbawa, Nusa Tenggara Barat. 84316', '021-8736162', '+62 813-3184-7725', 'main-logo.png', 'icon_resmi.png', 'sambutan_background.jpg', 'background.jpg', 'https://facebook.com/mfth12', 'https://twitter.com/mfth12s', 'https://instagram.com/mfth12s', '<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d986.5025979505724!2d117.41213782917971!3d-8.498369473238402!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dcb93257d72a773%3A0x62afa7e787164542!2sKantor%20Desa%20Uma%20Beringin!5e0!3m2!1sen!2sid!4v1603527755215!5m2!1sen!2sid\" width=\"100%\" height=\"450\" frameborder=\"0\" style=\"border:0;\" allowfullscreen=\"\" aria-hidden=\"false\" tabindex=\"0\"></iframe>', 641, '2021-06-28 02:08:44');
 
 -- --------------------------------------------------------
 
@@ -265,8 +265,8 @@ INSERT INTO `periode` (`id_periode`, `nama_periode`, `ket`) VALUES
 (13847, 2016, 'tidak'),
 (13848, 2019, 'tidak'),
 (13849, 2018, 'tidak'),
-(13851, 2021, 'tidak'),
-(13852, 2020, 'aktif'),
+(13851, 2021, 'aktif'),
+(13852, 2020, 'tidak'),
 (13853, 2015, 'tidak');
 
 -- --------------------------------------------------------
@@ -518,8 +518,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id_user`, `nama`, `email`, `username`, `password`, `akses_level`) VALUES
 (641, 'Miftahul Haq', 'ciftah12@gmail.com', 'pkkdesa', 'desa', 'superadmin'),
 (642, 'Miftaasdasdasda', 'cs@fk.co', 'kades', 'desa', 'kades'),
-(643, 'Sekretaris Pokja PKK', 'sekret@gmail.com', 'sekret', 'desa', 'sekret_pokja'),
-(645, 'Miftahul Haq', 'sad@df.com', 'asd', 'asd', 'superadmin');
+(643, 'Sekretaris Pokja PKK', 'sekret@gmail.com', 'sekret', 'desa', 'sekret_pokja');
 
 --
 -- Indexes for dumped tables

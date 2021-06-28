@@ -1,6 +1,4 @@
-<html>
-
-<head>
+<html><head>
     <meta content="text/html; charset=UTF-8">
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -4388,9 +4386,7 @@
             text-align: left
         }
     </style>
-</head>
-
-<body onload="window.print()" cz-shortcut-listen="true" class="c35">
+</head><body onload="window.print()" cz-shortcut-listen="true" class="c35">
     <div class="c35pages">
 
         <p class="c26 c27"><span class="c4">LAPORAN</span></p>
@@ -4411,11 +4407,6 @@
         <p class="c5"><span class="c4"></span></p>
         <p class="c26 c27"><span style="overflow: hidden; display: inline-block; margin: 0.00px 0.00px; border: 0.00px solid #000000; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px); width: 248.21px; height: 243.55px;">
                 <img alt="" src="<?php echo base_url('back_assets/img/' . $site['icon']) ?>" style="width: 248.21px; height: 243.55px; margin-left: 0.00px; margin-top: 0.00px; transform: rotate(0.00rad) translateZ(0px); -webkit-transform: rotate(0.00rad) translateZ(0px);" title=""></span></p>
-        <p class="c5"><span class="c4"></span></p>
-        <p class="c5"><span class="c4"></span></p>
-        <p class="c5"><span class="c4"></span></p>
-        <p class="c5"><span class="c4"></span></p>
-        <p class="c5"><span class="c4"></span></p>
         <p class="c5"><span class="c4"></span></p>
         <p class="c5"><span class="c4"></span></p>
         <p class="c5"><span class="c4"></span></p>
@@ -4474,14 +4465,6 @@
             </tbody>
         </table>
         <hr style="page-break-before:always;display:none;">
-        <p class="c8"><span class="c7"></span></p>
-        <p class="c8"><span class="c7"></span></p>
-        <p class="c8"><span class="c7"></span></p>
-        <p class="c8"><span class="c7"></span></p>
-        <p class="c8"><span class="c7"></span></p>
-        <p class="c8"><span class="c7"></span></p>
-        <p class="c8"><span class="c7"></span></p>
-        <p class="c8"><span class="c7"></span></p>
         <p class="c8"><span class="c7"></span></p>
         <p class="c8"><span class="c7"></span></p>
         <p class="c8"><span class="c7"></span></p>
@@ -4709,9 +4692,8 @@
             
         <p class="c8"><span class="c7"></span></p>
         <!-- pengeluaran -->
-        <?php $cc++; } $keluar_semua += $jumlah_kel; } 
+        <?php $cc++; } $keluar_semua += $jumlah_kel; }
         
-        //menghitung jumlah keluar
         $semua_kel = $keluar_semua;
         ?>
 
@@ -4820,6 +4802,4 @@
         <p class="c8"><span class="c7"></span></p>
 
     </div>
-</body>
-
-</html>
+</body></html>
