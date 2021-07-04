@@ -1,0 +1,9 @@
+Error Number: 1146
+
+Table 'n1004805_pkk_umaberingin.produk' doesn't exist
+
+SELECT `produk`.*, `kategori_produk`.`nama_kategori_produk`, `users`.`nama` FROM `produk` LEFT JOIN `kategori_produk` ON `kategori_produk`.`id_kategori_produk` = `produk`.`id_kategori_produk` LEFT JOIN `users` ON `users`.`id_user` = `produk`.`id_user` WHERE `produk`.`status_produk` = 'Publish' ORDER BY `id_produk` DESC LIMIT 6
+
+Filename: models/Produk_model.php
+
+Line Number: 36
