@@ -15,6 +15,7 @@ class Masukan extends CI_Controller
 
     public function index()
     {
+        
         $site   = $this->konfigurasi_model->listing();
 
         $data = array(
@@ -26,27 +27,12 @@ class Masukan extends CI_Controller
         $this->load->view('back/wrapper', $data);
     }
 
-    public function add()
-    {
-        $slide = $this->masukan_model;
-        $validation = $this->form_validation;
-        $validation->set_rules($slide->rules());
-
-        if ($validation->run()) {
-            $slide->save();
-            $this->session->set_flashdata('sukses', 'Terimakasih telah menghubungi kami. Kami akan memberikan respon melalui email dari form yang telah anda kirim.');
-            redirect(site_url('kontak'));  //menuju ke halaman admin/products/.
-        }
-        $this->session->set_flashdata('maaf', 'Anda gagal mengirim form ke kami.');
-        redirect(site_url('kontak'));
-    }
-
     public function delete($id = null)
     {
         if (!isset($id)) show_404();
-        if ($this->masukan_model->delete($id)) { //Apabila data berhasil dihapus, maka kita langsung alihkan (redirect())
-            $this->session->set_flashdata('maaf', 'Pesan berhasil dihapus'); // flash message
-            redirect(site_url('admin/masukan'));  //menuju ke halaman admin/products/.
+        if ($this->masukan_model->delete($id)) {
+            $this->session->set_flashdata('maaf', 'Pesan berhasil dihapus');
+            redirect(site_url('admin/masukan')); 
         }
     }
 }

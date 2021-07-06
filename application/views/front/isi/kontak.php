@@ -114,7 +114,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="<?php echo site_url('admin/masukan/add') ?>" method="post" enctype="multipart/form-data">
+                <form action="<?php echo site_url('kontak/add') ?>" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="nama_lengkap">Nama Lengkap *</label>
                         <input class="form-control" required type="text" name="nama_lengkap" placeholder="" />

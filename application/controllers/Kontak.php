@@ -12,6 +12,8 @@ class Kontak extends CI_Controller
 		$this->load->model('kas_model');
 		$this->load->model('sliders_model');
 		$this->load->model('struktur_model');
+        $this->load->model("masukan_model");
+        $this->load->library('form_validation');
 	}
 
 	public function index()
@@ -29,4 +31,19 @@ class Kontak extends CI_Controller
 		);
 		$this->load->view('front/landing', $data);
 	}
+	
+    public function add()
+    {
+        $slide = $this->masukan_model;
+        $validation = $this->form_validation;
+        $validation->set_rules($slide->rules());
+
+        if ($validation->run()) {
+            $slide->save();
+            $this->session->set_flashdata('sukses', 'Terimakasih telah menghubungi kami. Kami akan memberikan respon melalui email dari form yang telah anda kirim.');
+            redirect(site_url('kontak'));
+        }
+        $this->session->set_flashdata('maaf', 'Anda gagal mengirim form ke kami.');
+        redirect(site_url('kontak'));
+    }
 }
