@@ -67,7 +67,7 @@
                                     <th>Username</th>
                                     <th>Email</th>
                                     <th>Hak Akses</th>
-                                    <th class="text-center">Action</th>
+                                    <th class="text-center">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -75,15 +75,25 @@
                                 foreach ($userb as $user) { ?>
                                     <tr>
                                         <td class="text-center"><?php echo $i ?></td>
-                                        <td><?php echo $user->nama ?></td>
-                                        <td><?php echo $user->username ?></td>
-                                        <td><?php echo $user->email ?></td>
-                                        <td><?php if ($user->akses_level == 'superadmin') echo "Admin PKK"; ?><?php if ($user->akses_level == 'sekret_pokja') echo "Sekretaris Pokja"; ?><?php if ($user->akses_level == 'kades') echo "Kepala Desa"; ?></td>
-                                        <td class="d-flex justify-content-center">
-                                            <a href="<?php echo site_url('admin/user/edit/' . $user->id_user) ?>" class="btn btn-secondary btn-sm mr-1"><i class="fa fa-edit"></i> Ubah</a>
-                                            <?php $hey = $user->id_user; ?>
-                                            <a onclick="deleteConfirm('<?php echo site_url('admin/user/delete/' . $hey) ?>')" href="#!" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
-                                        </td>
+                                        <?php if ($user->id_user != 641) { ?>
+                                            <td><?php echo $user->nama ?></td>
+                                            <td><?php echo $user->username ?></td>
+                                            <td><?php echo $user->email ?></td>
+                                            <td><?php if ($user->akses_level == 'superadmin') echo "Admin PKK"; ?><?php if ($user->akses_level == 'sekret_pokja') echo "Sekretaris Pokja"; ?><?php if ($user->akses_level == 'kades') echo "Kepala Desa"; ?></td>
+                                            <td class="d-flex justify-content-center">
+                                                <a href="<?php echo site_url('admin/user/edit/' . $user->id_user) ?>" class="btn btn-secondary btn-sm mr-1"><i class="fa fa-edit"></i> Ubah</a>
+                                                <?php $hey = $user->id_user; ?>
+                                                <a onclick="deleteConfirm('<?php echo site_url('admin/user/delete/' . $hey) ?>')" href="#!" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                            </td>
+                                        <?php } else { ?>
+                                            <td><?php echo $user->nama ?></td>
+                                            <td scope="col"><i>Tidak ada data</i></td>
+                                            <td scope="col"><i>Tidak ada data</i></td>
+                                            <td scope="col"><i>Tidak ada data</i></td>
+                                            <td class="d-flex justify-content-center">
+                                            <i>Aksi tidak diizinkan</i>
+                                            </td>
+                                        <?php } ?>
                                     </tr>
                                 <?php $i++;
                                 } ?>
@@ -123,7 +133,7 @@
 
                                 <div class="form-group">
                                     <label>Password</label>
-                                    <input required type="password" name="password" class="form-control" placeholder="password" pattern=".{4,}" minlength="4" maxlength="32" title="Four characters is the minimum password"  value="<?php echo set_value('password') ?>">
+                                    <input required type="password" name="password" class="form-control" placeholder="password" pattern=".{4,}" minlength="4" maxlength="32" title="Four characters is the minimum password" value="<?php echo set_value('password') ?>">
                                 </div>
 
                                 <div class="form-group">
@@ -146,6 +156,5 @@
                           </div> -->
                     </div>
                 </div>
-
             </div> <!-- akhir container fluid -->
     </main>

@@ -18,6 +18,7 @@ class overview extends CI_Controller
 		$this->load->model('galeri_model');
 		$this->load->model('struktur_model');
 		$this->load->model('periode_model');
+		$this->load->model('quote_model');
 	}
 
 	public function index()
@@ -30,6 +31,7 @@ class overview extends CI_Controller
 		$pokja				= $this->pokja_model->listing();
 		$total 				= $this->kas_model->total_all();
 		$slider 			= $this->sliders_model->total_all();
+		$quote 				= $this->quote_model->total_all();
 		$masukan 			= $this->masukan_model->total_all();
 		$galeri 			= $this->galeri_model->total_all();
 		$struktur 			= $this->struktur_model->total_all();
@@ -46,6 +48,7 @@ class overview extends CI_Controller
 			'pokja'				=> $pokja,
 			'total_trans'		=> $total,
 			'slider'			=> $slider,
+			'quote'				=> $quote,
 			'masukan'			=> $masukan,
 			'galeri'			=> $galeri,
 			'struktur'			=> $struktur,

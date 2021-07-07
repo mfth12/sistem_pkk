@@ -81,6 +81,7 @@ class User extends CI_Controller
 	public function edit($id_user = null)
 	{
 		if (!isset($id_user)) redirect('admin/user');
+		if($id_user == 641) show_404();
 		$user = $this->user_model->detail($id_user);
 		$site 	= $this->konfigurasi_model->listing();
 		// Validasi

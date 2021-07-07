@@ -2,8 +2,8 @@
     <main>
         <div class="container-fluid">
             <h1 class="mt-4"><?php echo $title ?><?php if ($this->session->userdata('akses_level') == 'superadmin') echo "Admin PKK";
-                if ($this->session->userdata('akses_level') == 'sekret_pokja') echo "Sekretaris Pokja";
-                if ($this->session->userdata('akses_level') == 'kades') echo "Kepala Desa"; ?></h1>
+                                                    if ($this->session->userdata('akses_level') == 'sekret_pokja') echo "Sekretaris Pokja";
+                                                    if ($this->session->userdata('akses_level') == 'kades') echo "Kepala Desa"; ?></h1>
             <!-- Breadcrumbs-->
             <ol class="breadcrumb">
                 <?php foreach ($this->uri->segments as $segment) : ?>
@@ -73,7 +73,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-xl-3 col-md-6">
                         <div class="card bg-secondary text-white mb-4">
                             <div class="card-body">
@@ -88,7 +88,7 @@
                     <div class="col-xl-3 col-md-6">
                         <div class="card bg-secondary text-white mb-4">
                             <div class="card-body">
-                                <h4><?php echo count($user) ?> Data User</h4>
+                                <h4><?php echo count($user) ?> User</h4>
                             </div>
                             <div class="card-footer d-flex align-items-center justify-content-between">
                                 <a class="small text-white stretched-link" href="<?php echo site_url('admin/user') ?>">Lihat Detail User</a>
@@ -118,7 +118,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-6 col-md-6">
+                </div>
+
+                <div class="row">
+                    <div class="col-xl-4 col-md-4">
                         <div class="card bg-secondary text-white mb-4">
                             <div class="card-body">
                                 <h4><?php echo count($struktur) ?> Pengurus</h4>
@@ -129,11 +132,17 @@
                             </div>
                         </div>
                     </div>
-
-                </div>
-
-                <div class="row">
-
+                    <div class="col-xl-4 col-md-4">
+                        <div class="card bg-secondary text-white mb-4">
+                            <div class="card-body">
+                                <h4><?php echo count($quote) ?> Quotes</h4>
+                            </div>
+                            <div class="card-footer d-flex align-items-center justify-content-between">
+                                <a class="small text-white stretched-link" href="<?php echo site_url('admin/quotes') ?>">Lihat Detail Quotes</a>
+                                <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!-- end of kolom isi konten -->
             <?php
@@ -166,7 +175,7 @@
                 </div>
             <?php
             } ?>
-            
+
 
             <?php if ($this->session->userdata('akses_level') == 'kades') { ?>
                 <div class="row">
