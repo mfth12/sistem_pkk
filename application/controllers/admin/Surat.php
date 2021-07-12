@@ -36,8 +36,11 @@ class Surat extends CI_Controller
 		$v->set_rules(
 			'nomor',
 			'Nomor surat',
-			'required',
-			array('required'	=> 'Nomor surat harus diisi')
+			'required|is_unique[surat.nomor]',
+			array(
+				'required'	=> 'Nomor surat harus diisi',
+				'is_unique'	=> 'Nomor surat <strong>' . $this->input->post('nomor') . '</strong> telah digunakan, Silakan input nomor surat yang lain.'
+			)
 		);
 		if ($v->run()) {
 			$config['upload_path'] 		= './back_assets/upload/surat/';
@@ -96,8 +99,11 @@ class Surat extends CI_Controller
 		$v->set_rules(
 			'nomor',
 			'Nomor surat',
-			'required',
-			array('required'	=> 'Nomor surat harus diisi')
+			'required|is_unique[surat.nomor]',
+			array(
+				'required'	=> 'Nomor surat harus diisi',
+				'is_unique'	=> 'Nomor surat <strong>' . $this->input->post('nomor') . '</strong> telah digunakan, Silakan input nomor surat yang lain.'
+			)
 		);
 		if ($v->run()) {
 			$config['upload_path'] 		= './back_assets/upload/surat/';
