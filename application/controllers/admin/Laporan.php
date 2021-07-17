@@ -140,47 +140,69 @@ class Laporan extends CI_Controller
 		$this->load->view('back/laporan/file_laporan', $data);
 	}
 
-	public function cetak()
+	public function laporanP()
 	{
-		$this->load->library('dompdf_gen');
-		$site 	= $this->konfigurasi_model->listing();
-		$pokja 	= $this->pokja_model->listing();
-		$periode= $this->periode_model->detail($this->session->userdata('active_periode'));
-		$laporan = $this->laporan_model->detail($this->session->userdata('active_periode'));
-		$proker = $this->proker_model->listingUtama();
-		$proker_pokja = $this->proker_model->listingUtamaJudul();
-		$proker_detail = $this->proker_model->listingLaporan();
-		$proker_detail_judul = $this->proker_model->listingLaporanJudul();
-		$data = array(
-			'title'			=> 'Laporan PKK Tahun' . ' ' . $periode->nama_periode,
-			'site'			=> $site,
-			'periode'		=> $periode,
-			'laporan'		=> $laporan,
-			'proker'		=> $proker, //sekretariat
-			'proker2'		=> $proker, //sekretariat detail
-			'proker_utama'	=> $proker_pokja, //judul proker pokja
-			'proker_utama2'	=> $proker_detail, // isi judul proker per-pokja
-			'proker_utama2_judul'	=> $proker_detail_judul, // isi judul proker per-pokja
-			'proker_detail2'	=> $proker_detail,
-			'proker_detail'	=> $proker_detail,
-			// 'pokja'			=> $pokja,
-			'masuk'			=> $this->kas_model->laporan_masuk(),
-			'keluar'		=> $this->kas_model->laporan_keluar(),
-			'keluar_detail'		=> $this->kas_model->laporan_keluar_in(),
-			'total_masuk'		=> $this->kas_model->total_masuk(),
-			'total_keluar'		=> $this->kas_model->total_keluar(),
-			'surat_in'		=> $this->surat_model->masuk(),
-			'surat_out'		=> $this->surat_model->keluar()
-		);
-		$this->load->view('back/laporan/file_laporan', $data);
-		$paper_size = 'A4';
-		$orientation = 'portrait';
-		$html = $this->output->get_output();
-		$this->dompdf->set_paper($paper_size, $orientation);
-        // $this->dompdf->set_option('isRemoteEnabled', true);
-		
-		$this->dompdf->load_html($html);
-		$this->dompdf->render();
-		$this->dompdf->stream("Laporan_tahunan.pdf", array('Attachment'=>0));
+		if ($_POST['kats'] == 'tidak') {
+			$this->session->set_flashdata('kuning', 'Silakan pilih ketegori data yang ingin dilihat.');
+			redirect(site_url('admin/laporan'));
+		}
+		if (empty($_POST['date1'])) {
+			$this->session->set_flashdata('dihapus', 'Silakan pilih tanggal mulai.');
+			redirect(site_url('admin/laporan'));
+		}
+
+		if ($_POST['kats'] == 'proker') {
+			// redirect(site_url('admin/prokkkkkk'));
+			$satu = $this->input->post('date1');
+			$dua = $this->input->post('date2');
+			$proker = $this->proker_model->listing_bulan($satu, $dua);
+			$site 	= $this->konfigurasi_model->listing();
+			$data = array(
+				'site'		=> $site,
+				'title'		=> 'Program Kerja',
+				'namasite'	=> $site['namaweb'],
+				'proker'	=> $proker,
+				'isi'		=> 'back/laporan/lap_surat'	
+			);
+			$this->load->view('back/wrapper', $data);
+		}
+
+		if ($_POST['kats'] == 'uang') {
+			// redirect(site_url('admin/prokkkkkk'));
+			$satu = $this->input->post('date1');
+			$dua = $this->input->post('date2');
+			$site 	= $this->konfigurasi_model->listing();
+			$total 	= $this->kas_model->row_masuk();
+			$result = $this->kas_model->nomor();
+
+			$data = array(
+				'title'		=> 'Keuangan',
+				'namasite'	=> $site['namaweb'],
+				'result' 	=> $this->kas_model->all_bulan($satu, $dua),
+				'ttl' 		=> $this->kas_model->total_masuk_bulan($satu, $dua),
+				'ttl_k' 	=> $this->kas_model->total_keluar_bulan($satu, $dua),
+				'satu'		=> $satu,
+				'dua'		=> $dua,
+				'isi'		=> 'back/laporan/lap_uang'
+			);
+			$this->load->view('back/wrapper', $data);
+		}
+
+		if ($_POST['kats'] == 'surat') {
+			$site 	= $this->konfigurasi_model->listing();
+			// $_POST['kats'];
+			$satu = $this->input->post('date1');
+			$dua = $this->input->post('date2');
+			$data = array(
+				'title'		=> 'Surat',
+				'satu'		=> $satu,
+				'dua'		=> $dua,
+				'namasite'	=> $site['namaweb'],
+				'result' 	=> $this->surat_model->all_periodik($satu, $dua),
+				'isi'		=> 'back/laporan/lap_surat'
+			);
+			$this->load->view('back/wrapper', $data);
+		}
 	}
+
 }

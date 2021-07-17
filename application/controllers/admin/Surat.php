@@ -22,6 +22,7 @@ class Surat extends CI_Controller
 		$data = array(
 			'title'		=> 'Surat',
 			'namasite'	=> $site['namaweb'],
+			// 'sort' 		=> $this->surat_model->all_bulan(),
 			'result' 	=> $this->surat_model->all(),
 			'isi'		=> 'back/surat/list'
 		);

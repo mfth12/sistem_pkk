@@ -4,12 +4,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Surat_model extends CI_Model {
 
 	function all(){
-		// $this->db->where('jenis', 'masuk');
 		$this->db->select('surat.*, pokja.nama_pokja');
 		$this->db->from('surat');
         $this->db->order_by('id_surat DESC');
     	$this->db->where('id_periode', $this->session->userdata('active_periode'));
 		$this->db->join('pokja','pokja.id_pokja = surat.id_pokja', 'LEFT');
+        $query = $this->db->get();
+        return $query->result();
+	}
+	
+	function all_periodik($date1,$date2){
+		$this->db->select('surat.*, pokja.nama_pokja');
+		$this->db->from('surat');
+        $this->db->order_by('tanggal DESC');
+    	$this->db->where('id_periode', $this->session->userdata('active_periode'));
+		$this->db->join('pokja','pokja.id_pokja = surat.id_pokja', 'LEFT');
+		// $this->db->group_by('tanggal', 'ASC');
+		$this->db->where('tanggal >=', $date1);
+		$this->db->where('tanggal <=', $date2);
         $query = $this->db->get();
         return $query->result();
 	}

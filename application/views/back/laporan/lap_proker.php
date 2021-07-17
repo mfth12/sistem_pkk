@@ -3,20 +3,8 @@
         <div class="container-fluid">
             <!-- ini nama judul halaman -->
             <h1 class="mt-4"><?php echo $title ?></h1>
+            <h4 class="mb-2">Tanggal <?php echo date('d F', strtotime($satu)) . " Sampai " . date('d F Y', strtotime($dua)) ?></h4>
             <!-- ini nama bread crumb -->
-            <ol class="breadcrumb">
-                <?php foreach ($this->uri->segments as $segment) : ?>
-                    <?php $url = substr($this->uri->uri_string, 0, strpos($this->uri->uri_string, $segment)) . $segment;
-                    $is_active =  $url == $this->uri->uri_string; ?>
-                    <li class="breadcrumb-item <?php echo $is_active ? 'active' : '' ?>">
-                        <?php if ($is_active) : ?>
-                            <?php echo ucfirst($segment) ?>
-                        <?php else : ?>
-                            <a href="<?php echo site_url($url) ?>"> <?php echo ucfirst($segment) ?></a>
-                        <?php endif; ?>
-                    </li>
-                <?php endforeach; ?>
-            </ol>
             <?php
             // Notifikasi
             if ($this->session->flashdata('sukses')) {
@@ -37,21 +25,13 @@
             ?>
 
             <div class="card mb-4">
+                <div class="card-header">
+                    <a href="<?php echo site_url('admin/laporan') ?>"><i class="fas fa-arrow-left"></i> Kembali</a>
+                </div>
                 <div class="card-body">
                     <div class="d-flex justify-content-between lh-condensed">
-                        <div class="d-flex">
-                            <p><a href="<?php echo site_url('admin/surat/masuk') ?>" class="btn btn-success mr-2">
-                                    <i class="fas fa-download"> </i> Surat Masuk</a></p>
-                            <p><a href="<?php echo site_url('admin/surat/keluar') ?>" class="btn btn-danger mr-2">
-                                    <i class="fas fa-upload"> </i> Surat Keluar</a></p>
-                            
-                        </div>
-                        <div class="d-flex">
-
-
-                            <p><a href="#!" onclick="window.print()" class="btn btn-secondary">
-                                    <i class="fa fa-print"></i> Cetak</a></p>
-                        </div>
+                        <p><a href="#!" onclick="window.print()" class="btn btn-secondary">
+                                <i class="fa fa-print"></i> Cetak</a></p>
                     </div>
                     <div class="table-responsive">
                         <!-- masuk ke tabel -->

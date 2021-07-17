@@ -3,20 +3,8 @@
         <div class="container-fluid">
             <!-- ini nama judul halaman -->
             <h1 class="mt-4"><?php echo $title ?></h1>
+            <h4 class="mb-2">Tanggal <?php echo date('d F', strtotime($satu)) . " Sampai " . date('d F Y', strtotime($dua)) ?></h4>
             <!-- ini nama bread crumb -->
-            <ol class="breadcrumb">
-                <?php foreach ($this->uri->segments as $segment) : ?>
-                    <?php $url = substr($this->uri->uri_string, 0, strpos($this->uri->uri_string, $segment)) . $segment;
-                    $is_active =  $url == $this->uri->uri_string; ?>
-                    <li class="breadcrumb-item <?php echo $is_active ? 'active' : '' ?>">
-                        <?php if ($is_active) : ?>
-                            <?php echo ucfirst($segment) ?>
-                        <?php else : ?>
-                            <a href="<?php echo site_url($url) ?>"> <?php echo ucfirst($segment) ?></a>
-                        <?php endif; ?>
-                    </li>
-                <?php endforeach; ?>
-            </ol>
             <?php
             // Notifikasi
             if ($this->session->flashdata('sukses')) {
@@ -37,21 +25,13 @@
             ?>
 
             <div class="card mb-4">
+                <div class="card-header">
+                    <a href="<?php echo site_url('admin/laporan') ?>"><i class="fas fa-arrow-left"></i> Kembali</a>
+                </div>
                 <div class="card-body">
                     <div class="d-flex justify-content-between lh-condensed">
-                        <div class="d-flex">
-                            <p><a href="<?php echo site_url('admin/surat/masuk') ?>" class="btn btn-success mr-2">
-                                    <i class="fas fa-download"> </i> Surat Masuk</a></p>
-                            <p><a href="<?php echo site_url('admin/surat/keluar') ?>" class="btn btn-danger mr-2">
-                                    <i class="fas fa-upload"> </i> Surat Keluar</a></p>
-                            
-                        </div>
-                        <div class="d-flex">
-
-
-                            <p><a href="#!" onclick="window.print()" class="btn btn-secondary">
-                                    <i class="fa fa-print"></i> Cetak</a></p>
-                        </div>
+                        <p><a href="#!" onclick="window.print()" class="btn btn-secondary">
+                                <i class="fa fa-print"></i> Cetak</a></p>
                     </div>
                     <div class="table-responsive">
                         <!-- masuk ke tabel -->
@@ -59,10 +39,10 @@
                             <thead>
                                 <tr>
                                     <th width="25" class="text-center">No.</th>
-                                    <th>Keterangan</th>
-                                    <th>Pokja</th>
-                                    <th>File</th>
+                                    <th width="25%">Keterangan</th>
                                     <th class="text-center">Tanggal</th>
+                                    <th class="text-center">Bukti</th>
+                                    <th>Jumlah</th>
                                     <th class="text-center">Jenis</th>
                                 </tr>
                             </thead>
@@ -72,21 +52,42 @@
                                     <tr>
                                         <td class="text-center"><?php echo $i ?></td>
                                         <td><?php echo $data->keterangan ?></td>
-                                        <td><?php echo $data->nama_pokja ?></td>
-                                        <td>
-                                            <a href="<?php echo base_url('back_assets/upload/surat/' . $data->image) ?>" target="_blank">Lihat</a>
-                                        </td>
                                         <td class="text-center"><?php echo date('d M Y', strtotime($data->tanggal)) ?></td>
-                                        <td class="text-center"><?php if ($data->jenis == "masuk") { ?><span class="badge badge-pill badge-success" style="font-weight: unset;">Surat Masuk</span> <?php }
-                                                                                                                                                                                                if ($data->jenis == "keluar") { ?><span class="badge badge-pill badge-danger" style="font-weight: unset;">Surat Keluar</span><?php } ?>
+                                        <td class="text-center">
+                                        <?php if ($data->jenis == "masuk") { ?><i>-</i><?php } else {?>
+                                            <a href="<?php echo base_url('back_assets/upload/transaksi/' . $data->image) ?>" target="_blank">Lihat</a>
+                                            <?php } ?>
                                         </td>
+                                        <td width="25%" class="text-right">Rp <?= number_format($data->jumlah, 2, ',', '.'); ?></td>
+                                        <td class="text-center"><?php if ($data->jenis == "masuk") { ?><span class="badge badge-pill badge-success" style="font-weight: unset;">Pemasukan</span> <?php }
+                                                                                                                                                                                                if ($data->jenis == "keluar") { ?><span class="badge badge-pill badge-danger" style="font-weight: unset;">Pengeluaran</span><?php } ?>
+                                        </td>
+
                                     </tr>
                                 <?php $i++;
                                 } ?>
                             </tbody>
+
+
+                            <thead>
+                                <?php
+                                error_reporting(0);
+                                foreach ($ttl as $total) {
+                                    $jumlah += $total->jumlah;
+                                }
+
+                                foreach ($ttl_k as $total_k) {
+                                    $jumlah -= $total_k->jumlah;
+                                }
+                                ?>
+                                <tr>
+                                    <th colspan="4" scope="col">SALDO TOTAL</th>
+                                    <th class="text-right" scope="col">Rp. <?= number_format($jumlah, 2, ',', '.'); ?></th>
+                                    <th scope="col">&nbsp;</th>
+                                </tr>
+                            </thead>
                         </table>
                     </div> <!-- akhir div tabel -->
                 </div> <!-- akhir div card body -->
-            </div>
-        </div>
+            </div> <!-- akhir div card -->
     </main>

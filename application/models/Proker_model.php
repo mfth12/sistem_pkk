@@ -54,6 +54,25 @@ class Proker_model extends CI_Model
 		$query = $this->db->get();
 		return $query->result();
 	}
+
+	public function listing_bulan($date1,$date2)
+	{
+		$when = $this->session->userdata('active_periode');
+		$this->db->select('proker.*, proker_utama.*');
+		$this->db->from('proker');
+		// Join
+		$this->db->join('proker_utama', 'proker_utama.id_proker_utama = proker.id_proker_utama', 'LEFT');
+		$this->db->join('pokja', 'proker_utama.id_pokja = proker.id_proker_utama', 'LEFT');
+		// End join
+		$this->db->order_by('id_pokja', 'ASC');
+		$this->db->order_by('proker_utama.id_proker_utama', 'ASC');
+		$this->db->where('proker_utama.id_periode', $when);
+		$this->db->where('tanggal >=', $date1);
+		$this->db->where('tanggal <=', $date2);
+		// $this->db->group_by('nama_proker_utama', 'ASC');
+		$query = $this->db->get();
+		return $query->result();
+	}
 	
 	public function listingLaporan()
 	{

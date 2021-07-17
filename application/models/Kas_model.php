@@ -11,6 +11,17 @@ class Kas_model extends CI_Model {
         $query = $this->db->get();
         return $query->result();
 	}
+	
+	function all_bulan($date1,$date2){
+		// $this->db->where('jenis', 'masuk');
+		$this->db->from('data_kas');
+    	$this->db->where('id_periode', $this->session->userdata('active_periode'));
+		$this->db->where('tanggal >=', $date1);
+		$this->db->where('tanggal <=', $date2);
+        $this->db->order_by('tanggal DESC');
+        $query = $this->db->get();
+        return $query->result();
+	}
 
 	function masuk(){
 		$this->db->from('data_kas');
@@ -75,6 +86,31 @@ class Kas_model extends CI_Model {
     	$this->db->where('jenis', 'keluar');
     	$this->db->where('id_periode', $this->session->userdata('active_periode'));
     	$query = $this->db->get();
+    	return $query->result();
+	}
+
+	function total_masuk_bulan($date1,$date2)
+    {
+    	$this->db->select('jumlah');
+    	$this->db->from('data_kas');
+    	$this->db->where('jenis', 'masuk');
+    	$this->db->where('id_periode', $this->session->userdata('active_periode'));
+    	$this->db->where('tanggal >=', $date1);
+		$this->db->where('tanggal <=', $date2);
+		$query = $this->db->get();
+    	return $query->result();
+	}
+	
+    function total_keluar_bulan($date1,$date2)
+    {
+    	$this->db->select('jumlah');
+    	$this->db->from('data_kas');
+    	$this->db->where('jenis', 'keluar');
+    	$this->db->where('id_periode', $this->session->userdata('active_periode'));
+    	$this->db->where('tanggal >=', $date1);
+		$this->db->where('tanggal <=', $date2);
+
+		$query = $this->db->get();
     	return $query->result();
 	}
 
