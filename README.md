@@ -16,4 +16,5 @@
 | :------------ |:-------------| :-----:|
 | v1.0      | All basic features generated | Published |
 | v1.1      | Under Development | None |
-
+| v2.0      | Beta Release | Published |
+| v2.1      | Final | Published |
